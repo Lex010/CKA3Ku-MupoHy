@@ -34,6 +34,13 @@ export default {
           filename: 'assets/[name][ext]', // Помещает файлы в папку assets
         },
       },
+      {
+        test: /\.(mp4|webm|ogg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/videos/[name][ext]',
+        },
+      },
     ],
   },
   plugins: [
