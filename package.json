@@ -9,7 +9,7 @@
     "start": "webpack serve --mode development --open",
     "format": "prettier --write .",
     "ci:format": "prettier --check .",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-pattern release/"
   },
   "keywords": [],
   "author": "lex010",
