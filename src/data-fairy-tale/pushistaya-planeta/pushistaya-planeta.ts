@@ -1,4 +1,5 @@
 import createElement from '../../utils/create-element';
+import './style.css';
 
 const h1 = 'СуперМирон и Пушистая Планета';
 
