@@ -1,6 +1,6 @@
+import pushistayaPlanetaVideo from '../../assets/pushistaya-planeta.mp4';
 import createElement from '../../utils/create-element';
 import './style.css';
-import pushistayaPlanetaVideo from '../../assets/pushistaya-planeta.mp4';
 
 const h1 = 'СуперМирон и Пушистая Планета';
 
