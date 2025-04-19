@@ -31,6 +31,13 @@ main {
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+/* Стили для видео */
+.video-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
 .video-illustration {
   display: block;
   max-width: 100%;
@@ -38,5 +45,39 @@ main {
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   margin: 1rem auto;
+  transition: filter 0.3s;
 }
 
+.video-wrapper.paused .video-illustration {
+  filter: brightness(0.5);
+}
+
+.video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.video-wrapper.paused .video-play-button {
+  display: block;
+  opacity: 1;
+}
+
+.video-play-button::before {
+  content: '';
+  display: block;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-left: 30px solid white;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  filter: drop-shadow(2px 2px 6px rgba(7, 250, 47, 0.8));
+}
+/* Стили для видео(конец стилей)) */
