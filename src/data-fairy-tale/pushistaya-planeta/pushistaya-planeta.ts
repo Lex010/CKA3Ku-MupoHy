@@ -1,6 +1,7 @@
+import pushistayaPlanetaVideo from '../../assets/pushistaya-planeta.mp4';
 import createElement from '../../utils/create-element';
 import './style.css';
-import pushistayaPlanetaVideoFunc from './video01';
+import pushistayaPlanetaVideoFunc from '../../utils/videoForFairyTale';
 
 const h1 = 'СуперМирон и Пушистая Планета';
 
@@ -75,7 +76,7 @@ export default function pushistayaPlaneta(container: HTMLElement) {
     'Труля съела конфету… и улыбнулась! Её злая туча растаяла, а солнце снова засияло! ☀️'
   );
 
-  pushistayaPlanetaVideoFunc(container);
+  pushistayaPlanetaVideoFunc(container, pushistayaPlanetaVideo);
 
   createElement('p', container, { class: 'txt' }, 'Пушистики запрыгали от радости, и все устроили пушистую вечеринку!');
 

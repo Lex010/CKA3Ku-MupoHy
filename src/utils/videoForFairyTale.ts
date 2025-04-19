@@ -1,7 +1,6 @@
-import pushistayaPlanetaVideo from '../../assets/pushistaya-planeta.mp4';
-import createElement from '../../utils/create-element';
+import createElement from './create-element';
 
-export default function pushistayaPlanetaVideoFunc(container: HTMLElement) {
+export default function pushistayaPlanetaVideoFunc(container: HTMLElement, videoSrc: string) {
   const wrapper = createElement('div', container, {
     class: 'video-wrapper',
   });
@@ -14,7 +13,7 @@ export default function pushistayaPlanetaVideoFunc(container: HTMLElement) {
   });
 
   createElement('source', video, {
-    src: pushistayaPlanetaVideo,
+    src: videoSrc,
     type: 'video/mp4',
   });
 
