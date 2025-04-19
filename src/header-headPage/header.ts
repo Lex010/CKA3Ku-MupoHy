@@ -1,4 +1,6 @@
 import createElement from '../utils/create-element';
+import startPage from './start-page';
+import allTales from '../data-fairy-tale/all-tales';
 
 export default function createHeader(container: HTMLElement) {
   const header = createElement('header', 'body', { class: 'main-header' });
@@ -18,9 +20,11 @@ export default function createHeader(container: HTMLElement) {
     main.innerHTML = '';
     startPage(container);
   });
-}
 
-function startPage(container: HTMLElement) {
-  const main = container;
-  main.innerHTML = '123';
+  const savedPage = localStorage.getItem('currentPage');
+  if (savedPage) {
+    allTales[savedPage].render(container);
+  } else {
+    startPage(container);
+  }
 }

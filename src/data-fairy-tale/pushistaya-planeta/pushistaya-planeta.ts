@@ -3,10 +3,13 @@ import createElement from '../../utils/create-element';
 import './style.css';
 import pushistayaPlanetaVideoFunc from '../../utils/videoForFairyTale';
 
-const h1 = 'СуперМирон и Пушистая Планета';
+export const titleIdPushistayaPlaneta = {
+  title: 'СуперМирон и Пушистая Планета',
+  id: 'pushistaya-planeta',
+};
 
-export default function pushistayaPlaneta(container: HTMLElement) {
-  createElement('h1', container, { id: 'h1' }, `${h1}`);
+export function pushistayaPlaneta(container: HTMLElement) {
+  createElement('h1', container, { id: 'h1' }, `${titleIdPushistayaPlaneta.title}`);
 
   createElement(
     'p',
@@ -95,4 +98,6 @@ export default function pushistayaPlaneta(container: HTMLElement) {
     { class: 'txt' },
     'И Мирон полетел обратно, уснул у себя в кроватке с улыбкой, а звезда Зи тихонько светила рядом, охраняя его сны. 🌙✨'
   );
+  // ВАЖНО не забыть добавить сохранение в локальном хранилище
+  localStorage.setItem('currentPage', titleIdPushistayaPlaneta.id);
 }

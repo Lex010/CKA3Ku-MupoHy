@@ -110,5 +110,38 @@ main {
   background: #ff6f61;
   transform: scale(1.05);
 }
-
 /* Header(конец стилей)) */
+/* Контейнер с карточками */
+.fairy-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-height: 80vh;
+  justify-content: center;
+}
+
+/* Карточка сказки */
+.ckazki {
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  border: 3px solid #ffb347;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #444;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.ckazki:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 8px 18px rgba(0, 0, 0, 0.15);
+  background-color: #fff4e0;
+}
