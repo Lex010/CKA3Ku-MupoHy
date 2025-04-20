@@ -19,6 +19,7 @@ export default function createHeader(container: HTMLElement) {
     const main = container;
     main.innerHTML = '';
     skazkiPage(container);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   const upBtn = createElement('button', header, { class: 'nav-btn' }, '🔝');
