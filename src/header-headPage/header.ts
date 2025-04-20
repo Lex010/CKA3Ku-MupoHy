@@ -21,10 +21,16 @@ export default function createHeader(container: HTMLElement) {
     skazkiPage(container);
   });
 
+  const upBtn = createElement('button', header, { class: 'nav-btn' }, '🔝');
+  upBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
   const savedPage = localStorage.getItem('currentPage');
   if (savedPage) {
     allTales[savedPage].render(container);
   } else {
     skazkiPage(container);
+    // если нет сохранений в локальном хранилище то открываю страницу меню(сейчас это страница выбора сказок)
   }
 }
