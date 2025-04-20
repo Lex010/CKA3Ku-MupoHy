@@ -1,4 +1,5 @@
 import pushistayaPlanetaVideo from '../../assets/pushistaya-planeta.mp4';
+import pushistayaPlanetaVideo02 from '../../assets/pushistaya-planeta02.mp4';
 import createElement from '../../utils/create-element';
 import './style.css';
 import pushistayaPlanetaVideoFunc from '../../utils/videoForFairyTale';
@@ -70,6 +71,8 @@ export function pushistayaPlaneta(container: HTMLElement) {
     'Мирон не испугался. Он достал из кармана волшебную конфету-улыбку, угостил Трулю и сказал:'
   );
 
+  pushistayaPlanetaVideoFunc(container, pushistayaPlanetaVideo);
+
   createElement('p', container, { class: 'txt' }, '— Если ты будешь доброй, мы можем играть вместе!');
 
   createElement(
@@ -79,7 +82,7 @@ export function pushistayaPlaneta(container: HTMLElement) {
     'Труля съела конфету… и улыбнулась! Её злая туча растаяла, а солнце снова засияло! ☀️'
   );
 
-  pushistayaPlanetaVideoFunc(container, pushistayaPlanetaVideo);
+  pushistayaPlanetaVideoFunc(container, pushistayaPlanetaVideo02);
 
   createElement('p', container, { class: 'txt' }, 'Пушистики запрыгали от радости, и все устроили пушистую вечеринку!');
 
