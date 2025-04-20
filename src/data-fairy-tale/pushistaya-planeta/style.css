@@ -110,18 +110,27 @@ main {
   background: #ff6f61;
   transform: scale(1.05);
 }
-/* Header(конец стилей)) */
-/* Контейнер с карточками */
+/* Header(конец стилей)*/
+/* Книга рассказов */
+.fairy-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #fff;
+  padding: 20px;
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
 .fairy-list {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  min-height: 80vh;
   justify-content: center;
 }
 
-/* Карточка сказки */
 .ckazki {
   width: 100%;
   max-width: 500px;
@@ -145,3 +154,4 @@ main {
   box-shadow: 4px 8px 18px rgba(0, 0, 0, 0.15);
   background-color: #fff4e0;
 }
+/* Книга рассказов(конец стилей)*/
