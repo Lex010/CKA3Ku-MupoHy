@@ -1,4 +1,5 @@
 import createElement from '../../utils/create-element';
+import cifrozavr1 from '../../assets/cifrozavr/cifrozavr01.png';
 
 export const titleIdCifrozavry = {
   title: 'Цифрозавры',
@@ -30,11 +31,19 @@ export function cifrozavry(container: HTMLElement): void {
       type: 'text',
       content: 'Мирон сел на кровать-ракету и громко сказал: — Космос, вперёд! 🚀',
     },
+    {
+      type: 'image',
+      src: cifrozavr1,
+      alt: 'Цифрозавр Один',
+    },
   ];
 
   data.forEach((b) => {
-    if (b.type === 'text') {
+    if (b.type === 'text' && b.content) {
       createElement('p', container, { class: 'txt' }, b.content);
+    }
+    if (b.type === 'image' && b.src) {
+      createElement('img', container, { src: b.src, alt: b.alt || '', loading: 'lazy', class: 'fairy-image' });
     }
   });
 

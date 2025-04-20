@@ -76,6 +76,17 @@ main {
   filter: drop-shadow(2px 2px 6px rgba(7, 250, 47, 0.8));
 }
 /* Стили для видео(конец стилей)) */
+
+.fairy-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto;
+  max-height: 50vh;
+}
+
 /* Header */
 .main-header {
   position: fixed;
