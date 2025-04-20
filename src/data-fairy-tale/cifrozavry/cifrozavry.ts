@@ -1,6 +1,7 @@
 import createElement from '../../utils/create-element';
 import cifrozavr1 from '../../assets/cifrozavr/cifrozavr01.png';
 import cifrozavr2 from '../../assets/cifrozavr/cifrozavr02.jpg';
+import cifrozavr3 from '../../assets/cifrozavr/cifrozavr03.jpg';
 
 export const titleIdCifrozavry = {
   title: 'Цифрозавры',
@@ -65,7 +66,34 @@ export function cifrozavry(container: HTMLElement): void {
     {
       type: 'image',
       src: cifrozavr2,
-      alt: 'Цифрозавр Один',
+      alt: 'Цифрозавр Два',
+    },
+    {
+      type: 'text',
+      content:
+        'Мирон, Один и Двосик продолжили путь по сверкающей тропинке, когда вдруг небо потемнело, и из-за скалы раздался громкий рёв. На поляну вышел огромный динозавр с тремя головами! Из каждой пасти вырывалось пламя — но не страшное, а яркое, как салют, и совсем не обжигало. На его животике горела цифра 3.',
+    },
+    {
+      type: 'text',
+      content: 'Мирон смело подошёл:',
+    },
+    {
+      type: 'text',
+      content: '— У тебя три головы и цифра 3 на животике... Похоже, ты — наш следующий цифрозаврик!',
+    },
+    {
+      type: 'text',
+      content: 'Средняя голова нахмурилась, правая чихнула огоньком, а левая улыбнулась:',
+    },
+    {
+      type: 'text',
+      content:
+        '— Мы зовёмся Тригон! — сказали три головы хором. А потом добавили: — Иногда нас ещё зовут Горынычем... но это совсем другая история.',
+    },
+    {
+      type: 'image',
+      src: cifrozavr3,
+      alt: 'Цифрозавр Три',
     },
   ];
 
