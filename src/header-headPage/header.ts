@@ -1,5 +1,5 @@
 import createElement from '../utils/create-element';
-import startPage from './start-page';
+import skazkiPage from './skazki-page';
 import allTales from '../data-fairy-tale/all-tales';
 
 export default function createHeader(container: HTMLElement) {
@@ -18,13 +18,13 @@ export default function createHeader(container: HTMLElement) {
     localStorage.removeItem('currentPage');
     const main = container;
     main.innerHTML = '';
-    startPage(container);
+    skazkiPage(container);
   });
 
   const savedPage = localStorage.getItem('currentPage');
   if (savedPage) {
     allTales[savedPage].render(container);
   } else {
-    startPage(container);
+    skazkiPage(container);
   }
 }
