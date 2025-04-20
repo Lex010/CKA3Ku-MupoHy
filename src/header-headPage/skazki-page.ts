@@ -17,4 +17,10 @@ export default function skazkiPage(container: HTMLElement) {
     cleanThenUp();
     allTales['pushistaya-planeta'].render(container);
   });
+
+  const showCifrozavry = createElement('div', listWrapper, { class: 'ckazki' }, allTales.cifrozavry.title);
+  showCifrozavry.addEventListener('click', () => {
+    cleanThenUp();
+    allTales.cifrozavry.render(container);
+  });
 }
