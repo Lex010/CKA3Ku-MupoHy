@@ -1,5 +1,6 @@
 import createElement from '../../utils/create-element';
 import cifrozavr1 from '../../assets/cifrozavr/cifrozavr01.png';
+import cifrozavr2 from '../../assets/cifrozavr/cifrozavr02.jpg';
 
 export const titleIdCifrozavry = {
   title: 'Цифрозавры',
@@ -46,6 +47,24 @@ export function cifrozavry(container: HTMLElement): void {
     {
       type: 'image',
       src: cifrozavr1,
+      alt: 'Цифрозавр Один',
+    },
+    {
+      type: 'text',
+      content: '🦖 2 — Мирон встретил другого цифрозаврика.',
+    },
+    {
+      type: 'text',
+      content:
+        '— У тебя два крыла и цифра 2 на животике — это должно помочь тебе вспомнить своё имя, — сказал Мирон цифрозаврику.',
+    },
+    {
+      type: 'text',
+      content: '— Точно! Меня зовут Двосик! — обрадовался динозаврик.',
+    },
+    {
+      type: 'image',
+      src: cifrozavr2,
       alt: 'Цифрозавр Один',
     },
   ];
