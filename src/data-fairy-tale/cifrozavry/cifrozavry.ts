@@ -274,7 +274,7 @@ export function cifrozavry(container: HTMLElement): void {
     {
       type: 'image',
       src: cifrozavr7,
-      alt: 'Цифрозавр Семь',
+      alt: 'Цифрозавр Семь-Я',
     },
   ];
 
