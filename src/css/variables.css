@@ -1,14 +1,13 @@
 :root {
-    --headerBackground: #fff0e5d5;
-    --navBtnTxt: white;
+  --headerBackground: #fff0e5d5;
+  --navBtnTxt: white;
 
-    --h1AndHover: #ff6f61;
-    --mainBackground: #fff8f0;
-    --txtBackground: #fff;
-    --txtLeftBorder: #ffb347;
+  --h1AndHover: #ff6f61;
+  --mainBackground: #fff8f0;
+  --txtBackground: #fff;
+  --txtLeftBorder: #ffb347;
 
-    --AllFairyTalesBackground: linear-gradient(135deg, #4e54c8, #8f94fb);
-    --AllFairyTalesTxt: #fff;
-    --ckazkiHover: #fff4e0;
-  }
-  
+  --AllFairyTalesBackground: linear-gradient(135deg, #4e54c8, #8f94fb);
+  --AllFairyTalesTxt: #fff;
+  --ckazkiHover: #fff4e0;
+}

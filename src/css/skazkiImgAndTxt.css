@@ -1,54 +1,54 @@
 .fairy-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--AllFairyTalesTxt);
-    padding: 20px;
-    background: var(--AllFairyTalesBackground);
-    margin-bottom: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .fairy-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .ckazki {
-    width: 100%;
-    max-width: 500px;
-    background: var(--txtBackground);
-    border: 3px solid var(--txtLeftBorder);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #444;
-    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .ckazki:hover {
-    transform: translateY(-5px);
-    box-shadow: 4px 8px 18px rgba(0, 0, 0, 0.15);
-    background-color: var(--ckazkiHover);
-  }
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--AllFairyTalesTxt);
+  padding: 20px;
+  background: var(--AllFairyTalesBackground);
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
 
-  /* Img */
-  
-  .fairy-image {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin: 1rem auto;
-    max-height: 50vh;
-  }
+.fairy-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.ckazki {
+  width: 100%;
+  max-width: 500px;
+  background: var(--txtBackground);
+  border: 3px solid var(--txtLeftBorder);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #444;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.ckazki:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 8px 18px rgba(0, 0, 0, 0.15);
+  background-color: var(--ckazkiHover);
+}
+
+/* Img */
+
+.fairy-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto;
+  max-height: 50vh;
+}

@@ -1,4 +1,5 @@
 import createElement from '../../utils/create-element';
+import createImageWithModal from '../../utils/createImgWithModal';
 import cifrozavr1 from '../../assets/cifrozavr/cifrozavr01.jpg';
 import cifrozavr2 from '../../assets/cifrozavr/cifrozavr02.jpg';
 import cifrozavr3 from '../../assets/cifrozavr/cifrozavr03.jpg';
@@ -492,7 +493,7 @@ export function cifrozavry(container: HTMLElement): void {
       createElement('p', container, { class: 'txt' }, b.content);
     }
     if (b.type === 'image' && b.src) {
-      createElement('img', container, { src: b.src, alt: b.alt || '', loading: 'lazy', class: 'fairy-image' });
+      createImageWithModal(container, b.src, b.alt || '');
     }
   });
 
