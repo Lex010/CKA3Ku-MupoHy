@@ -1,3 +1,9 @@
+@import url('css/variables.css');
+@import url('css/header.css');
+@import url('css/mainContainer.css');
+@import url('css/forVideo.css');
+@import url('css/skazkiImgAndTxt.css');
+
 html {
   background: linear-gradient(to bottom, #cceaff, #ffffff);
   font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;

@@ -1,7 +1,6 @@
 import pushistayaPlanetaVideo from '../../assets/pushistaya-planeta.mp4';
 import pushistayaPlanetaVideo02 from '../../assets/pushistaya-planeta02.mp4';
 import createElement from '../../utils/create-element';
-import './style.css';
 import pushistayaPlanetaVideoFunc from '../../utils/videoForFairyTale';
 
 export const titleIdPushistayaPlaneta = {
