@@ -1,26 +1,44 @@
-export default function enableDrawingOnImage(modalImage: HTMLImageElement, modal: HTMLElement) {
-  // Функция для инициализации канваса
+export default function enableDrawingOnImage(modalImage: HTMLImageElement) {
   const initializeCanvas = () => {
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'relative';
+    wrapper.style.display = 'inline-block';
+    wrapper.style.maxWidth = '96%';
+    wrapper.style.maxHeight = 'calc(100vh - 80px)';
+    wrapper.style.flexShrink = '0';
+    wrapper.style.overflow = 'hidden';
+
+    // Вставляем обертку
+    modalImage.parentElement?.insertBefore(wrapper, modalImage);
+    wrapper.appendChild(modalImage);
+
     const canvas = document.createElement('canvas');
 
-    // Устанавливаем размеры канваса равными естественным размерам изображения
+    // Устанавливаем реальный размер канваса
     canvas.width = modalImage.naturalWidth;
     canvas.height = modalImage.naturalHeight;
 
-    // Стилизация канваса
+    // Стили
     canvas.style.position = 'absolute';
-    canvas.style.top = '50%';
-    canvas.style.left = '50%';
-    canvas.style.transform = 'translate(-50%, -50%)';
-    canvas.style.maxWidth = '96%';
-    canvas.style.maxHeight = '96%';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
     canvas.style.pointerEvents = 'auto';
-    canvas.style.zIndex = '1002'; // Выше картинки, ниже кнопки
+    canvas.style.zIndex = '2';
 
-    // Добавляем канвас в модальное окно
-    modal.appendChild(canvas);
+    wrapper.appendChild(canvas);
 
-    // Контекст рисования
+    // Функция для подгонки размера canvas к размеру изображения на экране
+    const resizeCanvas = () => {
+      canvas.style.width = `${modalImage.clientWidth}px`;
+      canvas.style.height = `${modalImage.clientHeight}px`;
+    };
+
+    // Вызываем при старте
+    resizeCanvas();
+
+    // И при изменении размера окна
+    window.addEventListener('resize', resizeCanvas);
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -30,7 +48,6 @@ export default function enableDrawingOnImage(modalImage: HTMLImageElement, modal
 
     let drawing = false;
 
-    // Функция для получения координат на канвасе с учетом масштаба
     function getCanvasCoordinates(event: MouseEvent | TouchEvent) {
       const rect = canvas.getBoundingClientRect();
       if (event instanceof MouseEvent) {
@@ -49,7 +66,6 @@ export default function enableDrawingOnImage(modalImage: HTMLImageElement, modal
       return { x: 0, y: 0 };
     }
 
-    // Обработчики событий для рисования мышью
     canvas.addEventListener('mousedown', (e) => {
       drawing = true;
       const { x, y } = getCanvasCoordinates(e);
@@ -68,9 +84,8 @@ export default function enableDrawingOnImage(modalImage: HTMLImageElement, modal
       drawing = false;
     });
 
-    // Обработчики событий для рисования на тачскринах
     canvas.addEventListener('touchstart', (e) => {
-      e.preventDefault(); // чтобы страница не прокручивалась
+      e.preventDefault();
       drawing = true;
       const { x, y } = getCanvasCoordinates(e);
       ctx.beginPath();
@@ -85,17 +100,14 @@ export default function enableDrawingOnImage(modalImage: HTMLImageElement, modal
       ctx.stroke();
     });
 
-    // Обработчик выхода за пределы канваса
     canvas.addEventListener('mouseleave', () => {
       drawing = false;
     });
   };
 
-  // Проверяем, загружено ли изображение
   if (modalImage.complete) {
     initializeCanvas();
   } else {
-    // Устанавливаем обработчик события onload для изображения
     modalImage.addEventListener('load', () => {
       initializeCanvas();
     });
