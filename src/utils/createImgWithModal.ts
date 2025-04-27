@@ -1,4 +1,5 @@
 import createElement from './create-element';
+import enableDrawingOnImage from './painting';
 
 function getCSSVar(name: string) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -29,6 +30,10 @@ export default function createImageWithModal(container: HTMLElement, src: string
     modalOverlay.style.justifyContent = 'center';
     modalOverlay.style.alignItems = 'center';
     modalOverlay.style.zIndex = '1000';
+
+    modalOverlay.style.userSelect = 'none';
+    modalOverlay.style.pointerEvents = 'auto';
+    // modalOverlay.ondragstart = () => false;
 
     const fullImg = document.createElement('img');
     fullImg.src = img.src;
@@ -70,6 +75,7 @@ export default function createImageWithModal(container: HTMLElement, src: string
     });
 
     modalOverlay.appendChild(fullImg);
+    enableDrawingOnImage(fullImg, modalOverlay);
     modalOverlay.appendChild(closeBtn);
     document.body.appendChild(modalOverlay);
   });
