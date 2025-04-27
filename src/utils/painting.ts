@@ -34,7 +34,9 @@ export default function enableDrawingOnImage(modalImage: HTMLImageElement) {
     };
 
     // Вызываем при старте
-    resizeCanvas();
+    requestAnimationFrame(() => {
+      resizeCanvas();
+    });
 
     // И при изменении размера окна
     window.addEventListener('resize', resizeCanvas);

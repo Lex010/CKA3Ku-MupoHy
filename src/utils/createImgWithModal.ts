@@ -55,7 +55,7 @@ export default function createImageWithModal(container: HTMLElement, src: string
     buttonPanel.style.boxSizing = 'border-box';
 
     const closeBtn = document.createElement('div');
-    closeBtn.textContent = 'Закрыть';
+    closeBtn.textContent = 'Х';
     closeBtn.style.background = defaultBgColor;
     closeBtn.style.color = defaultTxtColor;
     closeBtn.style.padding = '8px 16px';
