@@ -1,4 +1,3 @@
-import createElement from '../create-element';
 import enableDrawingOnImage from './painting';
 import { ModalStyles } from './imageModalStyles';
 
@@ -17,15 +16,14 @@ export default class ImageModal {
   }
 
   createThumbnail() {
-    const img = createElement('img', this.container, {
-      src: this.src,
-      alt: this.alt,
-      loading: 'lazy',
-      class: 'fairy-image',
-    });
-
+    const img = document.createElement('img');
+    img.src = this.src;
+    img.alt = this.alt;
+    img.loading = 'lazy';
+    img.classList.add('fairy-image');
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', () => this.openModal(img));
+    this.container.appendChild(img);
   }
 
   openModal(img: HTMLImageElement) {
