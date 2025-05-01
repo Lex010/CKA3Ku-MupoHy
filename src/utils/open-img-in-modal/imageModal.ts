@@ -1,5 +1,6 @@
 import enableDrawingOnImage from './painting';
 import { ModalStyles } from './imageModalStyles';
+import createBrushSelector from './brushSelector';
 
 export default class ImageModal {
   container: HTMLElement;
@@ -47,11 +48,16 @@ export default class ImageModal {
       document.body.style.overflow = '';
     });
 
+    const brushSelector = createBrushSelector(() => {
+      // lineWidth обновляется внутри enableDrawingOnImage
+    });
+
+    buttonPanel.appendChild(brushSelector);
     buttonPanel.appendChild(closeBtn);
     document.body.style.overflow = 'hidden';
 
     modalOverlay.appendChild(fullImg);
-    enableDrawingOnImage(fullImg); // добавляем возможность рисования
+    enableDrawingOnImage(fullImg, brushSelector); // добавляем возможность рисования
     modalOverlay.appendChild(buttonPanel);
     document.body.appendChild(modalOverlay);
   }

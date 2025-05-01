@@ -1,4 +1,4 @@
-export default function enableDrawingOnImage(modalImage: HTMLImageElement) {
+export default function enableDrawingOnImage(modalImage: HTMLImageElement, brushSizeRef?: HTMLSelectElement) {
   const initializeCanvas = () => {
     const wrapper = document.createElement('div');
     wrapper.style.position = 'relative';
@@ -45,8 +45,12 @@ export default function enableDrawingOnImage(modalImage: HTMLImageElement) {
     if (!ctx) return;
 
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
-    ctx.lineWidth = 4;
+    ctx.lineWidth = brushSizeRef ? parseInt(brushSizeRef.value, 10) : 4;
     ctx.lineCap = 'round';
+
+    brushSizeRef?.addEventListener('change', () => {
+      ctx.lineWidth = parseInt(brushSizeRef.value, 10);
+    });
 
     let drawing = false;
 
