@@ -8,17 +8,13 @@ export default function enableDrawingOnImage(modalImage: HTMLImageElement, brush
     wrapper.style.flexShrink = '0';
     wrapper.style.overflow = 'hidden';
 
-    // Вставляем обертку
     modalImage.parentElement?.insertBefore(wrapper, modalImage);
     wrapper.appendChild(modalImage);
 
     const canvas = document.createElement('canvas');
-
-    // Устанавливаем реальный размер канваса
     canvas.width = modalImage.naturalWidth;
     canvas.height = modalImage.naturalHeight;
 
-    // Стили
     canvas.style.position = 'absolute';
     canvas.style.top = '0';
     canvas.style.left = '0';
@@ -27,95 +23,124 @@ export default function enableDrawingOnImage(modalImage: HTMLImageElement, brush
 
     wrapper.appendChild(canvas);
 
-    // Функция для подгонки размера canvas к размеру изображения на экране
     const resizeCanvas = () => {
       canvas.style.width = `${modalImage.clientWidth}px`;
       canvas.style.height = `${modalImage.clientHeight}px`;
     };
 
-    // Вызываем при старте
-    requestAnimationFrame(() => {
-      resizeCanvas();
-    });
-
-    // И при изменении размера окна
+    requestAnimationFrame(resizeCanvas);
     window.addEventListener('resize', resizeCanvas);
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    const context = canvas.getContext('2d');
+    if (!context) return;
+    const ctx: CanvasRenderingContext2D = context;
 
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
-    ctx.lineWidth = brushSizeRef ? parseInt(brushSizeRef.value, 10) : 4;
-    ctx.lineCap = 'round';
-
+    const color = 'rgba(255, 255, 255, 0.6)';
+    let brushSize = brushSizeRef ? parseInt(brushSizeRef.value, 10) : 4;
     brushSizeRef?.addEventListener('change', () => {
-      ctx.lineWidth = parseInt(brushSizeRef.value, 10);
+      brushSize = parseInt(brushSizeRef.value, 10);
     });
 
+    const paintedPixels = new Set<string>();
     let drawing = false;
+    let lastPoint: { x: number; y: number } | null = null;
 
     function getCanvasCoordinates(event: MouseEvent | TouchEvent) {
       const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+
       if (event instanceof MouseEvent) {
         return {
-          x: (event.clientX - rect.left) * (canvas.width / rect.width),
-          y: (event.clientY - rect.top) * (canvas.height / rect.height),
+          x: (event.clientX - rect.left) * scaleX,
+          y: (event.clientY - rect.top) * scaleY,
         };
       }
-      if (event instanceof TouchEvent) {
-        const touch = event.touches[0];
-        return {
-          x: (touch.clientX - rect.left) * (canvas.width / rect.width),
-          y: (touch.clientY - rect.top) * (canvas.height / rect.height),
-        };
-      }
-      return { x: 0, y: 0 };
+
+      const touch = event.touches[0];
+      return {
+        x: (touch.clientX - rect.left) * scaleX,
+        y: (touch.clientY - rect.top) * scaleY,
+      };
     }
 
-    canvas.addEventListener('mousedown', (e) => {
+    function paintAt(x: number, y: number) {
+      const step = 1;
+      const radius = brushSize / 2;
+
+      for (let dx = -radius; dx <= radius; dx += step) {
+        for (let dy = -radius; dy <= radius; dy += step) {
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist <= radius) {
+            const px = Math.floor(x + dx);
+            const py = Math.floor(y + dy);
+            const key = `${px},${py}`;
+            if (!paintedPixels.has(key)) {
+              paintedPixels.add(key);
+              ctx.fillStyle = color;
+              ctx.beginPath();
+              ctx.arc(px, py, step, 0, 2 * Math.PI);
+              ctx.fill();
+            }
+          }
+        }
+      }
+    }
+
+    function paintLine(x1: number, y1: number, x2: number, y2: number) {
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const distance = Math.hypot(dx, dy);
+      const step = 1;
+
+      for (let i = 0; i <= distance; i += step) {
+        const t = i / distance;
+        const x = x1 + t * dx;
+        const y = y1 + t * dy;
+        paintAt(x, y);
+      }
+    }
+
+    function startDrawing(e: MouseEvent | TouchEvent) {
       drawing = true;
       const { x, y } = getCanvasCoordinates(e);
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-    });
+      lastPoint = { x, y };
+      paintAt(x, y);
+    }
 
-    canvas.addEventListener('mousemove', (e) => {
+    function continueDrawing(e: MouseEvent | TouchEvent) {
       if (!drawing) return;
       const { x, y } = getCanvasCoordinates(e);
-      ctx.lineTo(x, y);
-      ctx.stroke();
-    });
+      if (lastPoint) {
+        paintLine(lastPoint.x, lastPoint.y, x, y);
+      }
+      lastPoint = { x, y };
+    }
 
-    canvas.addEventListener('mouseup', () => {
+    function stopDrawing() {
       drawing = false;
-    });
+      lastPoint = null;
+    }
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', continueDrawing);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseleave', stopDrawing);
 
     canvas.addEventListener('touchstart', (e) => {
       e.preventDefault();
-      drawing = true;
-      const { x, y } = getCanvasCoordinates(e);
-      ctx.beginPath();
-      ctx.moveTo(x, y);
+      startDrawing(e);
     });
-
     canvas.addEventListener('touchmove', (e) => {
       e.preventDefault();
-      if (!drawing) return;
-      const { x, y } = getCanvasCoordinates(e);
-      ctx.lineTo(x, y);
-      ctx.stroke();
+      continueDrawing(e);
     });
-
-    canvas.addEventListener('mouseleave', () => {
-      drawing = false;
-    });
+    canvas.addEventListener('touchend', stopDrawing);
   };
 
   if (modalImage.complete) {
     initializeCanvas();
   } else {
-    modalImage.addEventListener('load', () => {
-      initializeCanvas();
-    });
+    modalImage.addEventListener('load', initializeCanvas);
   }
 }

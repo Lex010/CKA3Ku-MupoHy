@@ -7,7 +7,7 @@ export default function createBrushSelector(
   brushSelector.style.marginRight = '8px';
   brushSelector.style.cursor = 'pointer';
 
-  [4, 10, 25, 50, 100].forEach((size) => {
+  [4, 10, 25, 50].forEach((size) => {
     const option = document.createElement('option');
     option.value = size.toString();
     option.textContent = `${size}px`;
