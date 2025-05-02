@@ -6,6 +6,7 @@ export default function createBrushSelector(
   brushSelector.title = 'Размер кисти';
   brushSelector.style.marginRight = '8px';
   brushSelector.style.cursor = 'pointer';
+  brushSelector.style.backgroundColor = 'white';
 
   [4, 10, 25, 50].forEach((size) => {
     const option = document.createElement('option');
