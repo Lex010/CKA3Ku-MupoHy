@@ -1,4 +1,4 @@
-import enableDrawingOnImage from './painting';
+import enableDrawingOnImage from './drawing/enableDrawing';
 import { ModalStyles } from './imageModalStyles';
 import createBrushSelector from './brushSelector';
 
