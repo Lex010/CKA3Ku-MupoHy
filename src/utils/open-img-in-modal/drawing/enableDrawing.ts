@@ -1,10 +1,14 @@
 import { initWrapper } from './initWrapper';
 import { createCanvas } from './createCanvas';
 import { setupCanvasResizing } from './resizeCanvas';
-import { setupBrushSize } from './brushSettings';
+import { setupBrushSize, setupBrushOpacity } from './brushSettings';
 import { registerDrawingEvents } from './eventHandlers';
 
-export default function enableDrawingOnImage(modalImage: HTMLImageElement, brushSizeRef?: HTMLSelectElement) {
+export default function enableDrawingOnImage(
+  modalImage: HTMLImageElement,
+  brushSizeRef?: HTMLSelectElement,
+  opacityRef?: HTMLSelectElement
+) {
   const initialize = () => {
     const wrapper = initWrapper(modalImage);
     const canvas = createCanvas(modalImage);
@@ -16,7 +20,8 @@ export default function enableDrawingOnImage(modalImage: HTMLImageElement, brush
     if (!context) return;
 
     const getBrushSize = setupBrushSize(brushSizeRef);
-    const color = 'rgba(255, 255, 255, 0.1)';
+    const getOpacity = setupBrushOpacity(opacityRef);
+    const color = () => `rgba(255, 255, 255, ${getOpacity()})`;
 
     registerDrawingEvents(canvas, context, getBrushSize, color);
   };
