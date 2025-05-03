@@ -3,6 +3,7 @@ export default function createOpacitySelector(
   defaultOpacity: number = 0.5
 ): HTMLSelectElement {
   const opacitySelector = document.createElement('select');
+  opacitySelector.id = 'opacity-selector';
   opacitySelector.title = 'Прозрачность кисти';
   opacitySelector.style.cursor = 'pointer';
   opacitySelector.style.backgroundColor = 'white';

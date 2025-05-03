@@ -15,6 +15,10 @@ export default function createOverwriteCheckbox(onChange: (value: boolean) => vo
   checkbox.style.marginRight = '4px';
 
   checkbox.addEventListener('change', () => {
+    const opacitySelector = document.getElementById('opacity-selector') as HTMLSelectElement;
+    if (opacitySelector) {
+      opacitySelector.disabled = checkbox.checked;
+    }
     onChange(checkbox.checked);
   });
 
