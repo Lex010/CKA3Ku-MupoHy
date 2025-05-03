@@ -4,7 +4,8 @@ export function paintAt(
   y: number,
   brushSize: number,
   paintedPixels: Set<string>,
-  color: string
+  color: string,
+  shouldOverwrite: boolean
 ) {
   const step = 1;
   const radius = brushSize / 2;
@@ -16,7 +17,7 @@ export function paintAt(
         const px = Math.floor(x + dx);
         const py = Math.floor(y + dy);
         const key = `${px},${py}`;
-        if (!paintedPixels.has(key)) {
+        if (shouldOverwrite || !paintedPixels.has(key)) {
           paintedPixels.add(key);
           ctx.fillStyle = color;
           ctx.beginPath();
@@ -36,7 +37,8 @@ export function paintLine(
   y2: number,
   brushSize: number,
   paintedPixels: Set<string>,
-  color: string
+  color: string,
+  shouldOverwrite: boolean
 ) {
   const dx = x2 - x1;
   const dy = y2 - y1;
@@ -47,6 +49,6 @@ export function paintLine(
     const t = i / distance;
     const x = x1 + t * dx;
     const y = y1 + t * dy;
-    paintAt(ctx, x, y, brushSize, paintedPixels, color);
+    paintAt(ctx, x, y, brushSize, paintedPixels, color, shouldOverwrite);
   }
 }

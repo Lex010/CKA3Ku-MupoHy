@@ -7,7 +7,8 @@ import { registerDrawingEvents } from './eventHandlers';
 export default function enableDrawingOnImage(
   modalImage: HTMLImageElement,
   brushSizeRef?: HTMLSelectElement,
-  opacityRef?: HTMLSelectElement
+  opacityRef?: HTMLSelectElement,
+  shouldOverwrite?: () => boolean
 ) {
   const initialize = () => {
     const wrapper = initWrapper(modalImage);
@@ -23,7 +24,7 @@ export default function enableDrawingOnImage(
     const getOpacity = setupBrushOpacity(opacityRef);
     const color = () => `rgba(255, 255, 255, ${getOpacity()})`;
 
-    registerDrawingEvents(canvas, context, getBrushSize, color);
+    registerDrawingEvents(canvas, context, getBrushSize, color, shouldOverwrite || (() => false));
   };
 
   if (modalImage.complete) {

@@ -4,14 +4,13 @@ export default function createOpacitySelector(
 ): HTMLSelectElement {
   const opacitySelector = document.createElement('select');
   opacitySelector.title = 'Прозрачность кисти';
-  opacitySelector.style.marginRight = '8px';
   opacitySelector.style.cursor = 'pointer';
   opacitySelector.style.backgroundColor = 'white';
 
   const options: Array<[number, string]> = [
-    [0.1, '10%'],
-    [0.5, '50%'],
-    [1.0, '100%'],
+    [0.1, '\u{1F315}'],
+    [0.5, '\u{1F313}'],
+    [1.0, '\u{1F311}'],
   ];
 
   options.forEach(([value, label]) => {

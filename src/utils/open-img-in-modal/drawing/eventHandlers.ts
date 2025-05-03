@@ -4,7 +4,8 @@ export function registerDrawingEvents(
   canvas: HTMLCanvasElement,
   ctx: CanvasRenderingContext2D,
   getBrushSize: () => number,
-  getColor: () => string
+  getColor: () => string,
+  shouldOverwrite: () => boolean
 ) {
   const paintedPixels = new Set<string>();
   let drawing = false;
@@ -33,14 +34,14 @@ export function registerDrawingEvents(
     drawing = true;
     const { x, y } = getCanvasCoordinates(e);
     lastPoint = { x, y };
-    paintAt(ctx, x, y, getBrushSize(), paintedPixels, getColor());
+    paintAt(ctx, x, y, getBrushSize(), paintedPixels, getColor(), shouldOverwrite());
   }
 
   function continueDrawing(e: MouseEvent | TouchEvent) {
     if (!drawing) return;
     const { x, y } = getCanvasCoordinates(e);
     if (lastPoint) {
-      paintLine(ctx, lastPoint.x, lastPoint.y, x, y, getBrushSize(), paintedPixels, getColor());
+      paintLine(ctx, lastPoint.x, lastPoint.y, x, y, getBrushSize(), paintedPixels, getColor(), shouldOverwrite());
     }
     lastPoint = { x, y };
   }

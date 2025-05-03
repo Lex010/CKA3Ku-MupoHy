@@ -4,7 +4,6 @@ export default function createBrushSelector(
 ): HTMLSelectElement {
   const brushSelector = document.createElement('select');
   brushSelector.title = 'Размер кисти';
-  brushSelector.style.marginRight = '8px';
   brushSelector.style.cursor = 'pointer';
   brushSelector.style.backgroundColor = 'white';
 

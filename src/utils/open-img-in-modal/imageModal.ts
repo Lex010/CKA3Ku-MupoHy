@@ -2,6 +2,7 @@ import enableDrawingOnImage from './drawing/enableDrawing';
 import { ModalStyles } from './imageModalStyles';
 import createBrushSelector from './brushSelector';
 import createOpacitySelector from './drawing/createOpacitySelector';
+import createOverwriteCheckbox from './createOverwriteCheckbox';
 
 export default class ImageModal {
   container: HTMLElement;
@@ -55,14 +56,16 @@ export default class ImageModal {
     const opacitySelector = createOpacitySelector(() => {
       // opacity обновляется внутри enableDrawingOnImage
     });
+    const { label: overwriteLabel, checkbox: overwriteCheckbox } = createOverwriteCheckbox(() => {});
 
+    buttonPanel.appendChild(overwriteLabel);
     buttonPanel.appendChild(brushSelector);
     buttonPanel.appendChild(opacitySelector);
     buttonPanel.appendChild(closeBtn);
     document.body.style.overflow = 'hidden';
 
     modalOverlay.appendChild(fullImg);
-    enableDrawingOnImage(fullImg, brushSelector, opacitySelector); // добавляем возможность рисования
+    enableDrawingOnImage(fullImg, brushSelector, opacitySelector, () => overwriteCheckbox.checked); // добавляем возможность рисования
     modalOverlay.appendChild(buttonPanel);
     document.body.appendChild(modalOverlay);
   }

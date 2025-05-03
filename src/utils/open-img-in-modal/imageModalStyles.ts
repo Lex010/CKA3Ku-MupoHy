@@ -44,7 +44,7 @@ export class ModalStyles {
       background: 'rgba(0, 0, 0, 0.7)',
       display: 'flex',
       justifyContent: 'center',
-      gap: '16px',
+      gap: '8px',
       padding: '10px 0',
       boxSizing: 'border-box',
     });
