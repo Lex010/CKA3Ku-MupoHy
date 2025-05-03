@@ -8,7 +8,8 @@ export default function enableDrawingOnImage(
   modalImage: HTMLImageElement,
   brushSizeRef?: HTMLSelectElement,
   opacityRef?: HTMLSelectElement,
-  shouldOverwrite?: () => boolean
+  shouldOverwrite?: () => boolean,
+  getColor?: () => string
 ) {
   const initialize = () => {
     const wrapper = initWrapper(modalImage);
@@ -22,9 +23,30 @@ export default function enableDrawingOnImage(
 
     const getBrushSize = setupBrushSize(brushSizeRef);
     const getOpacity = setupBrushOpacity(opacityRef);
-    const color = () => `rgba(255, 255, 255, ${getOpacity()})`;
+    const getBaseColor = getColor || (() => '#ffffff');
 
-    registerDrawingEvents(canvas, context, getBrushSize, color, shouldOverwrite || (() => false));
+    // Комбинируем цвет и прозрачность
+    const getCombinedColor = () => {
+      const baseColor = getBaseColor();
+      const opacity = getOpacity();
+
+      // Если цвет уже в формате rgba, заменяем прозрачность
+      if (baseColor.startsWith('rgba')) {
+        return baseColor.replace(/[\d.]+\)$/, `${opacity})`);
+      }
+
+      // Конвертируем hex в rgba
+      const hexToRgb = (hex: string) => {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+      };
+
+      return hexToRgb(baseColor);
+    };
+
+    registerDrawingEvents(canvas, context, getBrushSize, getCombinedColor, shouldOverwrite || (() => false));
   };
 
   if (modalImage.complete) {

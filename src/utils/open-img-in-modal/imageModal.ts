@@ -3,6 +3,7 @@ import { ModalStyles } from './imageModalStyles';
 import createBrushSelector from './brushSelector';
 import createOpacitySelector from './drawing/createOpacitySelector';
 import createOverwriteCheckbox from './createOverwriteCheckbox';
+import createColorPicker from './createColorPicker';
 
 export default class ImageModal {
   container: HTMLElement;
@@ -58,6 +59,12 @@ export default class ImageModal {
     });
     const { label: overwriteLabel, checkbox: overwriteCheckbox } = createOverwriteCheckbox(() => {});
 
+    let currentColor = '#ffffff';
+    const colorPicker = createColorPicker((color) => {
+      currentColor = color;
+    }, currentColor);
+
+    buttonPanel.appendChild(colorPicker);
     buttonPanel.appendChild(overwriteLabel);
     buttonPanel.appendChild(brushSelector);
     buttonPanel.appendChild(opacitySelector);
@@ -65,7 +72,13 @@ export default class ImageModal {
     document.body.style.overflow = 'hidden';
 
     modalOverlay.appendChild(fullImg);
-    enableDrawingOnImage(fullImg, brushSelector, opacitySelector, () => overwriteCheckbox.checked); // добавляем возможность рисования
+    enableDrawingOnImage(
+      fullImg,
+      brushSelector,
+      opacitySelector,
+      () => overwriteCheckbox.checked,
+      () => currentColor
+    ); // добавляем возможность рисования
     modalOverlay.appendChild(buttonPanel);
     document.body.appendChild(modalOverlay);
   }

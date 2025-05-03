@@ -23,7 +23,7 @@ export default function createOverwriteCheckbox(onChange: (value: boolean) => vo
   });
 
   label.appendChild(checkbox);
-  label.appendChild(document.createTextNode(String.fromCodePoint(0x1f9ee)));
+  label.appendChild(document.createTextNode(String.fromCodePoint(0x1f9ea)));
 
   return { label, checkbox };
 }
