@@ -45,6 +45,53 @@
   background: var(--h1AndHover);
   transform: scale(1.05);
 }
+/* Логин */
+.login-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltiptext {
+  width: max-content;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 4px;
+  padding: 6px 8px;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.hidden {
+  display: none;
+}
+
+.tooltip-logout-btn {
+  margin-top: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  background-color: var(--txtLeftBorder);
+  color: var(--navBtnTxt);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tooltip-logout-btn:hover {
+  background-color: var(--h1AndHover);
+}
 
 main {
   min-height: 100vh;
