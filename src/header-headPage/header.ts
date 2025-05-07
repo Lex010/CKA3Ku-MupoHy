@@ -1,6 +1,7 @@
 import createElement from '../utils/create-element';
 import skazkiPage from './skazki-page';
 import allTales from '../data-fairy-tale/all-tales';
+import userLogin from '../firebase/userLogin';
 
 export default function createHeader(container: HTMLElement) {
   const header = createElement('header', 'body', { class: 'main-header' });
@@ -26,6 +27,8 @@ export default function createHeader(container: HTMLElement) {
   upBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  userLogin(header);
 
   const savedPage = localStorage.getItem('currentPage');
   if (savedPage) {
