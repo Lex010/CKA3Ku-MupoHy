@@ -5,6 +5,10 @@ const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider();
 
 function login(): void {
+  provider.setCustomParameters({
+    prompt: 'select_account',
+  }); // Принудительно отображает выбор аккаунта при каждом входе (иначе Google может автоматически использовать последний)
+
   signInWithPopup(auth, provider).catch((/* error */) => {
     // console.error('Login error:', error);
   });
