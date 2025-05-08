@@ -19,7 +19,7 @@
   color: var(--navBtnTxt);
   border: none;
   border-radius: 8px;
-  padding: 10px 16px;
+  padding: 5px 8px;
   cursor: pointer;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
   transition:
@@ -31,7 +31,9 @@
   background: var(--h1AndHover);
   transform: scale(1.05);
 }
+
 /* Логин */
+
 .login-container {
   display: flex;
   align-items: center;

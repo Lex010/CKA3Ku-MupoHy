@@ -12,7 +12,12 @@ export default function userLogin(userMenu: HTMLElement): void {
 
   function renderLoggedOut(): void {
     loginContainer.innerHTML = `
-      <button id="login-btn">Войти Google</button>
+      <button id="login-btn" class="nav-btn" title="Войти">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M13.707 15.707a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 0-1.414l3-3a1 1 0 1 1 1.414 1.414L11.414 11H20a1 1 0 1 1 0 2h-8.586l2.293 2.293a1 1 0 0 1 0 1.414z"/>
+        <path d="M4 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7a1 1 0 1 0 0-2H4V5h7a1 1 0 1 0 0-2H4z"/>
+      </svg>
+    </button>
     `;
     loginContainer.querySelector('#login-btn')?.addEventListener('click', login);
   }
