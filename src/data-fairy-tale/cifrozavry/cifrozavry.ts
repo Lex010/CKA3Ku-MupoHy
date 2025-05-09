@@ -18,7 +18,4 @@ export function cifrozavry(container: HTMLElement): void {
       (() => new ImageModal(container, b.src, b.alt || ''))(); // IIFE для обхода предупреждения линтера
     }
   });
-
-  // ВАЖНО не забыть добавить сохранение в локальном хранилище
-  localStorage.setItem('currentPage', titleIdCifrozavry.id);
 }
