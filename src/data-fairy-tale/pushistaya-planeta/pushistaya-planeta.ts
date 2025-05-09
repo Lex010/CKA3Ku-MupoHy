@@ -4,8 +4,8 @@ import createElement from '../../utils/create-element';
 import pushistayaPlanetaVideoFunc from '../../utils/videoForFairyTale';
 
 export const titleIdPushistayaPlaneta = {
-  title: 'СуперМирон и Пушистая Планета',
-  id: 'pushistaya-planeta',
+  title: 'Пушистая Планета',
+  id: 'pushistayaPlaneta',
 };
 
 export function pushistayaPlaneta(container: HTMLElement) {

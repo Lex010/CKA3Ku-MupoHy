@@ -12,15 +12,11 @@ export default function skazkiPage(container: HTMLElement) {
   createElement('h1', container, { class: 'fairy-title' }, 'Книга рассказов');
   const listWrapper = createElement('div', container, { class: 'fairy-list' });
 
-  const showPushistayaPlaneta = createElement('div', listWrapper, { class: 'ckazki' }, 'Пушистая планета');
-  showPushistayaPlaneta.addEventListener('click', () => {
-    cleanThenUp();
-    allTales['pushistaya-planeta'].render(container);
-  });
-
-  const showCifrozavry = createElement('div', listWrapper, { class: 'ckazki' }, allTales.cifrozavry.title);
-  showCifrozavry.addEventListener('click', () => {
-    cleanThenUp();
-    allTales.cifrozavry.render(container);
+  Object.values(allTales).forEach((tale) => {
+    const taleElement = createElement('div', listWrapper, { class: 'ckazki' }, tale.title);
+    taleElement.addEventListener('click', () => {
+      cleanThenUp();
+      tale.render(container);
+    });
   });
 }
