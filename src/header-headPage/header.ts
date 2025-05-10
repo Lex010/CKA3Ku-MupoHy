@@ -1,5 +1,6 @@
 import createElement from '../utils/create-element';
-import skazkiPage from './skazki-page';
+// import { skazkiPage } from './skazki-page';
+import mainPage from './mainPage';
 import allTales from '../data-fairy-tale/all-tales';
 import userLogin from '../firebase/userLogin';
 
@@ -19,7 +20,7 @@ export default function createHeader(container: HTMLElement) {
     localStorage.removeItem('currentPage');
     const main = container;
     main.innerHTML = '';
-    skazkiPage(container);
+    mainPage(container);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
@@ -31,10 +32,10 @@ export default function createHeader(container: HTMLElement) {
   userLogin(header);
 
   const savedPage = localStorage.getItem('currentPage');
-  if (savedPage) {
+  if (savedPage && allTales[savedPage]) {
     allTales[savedPage].render(container);
   } else {
-    skazkiPage(container);
-    // если нет сохранений в локальном хранилище то открываю страницу меню(сейчас это страница выбора сказок)
+    mainPage(container);
+    // если нет сохранений в локальном хранилище то открываю страницу Главную страницу
   }
 }
