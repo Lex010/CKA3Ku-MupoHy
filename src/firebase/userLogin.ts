@@ -25,7 +25,7 @@ export default function userLogin(userMenu: HTMLElement): void {
   function renderLoggedIn(photoURL: string, name: string): void {
     loginContainer.innerHTML = `
       <div class="tooltip-container">
-        <img id="user-avatar" src="${photoURL}" alt="${name}" style="width: 32px; height: 32px; border-radius: 50%; cursor: pointer;" />
+        <img id="user-avatar" src="${photoURL}" alt="${name}"/>
         <div id="tooltip" class="tooltiptext hidden">
           Имя: ${name}<br>
           Почта: ${auth.currentUser?.email || 'неизвестно'}<br>

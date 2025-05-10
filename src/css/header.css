@@ -40,6 +40,17 @@
   gap: 8px;
 }
 
+#user-avatar {
+  border: 1px solid var(--txtLeftBorder);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .tooltip-container {
   position: relative;
   display: inline-block;
