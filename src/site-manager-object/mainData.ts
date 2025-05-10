@@ -1,19 +1,9 @@
-import { idSkazkiPage, skazkiPage } from '../header-headPage/skazki-page';
+import { idSkazkiPage, skazkiPage } from '../data-fairy-tale/skazki-page';
 import createPageWithLocalStorage from '../utils/createPageWithLocalStorage';
+import { ContentItem } from './type';
+import storyData from './allSkazkiData';
 
-type ContItemInside = {
-  id: string;
-  title: string;
-  type: 'story' | 'game' | 'menu';
-  render: (container: HTMLElement) => void;
-};
-
-type ContentItem = {
-  [K in string]: K extends ContItemInside['id'] ? ContItemInside : never;
-};
-// тип ContentItem содержит ключь соответствующий ContItemInside['id']
-
-export const mainData: ContentItem = {
+export const menuData: ContentItem = {
   [idSkazkiPage.id]: {
     id: idSkazkiPage.id,
     title: idSkazkiPage.title,
@@ -21,3 +11,5 @@ export const mainData: ContentItem = {
     render: createPageWithLocalStorage(skazkiPage, idSkazkiPage.id),
   },
 };
+
+export const mainData: ContentItem = { ...menuData, ...storyData };

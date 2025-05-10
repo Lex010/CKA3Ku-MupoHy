@@ -1,7 +1,6 @@
 import createElement from '../utils/create-element';
-// import { skazkiPage } from './skazki-page';
 import mainPage from './mainPage';
-import allTales from '../data-fairy-tale/all-tales';
+import { mainData } from '../site-manager-object/mainData';
 import userLogin from '../firebase/userLogin';
 
 export default function createHeader(container: HTMLElement) {
@@ -32,8 +31,8 @@ export default function createHeader(container: HTMLElement) {
   userLogin(header);
 
   const savedPage = localStorage.getItem('currentPage');
-  if (savedPage && allTales[savedPage]) {
-    allTales[savedPage].render(container);
+  if (savedPage && mainData[savedPage]) {
+    mainData[savedPage].render(container);
   } else {
     mainPage(container);
     // если нет сохранений в локальном хранилище то открываю страницу Главную страницу

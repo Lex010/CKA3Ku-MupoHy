@@ -1,18 +1,21 @@
 import createPageWithLocalStorage from '../utils/createPageWithLocalStorage';
-import { titleIdPushistayaPlaneta, pushistayaPlaneta } from './pushistaya-planeta/pushistaya-planeta';
-import { titleIdCifrozavry, cifrozavry } from './cifrozavry/cifrozavry';
+import { titleIdPushistayaPlaneta, pushistayaPlaneta } from '../data-fairy-tale/pushistaya-planeta/pushistaya-planeta';
+import { titleIdCifrozavry, cifrozavry } from '../data-fairy-tale/cifrozavry/cifrozavry';
+import { ContentItem } from './type';
 
-const allTales = {
+const storyData: ContentItem = {
   [titleIdPushistayaPlaneta.id]: {
     id: titleIdPushistayaPlaneta.id,
     title: titleIdPushistayaPlaneta.title,
+    type: 'story',
     render: createPageWithLocalStorage(pushistayaPlaneta, titleIdPushistayaPlaneta.id),
   },
   [titleIdCifrozavry.id]: {
     id: titleIdCifrozavry.id,
     title: titleIdCifrozavry.title,
+    type: 'story',
     render: createPageWithLocalStorage(cifrozavry, titleIdCifrozavry.id),
   },
 };
 
-export default allTales;
+export default storyData;
