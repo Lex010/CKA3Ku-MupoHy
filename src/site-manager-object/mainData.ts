@@ -3,6 +3,7 @@ import { idGamesPage, gamesPage } from '../data-games/games-page';
 import createPageWithLocalStorage from '../utils/createPageWithLocalStorage';
 import { ContentItem } from './type';
 import storyData from './allSkazkiData';
+import gamesData from './allGamesData';
 
 export const menuData: ContentItem = {
   [idSkazkiPage.id]: {
@@ -19,4 +20,4 @@ export const menuData: ContentItem = {
   },
 };
 
-export const mainData: ContentItem = { ...menuData, ...storyData };
+export const mainData: ContentItem = { ...menuData, ...storyData, ...gamesData };

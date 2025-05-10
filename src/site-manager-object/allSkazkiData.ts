@@ -1,7 +1,7 @@
 import createPageWithLocalStorage from '../utils/createPageWithLocalStorage';
+import { ContentItem } from './type';
 import { titleIdPushistayaPlaneta, pushistayaPlaneta } from '../data-fairy-tale/pushistaya-planeta/pushistaya-planeta';
 import { titleIdCifrozavry, cifrozavry } from '../data-fairy-tale/cifrozavry/cifrozavry';
-import { ContentItem } from './type';
 
 const storyData: ContentItem = {
   [titleIdPushistayaPlaneta.id]: {
