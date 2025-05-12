@@ -3,7 +3,8 @@
 @import url('css/mainContainer.css');
 @import url('css/forVideo.css');
 @import url('css/skazkiImgAndTxt.css');
-@import url('css/gamesXO.css');
+@import url('css/games/gamesXO.css');
+@import url('css/games/gameModal.css');
 
 html {
   background: linear-gradient(to bottom, #cceaff, #ffffff);

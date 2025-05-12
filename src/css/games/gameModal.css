@@ -1,0 +1,39 @@
+.game-modal {
+  position: fixed;
+  inset: 0;
+  background-color: var(--mainBackground);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.game-modal-header {
+  background-color: var(--txtLeftBorder);
+  padding: 6px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-modal-close {
+  border: none;
+  border-radius: 8px;
+  padding: 5px 8px;
+  background-color: var(--h1AndHover);
+  color: var(--navBtnTxt);
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.game-modal-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
