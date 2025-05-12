@@ -1,4 +1,4 @@
-export default function openXoGameModal(): void {
+export default function openXoGameModal(): HTMLElement {
   const modal = document.createElement('div');
   modal.className = 'game-modal';
 
@@ -16,14 +16,15 @@ export default function openXoGameModal(): void {
 
   header.appendChild(closeButton);
 
-  const content = document.createElement('div');
-  content.className = 'game-modal-content';
-  content.textContent = 'Тут будет игровое поле';
+  const gameField = document.createElement('div');
+  gameField.className = 'game-modal-content';
 
   modal.appendChild(header);
-  modal.appendChild(content);
+  modal.appendChild(gameField);
 
   document.body.appendChild(modal);
   // Отключаем прокрутку страницы
   document.body.style.overflow = 'hidden';
+
+  return gameField;
 }

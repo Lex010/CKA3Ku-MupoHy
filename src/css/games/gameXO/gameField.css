@@ -1,0 +1,38 @@
+.xo-game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.xo-grid {
+  display: grid;
+  width: max-content;
+  height: max-content;
+  gap: 0;
+}
+
+.xo-cell {
+  /* width: 80px; */
+  /* height: 80px; */
+  background-color: var(--txtBackground);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+}
+
+.xo-cell.top-row {
+  border-top: none;
+}
+
+.xo-cell.left-col {
+  border-left: none;
+}
