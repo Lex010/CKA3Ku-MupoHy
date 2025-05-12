@@ -7,7 +7,7 @@ export default function renderXoField(container: HTMLElement, gridSize: number =
   for (let i = 0; i < gridSize * gridSize; i += 1) {
     const cell = document.createElement('div');
     cell.className = 'xo-cell';
-    // cell.dataset.index = i.toString(); // Удобно для логики
+    cell.dataset.index = i.toString(); // Удобно для логики(проверка победителей)
 
     const row = Math.floor(i / gridSize);
     const col = i % gridSize;

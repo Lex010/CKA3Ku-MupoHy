@@ -44,6 +44,5 @@ export function xoGame(container: HTMLElement): void {
     clickXO(gameField);
     // console.log(`Игроков выбрано: ${playerCount}`);
     // Здесь можно вызвать старт модального окна или перейти на другой маршрут
-    // startGame(playerCount);
   });
 }
