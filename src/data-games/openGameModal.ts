@@ -1,4 +1,4 @@
-export default function openXoGameModal(): HTMLElement {
+export default function openGameModal(): HTMLElement {
   const modal = document.createElement('div');
   modal.className = 'game-modal';
 

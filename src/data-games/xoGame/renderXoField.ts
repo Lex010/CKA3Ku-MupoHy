@@ -1,4 +1,4 @@
-export default function renderXoField(container: HTMLElement, gridSize: number = 3): void {
+export default function renderXoField(container: HTMLElement, gridSize: number = 3): HTMLDivElement {
   const grid = document.createElement('div');
   grid.className = 'xo-grid';
   grid.style.gridTemplateColumns = `repeat(${gridSize}, 80px)`;
@@ -7,6 +7,7 @@ export default function renderXoField(container: HTMLElement, gridSize: number =
   for (let i = 0; i < gridSize * gridSize; i += 1) {
     const cell = document.createElement('div');
     cell.className = 'xo-cell';
+    // cell.dataset.index = i.toString(); // Удобно для логики
 
     const row = Math.floor(i / gridSize);
     const col = i % gridSize;
@@ -18,4 +19,5 @@ export default function renderXoField(container: HTMLElement, gridSize: number =
   }
 
   container.appendChild(grid);
+  return grid;
 }

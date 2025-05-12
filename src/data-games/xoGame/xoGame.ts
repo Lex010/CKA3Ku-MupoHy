@@ -1,6 +1,7 @@
 import createElement from '../../utils/create-element';
-import openXoGameModal from '../openXoGameModal';
+import openGameModal from '../openGameModal';
 import renderXoField from './renderXoField';
+import { clickXO } from './clickXO';
 
 export const idXoGame = {
   title: 'Крестики-нолики',
@@ -38,8 +39,9 @@ export function xoGame(container: HTMLElement): void {
     const selected = document.querySelector('input[name="players"]:checked') as HTMLInputElement;
     const playerCount = selected?.value;
 
-    const thisModal = openXoGameModal();
-    renderXoField(thisModal);
+    const thisModal = openGameModal();
+    const gameField = renderXoField(thisModal);
+    clickXO(gameField);
     // console.log(`Игроков выбрано: ${playerCount}`);
     // Здесь можно вызвать старт модального окна или перейти на другой маршрут
     // startGame(playerCount);
