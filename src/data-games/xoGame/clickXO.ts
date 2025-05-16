@@ -2,15 +2,14 @@ import checkWin from './checkWin';
 import spiderMan from '../../assets/games/xo/spiderMan.svg';
 import hulk from '../../assets/games/xo/hulk.svg';
 
-type PlayerSymbol = string;
-
 interface Player {
-  symbol: PlayerSymbol;
+  symbol: string;
   name: string;
 }
 
 export function clickXO(
   grid: HTMLDivElement,
+  turnIndicator: HTMLDivElement,
   players: Player[] = [
     { symbol: spiderMan, name: 'Человек паук' },
     { symbol: hulk, name: 'Халк' },
@@ -21,6 +20,9 @@ export function clickXO(
   const cells = Array.from(grid.querySelectorAll('.xo-cell')) as HTMLDivElement[];
   const board: (string | null)[] = Array(gridSize * gridSize).fill(null);
   let gameOver = false;
+
+  const thisTurnIndicator = turnIndicator;
+  thisTurnIndicator.textContent = `Ходит: ${players[currentPlayerIndex].name}`;
 
   cells.forEach((cell) => {
     cell.addEventListener('click', () => {
@@ -41,11 +43,13 @@ export function clickXO(
           const img = winCell.querySelector('img');
           if (img) img.classList.add('xo-win-img');
         });
+        thisTurnIndicator.textContent = `Победил: ${player.name}`;
         gameOver = true;
         return;
       }
 
       currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+      thisTurnIndicator.textContent = `Ходит: ${players[currentPlayerIndex].name}`;
     });
   });
 }

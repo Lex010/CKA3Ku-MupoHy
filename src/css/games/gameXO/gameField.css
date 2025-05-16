@@ -5,6 +5,14 @@
   height: 100%;
 }
 
+.xo-turn-indicator {
+  background: var(--AllFairyTalesBackground);
+  color: var(--navBtnTxt);
+  padding: 5px 8px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
 .xo-grid {
   display: grid;
   width: max-content;

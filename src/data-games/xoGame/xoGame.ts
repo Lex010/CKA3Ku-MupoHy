@@ -41,7 +41,7 @@ export function xoGame(container: HTMLElement): void {
 
     const thisModal = openGameModal();
     const gameField = renderXoField(thisModal);
-    clickXO(gameField);
+    clickXO(gameField.grid, gameField.turnIndicator);
     // console.log(`Игроков выбрано: ${playerCount}`);
     // Здесь можно вызвать старт модального окна или перейти на другой маршрут
   });

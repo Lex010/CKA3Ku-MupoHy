@@ -1,6 +1,12 @@
-export default function renderXoField(container: HTMLElement, gridSize: number = 3): HTMLDivElement {
-  const grid = document.createElement('div');
-  grid.className = 'xo-grid';
+import createElement from '../../utils/create-element';
+
+export default function renderXoField(
+  container: HTMLElement,
+  gridSize: number = 3
+): { grid: HTMLDivElement; turnIndicator: HTMLDivElement } {
+  const turnIndicator = createElement('div', container, { class: 'xo-turn-indicator' }, 'Ходит игрок...');
+
+  const grid = createElement('div', container, { class: 'xo-grid' });
   grid.style.gridTemplateColumns = `repeat(${gridSize}, 80px)`;
   grid.style.gridTemplateRows = `repeat(${gridSize}, 80px)`;
 
@@ -18,6 +24,5 @@ export default function renderXoField(container: HTMLElement, gridSize: number =
     grid.appendChild(cell);
   }
 
-  container.appendChild(grid);
-  return grid;
+  return { grid, turnIndicator };
 }
