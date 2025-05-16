@@ -1,4 +1,6 @@
 import checkWin from './checkWin';
+import spiderMan from '../../assets/games/xo/spiderMan.svg';
+import hulk from '../../assets/games/xo/hulk.svg';
 
 type PlayerSymbol = string; // позже можно сделать объект с картинкой и именем
 
@@ -8,7 +10,7 @@ interface Player {
 
 export function clickXO(
   grid: HTMLDivElement,
-  players: Player[] = [{ symbol: 'X' }, { symbol: 'O' }],
+  players: Player[] = [{ symbol: spiderMan }, { symbol: hulk }],
   gridSize: number = 3
 ) {
   let currentPlayerIndex = 0;
@@ -25,7 +27,8 @@ export function clickXO(
       const player = players[currentPlayerIndex];
       board[index] = player.symbol;
       const thisCell = cell;
-      thisCell.textContent = player.symbol;
+      // thisCell.textContent = player.symbol;
+      thisCell.innerHTML = `<img src="${player.symbol}" alt="Player" style="width: 100%; height: 100%; object-fit: contain;" />`;
 
       const winner = checkWin(board, gridSize);
       if (winner) {
