@@ -10,6 +10,7 @@ interface Player {
 export function clickXO(
   grid: HTMLDivElement,
   turnIndicator: HTMLDivElement,
+  restartButton: HTMLButtonElement,
   players: Player[] = [
     { symbol: spiderMan, name: 'Человек паук' },
     { symbol: hulk, name: 'Халк' },
@@ -22,6 +23,7 @@ export function clickXO(
   let gameOver = false;
 
   const thisTurnIndicator = turnIndicator;
+  const thisRestartButton = restartButton;
   thisTurnIndicator.textContent = `Ходит: ${players[currentPlayerIndex].name}`;
 
   cells.forEach((cell) => {
@@ -43,13 +45,35 @@ export function clickXO(
           const img = winCell.querySelector('img');
           if (img) img.classList.add('xo-win-img');
         });
-        thisTurnIndicator.textContent = `Победил: ${player.name}`;
+        thisTurnIndicator.textContent = `ПОБЕДИЛ: ${player.name}`;
         gameOver = true;
+        thisRestartButton.classList.add('visible');
+        return;
+      }
+      // ничья
+      if (!board.includes(null)) {
+        thisTurnIndicator.textContent = 'Ничья!';
+        gameOver = true;
+        thisRestartButton.classList.add('visible');
         return;
       }
 
       currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
       thisTurnIndicator.textContent = `Ходит: ${players[currentPlayerIndex].name}`;
+    });
+  });
+  // Функционал кнопки повторной игры
+  restartButton.addEventListener('click', () => {
+    board.fill(null);
+    gameOver = false;
+    currentPlayerIndex = 0;
+    thisTurnIndicator.textContent = `Ходит: ${players[currentPlayerIndex].name}`;
+    thisRestartButton.classList.remove('visible');
+
+    cells.forEach((cell) => {
+      const thisCell = cell;
+      thisCell.innerHTML = '';
+      thisCell.classList.remove('xo-win-cell');
     });
   });
 }

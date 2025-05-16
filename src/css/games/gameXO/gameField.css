@@ -8,8 +8,8 @@
 .xo-turn-indicator {
   background: var(--AllFairyTalesBackground);
   color: var(--navBtnTxt);
-  padding: 5px 8px;
-  border-radius: 12px;
+  padding: 10px 16px;
+  border-radius: 6px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
@@ -43,4 +43,30 @@
 
 .xo-cell.left-col {
   border-left: none;
+}
+
+.xo-restart-btn {
+  visibility: hidden;
+  /* opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; */
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--txtLeftBorder);
+  color: var(--navBtnTxt);
+  transition:
+    background 0.3s,
+    transform 0.2s;
+}
+
+.xo-restart-btn.visible {
+  visibility: visible;
+  /* opacity: 1;
+  pointer-events: auto; */
+}
+
+.xo-restart-btn:hover {
+  background-color: var(--h1AndHover);
 }

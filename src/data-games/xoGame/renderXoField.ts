@@ -3,7 +3,7 @@ import createElement from '../../utils/create-element';
 export default function renderXoField(
   container: HTMLElement,
   gridSize: number = 3
-): { grid: HTMLDivElement; turnIndicator: HTMLDivElement } {
+): { grid: HTMLDivElement; turnIndicator: HTMLDivElement; restartButton: HTMLButtonElement } {
   const turnIndicator = createElement('div', container, { class: 'xo-turn-indicator' }, 'Ходит игрок...');
 
   const grid = createElement('div', container, { class: 'xo-grid' });
@@ -24,5 +24,7 @@ export default function renderXoField(
     grid.appendChild(cell);
   }
 
-  return { grid, turnIndicator };
+  const restartButton = createElement('button', container, { class: 'xo-restart-btn' }, '🔁 Заново');
+
+  return { grid, turnIndicator, restartButton };
 }
