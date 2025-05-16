@@ -6,6 +6,7 @@
 @import url('css/games/gameXO/gamesXO.css');
 @import url('css/games/gameXO/gameModal.css');
 @import url('css/games/gameXO/gameField.css');
+@import url('css/games/gameXO/gameAvatar.css');
 
 html {
   background: linear-gradient(to bottom, #cceaff, #ffffff);

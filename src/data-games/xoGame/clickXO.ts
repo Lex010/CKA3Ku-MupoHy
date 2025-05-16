@@ -2,15 +2,19 @@ import checkWin from './checkWin';
 import spiderMan from '../../assets/games/xo/spiderMan.svg';
 import hulk from '../../assets/games/xo/hulk.svg';
 
-type PlayerSymbol = string; // позже можно сделать объект с картинкой и именем
+type PlayerSymbol = string;
 
 interface Player {
   symbol: PlayerSymbol;
+  name: string;
 }
 
 export function clickXO(
   grid: HTMLDivElement,
-  players: Player[] = [{ symbol: spiderMan }, { symbol: hulk }],
+  players: Player[] = [
+    { symbol: spiderMan, name: 'Человек паук' },
+    { symbol: hulk, name: 'Халк' },
+  ],
   gridSize: number = 3
 ) {
   let currentPlayerIndex = 0;
@@ -27,14 +31,15 @@ export function clickXO(
       const player = players[currentPlayerIndex];
       board[index] = player.symbol;
       const thisCell = cell;
-      // thisCell.textContent = player.symbol;
-      thisCell.innerHTML = `<img src="${player.symbol}" alt="Player" style="width: 100%; height: 100%; object-fit: contain;" />`;
+      thisCell.innerHTML = `<img src="${player.symbol}" alt="${player.name}" class="xo-img" />`;
 
       const winner = checkWin(board, gridSize);
       if (winner) {
-        // setTimeout(() => alert(`Победил: ${board[winner[0]]}`), 10);
         winner.forEach((idx) => {
-          cells[idx].style.backgroundColor = '#aaffaa'; // ЗАМЕНИТЬ НА ДОБАВЛЕНИЕ ГОТОВОГО СТИЛЯ
+          const winCell = cells[idx];
+          winCell.classList.add('xo-win-cell');
+          const img = winCell.querySelector('img');
+          if (img) img.classList.add('xo-win-img');
         });
         gameOver = true;
         return;
