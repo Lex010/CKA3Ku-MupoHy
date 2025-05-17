@@ -238,30 +238,38 @@ main {
   max-height: 50vh;
 }
 
-.player-select-wrapper {
+.player-setup-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.player-config {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 300px;
-  margin: 0 auto 24px;
-  padding: 16px;
-  background-color: var(--txtBackground);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.player-select-wrapper p {
-  margin: 0 0 8px;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.player-select-wrapper label {
-  display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
+}
+
+.player-icon {
+  font-size: 2.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--txtLeftBorder);
+  border-radius: 6px;
+  background: transparent;
   cursor: pointer;
+  transition: transform 0.2s;
+}
+
+@media (hover: hover) {
+  .player-icon:hover {
+    transform: scale(1.1);
+  }
+}
+
+.status-label {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .start-button {
