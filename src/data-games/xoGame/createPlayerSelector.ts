@@ -1,11 +1,7 @@
 import createElement from '../../utils/create-element';
 import { Player } from './gameCharacters';
 
-export default function createPlayerSelector(
-  container: HTMLDivElement,
-  playerNumber: number,
-  player: Player
-): HTMLButtonElement {
+export default function createPlayerSelector(container: HTMLDivElement, playerNumber: number, player: Player): Player {
   const wrapper = createElement('div', container, { class: 'player-config' });
   createElement('p', wrapper, {}, `Игрок ${playerNumber}`);
 
@@ -35,5 +31,5 @@ export default function createPlayerSelector(
     player.status = next === 'bot' ? 'bot' : undefined; // 🟢 Обновляем оригинальный объект
   });
 
-  return icon;
+  return player;
 }

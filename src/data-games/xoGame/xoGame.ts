@@ -16,12 +16,10 @@ export function xoGame(container: HTMLElement): void {
 
   const playerSetupWrapper = createElement('div', container, { class: 'player-setup-wrapper' });
 
-  // Используем первые два персонажа из массива
-  const player1 = { ...gameCharacters[0] }; // Копия, если нужно избежать мутации исходного массива
-  const player2 = { ...gameCharacters[1] };
+  const thisgameCharacters = { ...gameCharacters }; // Копия, если нужно избежать мутации исходного массива
 
-  createPlayerSelector(playerSetupWrapper, 1, player1);
-  createPlayerSelector(playerSetupWrapper, 2, player2);
+  const player1 = createPlayerSelector(playerSetupWrapper, 1, thisgameCharacters[0]);
+  const player2 = createPlayerSelector(playerSetupWrapper, 2, thisgameCharacters[1]);
 
   const startButton = createElement('button', container, { class: 'start-button' }, 'Начать игру');
 
