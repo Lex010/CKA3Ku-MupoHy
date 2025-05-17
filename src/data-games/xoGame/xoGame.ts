@@ -1,7 +1,10 @@
 import createElement from '../../utils/create-element';
+import createPlayerSelector from './createPlayerSelector';
 import openGameModal from '../openGameModal';
 import renderXoField from './renderXoField';
 import { clickXO } from './clickXO';
+
+import { gameCharacters } from './gameCharacters';
 
 export const idXoGame = {
   title: 'Крестики-нолики',
@@ -11,38 +14,22 @@ export const idXoGame = {
 export function xoGame(container: HTMLElement): void {
   createElement('h1', container, { id: 'h1' }, `${idXoGame.title}`);
 
-  const playerSelectWrapper = createElement('div', container, { class: 'player-select-wrapper' });
+  const playerSetupWrapper = createElement('div', container, { class: 'player-setup-wrapper' });
 
-  createElement('p', playerSelectWrapper, {}, 'Выберите режим игры:');
+  // Используем первые два персонажа из массива
+  const player1 = { ...gameCharacters[0] }; // Копия, если нужно избежать мутации исходного массива
+  const player2 = { ...gameCharacters[1] };
 
-  const label1 = createElement('label', playerSelectWrapper);
-  createElement('input', label1, {
-    type: 'radio',
-    name: 'players',
-    value: '1',
-    checked: 'true',
-  });
-  label1.append(' 1 игрок (с ботом)');
+  createPlayerSelector(playerSetupWrapper, 1, player1);
+  createPlayerSelector(playerSetupWrapper, 2, player2);
 
-  const label2 = createElement('label', playerSelectWrapper);
-  createElement('input', label2, {
-    type: 'radio',
-    name: 'players',
-    value: '2',
-  });
-  label2.append(' 2 игрока');
-
-  // Кнопка старт
   const startButton = createElement('button', container, { class: 'start-button' }, 'Начать игру');
 
   startButton.addEventListener('click', () => {
-    const selected = document.querySelector('input[name="players"]:checked') as HTMLInputElement;
-    const playerCount = selected?.value;
+    const players = [player1, player2];
 
     const thisModal = openGameModal();
     const gameField = renderXoField(thisModal);
-    clickXO(gameField.grid, gameField.turnIndicator, gameField.restartButton);
-    // console.log(`Игроков выбрано: ${playerCount}`);
-    // Здесь можно вызвать старт модального окна или перейти на другой маршрут
+    clickXO(gameField.grid, gameField.turnIndicator, gameField.restartButton, players);
   });
 }

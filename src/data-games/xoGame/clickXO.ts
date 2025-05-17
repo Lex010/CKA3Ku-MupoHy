@@ -1,22 +1,12 @@
 import checkWin from './checkWin';
-import spiderMan from '../../assets/games/xo/spiderMan.svg';
-import hulk from '../../assets/games/xo/hulk.svg';
 import botMove from './gameLogic/botMove';
-
-interface Player {
-  symbol: string;
-  name: string;
-  status?: string; // "bot" | undefined
-}
+import { Player } from './gameCharacters';
 
 export function clickXO(
   grid: HTMLDivElement,
   turnIndicator: HTMLDivElement,
   restartButton: HTMLButtonElement,
-  players: Player[] = [
-    { symbol: spiderMan, name: 'Человек паук' },
-    { symbol: hulk, name: 'Халк' },
-  ],
+  players: Player[],
   gridSize: number = 3
 ) {
   // === Игровое состояние ===
