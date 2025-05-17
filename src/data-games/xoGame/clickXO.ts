@@ -15,7 +15,7 @@ export function clickXO(
   restartButton: HTMLButtonElement,
   players: Player[] = [
     { symbol: spiderMan, name: 'Человек паук' },
-    { symbol: hulk, name: 'Халк', status: 'bot' },
+    { symbol: hulk, name: 'Халк' },
   ],
   gridSize: number = 3
 ) {
@@ -81,6 +81,30 @@ export function clickXO(
     }
   }
 
+  // === Перезапуск игры ===
+  function restartGame() {
+    board.fill(null);
+    gameOver = false;
+    currentPlayerIndex = 0;
+    isBotMoving = false;
+    updateTurn();
+    restartButton.classList.remove('visible');
+
+    cells.forEach((cell) => {
+      const thisCell = cell;
+      thisCell.innerHTML = '';
+      thisCell.classList.remove('xo-win-cell');
+    });
+
+    if (players[currentPlayerIndex].status === 'bot') {
+      isBotMoving = true;
+      setTimeout(() => {
+        botMove(board, makeMove);
+        isBotMoving = false;
+      }, 500);
+    }
+  }
+
   // === Обработчики событий ===
   function attachEventListeners() {
     cells.forEach((cell) => {
@@ -93,29 +117,6 @@ export function clickXO(
     });
 
     restartButton.addEventListener('click', restartGame);
-  }
-
-  // === Перезапуск игры ===
-  function restartGame() {
-    board.fill(null);
-    gameOver = false;
-    currentPlayerIndex = 0;
-    isBotMoving = false;
-    updateTurn();
-    restartButton.classList.remove('visible');
-
-    cells.forEach((cell) => {
-      cell.innerHTML = '';
-      cell.classList.remove('xo-win-cell');
-    });
-
-    if (players[currentPlayerIndex].status === 'bot') {
-      isBotMoving = true;
-      setTimeout(() => {
-        botMove(board, makeMove);
-        isBotMoving = false;
-      }, 500);
-    }
   }
 
   // === Инициализация ===
