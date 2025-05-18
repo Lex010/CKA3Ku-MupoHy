@@ -240,36 +240,62 @@ main {
 
 .player-setup-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 2rem;
-  margin: 1rem 0;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .player-config {
+  border: 2px solid var(--txtLeftBorder);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  min-width: 200px;
+  background-color: var(--txtBackground);
+  text-align: center;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.player-config p {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.character-select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--txtLeftBorder);
+  background-color: var(--mainBackground);
+}
+
+.status-wrapper {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .player-icon {
-  font-size: 2.5rem;
-  padding: 0.5rem;
-  border: 1px solid var(--txtLeftBorder);
+  border: none;
   border-radius: 6px;
-  background: transparent;
+  background-color: var(--txtLeftBorder);
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
+  padding: 6px;
+}
+
+.status-label {
+  font-size: 0.8rem;
 }
 
 @media (hover: hover) {
   .player-icon:hover {
     transform: scale(1.1);
   }
-}
-
-.status-label {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
 }
 
 .start-button {

@@ -1,7 +1,7 @@
 import spiderMan from '../../assets/games/xo/spiderMan.svg';
 import hulk from '../../assets/games/xo/hulk.svg';
-import test01 from '../../assets/cifrozavr/cifrozavr01.jpg';
-import test02 from '../../assets/cifrozavr/cifrozavr02.jpg';
+import pepa from '../../assets/games/xo/pepa.png';
+import dobrynya from '../../assets/games/xo/Dobrynya02.png';
 
 export interface Player {
   symbol: string;
@@ -21,13 +21,13 @@ export const gameCharacters: Player[] = [
     status: undefined,
   },
   {
-    symbol: test01,
-    name: 'тест1',
+    symbol: pepa,
+    name: 'Пепа',
     status: undefined,
   },
   {
-    symbol: test02,
-    name: 'тест2',
+    symbol: dobrynya,
+    name: 'Добрыня',
     status: undefined,
   },
 ];

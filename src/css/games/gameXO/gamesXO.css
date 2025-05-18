@@ -40,7 +40,6 @@
 }
 
 .player-icon {
-  /* border: 1px solid var(--txtLeftBorder); */
   border: none;
   border-radius: 6px;
   background-color: var(--txtLeftBorder);
