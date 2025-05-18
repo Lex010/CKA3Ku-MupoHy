@@ -4,7 +4,7 @@ import openGameModal from '../openGameModal';
 import renderXoField from './renderXoField';
 import { clickXO } from './clickXO';
 
-import { gameCharacters } from './gameCharacters';
+import { gameCharacters, Player } from './gameCharacters';
 
 export const idXoGame = {
   title: 'Крестики-нолики',
@@ -16,15 +16,32 @@ export function xoGame(container: HTMLElement): void {
 
   const playerSetupWrapper = createElement('div', container, { class: 'player-setup-wrapper' });
 
-  const thisgameCharacters = { ...gameCharacters }; // Копия, если нужно избежать мутации исходного массива
+  const selectedCharacters: (Player | null)[] = [gameCharacters[0], gameCharacters[1]];
 
-  const player1 = createPlayerSelector(playerSetupWrapper, 1, thisgameCharacters[0]);
-  const player2 = createPlayerSelector(playerSetupWrapper, 2, thisgameCharacters[1]);
+  const player1Container = createElement('div', playerSetupWrapper, {});
+  const player2Container = createElement('div', playerSetupWrapper, {});
+
+  const rerenderSelectors = (playerIndex?: number, newPlayer?: Player) => {
+    if (playerIndex !== undefined && newPlayer) {
+      selectedCharacters[playerIndex] = newPlayer;
+    }
+
+    player1Container.innerHTML = '';
+    player2Container.innerHTML = '';
+
+    createPlayerSelector(player1Container, 1, selectedCharacters, gameCharacters, rerenderSelectors);
+    createPlayerSelector(player2Container, 2, selectedCharacters, gameCharacters, rerenderSelectors);
+  };
+
+  rerenderSelectors();
 
   const startButton = createElement('button', container, { class: 'start-button' }, 'Начать игру');
 
   startButton.addEventListener('click', () => {
-    const players = [player1, player2];
+    const players = selectedCharacters.map((char) => {
+      if (!char) throw new Error('Оба игрока должны выбрать персонажа');
+      return char;
+    });
 
     const thisModal = openGameModal();
     const gameField = renderXoField(thisModal);
