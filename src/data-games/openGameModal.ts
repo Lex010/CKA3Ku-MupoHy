@@ -1,4 +1,4 @@
-export default function openGameModal(): HTMLElement {
+export default function openGameModal(): { gameField: HTMLDivElement; header: HTMLDivElement } {
   const modal = document.createElement('div');
   modal.className = 'game-modal';
 
@@ -26,5 +26,5 @@ export default function openGameModal(): HTMLElement {
   // Отключаем прокрутку страницы
   document.body.style.overflow = 'hidden';
 
-  return gameField;
+  return { gameField, header };
 }

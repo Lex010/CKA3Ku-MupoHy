@@ -43,8 +43,8 @@ export function clickXO(
     if (gameOver || board[index] !== null) return;
 
     const player = players[currentPlayerIndex];
-    board[index] = player.symbol;
-    cells[index].innerHTML = `<img src="${player.symbol}" alt="${player.name}" class="xo-img" />`;
+    board[index] = player.img;
+    cells[index].innerHTML = `<img src="${player.img}" alt="${player.name}" class="xo-img" />`;
 
     const winner = checkWin(board, gridSize);
     if (winner) {

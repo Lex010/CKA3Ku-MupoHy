@@ -4,29 +4,29 @@ import pepa from '../../assets/games/xo/pepa.png';
 import dobrynya from '../../assets/games/xo/Dobrynya02.png';
 
 export interface Player {
-  symbol: string;
+  img: string;
   name: string;
   status?: string; // "bot" | undefined
 }
 
 export const gameCharacters: Player[] = [
   {
-    symbol: spiderMan,
+    img: spiderMan,
     name: 'Человек паук',
     status: undefined,
   },
   {
-    symbol: hulk,
+    img: hulk,
     name: 'Халк',
     status: undefined,
   },
   {
-    symbol: pepa,
+    img: pepa,
     name: 'Пепа',
     status: undefined,
   },
   {
-    symbol: dobrynya,
+    img: dobrynya,
     name: 'Добрыня',
     status: undefined,
   },

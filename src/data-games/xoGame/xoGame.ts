@@ -1,6 +1,7 @@
 import createElement from '../../utils/create-element';
 import createPlayerSelector from './createPlayerSelector';
 import openGameModal from '../openGameModal';
+import { scoreInHeader } from './scoreInHeader';
 import renderXoField from './renderXoField';
 import { clickXO } from './clickXO';
 
@@ -44,7 +45,8 @@ export function xoGame(container: HTMLElement): void {
     });
 
     const thisModal = openGameModal();
-    const gameField = renderXoField(thisModal);
+    scoreInHeader(thisModal.header, players);
+    const gameField = renderXoField(thisModal.gameField);
     clickXO(gameField.grid, gameField.turnIndicator, gameField.restartButton, players);
   });
 }
