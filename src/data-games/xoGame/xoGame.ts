@@ -45,8 +45,18 @@ export function xoGame(container: HTMLElement): void {
     });
 
     const thisModal = openGameModal();
-    scoreInHeader(thisModal.header, players);
+    const scoreElements = scoreInHeader(thisModal.header, players);
+    // Храним счет
+    const scores = [0, 0];
+    const updateScore = (winnerIndex: number) => {
+      scores[winnerIndex] += 1;
+      if (winnerIndex === 0) {
+        scoreElements.player1Score.textContent = scores[0].toString();
+      } else {
+        scoreElements.player2Score.textContent = scores[1].toString();
+      }
+    };
     const gameField = renderXoField(thisModal.gameField);
-    clickXO(gameField.grid, gameField.turnIndicator, gameField.restartButton, players);
+    clickXO(gameField.grid, gameField.turnIndicator, gameField.restartButton, players, 3, updateScore);
   });
 }

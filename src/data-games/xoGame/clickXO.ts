@@ -7,7 +7,8 @@ export function clickXO(
   turnIndicator: HTMLDivElement,
   restartButton: HTMLButtonElement,
   players: Player[],
-  gridSize: number = 3
+  gridSize: number,
+  updateScore?: (winnerIndex: number) => void
 ) {
   // === Игровое состояние ===
   let currentPlayerIndex = 0;
@@ -50,6 +51,7 @@ export function clickXO(
     if (winner) {
       showWinner(winner, player.name);
       gameOver = true;
+      updateScore?.(currentPlayerIndex);
       return;
     }
 

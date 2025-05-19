@@ -330,11 +330,32 @@ main {
   background-color: var(--txtLeftBorder);
   padding: 6px 20px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+
+.score-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-block {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  padding: 2px;
+  border-radius: 3px;
+  gap: 2px;
+}
+
+.score-img {
+  width: 1.4rem;
+  height: 1.4rem;
+  background-color: var(--txtLeftBorder);
 }
 
 .game-modal-close {
