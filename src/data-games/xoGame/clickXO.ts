@@ -1,4 +1,4 @@
-import checkWin from './checkWin';
+import checkWin from './gameLogic/checkWin';
 import botMove from './gameLogic/botMove';
 import { Player } from './gameCharacters';
 
@@ -17,6 +17,7 @@ export function clickXO(
   let gameOver = false;
   let isBotMoving = false;
   const thisTurnIndicator = turnIndicator;
+  const isTwoBots = players.every((player) => player.status === 'bot');
 
   // === Обновление UI ===
   function updateTurn() {
@@ -101,7 +102,7 @@ export function clickXO(
   function attachEventListeners() {
     cells.forEach((cell) => {
       cell.addEventListener('click', () => {
-        if (gameOver || isBotMoving) return;
+        if (gameOver || isBotMoving || isTwoBots) return;
         const index = Number(cell.dataset.index);
         if (board[index] !== null) return;
         makeMove(index);
