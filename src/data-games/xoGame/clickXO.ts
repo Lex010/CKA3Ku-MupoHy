@@ -68,7 +68,7 @@ export function clickXO(
     if (players[currentPlayerIndex].status === 'bot') {
       isBotMoving = true;
       setTimeout(() => {
-        botMove(board, makeMove);
+        botMove(board, makeMove, players);
         isBotMoving = false;
       }, 500);
     }
@@ -92,7 +92,7 @@ export function clickXO(
     if (players[currentPlayerIndex].status === 'bot') {
       isBotMoving = true;
       setTimeout(() => {
-        botMove(board, makeMove);
+        botMove(board, makeMove, players);
         isBotMoving = false;
       }, 500);
     }
@@ -119,7 +119,7 @@ export function clickXO(
   if (players[currentPlayerIndex].status === 'bot') {
     isBotMoving = true;
     setTimeout(() => {
-      botMove(board, makeMove);
+      botMove(board, makeMove, players);
       isBotMoving = false;
     }, 500);
   }
