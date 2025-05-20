@@ -1,5 +1,5 @@
 import createElement from '../../utils/create-element';
-import createPlayerSelector from './createPlayerSelector';
+import { createPlayerSelector, createDifficultyBotToggle } from './createPlayerSelector';
 import openGameModal from '../openGameModal';
 import { scoreInHeader } from './scoreInHeader';
 import renderXoField from './renderXoField';
@@ -35,6 +35,7 @@ export function xoGame(container: HTMLElement): void {
   };
 
   rerenderSelectors();
+  const botCheckbox = createDifficultyBotToggle(container, () => {});
 
   const startButton = createElement('button', container, { class: 'start-button' }, 'Начать игру');
 
@@ -57,6 +58,7 @@ export function xoGame(container: HTMLElement): void {
       }
     };
     const gameField = renderXoField(thisModal.gameField);
-    clickXO(gameField.grid, gameField.turnIndicator, gameField.restartButton, players, 3, updateScore);
+    const botDifficulty = botCheckbox.checked;
+    clickXO(gameField.grid, gameField.turnIndicator, gameField.restartButton, players, 3, botDifficulty, updateScore);
   });
 }

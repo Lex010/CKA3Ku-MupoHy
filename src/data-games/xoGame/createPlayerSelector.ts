@@ -1,7 +1,7 @@
 import createElement from '../../utils/create-element';
 import { Player } from './gameCharacters';
 
-export default function createPlayerSelector(
+export function createPlayerSelector(
   container: HTMLDivElement,
   playerNumber: number,
   selectedCharacters: (Player | null)[],
@@ -84,4 +84,24 @@ export default function createPlayerSelector(
       onPlayerChange(playerNumber - 1, updatedPlayer);
     }
   });
+}
+
+export function createDifficultyBotToggle(
+  container: HTMLElement,
+  onToggle: (enabled: boolean) => void
+): HTMLInputElement {
+  const wrapper = createElement('div', container, { class: 'difficulty-bot-toggle' });
+
+  const checkbox = createElement('input', wrapper, {
+    type: 'checkbox',
+    id: 'difficulty-bots',
+  }) as HTMLInputElement;
+
+  createElement('label', wrapper, { for: 'difficulty-bots' }, 'Умные боты');
+
+  checkbox.addEventListener('change', () => {
+    onToggle(checkbox.checked);
+  });
+
+  return checkbox;
 }

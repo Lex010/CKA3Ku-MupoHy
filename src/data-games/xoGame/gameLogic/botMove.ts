@@ -1,15 +1,7 @@
-// export default function botMove(board: (string | null)[], makeMove: (index: number) => void) {
-//   const emptyIndexes = board.map((cell, index) => (cell === null ? index : -1)).filter((index) => index !== -1);
-
-//   if (emptyIndexes.length === 0) return;
-
-//   const randomIndex = emptyIndexes[Math.floor(Math.random() * emptyIndexes.length)];
-//   makeMove(randomIndex);
-// }
 import checkWin from './checkWin';
 import { Player } from '../gameCharacters';
 
-export default function botMove(board: (string | null)[], makeMove: (index: number) => void, players: Player[]) {
+function botMoveHard(board: (string | null)[], makeMove: (index: number) => void, players: Player[]) {
   const emptyIndexes = board.map((cell, index) => (cell === null ? index : -1)).filter((index) => index !== -1);
 
   if (emptyIndexes.length === 0) return;
@@ -105,4 +97,26 @@ export default function botMove(board: (string | null)[], makeMove: (index: numb
   // 6. Случайный ход
   const randomIndex = emptyIndexes[Math.floor(Math.random() * emptyIndexes.length)];
   makeMove(randomIndex);
+}
+
+function botMoveSimple(board: (string | null)[], makeMove: (index: number) => void) {
+  const emptyIndexes = board.map((cell, index) => (cell === null ? index : -1)).filter((index) => index !== -1);
+
+  if (emptyIndexes.length === 0) return;
+
+  const randomIndex = emptyIndexes[Math.floor(Math.random() * emptyIndexes.length)];
+  makeMove(randomIndex);
+}
+
+export default function botMove(
+  board: (string | null)[],
+  makeMove: (index: number) => void,
+  players: Player[],
+  botOption: boolean
+) {
+  if (botOption) {
+    botMoveHard(board, makeMove, players);
+  } else {
+    botMoveSimple(board, makeMove);
+  }
 }
