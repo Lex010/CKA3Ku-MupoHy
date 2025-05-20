@@ -298,6 +298,12 @@ main {
   }
 }
 
+.difficulty-bot-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
 .start-button {
   display: block;
   margin: 0 auto;
