@@ -2,6 +2,9 @@ import spiderMan from '../../assets/games/xo/spiderMan.svg';
 import hulk from '../../assets/games/xo/hulk.svg';
 import pepa from '../../assets/games/xo/pepa.png';
 import dobrynya from '../../assets/games/xo/Dobrynya02.png';
+import karamelka from '../../assets/games/xo/Kramelka.png';
+import masha from '../../assets/games/xo/Masha.png';
+import alesha from '../../assets/games/xo/Alyosha-Popovich.png';
 
 export interface Player {
   img: string;
@@ -28,6 +31,21 @@ export const gameCharacters: Player[] = [
   {
     img: dobrynya,
     name: 'Добрыня',
+    status: undefined,
+  },
+  {
+    img: karamelka,
+    name: 'Карамелька',
+    status: undefined,
+  },
+  {
+    img: masha,
+    name: 'Маша',
+    status: undefined,
+  },
+  {
+    img: alesha,
+    name: 'Алеша Попович',
     status: undefined,
   },
 ];
