@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Header from './header-mainPage/HeaderReact';
-import mainPage from './header-mainPage/mainPage';
+import MainPage from './header-mainPage/MainPage';
 import { mainData } from './site-manager-object/mainData';
 import userLogin from './firebase/userLogin';
 
@@ -19,12 +19,12 @@ const App = () => {
     const container = containerRef.current;
     if (!container) return;
 
+    // если для текущей страницы есть React-компонент — ничего не делаем
+    if (currentPage && mainData[currentPage]?.component) return;
+    if (!currentPage) return; // <== если нет страницы, тоже ничего не делаем
+
     container.innerHTML = '';
-    if (currentPage && mainData[currentPage]) {
-      mainData[currentPage].render(container);
-    } else {
-      mainPage(container);
-    }
+    mainData[currentPage]?.render?.(container);
   }, [currentPage]);
 
   // инициализация userLogin
@@ -37,10 +37,15 @@ const App = () => {
     setCurrentPage(null);
   };
 
+  const Component = currentPage ? mainData[currentPage]?.component : null;
+
   return (
     <>
       <Header goHome={goHome} />
-      <main ref={containerRef} />
+      <main ref={containerRef}>
+        {Component && <Component onSelect={setCurrentPage} />}
+        {!Component && currentPage === null && <MainPage onSelect={setCurrentPage} />}
+      </main>
     </>
   );
 };

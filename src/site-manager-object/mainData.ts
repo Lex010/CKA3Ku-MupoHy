@@ -1,5 +1,5 @@
 import { idSkazkiPage, skazkiPage } from '../data-fairy-tale/skazki-page';
-import { idGamesPage, gamesPage } from '../data-games/games-page';
+import { GamesPage, idGamesPage } from '../data-games/GamesPage';
 import createPageWithLocalStorage from '../utils/createPageWithLocalStorage';
 import { ContentItem } from './type';
 import storyData from './allSkazkiData';
@@ -16,7 +16,7 @@ export const menuData: ContentItem = {
     id: idGamesPage.id,
     title: idGamesPage.title,
     type: 'menu',
-    render: createPageWithLocalStorage(gamesPage, idGamesPage.id),
+    component: GamesPage,
   },
 };
 

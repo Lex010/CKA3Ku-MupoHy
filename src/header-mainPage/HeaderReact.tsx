@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Header = ({ goHome }: { goHome: () => void }) => {
   const scrollUp = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
