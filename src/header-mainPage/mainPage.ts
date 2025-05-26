@@ -2,7 +2,7 @@ import createElement from '../utils/create-element';
 import { mainData } from '../site-manager-object/mainData';
 
 export default function mainPage(container: HTMLElement) {
-  createElement('h1', container, { class: 'fairy-title' }, 'Главная'); // ЗАМЕНИТЬ КЛАСС
+  createElement('h1', container, { class: 'fairy-title' }, 'Главная');
   const listWrapper = createElement('div', container, { class: 'fairy-list' });
 
   const menuItems = Object.values(mainData).filter((item) => item.type === 'menu');
