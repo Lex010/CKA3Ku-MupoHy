@@ -18,7 +18,6 @@ const GameModal: React.FC<React.PropsWithChildren<GameModalProps>> = ({ onClose,
       });
     }
 
-    // Disable body scroll
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = '';
