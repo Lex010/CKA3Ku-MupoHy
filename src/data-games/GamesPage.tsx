@@ -1,6 +1,6 @@
 import React from 'react';
 import { mainData } from '../site-manager-object/mainData';
-// import { idGamesPage } from './games-page';
+
 const idGamesPage = {
   title: `${String.fromCodePoint(0x1f3af)} ИГРЫ`,
   id: 'gamesPage',
