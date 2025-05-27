@@ -2,8 +2,7 @@ type ContItemInside = {
   id: string;
   title: string;
   type: 'story' | 'game' | 'menu';
-  render?: (container: HTMLElement) => void;
-  component?: React.FC<{ onSelect: (id: string) => void }>;
+  component: React.FC<{ onSelect: (id: string) => void }>;
 };
 
 export type ContentItem = {

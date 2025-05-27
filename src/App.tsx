@@ -14,19 +14,6 @@ const App = () => {
     setCurrentPage(saved ?? null);
   }, []);
 
-  // рендерим нужную страницу в main
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    // если для текущей страницы есть React-компонент — ничего не делаем
-    if (currentPage && mainData[currentPage]?.component) return;
-    if (!currentPage) return; // <== если нет страницы, тоже ничего не делаем
-
-    container.innerHTML = '';
-    mainData[currentPage]?.render?.(container);
-  }, [currentPage]);
-
   // инициализация userLogin
   useEffect(() => {
     userLogin(document.querySelector('header') as HTMLElement);
