@@ -1,7 +1,7 @@
 import createPageWithLocalStorage from '../utils/createPageWithLocalStorage';
 import { ContentItem } from './type';
 import { titleIdPushistayaPlaneta, pushistayaPlaneta } from '../data-fairy-tale/pushistaya-planeta/pushistaya-planeta';
-import { titleIdCifrozavry, cifrozavry } from '../data-fairy-tale/cifrozavry/cifrozavry';
+import { titleIdCifrozavry, Cifrozavry } from '../data-fairy-tale/cifrozavry/Cifro-zavry';
 
 const storyData: ContentItem = {
   [titleIdPushistayaPlaneta.id]: {
@@ -14,7 +14,7 @@ const storyData: ContentItem = {
     id: titleIdCifrozavry.id,
     title: titleIdCifrozavry.title,
     type: 'story',
-    render: createPageWithLocalStorage(cifrozavry, titleIdCifrozavry.id),
+    component: Cifrozavry,
   },
 };
 
