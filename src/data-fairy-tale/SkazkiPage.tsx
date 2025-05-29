@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { mainData } from '../site-manager-object/mainData';
 
 export const idSkazkiPage = {
@@ -6,19 +7,16 @@ export const idSkazkiPage = {
   id: 'skazkiPage',
 };
 
-interface SkazkiPageProps {
-  onSelect: (id: string) => void;
-}
-
-const SkazkiPage: React.FC<SkazkiPageProps> = ({ onSelect }) => {
+const SkazkiPage: React.FC = () => {
   const skazkiItems = Object.values(mainData).filter((item) => item.type === 'story');
+  const navigate = useNavigate();
 
   return (
     <div>
       <h1 className="fairy-title">{idSkazkiPage.title}</h1>
       <div className="fairy-list">
         {skazkiItems.map((item) => (
-          <div key={item.id} className="ckazki" onClick={() => onSelect(item.id)}>
+          <div key={item.id} className="ckazki" onClick={() => navigate(`/${item.id}`)}>
             {item.title}
           </div>
         ))}

@@ -1,11 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { mainData } from '../site-manager-object/mainData';
 
-interface MainPageProps {
-  onSelect: (id: string) => void;
-}
+const MainPage: React.FC = () => {
+  const navigate = useNavigate();
 
-const MainPage: React.FC<MainPageProps> = ({ onSelect }) => {
   const menuItems = Object.values(mainData).filter((item) => item.type === 'menu');
 
   return (
@@ -13,7 +12,7 @@ const MainPage: React.FC<MainPageProps> = ({ onSelect }) => {
       <h1 className="fairy-title">Главная</h1>
       <div className="fairy-list">
         {menuItems.map((item) => (
-          <div key={item.id} className="ckazki" onClick={() => onSelect(item.id)}>
+          <div key={item.id} className="ckazki" onClick={() => navigate(`/${item.id}`)} style={{ cursor: 'pointer' }}>
             {item.title}
           </div>
         ))}

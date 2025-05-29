@@ -1,39 +1,30 @@
-import { useEffect, useState, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import ScrollToTop from './utils/ScrollToTop';
 import Header from './header-mainPage/HeaderReact';
 import MainPage from './header-mainPage/MainPage';
 import { mainData } from './site-manager-object/mainData';
 import userLogin from './firebase/userLogin';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState<string | null>(null);
-  const containerRef = useRef<HTMLElement | null>(null);
-
-  // загружаем сохранённую страницу
-  useEffect(() => {
-    const saved = localStorage.getItem('currentPage');
-    setCurrentPage(saved ?? null);
-  }, []);
-
-  // инициализация userLogin
   useEffect(() => {
     userLogin(document.querySelector('header') as HTMLElement);
   }, []);
 
-  const goHome = () => {
-    localStorage.removeItem('currentPage');
-    setCurrentPage(null);
-  };
-
-  const Component = currentPage ? mainData[currentPage]?.component : null;
-
   return (
-    <>
-      <Header goHome={goHome} />
-      <main ref={containerRef}>
-        {Component && <Component onSelect={setCurrentPage} />}
-        {!Component && currentPage === null && <MainPage onSelect={setCurrentPage} />}
+    <Router>
+      <ScrollToTop />
+      <Header goHome={() => {}} />
+      <main>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          {Object.entries(mainData).map(([key, { component: Component }]) => (
+            <Route key={key} path={`/${key}`} element={<Component />} />
+          ))}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
-    </>
+    </Router>
   );
 };
 
