@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import ScrollToTop from './utils/ScrollToTop';
 import Header from './header-mainPage/HeaderReact';
@@ -6,15 +6,17 @@ import MainPage from './header-mainPage/MainPage';
 import { mainData } from './site-manager-object/mainData';
 import userLogin from './firebase/userLogin';
 
-const App = () => {
+const AppContent = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     userLogin(document.querySelector('header') as HTMLElement);
   }, []);
 
   return (
-    <Router>
+    <>
       <ScrollToTop />
-      <Header goHome={() => {}} />
+      <Header goHome={() => navigate('/')} />
       <main>
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -24,8 +26,14 @@ const App = () => {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-    </Router>
+    </>
   );
 };
+
+const App = () => (
+  <Router>
+    <AppContent />
+  </Router>
+);
 
 export default App;
