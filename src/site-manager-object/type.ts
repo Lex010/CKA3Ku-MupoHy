@@ -2,10 +2,7 @@ type ContItemInside = {
   id: string;
   title: string;
   type: 'story' | 'game' | 'menu';
-  render: (container: HTMLElement) => void;
+  component: React.FC;
 };
 
-export type ContentItem = {
-  [K in string]: K extends ContItemInside['id'] ? ContItemInside : never;
-};
-// тип ContentItem содержит ключь соответствующий ContItemInside['id']
+export type ContentItem = Record<string, ContItemInside>;
