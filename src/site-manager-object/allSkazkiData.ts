@@ -1,6 +1,7 @@
 import { ContentItem } from './type';
 import { titleIdPushistayaPlaneta, PushistayaPlaneta } from '../data-fairy-tale/pushistaya-planeta/PushistayaPlaneta';
 import { titleIdCifrozavry, Cifrozavry } from '../data-fairy-tale/cifrozavry/Cifro-zavry';
+import { titleIdVolshebnayaEda, VolshebnayaEda } from '../data-fairy-tale/volshebnayaEda/volshebnayaEda';
 
 const storyData: ContentItem = {
   [titleIdPushistayaPlaneta.id]: {
@@ -14,6 +15,12 @@ const storyData: ContentItem = {
     title: titleIdCifrozavry.title,
     type: 'story',
     component: Cifrozavry,
+  },
+  [titleIdVolshebnayaEda.id]: {
+    id: titleIdVolshebnayaEda.id,
+    title: titleIdVolshebnayaEda.title,
+    type: 'story',
+    component: VolshebnayaEda,
   },
 };
 

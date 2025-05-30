@@ -67,4 +67,9 @@ export const volshebnayaEdaData = [
     type: 'text',
     content: 'Вот такая сказка. Конец!',
   },
+  {
+    type: 'image',
+    src: '',
+    alt: '',
+  },
 ];
