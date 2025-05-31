@@ -5,6 +5,7 @@ import dobrynya from '../../assets/games/xo/Dobrynya02.png';
 import karamelka from '../../assets/games/xo/Kramelka.png';
 import masha from '../../assets/games/xo/Masha.png';
 import alesha from '../../assets/games/xo/Alyosha-Popovich.png';
+import medved from '../../assets/games/xo/Medved.png';
 
 export interface Player {
   img: string;
@@ -46,6 +47,11 @@ export const gameCharacters: Player[] = [
   {
     img: alesha,
     name: 'Алеша Попович',
+    status: undefined,
+  },
+  {
+    img: medved,
+    name: 'Медведь',
     status: undefined,
   },
 ];
