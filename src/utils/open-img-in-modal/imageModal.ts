@@ -20,6 +20,7 @@ export default class ImageModal {
   }
 
   createThumbnail() {
+    if (!this.src) return;
     const img = document.createElement('img');
     img.src = this.src;
     img.alt = this.alt;
