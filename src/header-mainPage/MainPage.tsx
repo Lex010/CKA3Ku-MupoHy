@@ -9,10 +9,15 @@ const MainPage: React.FC = () => {
 
   return (
     <div>
-      <h1 className="fairy-title">Главная</h1>
-      <div className="fairy-list">
+      <h1 className="page-title">Главная</h1>
+      <div className="page-list">
         {menuItems.map((item) => (
-          <div key={item.id} className="ckazki" onClick={() => navigate(`/${item.id}`)} style={{ cursor: 'pointer' }}>
+          <div
+            key={item.id}
+            className="page-unit"
+            onClick={() => navigate(`/${item.id}`)}
+            style={{ cursor: 'pointer' }}
+          >
             {item.title}
           </div>
         ))}

@@ -32,7 +32,7 @@ const XoGame: React.FC = () => {
 
   return (
     <div>
-      <h1 className="fairy-title">{idXoGame.title}</h1>
+      <h1 className="page-title">{idXoGame.title}</h1>
 
       <PlayerSetup
         selectedCharacters={selectedCharacters}

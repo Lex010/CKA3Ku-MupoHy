@@ -8,7 +8,7 @@ const idDvoinikGame = {
 const Dvoinik: React.FC = () => {
   return (
     <div>
-      <h1 className="fairy-title">{idDvoinikGame.title}</h1>
+      <h1 className="page-title">{idDvoinikGame.title}</h1>
     </div>
   );
 };

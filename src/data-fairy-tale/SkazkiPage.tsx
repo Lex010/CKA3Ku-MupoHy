@@ -13,10 +13,10 @@ const SkazkiPage: React.FC = () => {
 
   return (
     <div>
-      <h1 className="fairy-title">{idSkazkiPage.title}</h1>
-      <div className="fairy-list">
+      <h1 className="page-title">{idSkazkiPage.title}</h1>
+      <div className="page-list">
         {skazkiItems.map((item) => (
-          <div key={item.id} className="ckazki" onClick={() => navigate(`/${item.id}`)}>
+          <div key={item.id} className="page-unit" onClick={() => navigate(`/${item.id}`)}>
             {item.title}
           </div>
         ))}

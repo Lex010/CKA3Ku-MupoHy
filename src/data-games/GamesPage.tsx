@@ -12,10 +12,10 @@ const GamesPage: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <h1 className="fairy-title">{idGamesPage.title}</h1>
-      <div className="fairy-list">
+      <h1 className="page-title">{idGamesPage.title}</h1>
+      <div className="page-list">
         {gamesItems.map((item) => (
-          <div key={item.id} className="ckazki" onClick={() => navigate(`/${item.id}`)}>
+          <div key={item.id} className="page-unit" onClick={() => navigate(`/${item.id}`)}>
             {item.title}
           </div>
         ))}
