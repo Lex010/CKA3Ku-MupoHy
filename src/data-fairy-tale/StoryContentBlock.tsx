@@ -13,7 +13,7 @@ interface StoryPageProps {
   data: StoryItem[];
 }
 
-const StoryPage: React.FC<StoryPageProps> = ({ title, data }) => {
+const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
   const modalRef = useRef<ImageModal | null>(null);
   // Создаём один экземпляр ImageModal без thumbnail,
   // просто чтобы использовать метод openModal
@@ -59,4 +59,4 @@ const StoryPage: React.FC<StoryPageProps> = ({ title, data }) => {
   );
 };
 
-export default StoryPage;
+export { StoryContentBlock, StoryItem };

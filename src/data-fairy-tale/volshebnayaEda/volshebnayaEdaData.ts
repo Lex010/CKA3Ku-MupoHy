@@ -1,4 +1,6 @@
-export const volshebnayaEdaData = [
+import { StoryItem } from '../StoryContentBlock';
+
+export const volshebnayaEdaData: StoryItem[] = [
   {
     type: 'text',
     content:

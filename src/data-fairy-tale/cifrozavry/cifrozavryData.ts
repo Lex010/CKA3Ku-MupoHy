@@ -9,8 +9,9 @@ import cifrozavr8 from '../../assets/cifrozavr/cifrozavr08.jpg';
 import cifrozavr9 from '../../assets/cifrozavr/cifrozavr09.jpg';
 import cifrozavr10 from '../../assets/cifrozavr/cifrozavr10.jpg';
 import cifrozavrFinal from '../../assets/cifrozavr/cifrozavryFinal.jpg';
+import { StoryItem } from '../StoryContentBlock';
 
-export const cifrozavryData = [
+export const cifrozavryData: StoryItem[] = [
   {
     type: 'text',
     content:
