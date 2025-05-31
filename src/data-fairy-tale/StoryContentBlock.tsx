@@ -1,17 +1,29 @@
 import React, { useEffect, useRef } from 'react';
 import ImageModal from '../utils/open-img-in-modal/imageModal';
+import pushistayaPlanetaVideoFunc from '../utils/videoForFairyTale';
 
-type StoryItem = {
-  type: 'text' | 'image';
-  content?: string;
-  src?: string;
-  alt?: string;
-};
+type StoryItem =
+  | { type: 'text'; content: string }
+  | { type: 'image'; src: string; alt?: string }
+  | { type: 'video'; src: string };
 
 interface StoryPageProps {
   title: string;
   data: StoryItem[];
 }
+
+// Вспомогательный компонент, который использует ref и вызывает pushistayaPlanetaVideoFunc
+const VideoWrapper: React.FC<{ src: string }> = ({ src }) => {
+  const videoContainerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (videoContainerRef.current) {
+      pushistayaPlanetaVideoFunc(videoContainerRef.current, src);
+    }
+  }, [src]);
+
+  return <div ref={videoContainerRef} />;
+};
 
 const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
   const modalRef = useRef<ImageModal | null>(null);
@@ -32,28 +44,32 @@ const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
     <div className="story-container">
       <h1 id="h1">{title}</h1>
       {data.map((item, index) => {
-        if (item.type === 'text' && item.content) {
-          return (
-            <p key={index} className="txt">
-              {item.content}
-            </p>
-          );
+        switch (item.type) {
+          case 'text':
+            return (
+              <p key={index} className="txt">
+                {item.content}
+              </p>
+            );
+          case 'image':
+            return (
+              <img
+                key={index}
+                src={item.src}
+                alt={item.alt || ''}
+                className="story-image"
+                onClick={handleImageClick}
+                style={{ cursor: 'zoom-in', maxWidth: '100%' }}
+              />
+            );
+          case 'video':
+            // Тут надо «обернуть» pushistayaPlanetaVideoFunc,
+            // потому что он императивно вставляет видео в контейнер
+            // Предположим, что pushistayaPlanetaVideoFunc принимает контейнер и src и создает видео
+            return <VideoWrapper key={index} src={item.src} />;
+          default:
+            return null;
         }
-
-        if (item.type === 'image' && item.src) {
-          return (
-            <img
-              key={index}
-              src={item.src}
-              alt={item.alt || ''}
-              className="story-image"
-              onClick={handleImageClick}
-              style={{ cursor: 'zoom-in', maxWidth: '100%' }}
-            />
-          );
-        }
-
-        return null;
       })}
     </div>
   );

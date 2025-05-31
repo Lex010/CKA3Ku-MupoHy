@@ -69,9 +69,9 @@ export const volshebnayaEdaData: StoryItem[] = [
     type: 'text',
     content: 'Вот такая сказка. Конец!',
   },
-  {
-    type: 'image',
-    src: '',
-    alt: '',
-  },
+  // {
+  //   type: 'image',
+  //   src: '',
+  //   alt: '',
+  // },
 ];
