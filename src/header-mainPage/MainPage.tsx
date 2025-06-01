@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { mainData } from '../site-manager-object/mainData';
+import Tooltip from '../utils/Tooltip';
 
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
@@ -9,7 +10,13 @@ const MainPage: React.FC = () => {
 
   return (
     <div>
-      <h1 className="page-title">Главная - МИР</h1>
+      <h1 className="page-title">Главная - "МИР"{' '}
+       <Tooltip text="МИР — Мирону Интересные Развлечения">
+          <span className='page-tooltipTriger'>
+            ?
+          </span>
+        </Tooltip>
+        </h1>
       <div className="page-list">
         {menuItems.map((item) => (
           <div

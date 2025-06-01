@@ -25,3 +25,12 @@ main {
   border-radius: 10px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
 }
+
+.page-tooltipTriger {
+  font-size: 0.7rem;
+  border: 2px solid;
+  border-radius: 50%;
+  padding: 0 3px;
+  cursor: 'help';
+  user-select: none;
+}
