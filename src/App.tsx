@@ -5,6 +5,7 @@ import Header from './header-mainPage/HeaderReact';
 import MainPage from './header-mainPage/MainPage';
 import { mainData } from './site-manager-object/mainData';
 import userLogin from './firebase/userLogin';
+import { DynamicPageTitle } from './utils/DynamicPageTitle';
 
 const AppContent = () => {
   const navigate = useNavigate();
@@ -12,6 +13,8 @@ const AppContent = () => {
   useEffect(() => {
     userLogin(document.querySelector('header') as HTMLElement);
   }, []);
+
+  DynamicPageTitle();
 
   return (
     <>

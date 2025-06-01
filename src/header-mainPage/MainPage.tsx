@@ -9,7 +9,7 @@ const MainPage: React.FC = () => {
 
   return (
     <div>
-      <h1 className="page-title">Главная</h1>
+      <h1 className="page-title">Главная - МИР</h1>
       <div className="page-list">
         {menuItems.map((item) => (
           <div
