@@ -6,11 +6,11 @@ export const DynamicPageTitle = (defaultTitle = 'МИР') => {
   const location = useLocation();
 
   useEffect(() => {
-    const path = location.pathname.replace(/^\/+/, ''); // убираем слеш
+    const path = location.pathname.replace(/^\/+/, '');
     if (!path) {
       document.title = defaultTitle;
     } else if (mainData[path]) {
-      document.title = `${mainData[path].title} | ${defaultTitle}`;
+      document.title = `${defaultTitle} | ${mainData[path].title}`;
     } else {
       document.title = defaultTitle;
     }
