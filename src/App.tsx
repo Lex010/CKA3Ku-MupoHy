@@ -18,13 +18,17 @@ const AppContent = () => {
       <ScrollToTop />
       <Header goHome={() => navigate('/')} />
       <main>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          {Object.entries(mainData).map(([key, { component: Component }]) => (
-            <Route key={key} path={`/${key}`} element={<Component />} />
-          ))}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        {Object.keys(mainData).length === 0 ? (
+          <div className="page-title">Загрузка...</div>
+        ) : (
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            {Object.entries(mainData).map(([key, { component: Component }]) => (
+              <Route key={key} path={`/${key}`} element={<Component />} />
+            ))}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        )}
       </main>
     </>
   );
