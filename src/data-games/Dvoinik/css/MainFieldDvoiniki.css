@@ -1,0 +1,33 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  gap: 10px;
+  justify-content: center;
+}
+
+.card {
+  width: 60px;
+  height: 60px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card.flipped {
+  background-color: white;
+}
+
+.card-image {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.card-back {
+  font-size: 2rem;
+}
