@@ -7,6 +7,7 @@ interface Card {
   img: string;
   isFlipped: boolean;
   isMatched: boolean;
+  isMatchedAnimating?: boolean;
 }
 
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -44,7 +45,12 @@ const MainFieldDvoiniki: React.FC = () => {
       if (newCards[first].img === newCards[second].img) {
         newCards[first].isMatched = true;
         newCards[second].isMatched = true;
+        newCards[first].isMatchedAnimating = true;
+        newCards[second].isMatchedAnimating = true;
+        setCards([...newCards]);
         setTimeout(() => {
+          newCards[first].isMatchedAnimating = false;
+          newCards[second].isMatchedAnimating = false;
           setCards([...newCards]);
           setFlippedIndexes([]);
         }, 500);
@@ -64,7 +70,11 @@ const MainFieldDvoiniki: React.FC = () => {
       {cards.map((card, index) => (
         <div
           key={card.id}
-          className={`card ${card.isFlipped || card.isMatched ? 'flipped' : ''}`}
+          className={`card 
+    ${card.isFlipped || card.isMatched ? 'flipped' : ''} 
+    ${card.isMatchedAnimating ? 'matched-animating' : ''}
+    ${card.isMatched ? 'matched' : ''}
+  `}
           onClick={() => handleCardClick(index)}
         >
           {card.isFlipped || card.isMatched ? (
