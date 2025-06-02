@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom';
 
 interface GameModalProps {
   onClose: () => void;
-  onReady: (refs: { gameField: HTMLDivElement; header: HTMLDivElement }) => void;
+  onReady?: (refs: { gameField: HTMLDivElement; header: HTMLDivElement }) => void;
+  headerContent?: React.ReactNode;
+  gameFieldContent?: React.ReactNode;
 }
 
-const GameModal: React.FC<React.PropsWithChildren<GameModalProps>> = ({ onClose, onReady }) => {
+const GameModal: React.FC<GameModalProps> = ({ onClose, onReady, headerContent, gameFieldContent }) => {
   const headerRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (headerRef.current && contentRef.current) {
+    if (onReady && headerRef.current && contentRef.current) {
       onReady({
         header: headerRef.current,
         gameField: contentRef.current,
@@ -22,7 +24,7 @@ const GameModal: React.FC<React.PropsWithChildren<GameModalProps>> = ({ onClose,
     return () => {
       document.body.style.overflow = '';
     };
-  }, []);
+  }, [onReady]);
 
   return ReactDOM.createPortal(
     <div className="game-modal">
@@ -30,8 +32,11 @@ const GameModal: React.FC<React.PropsWithChildren<GameModalProps>> = ({ onClose,
         <button className="game-modal-close" onClick={onClose}>
           Закрыть
         </button>
+        {headerContent}
       </div>
-      <div className="game-modal-content" ref={contentRef} />
+      <div className="game-modal-content" ref={contentRef}>
+        {gameFieldContent}
+      </div>
     </div>,
     document.body
   );
