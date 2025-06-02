@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './css/MainFieldDvoiniki.css';
 import { gameCharDvoiniki } from './gameCharDvoiniki';
+import cardBack from '../../assets/games/Dvoiniki/cardBack.png';
 
 interface Card {
   id: number;
@@ -80,7 +81,7 @@ const MainFieldDvoiniki: React.FC = () => {
           {card.isFlipped || card.isMatched ? (
             <img src={card.img} alt="character" className="card-image" />
           ) : (
-            <div className="card-back">❓</div>
+            <img src={cardBack} alt="card back" className="card-back" />
           )}
         </div>
       ))}
