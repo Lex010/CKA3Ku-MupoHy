@@ -3,44 +3,32 @@ import './css/MainFieldDvoiniki.css';
 import { gameCharDvoiniki } from './gameCharDvoiniki';
 import cardBack from '../../assets/games/Dvoiniki/cardBack.png';
 import preloadImages from '../../utils/preloadImages';
+import { generateCards, Card } from './generateCards';
 
-interface Card {
-  id: number;
-  img: string;
-  isFlipped: boolean;
-  isMatched: boolean;
-  isMatchedAnimating?: boolean;
+interface MainFieldDvoinikiProps {
+  uniqueCardCount: number; // количество уникальных карточек, выбранных игроком
+  fieldSize?: number; // общее количество карточек на поле (по умолчанию 16)
 }
 
-const shuffleArray = <T,>(array: T[]): T[] => {
-  return [...array].sort(() => Math.random() - 0.5);
-};
-
-const MainFieldDvoiniki: React.FC = () => {
+const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, fieldSize = 16 }) => {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedIndexes, setFlippedIndexes] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const images = gameCharDvoiniki.map((char) => char.img);
-    const allImages = [...images, ...images, cardBack];
+    const allImages = [...images, cardBack];
 
     preloadImages(allImages)
       .then(() => {
-        const pairs = shuffleArray([...images, ...images]);
-        const initialCards = pairs.map((img, index) => ({
-          id: index,
-          img,
-          isFlipped: false,
-          isMatched: false,
-        }));
-        setCards(initialCards);
+        const generated = generateCards(fieldSize, uniqueCardCount, images);
+        setCards(generated);
         setIsLoading(false);
       })
       .catch((err) => {
         throw new Error(`Ошибка загрузки изображений: ${err}`);
       });
-  }, []);
+  }, [uniqueCardCount, fieldSize]);
 
   const handleCardClick = (index: number) => {
     const clickedCard = cards[index];
@@ -87,10 +75,9 @@ const MainFieldDvoiniki: React.FC = () => {
         <div
           key={card.id}
           className={`card 
-    ${card.isFlipped || card.isMatched ? 'flipped' : ''} 
-    ${card.isMatchedAnimating ? 'matched-animating' : ''}
-    ${card.isMatched ? 'matched' : ''}
-  `}
+            ${card.isFlipped || card.isMatched ? 'flipped' : ''} 
+            ${card.isMatchedAnimating ? 'matched-animating' : ''}
+            ${card.isMatched ? 'matched' : ''}`}
           onClick={() => handleCardClick(index)}
         >
           {card.isFlipped || card.isMatched ? (

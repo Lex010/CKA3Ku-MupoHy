@@ -64,3 +64,41 @@
   opacity: 0.2;
   pointer-events: none;
 }
+
+/* Выбор сложности */
+.difficulty-selection-dvoiniki {
+  margin: 20px 0;
+  text-align: center;
+  padding: 20px 10px;
+  border: 2px solid var(--txtLeftBorder);
+  border-radius: 1rem;
+  background-color: var(--txtBackground);
+}
+
+.difficulty-buttons-dvoiniki {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.difficulty-button-dvoiniki {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: var(--gameMenuBtn);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.difficulty-button-dvoiniki:hover {
+  background-color: var(--gameMenuBtnHover);
+}
+
+.difficulty-button-dvoiniki.selected {
+  background-color: var(--gameMenuBtnSelected);
+  color: var(--gameMenuBtnSelectedTxt);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  transform: translateY(2px);
+}

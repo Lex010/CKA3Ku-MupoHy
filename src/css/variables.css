@@ -10,4 +10,9 @@
   --AllFairyTalesBackground: linear-gradient(135deg, #4e54c8, #8f94fb);
   --AllFairyTalesTxt: #fff;
   --pageUnitHover: #fff4e0;
+
+  --gameMenuBtn: #e0e0e0;
+  --gameMenuBtnHover: #ccc;
+  --gameMenuBtnSelected: #4caf50;
+  --gameMenuBtnSelectedTxt: white;
 }
