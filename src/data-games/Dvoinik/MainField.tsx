@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './css/MainFieldDvoiniki.css';
 import { gameCharDvoiniki } from './gameCharDvoiniki';
 import cardBack from '../../assets/games/Dvoiniki/cardBack.png';
+import preloadImages from '../../utils/preloadImages';
 
 interface Card {
   id: number;
@@ -18,17 +19,27 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 const MainFieldDvoiniki: React.FC = () => {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedIndexes, setFlippedIndexes] = useState<number[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const images = gameCharDvoiniki.map((char) => char.img);
-    const pairs = shuffleArray([...images, ...images]);
-    const initialCards = pairs.map((img, index) => ({
-      id: index,
-      img,
-      isFlipped: false,
-      isMatched: false,
-    }));
-    setCards(initialCards);
+    const allImages = [...images, ...images, cardBack];
+
+    preloadImages(allImages)
+      .then(() => {
+        const pairs = shuffleArray([...images, ...images]);
+        const initialCards = pairs.map((img, index) => ({
+          id: index,
+          img,
+          isFlipped: false,
+          isMatched: false,
+        }));
+        setCards(initialCards);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        throw new Error(`Ошибка загрузки изображений: ${err}`);
+      });
   }, []);
 
   const handleCardClick = (index: number) => {
@@ -65,6 +76,10 @@ const MainFieldDvoiniki: React.FC = () => {
       }
     }
   };
+
+  if (isLoading) {
+    return <div id="h1">Загрузка...</div>;
+  }
 
   return (
     <div className="card-grid">

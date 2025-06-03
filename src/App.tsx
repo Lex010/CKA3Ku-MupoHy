@@ -22,7 +22,7 @@ const AppContent = () => {
       <Header goHome={() => navigate('/')} />
       <main>
         {Object.keys(mainData).length === 0 ? (
-          <div className="page-title">Загрузка...</div>
+          <div id="h1">Загрузка...</div>
         ) : (
           <Routes>
             <Route path="/" element={<MainPage />} />
