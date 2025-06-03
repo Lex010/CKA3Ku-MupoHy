@@ -69,7 +69,7 @@
 .difficulty-selection-dvoiniki {
   margin: 20px 0;
   text-align: center;
-  padding: 20px 10px;
+  padding: 10px 10px;
   border: 2px solid var(--txtLeftBorder);
   border-radius: 1rem;
   background-color: var(--txtBackground);
@@ -79,6 +79,7 @@
   display: flex;
   justify-content: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .difficulty-button-dvoiniki {

@@ -7,10 +7,10 @@ import { generateCards, Card } from './generateCards';
 
 interface MainFieldDvoinikiProps {
   uniqueCardCount: number; // количество уникальных карточек, выбранных игроком
-  fieldSize?: number; // общее количество карточек на поле (по умолчанию 16)
+  fieldSize: number; // общее количество карточек на поле (по умолчанию 16)
 }
 
-const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, fieldSize = 16 }) => {
+const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, fieldSize }) => {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedIndexes, setFlippedIndexes] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(true);

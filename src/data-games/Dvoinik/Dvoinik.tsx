@@ -8,12 +8,14 @@ const idDvoinikGame = {
   id: 'Dvoinik',
 };
 
-// Допустимые количества уникальных карточек (для поля 16)
+// Допустимые количества уникальных карточек
 const difficultyLevels = [2, 4, 8];
+const fieldSizes = [16, 24, 32];
 
 const Dvoinik: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [uniqueCardCount, setUniqueCardCount] = useState<number>(difficultyLevels[0]);
+  const [fieldSize, setFieldSize] = useState<number>(fieldSizes[0]);
 
   const handleStartGame = () => {
     setIsModalOpen(true);
@@ -38,6 +40,21 @@ const Dvoinik: React.FC = () => {
         </div>
       </div>
 
+      <div className="difficulty-selection-dvoiniki">
+        <p>Размер поля:</p>
+        <div className="difficulty-buttons-dvoiniki">
+          {fieldSizes.map((size) => (
+            <button
+              key={size}
+              className={`difficulty-button-dvoiniki ${fieldSize === size ? 'selected' : ''}`}
+              onClick={() => setFieldSize(size)}
+            >
+              {size}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <button className="start-button" onClick={handleStartGame}>
         Начать игру
       </button>
@@ -46,7 +63,7 @@ const Dvoinik: React.FC = () => {
         <GameModal
           onClose={() => setIsModalOpen(false)}
           headerContent={<HeaderDvoinik />}
-          gameFieldContent={<MainFieldDvoiniki uniqueCardCount={uniqueCardCount} />}
+          gameFieldContent={<MainFieldDvoiniki uniqueCardCount={uniqueCardCount} fieldSize={fieldSize} />}
         />
       )}
     </div>
