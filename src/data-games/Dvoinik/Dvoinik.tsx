@@ -24,36 +24,38 @@ const Dvoinik: React.FC = () => {
   return (
     <div>
       <h1 className="page-title">{idDvoinikGame.title}</h1>
-
-      <div className="difficulty-selection-dvoiniki">
-        <p>Количество уникальных карточек (меньше = легче):</p>
-        <div className="difficulty-buttons-dvoiniki">
-          {difficultyLevels.map((count) => (
-            <button
-              key={count}
-              className={`difficulty-button-dvoiniki ${uniqueCardCount === count ? 'selected' : ''}`}
-              onClick={() => setUniqueCardCount(count)}
-            >
-              {count}
-            </button>
-          ))}
+      <details className="dvoiniki-details">
+        <summary className="dvoiniki-summary">⚙️ Настройки поля</summary>
+        <div className="difficulty-selection-dvoiniki">
+          <p>Количество уникальных карточек (меньше = легче):</p>
+          <div className="difficulty-buttons-dvoiniki">
+            {difficultyLevels.map((count) => (
+              <button
+                key={count}
+                className={`difficulty-button-dvoiniki ${uniqueCardCount === count ? 'selected' : ''}`}
+                onClick={() => setUniqueCardCount(count)}
+              >
+                {count}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="difficulty-selection-dvoiniki">
-        <p>Размер поля:</p>
-        <div className="difficulty-buttons-dvoiniki">
-          {fieldSizes.map((size) => (
-            <button
-              key={size}
-              className={`difficulty-button-dvoiniki ${fieldSize === size ? 'selected' : ''}`}
-              onClick={() => setFieldSize(size)}
-            >
-              {size}
-            </button>
-          ))}
+        <div className="difficulty-selection-dvoiniki">
+          <p>Размер поля:</p>
+          <div className="difficulty-buttons-dvoiniki">
+            {fieldSizes.map((size) => (
+              <button
+                key={size}
+                className={`difficulty-button-dvoiniki ${fieldSize === size ? 'selected' : ''}`}
+                onClick={() => setFieldSize(size)}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      </details>
 
       <button className="start-button" onClick={handleStartGame}>
         Начать игру

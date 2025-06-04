@@ -66,6 +66,19 @@
 }
 
 /* Выбор сложности */
+.dvoiniki-details {
+  justify-self: center;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.dvoiniki-summary {
+  background-color: var(--h1AndHover);
+  color: var(--navBtnTxt);
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
 .difficulty-selection-dvoiniki {
   margin: 20px 0;
   text-align: center;
