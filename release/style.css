@@ -514,6 +514,13 @@ html {
   color: #333;
 }
 
+.modal-dvoiniki {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(4, 60px);
@@ -582,6 +589,19 @@ html {
 }
 
 /* Выбор сложности */
+.dvoiniki-details {
+  justify-self: center;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.dvoiniki-summary {
+  background-color: var(--h1AndHover);
+  color: var(--navBtnTxt);
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
 .difficulty-selection-dvoiniki {
   margin: 20px 0;
   text-align: center;
@@ -637,8 +657,8 @@ html {
 .restart-button-dvoiniki {
   padding: 12px 24px;
   font-size: 18px;
-  background-color: var(--gameMenuBtnSelected);
-  color: var(--gameMenuBtnSelectedTxt);
+  background-color: var(--txtLeftBorder);
+  color: var(--navBtnTxt);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -648,6 +668,7 @@ html {
 
 .restart-button-dvoiniki:hover {
   transform: scale(1.05);
+  background-color: var(--h1AndHover);
 }
 .card-grid-wrapper {
   position: relative;
