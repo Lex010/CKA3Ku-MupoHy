@@ -15,8 +15,8 @@
 .restart-button-dvoiniki {
   padding: 12px 24px;
   font-size: 18px;
-  background-color: var(--gameMenuBtnSelected);
-  color: var(--gameMenuBtnSelectedTxt);
+  background-color: var(--txtLeftBorder);
+  color: var(--navBtnTxt);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -26,6 +26,7 @@
 
 .restart-button-dvoiniki:hover {
   transform: scale(1.05);
+  background-color: var(--h1AndHover);
 }
 .card-grid-wrapper {
   position: relative;
