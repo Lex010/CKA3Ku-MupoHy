@@ -8,7 +8,6 @@ const idDvoinikGame = {
   id: 'Dvoinik',
 };
 
-// Допустимые количества уникальных карточек
 const difficultyLevels = [2, 4, 8];
 const fieldSizes = [16, 24, 32];
 const playersCount = [1, 2, 3];
@@ -85,7 +84,9 @@ const Dvoinik: React.FC = () => {
         <GameModal
           onClose={() => setIsModalOpen(false)}
           headerContent={<HeaderDvoinik />}
-          gameFieldContent={<MainFieldDvoiniki uniqueCardCount={uniqueCardCount} fieldSize={fieldSiz} />}
+          gameFieldContent={
+            <MainFieldDvoiniki uniqueCardCount={uniqueCardCount} fieldSize={fieldSiz} playersCount={plaCount} />
+          }
         />
       )}
     </div>
