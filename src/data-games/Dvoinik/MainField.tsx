@@ -4,18 +4,20 @@ import { gameCharDvoiniki } from './gameCharDvoiniki';
 import cardBack from '../../assets/games/Dvoiniki/cardBack.png';
 import preloadImages from '../../utils/preloadImages';
 import { generateCards, Card } from './generateCards';
+import GameOverlay from './GameOverlay';
 
 interface MainFieldDvoinikiProps {
-  uniqueCardCount: number; // количество уникальных карточек, выбранных игроком
-  fieldSize: number; // общее количество карточек на поле (по умолчанию 16)
+  uniqueCardCount: number;
+  fieldSize: number;
 }
 
 const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, fieldSize }) => {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedIndexes, setFlippedIndexes] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isComplete, setIsComplete] = useState(false);
 
-  useEffect(() => {
+  const initializeGame = () => {
     const images = gameCharDvoiniki.map((char) => char.img);
     const allImages = [...images, cardBack];
 
@@ -23,14 +25,29 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, 
       .then(() => {
         const generated = generateCards(fieldSize, uniqueCardCount, images);
         setCards(generated);
+        setFlippedIndexes([]);
+        setIsComplete(false);
         setIsLoading(false);
       })
       .catch((err) => {
         throw new Error(`Ошибка загрузки изображений: ${err}`);
       });
+  };
+
+  useEffect(() => {
+    initializeGame();
   }, [uniqueCardCount, fieldSize]);
 
+  useEffect(() => {
+    if (!isLoading && cards.every((c) => c.isMatched)) {
+      setTimeout(() => {
+        setIsComplete(true);
+      }, 1000);
+    }
+  }, [cards, isLoading]);
+
   const handleCardClick = (index: number) => {
+    if (isComplete) return;
     const clickedCard = cards[index];
     if (clickedCard.isFlipped || clickedCard.isMatched || flippedIndexes.length === 2) return;
 
@@ -70,23 +87,27 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, 
   }
 
   return (
-    <div className="card-grid">
-      {cards.map((card, index) => (
-        <div
-          key={card.id}
-          className={`card 
-            ${card.isFlipped || card.isMatched ? 'flipped' : ''} 
-            ${card.isMatchedAnimating ? 'matched-animating' : ''}
-            ${card.isMatched ? 'matched' : ''}`}
-          onClick={() => handleCardClick(index)}
-        >
-          {card.isFlipped || card.isMatched ? (
-            <img src={card.img} alt="character" className="card-image" />
-          ) : (
-            <img src={cardBack} alt="card back" className="card-back" />
-          )}
-        </div>
-      ))}
+    <div className="card-grid-wrapper">
+      <div className="card-grid">
+        {cards.map((card, index) => (
+          <div
+            key={card.id}
+            className={`card 
+              ${card.isFlipped || card.isMatched ? 'flipped' : ''} 
+              ${card.isMatchedAnimating ? 'matched-animating' : ''}
+              ${card.isMatched ? 'matched' : ''}`}
+            onClick={() => handleCardClick(index)}
+          >
+            {card.isFlipped || card.isMatched ? (
+              <img src={card.img} alt="character" className="card-image" />
+            ) : (
+              <img src={cardBack} alt="card back" className="card-back" />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {isComplete && <GameOverlay onRestart={initializeGame} />}
     </div>
   );
 };
