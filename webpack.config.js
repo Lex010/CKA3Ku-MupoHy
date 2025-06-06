@@ -2,6 +2,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -49,6 +50,14 @@ export default {
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css', // Извлекает все CSS в один файл
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(dirname, 'src/assets/favicon'),
+          to: 'assets/favicon',
+        },
+      ],
     }),
   ],
   devServer: {
