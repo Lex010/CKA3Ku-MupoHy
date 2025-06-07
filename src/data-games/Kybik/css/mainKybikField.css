@@ -1,11 +1,4 @@
-.kybik-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  padding: 20px;
-}
-
+/* 
 .kybik-dice {
   font-size: 64px;
   border-radius: 12px;
@@ -34,4 +27,169 @@
   color: var(--gameMenuBtnSelectedTxt);
   cursor: pointer;
   transition: background-color 0.3s;
+} */
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.kybik-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.dice {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.side {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 100px;
+}
+
+/* Sides (faces) of the dice */
+.side:nth-child(1) {
+  transform: translateZ(50px);
+}
+.side:nth-child(2) {
+  transform: rotateY(-180deg) translateZ(50px);
+}
+.side:nth-child(3) {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.side:nth-child(4) {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.side:nth-child(5) {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+.side:nth-child(6) {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+/* Animation states */
+.show-1 {
+  transform: rotateX(720deg) rotateZ(-720deg);
+}
+.show-2 {
+  transform: rotateX(450deg) rotateZ(-720deg);
+}
+.show-3 {
+  transform: rotateY(-450deg) rotateZ(-1440deg);
+}
+.show-4 {
+  transform: rotateY(810deg) rotateZ(720deg);
+}
+.show-5 {
+  transform: rotateX(-810deg) rotateZ(-1080deg);
+}
+.show-6 {
+  transform: rotateX(-900deg) rotateZ(1080deg);
+}
+
+/* Dots on dice */
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #f25f5c;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px #d90429;
+}
+
+/* Dot positions */
+.one-1,
+.three-2,
+.five-5 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.two-1,
+.three-1,
+.four-1,
+.five-1,
+.six-1 {
+  top: 20%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.two-2,
+.three-3,
+.four-4,
+.five-4,
+.six-6 {
+  top: 80%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.four-2,
+.five-2,
+.six-3 {
+  top: 80%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.four-3,
+.five-3,
+.six-4 {
+  top: 20%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.six-2 {
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.six-5 {
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+/* Roll button */
+.dice-controls {
+  text-align: center;
+}
+
+.roll-button {
+  padding: 15px 50px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #f4d35e;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 1px 3px #50514f;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.roll-button:hover,
+.roll-button:active {
+  background: #50514f;
+  transform: translateY(5px);
 }
