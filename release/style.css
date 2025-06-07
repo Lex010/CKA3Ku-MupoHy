@@ -679,34 +679,150 @@ html {
   user-select: none;
 }
 
-.kybik-container {
+.game_Kybik {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  padding: 20px;
-}
-
-.kybik-dice {
-  font-size: 64px;
-  border-radius: 12px;
-  background: #f0f0f0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  user-select: none;
-  width: 80px;
-  height: 80px;
-  text-align: center;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }
 
-.dice-controls {
+.kybik-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.dice_kybik {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.side_kybik {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
   text-align: center;
-  margin-top: 20px;
+  line-height: 60px;
 }
 
-.roll-button {
+/* Грани кубика */
+.side_kybik:nth-child(1) {
+  transform: translateZ(30px);
+}
+.side_kybik:nth-child(2) {
+  transform: rotateY(-180deg) translateZ(30px);
+}
+.side_kybik:nth-child(3) {
+  transform: rotateY(-90deg) translateZ(30px);
+}
+.side_kybik:nth-child(4) {
+  transform: rotateX(90deg) translateZ(30px);
+}
+.side_kybik:nth-child(5) {
+  transform: rotateX(-90deg) translateZ(30px);
+}
+.side_kybik:nth-child(6) {
+  transform: rotateY(90deg) translateZ(30px);
+}
+
+/* Анимация */
+.show-1_kybik {
+  transform: rotateX(720deg) rotateZ(-720deg);
+}
+.show-2_kybik {
+  transform: rotateX(450deg) rotateZ(-720deg);
+}
+.show-3_kybik {
+  transform: rotateY(-450deg) rotateZ(-1440deg);
+}
+.show-4_kybik {
+  transform: rotateY(810deg) rotateZ(720deg);
+}
+.show-5_kybik {
+  transform: rotateX(-810deg) rotateZ(-1080deg);
+}
+.show-6_kybik {
+  transform: rotateX(-900deg) rotateZ(1080deg);
+}
+
+/* Точки кубика */
+.dot_kybik {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f25f5c;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px #d90429;
+}
+
+/* Позици точек */
+.one-1_kybik,
+.three-2_kybik,
+.five-5_kybik {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.two-1_kybik,
+.three-1_kybik,
+.four-1_kybik,
+.five-1_kybik,
+.six-1_kybik {
+  top: 20%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.two-2_kybik,
+.three-3_kybik,
+.four-4_kybik,
+.five-4_kybik,
+.six-6_kybik {
+  top: 80%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.four-2_kybik,
+.five-2_kybik,
+.six-3_kybik {
+  top: 80%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.four-3_kybik,
+.five-3_kybik,
+.six-4_kybik {
+  top: 20%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.six-2_kybik {
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.six-5_kybik {
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+/* Кнопка */
+.roll-button_Kybik {
   font-size: 18px;
   padding: 10px 20px;
   border-radius: 10px;

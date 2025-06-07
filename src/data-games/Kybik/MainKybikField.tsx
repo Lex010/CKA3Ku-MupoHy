@@ -16,54 +16,52 @@ const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount }) => {
   const displayValues = diceValues ?? Array(diceCount).fill(null);
 
   return (
-    <div className="game">
+    <div className="game_Kybik">
       <div className="kybik-container">
         {displayValues.map((value, i) => (
-          <div key={i} className="container">
-            <div className={`dice ${value ? `show-${value}` : ''}`}>
-              <div className="side one">
-                <div className="dot one-1"></div>
+          <div key={i} className="dice_kybik-container">
+            <div className={`dice_kybik ${value ? `show-${value}_kybik` : ''}`}>
+              <div className="side_kybik one_kybik">
+                <div className="dot_kybik one-1_kybik"></div>
               </div>
-              <div className="side two">
-                <div className="dot two-1"></div>
-                <div className="dot two-2"></div>
+              <div className="side_kybik two_kybik">
+                <div className="dot_kybik two-1_kybik"></div>
+                <div className="dot_kybik two-2_kybik"></div>
               </div>
-              <div className="side three">
-                <div className="dot three-1"></div>
-                <div className="dot three-2"></div>
-                <div className="dot three-3"></div>
+              <div className="side_kybik three_kybik">
+                <div className="dot_kybik three-1_kybik"></div>
+                <div className="dot_kybik three-2_kybik"></div>
+                <div className="dot_kybik three-3_kybik"></div>
               </div>
-              <div className="side four">
-                <div className="dot four-1"></div>
-                <div className="dot four-2"></div>
-                <div className="dot four-3"></div>
-                <div className="dot four-4"></div>
+              <div className="side_kybik four_kybik">
+                <div className="dot_kybik four-1_kybik"></div>
+                <div className="dot_kybik four-2_kybik"></div>
+                <div className="dot_kybik four-3_kybik"></div>
+                <div className="dot_kybik four-4_kybik"></div>
               </div>
-              <div className="side five">
-                <div className="dot five-1"></div>
-                <div className="dot five-2"></div>
-                <div className="dot five-3"></div>
-                <div className="dot five-4"></div>
-                <div className="dot five-5"></div>
+              <div className="side_kybik five_kybik">
+                <div className="dot_kybik five-1_kybik"></div>
+                <div className="dot_kybik five-2_kybik"></div>
+                <div className="dot_kybik five-3_kybik"></div>
+                <div className="dot_kybik five-4_kybik"></div>
+                <div className="dot_kybik five-5_kybik"></div>
               </div>
-              <div className="side six">
-                <div className="dot six-1"></div>
-                <div className="dot six-2"></div>
-                <div className="dot six-3"></div>
-                <div className="dot six-4"></div>
-                <div className="dot six-5"></div>
-                <div className="dot six-6"></div>
+              <div className="side_kybik six_kybik">
+                <div className="dot_kybik six-1_kybik"></div>
+                <div className="dot_kybik six-2_kybik"></div>
+                <div className="dot_kybik six-3_kybik"></div>
+                <div className="dot_kybik six-4_kybik"></div>
+                <div className="dot_kybik six-5_kybik"></div>
+                <div className="dot_kybik six-6_kybik"></div>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="dice-controls">
-        <button className="roll-button" onClick={handleRoll}>
-          Бросить кубики
-        </button>
-      </div>
+      <button className="roll-button_Kybik" onClick={handleRoll}>
+        Бросить кубики
+      </button>
     </div>
   );
 };
