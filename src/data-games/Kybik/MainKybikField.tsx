@@ -8,8 +8,11 @@ interface MainKybikFieldProps {
 
 const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount }) => {
   const [diceValues, setDiceValues] = useState<number[] | null>(null);
+  const [animate, setAnimate] = useState(false);
 
   const handleRoll = () => {
+    setAnimate(true);
+    setTimeout(() => setAnimate(false), 1000);
     setDiceValues(rollDice(diceCount));
   };
 
@@ -59,8 +62,11 @@ const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount }) => {
         ))}
       </div>
 
-      <button className="roll-button_Kybik" onClick={handleRoll}>
-        Бросить кубики
+      <button className={`roll-button_kybik ${animate ? 'animate_kybik' : ''}`} onClick={handleRoll}>
+        <span className="btn-content_kybik">Бросить кубики</span>
+        <span className="ovrly_kybik">
+          <span className="ovrly2_kybik" />
+        </span>
       </button>
     </div>
   );
