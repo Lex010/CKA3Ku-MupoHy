@@ -12,9 +12,10 @@ const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount }) => {
   const [animate, setAnimate] = useState(false);
 
   const handleRoll = () => {
+    if (animate) return;
     setAnimate(true);
-    setTimeout(() => setAnimate(false), 1000);
     setDiceValues(rollDice(diceCount));
+    setTimeout(() => setAnimate(false), 1000);
   };
 
   const displayValues = diceValues ?? Array(diceCount).fill(null);
