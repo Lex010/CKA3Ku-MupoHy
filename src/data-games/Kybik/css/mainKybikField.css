@@ -19,7 +19,7 @@
   width: 60px;
   height: 60px;
   transform-style: preserve-3d;
-  transition: transform 1s;
+  transition: transform 0.7s;
 }
 
 .side_kybik {

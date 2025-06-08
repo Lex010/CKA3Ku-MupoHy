@@ -10,12 +10,18 @@ interface MainKybikFieldProps {
 const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount }) => {
   const [diceValues, setDiceValues] = useState<number[] | null>(null);
   const [animate, setAnimate] = useState(false);
+  const [resetting, setResetting] = useState(false);
 
   const handleRoll = () => {
     if (animate) return;
     setAnimate(true);
-    setDiceValues(rollDice(diceCount));
-    setTimeout(() => setAnimate(false), 1000);
+    setResetting(true);
+    setDiceValues(null);
+    setTimeout(() => {
+      setResetting(false);
+      setDiceValues(rollDice(diceCount));
+      setTimeout(() => setAnimate(false), 1000);
+    }, 300);
   };
 
   const displayValues = diceValues ?? Array(diceCount).fill(null);
@@ -25,7 +31,7 @@ const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount }) => {
       <div className="kybik-container">
         {displayValues.map((value, i) => (
           <div key={i} className="dice_kybik-container">
-            <div className={`dice_kybik ${value ? `show-${value}_kybik` : ''}`}>
+            <div className={`dice_kybik ${!resetting && value ? `show-${value}_kybik` : ''}`}>
               <div className="side_kybik one_kybik">
                 <div className="dot_kybik one-1_kybik"></div>
               </div>
