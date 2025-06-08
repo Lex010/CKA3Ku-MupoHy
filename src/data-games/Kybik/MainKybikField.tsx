@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { rollDice } from './rollDice';
 import './css/mainKybikField.css';
+import './css/rollButton.css';
 
 interface MainKybikFieldProps {
   diceCount: number;
