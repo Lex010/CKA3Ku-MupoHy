@@ -27,7 +27,7 @@ const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount }) => {
   const displayValues = diceValues ?? Array(diceCount).fill(null);
 
   return (
-    <div className="game_Kybik">
+    <div className="game_Kybik field_kybik">
       <div className="kybik-container">
         {displayValues.map((value, i) => (
           <div key={i} className="dice_kybik-container">

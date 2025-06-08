@@ -27,7 +27,7 @@
   width: 60px;
   height: 60px;
   background-color: #fff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--txtLeftBorder);
   border-radius: 10px;
   text-align: center;
   line-height: 60px;
@@ -58,20 +58,23 @@
   transform: rotateX(720deg) rotateZ(-720deg);
 }
 .show-2_kybik {
-  transform: rotateX(450deg) rotateZ(-720deg);
-}
-.show-3_kybik {
-  transform: rotateY(-450deg) rotateZ(-1440deg);
-}
-.show-4_kybik {
-  transform: rotateY(810deg) rotateZ(720deg);
-}
-.show-5_kybik {
-  transform: rotateX(-810deg) rotateZ(-1080deg);
-}
-.show-6_kybik {
   transform: rotateX(-900deg) rotateZ(1080deg);
 }
+.show-3_kybik {
+  transform: rotateY(810deg) rotateZ(720deg);
+}
+.show-4_kybik {
+  transform: rotateX(-810deg) rotateZ(-1080deg);
+}
+.show-5_kybik {
+  transform: rotateX(450deg) rotateZ(-720deg);
+}
+.show-6_kybik {
+  transform: rotateY(-450deg) rotateZ(-1440deg);
+}
+
+
+
 
 /* Точки кубика */
 .dot_kybik {
@@ -138,4 +141,9 @@
   top: 50%;
   left: 80%;
   transform: translate(-50%, -50%);
+}
+
+.field_kybik {
+  background-color: grey;
+  width: 100%;
 }
