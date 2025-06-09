@@ -679,6 +679,82 @@ html {
   user-select: none;
 }
 
+.roll-button_kybik {
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--gameMenuBtnSelected);
+  color: var(--gameMenuBtnSelectedTxt);
+  position: relative;
+  cursor: pointer;
+}
+
+.btn-content_kybik {
+  position: relative;
+  z-index: 1;
+}
+
+.ovrly_kybik {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.ovrly2_kybik {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background-color: var(--gameMenuBtnSelected);
+  animation: none;
+  position: relative;
+  border-radius: 10px;
+}
+
+.roll-button_kybik.animate_kybik {
+  background-color: var(--h1AndHover);
+}
+
+.roll-button_kybik.animate_kybik .ovrly2_kybik {
+  animation: loadingBar 1s linear forwards;
+}
+
+@keyframes loadingBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.game_KybikChaotic {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.kybik-containerChaotic {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.dice_kybik-containerChaotic {
+  position: absolute;
+  transition:
+    top 0.7s,
+    left 0.7s;
+}
+
 .game_Kybik {
   display: flex;
   flex-direction: column;
@@ -754,9 +830,6 @@ html {
   transform: rotateY(-450deg) rotateZ(-1440deg);
 }
 
-
-
-
 /* Точки кубика */
 .dot_kybik {
   position: absolute;
@@ -828,57 +901,6 @@ html {
   background-color: grey;
   width: 100%;
 }
-.roll-button_kybik {
-  font-size: 18px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  background-color: var(--gameMenuBtnSelected);
-  color: var(--gameMenuBtnSelectedTxt);
-  position: relative;
-  cursor: pointer;
-}
-
-.btn-content_kybik {
-  position: relative;
-  z-index: 1;
-}
-
-.ovrly_kybik {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  pointer-events: none;
-}
-
-.ovrly2_kybik {
-  display: block;
-  height: 100%;
-  width: 0%;
-  background-color: var(--gameMenuBtnSelected);
-  animation: none;
-  position: relative;
-  border-radius: 10px;
-}
-
-.roll-button_kybik.animate_kybik {
-  background-color: var(--h1AndHover);
-}
-
-.roll-button_kybik.animate_kybik .ovrly2_kybik {
-  animation: loadingBar 1s linear forwards;
-}
-
-@keyframes loadingBar {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
-}
 
 .kybik-menuUnit {
   display: flex;
@@ -886,5 +908,51 @@ html {
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+}
+/* Переключатель (перенести в утилиты) */
+.switch__MUP {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  margin-left: 12px;
+}
+
+.switch__MUP input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider__MUP {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--gameMenuBtnHover);
+  transition: 0.4s;
+  border-radius: 28px;
+}
+
+.slider__MUP::before {
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--gameMenuBtnSelectedTxt);
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider__MUP {
+  background-color: var(--gameMenuBtnSelected);
+}
+
+input:checked + .slider__MUP::before {
+  transform: translateX(22px);
 }
 
