@@ -20,7 +20,7 @@ const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount }) => {
     setTimeout(() => {
       setResetting(false);
       setDiceValues(rollDice(diceCount));
-      setTimeout(() => setAnimate(false), 1000);
+      setTimeout(() => setAnimate(false), 700);
     }, 300);
   };
 
