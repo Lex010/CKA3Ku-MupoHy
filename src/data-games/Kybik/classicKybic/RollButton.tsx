@@ -6,15 +6,20 @@ interface RollButtonProps {
   disabled?: boolean;
 }
 
-const RollButton: React.FC<RollButtonProps> = ({ onClick, disabled = false }) => {
+const RollButton = React.forwardRef<HTMLButtonElement, RollButtonProps>(({ onClick, disabled = false }, ref) => {
   return (
-    <button className={`roll-button_kybik ${disabled ? 'animate_kybik' : ''}`} onClick={onClick} disabled={disabled}>
+    <button
+      ref={ref}
+      className={`roll-button_kybik ${disabled ? 'animate_kybik' : ''}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
       <span className="btn-content_kybik">Бросить кубики</span>
       <span className="ovrly_kybik">
         <span className="ovrly2_kybik" />
       </span>
     </button>
   );
-};
+});
 
 export default RollButton;

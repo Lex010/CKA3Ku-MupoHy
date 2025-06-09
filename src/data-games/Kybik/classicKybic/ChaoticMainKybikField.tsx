@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import { rollDice } from '../rollDice';
 import DiceSides from './DiceSides';
 import RollButton from './RollButton';
+import { generateSafePosition, Position } from './generateSafePosition';
 import '../css/chaoticMainKybikField.css';
 
 interface ChaoticKybikFieldProps {
@@ -10,18 +11,18 @@ interface ChaoticKybikFieldProps {
 
 const ChaoticMainKybikField: React.FC<ChaoticKybikFieldProps> = ({ diceCount }) => {
   const [diceValues, setDiceValues] = useState<number[] | null>(null);
-  const [positions, setPositions] = useState<{ top: number; left: number }[]>([]);
+  const [positions, setPositions] = useState<Position[]>([]);
   const [animate, setAnimate] = useState(false);
   const [resetting, setResetting] = useState(false);
 
-  const generateRandomPosition = () => {
-    const maxX = window.innerWidth - 80;
-    const maxY = window.innerHeight - 200;
-    return {
-      top: Math.floor(Math.random() * maxY),
-      left: Math.floor(Math.random() * maxX),
-    };
-  };
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRect = useRef<DOMRect | null>(null);
+
+  useLayoutEffect(() => {
+    if (buttonRef.current) {
+      buttonRect.current = buttonRef.current.getBoundingClientRect();
+    }
+  }, [animate]); // обновлять при анимации (возможно изменение позиции)
 
   const handleRoll = () => {
     if (animate) return;
@@ -32,7 +33,13 @@ const ChaoticMainKybikField: React.FC<ChaoticKybikFieldProps> = ({ diceCount }) 
 
     setTimeout(() => {
       const newValues = rollDice(diceCount);
-      const newPositions = newValues.map(() => generateRandomPosition());
+      const newPositions: Position[] = [];
+
+      for (let i = 0; i < newValues.length; i += 1) {
+        const pos = generateSafePosition(newPositions, buttonRect.current, window.innerWidth, window.innerHeight);
+        newPositions.push(pos);
+      }
+
       setResetting(false);
       setDiceValues(newValues);
       setPositions(newPositions);
@@ -57,7 +64,7 @@ const ChaoticMainKybikField: React.FC<ChaoticKybikFieldProps> = ({ diceCount }) 
         })}
       </div>
 
-      <RollButton onClick={handleRoll} disabled={animate} />
+      <RollButton onClick={handleRoll} disabled={animate} ref={buttonRef} />
     </div>
   );
 };
