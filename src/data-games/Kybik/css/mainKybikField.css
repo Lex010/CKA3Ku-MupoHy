@@ -73,9 +73,6 @@
   transform: rotateY(-450deg) rotateZ(-1440deg);
 }
 
-
-
-
 /* Точки кубика */
 .dot_kybik {
   position: absolute;

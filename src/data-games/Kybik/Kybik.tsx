@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import GameModal from '../GameModal';
-import MainKybikField from './MainKybikField';
+import MainKybikField from './classicKybic/MainKybikField';
 import './css/kybik.css';
 
 const idKybikGame = {
