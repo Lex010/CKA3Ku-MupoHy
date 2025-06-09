@@ -10,8 +10,7 @@ interface MainKybikFieldProps {
   chaotic?: boolean;
 }
 
-const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount, chaotic = true }) => {
-  // убрать false у chaotic
+const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount, chaotic }) => {
   if (chaotic) {
     return <ChaoticMainKybikField diceCount={diceCount} />;
   }

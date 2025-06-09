@@ -53,7 +53,7 @@ const ChaoticMainKybikField: React.FC<ChaoticKybikFieldProps> = ({ diceCount }) 
     <div className="game_KybikChaotic field_kybik">
       <div className="kybik-containerChaotic">
         {displayValues.map((value, i) => {
-          const pos = positions[i] || { top: 0, left: 0 };
+          const pos = positions[i] || { top: 50, left: 50 };
           return (
             <div key={i} className="dice_kybik-containerChaotic" style={{ top: pos.top, left: pos.left }}>
               <div className={`dice_kybik ${!resetting && value ? `show-${value}_kybik` : ''}`}>
