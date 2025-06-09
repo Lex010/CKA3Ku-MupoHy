@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import { rollDice } from '../rollDice';
 import DiceSides from './DiceSides';
 import RollButton from './RollButton';
+import ChaoticMainKybikField from './ChaoticMainKybikField';
 import '../css/mainKybikField.css';
 
 interface MainKybikFieldProps {
   diceCount: number;
+  chaotic?: boolean;
 }
 
-const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount }) => {
+const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount, chaotic = true }) => {
+  // убрать false у chaotic
+  if (chaotic) {
+    return <ChaoticMainKybikField diceCount={diceCount} />;
+  }
   const [diceValues, setDiceValues] = useState<number[] | null>(null);
   const [animate, setAnimate] = useState(false);
   const [resetting, setResetting] = useState(false);
