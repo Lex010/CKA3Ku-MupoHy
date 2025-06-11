@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import GameModal from '../GameModal';
 import MainKybikField from './classicKybic/MainKybikField';
+import ToggleSwitch from '../../utils/ToggleSwitch/ToggleSwitch';
 import './css/kybik.css';
 
 const idKybikGame = {
@@ -39,11 +40,7 @@ const Kybik: React.FC = () => {
         </select>
       </div>
       <div className="kybik-menuUnit player-config">
-        <label htmlFor="chaoticToggle">Разброс кубиков</label>
-        <label className="switch__MUP">
-          <input id="chaoticToggle" type="checkbox" checked={isChaotic} onChange={handleToggleChange} />
-          <span className="slider__MUP" />
-        </label>
+        <ToggleSwitch checked={isChaotic} onChange={handleToggleChange} label="Разброс кубиков" />
       </div>
       <button className="start-button" onClick={handleStartGame}>
         Начать игру
