@@ -78,9 +78,9 @@
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: #f25f5c;
+  background-color: #fc6462;
   border-radius: 50%;
-  box-shadow: inset 2px 2px #d90429;
+  box-shadow: inset 3px 3px #e00428;
 }
 
 /* Позици точек */
