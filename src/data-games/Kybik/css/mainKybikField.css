@@ -12,6 +12,7 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 40px;
+  /* perspective: 800px; */
 }
 
 .dice_kybik {
@@ -20,15 +21,16 @@
   height: 60px;
   transform-style: preserve-3d;
   transition: transform 0.7s;
+  transform: rotateX(10deg) rotateY(-10deg);
 }
 
 .side_kybik {
   position: absolute;
   width: 60px;
   height: 60px;
-  background-color: #fff;
+  background-color: black;
   border: 1px solid var(--txtLeftBorder);
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
   line-height: 60px;
 }
@@ -55,22 +57,22 @@
 
 /* Анимация */
 .show-1_kybik {
-  transform: rotateX(720deg) rotateZ(-720deg);
+  transform: rotateX(730deg) rotateY(-10deg) rotateZ(-720deg);
 }
 .show-2_kybik {
-  transform: rotateX(-900deg) rotateZ(1080deg);
+  transform: rotateX(-890deg) rotateY(10deg) rotateZ(1080deg);
 }
 .show-3_kybik {
-  transform: rotateY(810deg) rotateZ(720deg);
+  transform: rotateY(790deg) rotateY(10deg) rotateZ(730deg);
 }
 .show-4_kybik {
-  transform: rotateX(-810deg) rotateZ(-1080deg);
+  transform: rotateX(-800deg) rotateY(0) rotateZ(-1090deg);
 }
 .show-5_kybik {
-  transform: rotateX(450deg) rotateZ(-720deg);
+  transform: rotateX(460deg) rotateY(0) rotateZ(-710deg);
 }
 .show-6_kybik {
-  transform: rotateY(-450deg) rotateZ(-1440deg);
+  transform: rotateY(-470deg) rotateY(10deg) rotateZ(-1450deg);
 }
 
 /* Точки кубика */
