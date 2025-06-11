@@ -777,17 +777,44 @@ html {
   height: 60px;
   transform-style: preserve-3d;
   transition: transform 0.7s;
+  transform: rotateX(10deg) rotateY(-10deg);
 }
 
 .side_kybik {
   position: absolute;
   width: 60px;
   height: 60px;
-  background-color: #fff;
+  background: linear-gradient(135deg, #f0eef6, #ffffff);
   border: 1px solid var(--txtLeftBorder);
-  border-radius: 10px;
-  text-align: center;
+  border-radius: 5px;
   line-height: 60px;
+  text-align: center;
+  overflow: hidden;
+  line-height: 60px;
+}
+
+.side_kybik::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 120px; /* 2 × 60px */
+  background: rgba(255, 255, 255);
+  transform: rotate(-20deg);
+  animation: shine 3s infinite;
+  animation-timing-function: cubic-bezier(0.17, 0.79, 0.96, 0.25);
+}
+
+@keyframes shine {
+  0% {
+    top: -100px;
+    left: -280px;
+  }
+  100% {
+    top: 100%;
+    left: 100%;
+  }
 }
 
 /* Грани кубика */
@@ -812,22 +839,22 @@ html {
 
 /* Анимация */
 .show-1_kybik {
-  transform: rotateX(720deg) rotateZ(-720deg);
+  transform: rotateX(730deg) rotateY(-10deg) rotateZ(-720deg);
 }
 .show-2_kybik {
-  transform: rotateX(-900deg) rotateZ(1080deg);
+  transform: rotateX(-890deg) rotateY(10deg) rotateZ(1080deg);
 }
 .show-3_kybik {
-  transform: rotateY(810deg) rotateZ(720deg);
+  transform: rotateY(790deg) rotateY(10deg) rotateZ(730deg);
 }
 .show-4_kybik {
-  transform: rotateX(-810deg) rotateZ(-1080deg);
+  transform: rotateX(-800deg) rotateY(0) rotateZ(-1090deg);
 }
 .show-5_kybik {
-  transform: rotateX(450deg) rotateZ(-720deg);
+  transform: rotateX(460deg) rotateY(0) rotateZ(-710deg);
 }
 .show-6_kybik {
-  transform: rotateY(-450deg) rotateZ(-1440deg);
+  transform: rotateY(-470deg) rotateY(10deg) rotateZ(-1450deg);
 }
 
 /* Точки кубика */
@@ -835,9 +862,9 @@ html {
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: #f25f5c;
+  background-color: #fc6462;
   border-radius: 50%;
-  box-shadow: inset 2px 2px #d90429;
+  box-shadow: inset 3px 3px #e00428;
 }
 
 /* Позици точек */
@@ -902,23 +929,15 @@ html {
   width: 100%;
 }
 
-.kybik-menuUnit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-/* Переключатель (перенести в утилиты) */
-.switch__MUP {
+.togle-switch__MUP {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 28px;
-  margin-left: 12px;
+  width: 34px;
+  height: 18px;
+  margin-left: 8px;
 }
 
-.switch__MUP input {
+.togle-switch__MUP input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -933,16 +952,16 @@ html {
   bottom: 0;
   background-color: var(--gameMenuBtnHover);
   transition: 0.4s;
-  border-radius: 28px;
+  border-radius: 19px;
 }
 
 .slider__MUP::before {
   position: absolute;
   content: '';
-  height: 20px;
-  width: 20px;
-  left: 4px;
-  bottom: 4px;
+  height: 12px;
+  width: 12px;
+  left: 3px;
+  bottom: 3px;
   background-color: var(--gameMenuBtnSelectedTxt);
   transition: 0.4s;
   border-radius: 50%;
@@ -953,6 +972,14 @@ input:checked + .slider__MUP {
 }
 
 input:checked + .slider__MUP::before {
-  transform: translateX(22px);
+  transform: translateX(16px);
+}
+
+.kybik-menuUnit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
