@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { rollDice } from '../rollDice';
 import DiceSides from './DiceSides';
 import RollButton from './RollButton';
@@ -8,6 +8,24 @@ import '../css/chaoticMainKybikField.css';
 interface ChaoticKybikFieldProps {
   diceCount: number;
 }
+
+const getInitialPositions = (count: number): Position[] => {
+  const positions: Position[] = [];
+  const cols = Math.ceil(Math.sqrt(count)); // например, 3x3 при 9 кубиках
+  const spacing = 80;
+  const startX = window.innerWidth / 2 - (cols * spacing) / 2 + 10;
+  const startY = window.innerHeight / 2 - (cols * spacing) / 2 - 100;
+
+  for (let i = 0; i < count; i += 1) {
+    const row = Math.floor(i / cols);
+    const col = i % cols;
+    positions.push({
+      top: startY + row * spacing,
+      left: startX + col * spacing,
+    });
+  }
+  return positions;
+};
 
 const ChaoticMainKybikField: React.FC<ChaoticKybikFieldProps> = ({ diceCount }) => {
   const [diceValues, setDiceValues] = useState<number[] | null>(null);
@@ -23,6 +41,11 @@ const ChaoticMainKybikField: React.FC<ChaoticKybikFieldProps> = ({ diceCount }) 
       buttonRect.current = buttonRef.current.getBoundingClientRect();
     }
   }, [animate]); // обновлять при анимации (возможно изменение позиции)
+  useEffect(() => {
+    if (!diceValues) {
+      setPositions(getInitialPositions(diceCount));
+    }
+  }, [diceCount, diceValues]);
 
   const handleRoll = () => {
     if (animate) return;
@@ -32,7 +55,7 @@ const ChaoticMainKybikField: React.FC<ChaoticKybikFieldProps> = ({ diceCount }) 
     setPositions([]);
 
     setTimeout(() => {
-      const newValues = rollDice(diceCount);
+      const newValues = rollDice(diceCount, 6);
       const newPositions: Position[] = [];
 
       for (let i = 0; i < newValues.length; i += 1) {

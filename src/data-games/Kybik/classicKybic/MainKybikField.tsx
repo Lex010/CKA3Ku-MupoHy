@@ -25,7 +25,7 @@ const MainKybikField: React.FC<MainKybikFieldProps> = ({ diceCount, chaotic }) =
     setDiceValues(null);
     setTimeout(() => {
       setResetting(false);
-      setDiceValues(rollDice(diceCount));
+      setDiceValues(rollDice(diceCount, 6));
       setTimeout(() => setAnimate(false), 700);
     }, 300);
   };
