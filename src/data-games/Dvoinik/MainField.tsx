@@ -4,7 +4,8 @@ import { gameCharDvoiniki } from './gameCharDvoiniki';
 import cardBack from '../../assets/games/Dvoiniki/cardBack.png';
 import preloadImages from '../../utils/preloadImages';
 import { generateCards, Card } from './generateCards';
-import GameOverlay from './GameOverlay';
+import GameOverlay from './GameFieldOverlay/GameOverlay';
+import TurnOverlay from './GameFieldOverlay/TurnOverlay';
 import playerTurnManager from './playerTurnManager';
 import PlayerStatus from './playerStatus/PlayerStatus';
 
@@ -20,6 +21,8 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, 
   const [isLoading, setIsLoading] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
   const { currentPlayer, nextPlayer } = playerTurnManager(playersCount);
+  const [showTurnOverlay, setShowTurnOverlay] = useState(false);
+  const [autoCloseTurnOverlay, setAutoCloseTurnOverlay] = useState(false); // Для окна переключения игроков
 
   const initializeGame = () => {
     const images = gameCharDvoiniki.map((char) => char.img);
@@ -86,6 +89,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, 
           setFlippedIndexes([]);
           if (playersCount > 1 && !isComplete) {
             nextPlayer(); // Ход передаётся
+            setShowTurnOverlay(true);
           }
         }, 1000);
       }
@@ -121,6 +125,14 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, 
         </div>
 
         {isComplete && <GameOverlay onRestart={initializeGame} />}
+        {playersCount > 1 && showTurnOverlay && !isComplete && (
+          <TurnOverlay
+            currentPlayer={currentPlayer}
+            onClose={() => setShowTurnOverlay(false)}
+            autoClose={autoCloseTurnOverlay}
+            setAutoClose={setAutoCloseTurnOverlay}
+          />
+        )}
       </div>
     </div>
   );
