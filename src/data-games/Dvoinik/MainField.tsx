@@ -6,6 +6,7 @@ import preloadImages from '../../utils/preloadImages';
 import { generateCards, Card } from './generateCards';
 import GameOverlay from './GameOverlay';
 import playerTurnManager from './playerTurnManager';
+import PlayerStatus from './playerStatus/PlayerStatus';
 
 interface MainFieldDvoinikiProps {
   uniqueCardCount: number;
@@ -97,7 +98,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, 
 
   return (
     <div className="modal-dvoiniki">
-      {playersCount > 1 && <div className="current-player-dvoiniki">Игрок {currentPlayer + 1}-й ходит</div>}
+      {playersCount > 1 && <PlayerStatus playersCount={playersCount} currentPlayer={currentPlayer} />}
 
       <div className="card-grid-wrapper">
         <div className="card-grid">
