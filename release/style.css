@@ -640,7 +640,7 @@ html {
   transform: translateY(2px);
 }
 
-.game-overlay {
+.game-overlay--dvoiniki {
   position: absolute;
   top: 0;
   left: 0;
@@ -677,6 +677,174 @@ html {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.turn-overlay--dvoiniki {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+.t-o-content--dvoiniki {
+  text-align: center;
+  display: flex;
+  gap: 18px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.t-o-content--dvoiniki p {
+  font-size: 26px;
+  background-color: var(--mainBackground);
+  color: var(--h1AndHover);
+  font-weight: bold;
+  padding: 18px 18px;
+  border-radius: 12px;
+}
+
+.t-o-content--dvoiniki button {
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: var(--txtLeftBorder);
+  color: var(--navBtnTxt);
+  border: 1px solid var(--navBtnTxt);
+  border-radius: 10px;
+}
+
+/* Для переключателя автозакрытия */
+.tsLabel--dvoiniki-wrap {
+  display: flex;
+  align-items: center;
+  background-color: var(--mainBackground);
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+.close-label--dvoiniki {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+  margin-left: 8px;
+}
+
+.close-label--dvoiniki input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider__close-label--dvoiniki {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--gameMenuBtnHover);
+  transition: 0.4s;
+  border-radius: 19px;
+}
+
+.slider__close-label--dvoiniki::before {
+  position: absolute;
+  content: '';
+  height: 12px;
+  width: 12px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--gameMenuBtnSelectedTxt);
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider__close-label--dvoiniki {
+  background-color: var(--gameMenuBtnSelected);
+}
+
+input:checked + .slider__close-label--dvoiniki::before {
+  transform: translateX(16px);
+}
+
+.players-status-dvoiniki {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.player-name-dvoiniki {
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+}
+
+.player-name-dvoiniki.inactive {
+  background-color: gray;
+}
+
+.player-name-dvoiniki.active {
+  background-color: green;
+}
+
+.player-name-dvoiniki.active::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 6px 3px rgba(255, 255, 255, 0.8);
+  animation: moveStar 3s linear infinite;
+}
+.player-name-dvoiniki.active::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 6px 3px rgba(255, 255, 255, 0.8);
+  animation: moveStar 2s linear infinite;
+}
+
+@keyframes moveStar {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 0;
+    left: 100%;
+    transform: translate(-100%, 0);
+  }
+  50% {
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
+  }
+  75% {
+    top: 100%;
+    left: 0;
+    transform: translate(0, -100%);
+  }
+  100% {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+  }
 }
 
 .roll-button_kybik {
