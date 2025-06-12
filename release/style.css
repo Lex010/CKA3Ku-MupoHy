@@ -784,22 +784,21 @@ html {
   position: absolute;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #f0eef6, #ffffff);
+  background: linear-gradient(135deg, #f4f6ee, #ffffff);
   border: 1px solid var(--txtLeftBorder);
   border-radius: 5px;
   line-height: 60px;
   text-align: center;
   overflow: hidden;
-  line-height: 60px;
 }
 
-.side_kybik::before {
+/* .side_kybik::before {  **Анимация сторон кубика(нагружает устройство)**
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   height: 20px;
-  width: 120px; /* 2 × 60px */
+  width: 120px;
   background: rgba(255, 255, 255);
   transform: rotate(-20deg);
   animation: shine 3s infinite;
@@ -815,7 +814,7 @@ html {
     top: 100%;
     left: 100%;
   }
-}
+} */
 
 /* Грани кубика */
 .side_kybik:nth-child(1) {
@@ -842,7 +841,7 @@ html {
   transform: rotateX(730deg) rotateY(-10deg) rotateZ(-720deg);
 }
 .show-2_kybik {
-  transform: rotateX(-890deg) rotateY(10deg) rotateZ(1080deg);
+  transform: rotateX(-890deg) rotateY(10deg) rotateZ(1260deg);
 }
 .show-3_kybik {
   transform: rotateY(790deg) rotateY(10deg) rotateZ(730deg);
@@ -862,7 +861,7 @@ html {
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: #fc6462;
+  background-color: black;
   border-radius: 50%;
   box-shadow: inset 3px 3px #e00428;
 }
