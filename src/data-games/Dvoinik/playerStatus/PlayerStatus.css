@@ -1,8 +1,9 @@
 .players-status-dvoiniki {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .player-name-dvoiniki {
@@ -13,17 +14,18 @@
   color: white;
   transition: background-color 0.3s ease;
   overflow: hidden;
+  font-size: 12px;
 }
 
-.player-name-dvoiniki.inactive {
+.player-name-dvoiniki.pn-dvoiniki--inactive {
   background-color: gray;
 }
 
-.player-name-dvoiniki.active {
+.player-name-dvoiniki.pn-dvoiniki--active {
   background-color: green;
 }
 
-.player-name-dvoiniki.active::after {
+.player-name-dvoiniki.pn-dvoiniki--active::after {
   content: '';
   position: absolute;
   width: 3px;
@@ -33,7 +35,7 @@
   box-shadow: 0 0 6px 3px rgba(255, 255, 255, 0.8);
   animation: moveStar 3s linear infinite;
 }
-.player-name-dvoiniki.active::before {
+.player-name-dvoiniki.pn-dvoiniki--active::before {
   content: '';
   position: absolute;
   width: 3px;

@@ -15,18 +15,29 @@
 .t-o-content--dvoiniki {
   text-align: center;
   display: flex;
-  gap: 18px;
+  gap: 14px;
   flex-direction: column;
   align-items: center;
 }
 
 .t-o-content--dvoiniki p {
-  font-size: 26px;
+  font-size: 20px;
   background-color: var(--mainBackground);
   color: var(--h1AndHover);
   font-weight: bold;
-  padding: 18px 18px;
+  padding: 14px 14px;
   border-radius: 12px;
+  margin: 0;
+}
+
+.t-o-content--dvoiniki__wrap {
+  padding: 10px 20px;
+  background-color: var(--mainBackground);
+  border-radius: 10px 30px;
+}
+
+.t-o-content--dvoiniki__wrap div {
+    font-size: 16px;
 }
 
 .t-o-content--dvoiniki button {

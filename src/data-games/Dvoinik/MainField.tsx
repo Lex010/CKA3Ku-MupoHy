@@ -13,9 +13,15 @@ interface MainFieldDvoinikiProps {
   uniqueCardCount: number;
   fieldSize: number;
   playersCount: number;
+  playerNames: string[];
 }
 
-const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, fieldSize, playersCount }) => {
+const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
+  uniqueCardCount,
+  fieldSize,
+  playersCount,
+  playerNames,
+}) => {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedIndexes, setFlippedIndexes] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -102,7 +108,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, 
 
   return (
     <div className="modal-dvoiniki">
-      {playersCount > 1 && <PlayerStatus playersCount={playersCount} currentPlayer={currentPlayer} />}
+      {playersCount > 1 && <PlayerStatus playerNames={playerNames} currentPlayer={currentPlayer} />}
 
       <div className="card-grid-wrapper">
         <div className="card-grid">
@@ -127,7 +133,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({ uniqueCardCount, 
         {isComplete && <GameOverlay onRestart={initializeGame} />}
         {playersCount > 1 && showTurnOverlay && !isComplete && (
           <TurnOverlay
-            currentPlayer={currentPlayer}
+            playerName={playerNames[currentPlayer]}
             onClose={() => setShowTurnOverlay(false)}
             autoClose={autoCloseTurnOverlay}
             setAutoClose={setAutoCloseTurnOverlay}

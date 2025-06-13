@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import GameModal from '../GameModal';
 import HeaderDvoinik from './Header';
 import MainFieldDvoiniki from './MainField';
+import PlayerNames from './PlayerNames';
 
 const idDvoinikGame = {
   title: 'Двойник',
@@ -17,6 +18,7 @@ const Dvoinik: React.FC = () => {
   const [uniqueCardCount, setUniqueCardCount] = useState<number>(difficultyLevels[0]);
   const [fieldSiz, setFieldSize] = useState<number>(fieldSizes[0]);
   const [plaCount, setPlaCount] = useState<number>(playersCount[0]);
+  const [playerNames, setPlayerNames] = useState<string[]>([]); // Имена игроков
 
   const handleStartGame = () => {
     setIsModalOpen(true);
@@ -74,6 +76,7 @@ const Dvoinik: React.FC = () => {
             ))}
           </div>
         </div>
+        {plaCount > 1 && <PlayerNames playersCount={plaCount} onNamesChange={setPlayerNames} />}
       </details>
 
       <button className="start-button" onClick={handleStartGame}>
@@ -85,7 +88,12 @@ const Dvoinik: React.FC = () => {
           onClose={() => setIsModalOpen(false)}
           headerContent={<HeaderDvoinik />}
           gameFieldContent={
-            <MainFieldDvoiniki uniqueCardCount={uniqueCardCount} fieldSize={fieldSiz} playersCount={plaCount} />
+            <MainFieldDvoiniki
+              uniqueCardCount={uniqueCardCount}
+              fieldSize={fieldSiz}
+              playersCount={plaCount}
+              playerNames={playerNames}
+            />
           }
         />
       )}

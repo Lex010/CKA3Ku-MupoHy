@@ -2,18 +2,21 @@ import React from 'react';
 import './PlayerStatus.css';
 
 interface PlayerStatusProps {
-  playersCount: number;
+  playerNames: string[];
   currentPlayer: number;
 }
 
-const PlayerStatus: React.FC<PlayerStatusProps> = ({ playersCount, currentPlayer }) => {
-  if (playersCount <= 1) return null;
+const PlayerStatus: React.FC<PlayerStatusProps> = ({ playerNames, currentPlayer }) => {
+  if (playerNames.length <= 1) return null;
 
   return (
     <div className="players-status-dvoiniki">
-      {[...Array(playersCount)].map((_, index) => (
-        <div key={index} className={`player-name-dvoiniki ${currentPlayer === index ? 'active' : 'inactive'}`}>
-          Игрок {index + 1}
+      {playerNames.map((name, index) => (
+        <div
+          key={index}
+          className={`player-name-dvoiniki ${currentPlayer === index ? 'pn-dvoiniki--active' : 'pn-dvoiniki--inactive'}`}
+        >
+          {name}
         </div>
       ))}
     </div>

@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import '../css/TurnOverlay.css';
 
 interface TurnOverlayProps {
-  currentPlayer: number;
+  playerName: string;
   onClose: () => void;
   autoClose: boolean;
   setAutoClose: (value: boolean) => void;
 }
 
-const TurnOverlay: React.FC<TurnOverlayProps> = ({ currentPlayer, onClose, autoClose, setAutoClose }) => {
+const TurnOverlay: React.FC<TurnOverlayProps> = ({ playerName, onClose, autoClose, setAutoClose }) => {
   useEffect(() => {
     let timeout: NodeJS.Timeout;
     if (autoClose) {
@@ -26,7 +26,10 @@ const TurnOverlay: React.FC<TurnOverlayProps> = ({ currentPlayer, onClose, autoC
   return (
     <div className="turn-overlay--dvoiniki" onClick={handleBackgroundClick}>
       <div className="t-o-content--dvoiniki">
-        <p>Ход игрока {currentPlayer + 1}</p>
+        <p>Ход игрока</p>
+        <div className="t-o-content--dvoiniki__wrap">
+          <div className="player-name-dvoiniki pn-dvoiniki--active">{playerName}</div>
+        </div>
         <div className="tsLabel--dvoiniki-wrap">
           <label htmlFor="t-s__label--dvoiniki">Автозакрытие (1 сек)</label>
           <label className="close-label--dvoiniki">
