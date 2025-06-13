@@ -144,7 +144,7 @@ main {
   border: 2px solid;
   border-radius: 50%;
   padding: 0 4px;
-  cursor: 'help';
+  cursor: help;
   user-select: none;
 }
 
@@ -696,18 +696,29 @@ html {
 .t-o-content--dvoiniki {
   text-align: center;
   display: flex;
-  gap: 18px;
+  gap: 14px;
   flex-direction: column;
   align-items: center;
 }
 
 .t-o-content--dvoiniki p {
-  font-size: 26px;
+  font-size: 20px;
   background-color: var(--mainBackground);
   color: var(--h1AndHover);
   font-weight: bold;
-  padding: 18px 18px;
+  padding: 14px 14px;
   border-radius: 12px;
+  margin: 0;
+}
+
+.t-o-content--dvoiniki__wrap {
+  padding: 10px 20px;
+  background-color: var(--mainBackground);
+  border-radius: 10px 30px;
+}
+
+.t-o-content--dvoiniki__wrap div {
+  font-size: 16px;
 }
 
 .t-o-content--dvoiniki button {
@@ -777,8 +788,9 @@ input:checked + .slider__close-label--dvoiniki::before {
 .players-status-dvoiniki {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .player-name-dvoiniki {
@@ -789,17 +801,19 @@ input:checked + .slider__close-label--dvoiniki::before {
   color: white;
   transition: background-color 0.3s ease;
   overflow: hidden;
+  font-size: 12px;
+  cursor: default;
 }
 
-.player-name-dvoiniki.inactive {
+.player-name-dvoiniki.pn-dvoiniki--inactive {
   background-color: gray;
 }
 
-.player-name-dvoiniki.active {
+.player-name-dvoiniki.pn-dvoiniki--active {
   background-color: green;
 }
 
-.player-name-dvoiniki.active::after {
+.player-name-dvoiniki.pn-dvoiniki--active::after {
   content: '';
   position: absolute;
   width: 3px;
@@ -809,7 +823,7 @@ input:checked + .slider__close-label--dvoiniki::before {
   box-shadow: 0 0 6px 3px rgba(255, 255, 255, 0.8);
   animation: moveStar 3s linear infinite;
 }
-.player-name-dvoiniki.active::before {
+.player-name-dvoiniki.pn-dvoiniki--active::before {
   content: '';
   position: absolute;
   width: 3px;
@@ -847,6 +861,30 @@ input:checked + .slider__close-label--dvoiniki::before {
   }
 }
 
+.plaName-field--dvoiniki label {
+  font-size: 0.7rem;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.plaName-tooltip--dvoiniki {
+  display: inline;
+  background-color: var(--h1AndHover);
+}
+
+.page-title--dvoiniki {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.dvoiniki-title-tooltip .tooltip-box {
+    min-width: 250px;
+     margin-left: -80px; 
+}
 .roll-button_kybik {
   font-size: 18px;
   padding: 10px 20px;
