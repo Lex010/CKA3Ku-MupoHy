@@ -31,6 +31,6 @@ main {
   border: 2px solid;
   border-radius: 50%;
   padding: 0 4px;
-  cursor: 'help';
+  cursor: help;
   user-select: none;
 }

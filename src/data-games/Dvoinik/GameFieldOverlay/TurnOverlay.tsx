@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import '../css/TurnOverlay.css';
-import '../playerStatus/PlayerStatus.css';
+import '../PlayerSetting/playerStatus/PlayerStatus.css';
 
 interface TurnOverlayProps {
   playerName: string;

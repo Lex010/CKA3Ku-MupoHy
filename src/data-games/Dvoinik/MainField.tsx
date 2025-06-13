@@ -7,7 +7,7 @@ import { generateCards, Card } from './generateCards';
 import GameOverlay from './GameFieldOverlay/GameOverlay';
 import TurnOverlay from './GameFieldOverlay/TurnOverlay';
 import playerTurnManager from './playerTurnManager';
-import PlayerStatus from './playerStatus/PlayerStatus';
+import PlayerStatus from './PlayerSetting/playerStatus/PlayerStatus';
 
 interface MainFieldDvoinikiProps {
   uniqueCardCount: number;

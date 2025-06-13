@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Tooltip from '../../../utils/Tooltip';
+import '../css/PlayerNames.css';
 
 type PlayerNamesProps = {
   playersCount: number;
@@ -36,19 +38,27 @@ const PlayerNames: React.FC<PlayerNamesProps> = ({ playersCount, onNamesChange }
   }, [playersCount]);
 
   return (
-    <div className="plaName-inputs--dvoiniki">
-      {Array.from({ length: playersCount }, (_, index) => (
-        <div key={index} className="plaName-field--dvoiniki">
-          <label>Имя игрока {index + 1}:</label>
-          <input
-            type="text"
-            value={names[index] || ''}
-            onChange={(e) => handleNameChange(index, e.target.value)}
-            maxLength={10}
-            placeholder={defaultNames[index]}
-          />
-        </div>
-      ))}
+    <div className="plaName-inputs--dvoiniki difficulty-selection-dvoiniki">
+      <Tooltip text="Максимум 10 символов. Рус, англ и цифры. Минимум 1 символ.">
+        <span className="page-tooltipTriger plaName-tooltip--dvoiniki">?</span>
+      </Tooltip>
+      {Array.from({ length: playersCount }, (_, index) => {
+        const inputId = `plaName-id-dvoiniki-${index}`;
+        return (
+          <div key={index} className="plaName-field--dvoiniki">
+            <label htmlFor={inputId}>Имя игрока {index + 1}:</label>
+            <input
+              id={inputId}
+              name={inputId}
+              type="text"
+              value={names[index] || ''}
+              onChange={(e) => handleNameChange(index, e.target.value)}
+              maxLength={10}
+              placeholder={defaultNames[index]}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };

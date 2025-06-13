@@ -1,0 +1,12 @@
+.plaName-field--dvoiniki label {
+  font-size: 0.7rem;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.plaName-tooltip--dvoiniki {
+  display: inline;
+  background-color: var(--h1AndHover);
+}

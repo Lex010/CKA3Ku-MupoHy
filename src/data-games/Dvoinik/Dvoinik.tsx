@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import GameModal from '../GameModal';
 import HeaderDvoinik from './Header';
 import MainFieldDvoiniki from './MainField';
-import PlayerNames from './PlayerNames';
+import PlayerNames from './PlayerSetting/PlayerNames';
 import makeUniqueNames from './PlayerSetting/makeUniqueNames';
+import Tooltip from '../../utils/Tooltip';
+import './css/Dvoiniki.css';
 
 const idDvoinikGame = {
   title: 'Двойник',
@@ -30,7 +32,15 @@ const Dvoinik: React.FC = () => {
 
   return (
     <div>
-      <h1 className="page-title">{idDvoinikGame.title}</h1>
+      <h1 className="page-title page-title--dvoiniki">
+        {idDvoinikGame.title}{' '}
+        <Tooltip
+          text="Найди две одинаковые карточки *** В режиме для 2+ игроков ход остаётся у текущего игрока при нахождении парных карточек"
+          className="dvoiniki-title-tooltip"
+        >
+          <span className="page-tooltipTriger">?</span>
+        </Tooltip>
+      </h1>
       <details className="dvoiniki-details">
         <summary className="dvoiniki-summary">⚙️ Настройки поля</summary>
         <div className="difficulty-selection-dvoiniki">
