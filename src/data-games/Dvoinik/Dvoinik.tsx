@@ -3,6 +3,7 @@ import GameModal from '../GameModal';
 import HeaderDvoinik from './Header';
 import MainFieldDvoiniki from './MainField';
 import PlayerNames from './PlayerNames';
+import makeUniqueNames from './PlayerSetting/makeUniqueNames';
 
 const idDvoinikGame = {
   title: 'Двойник',
@@ -19,8 +20,11 @@ const Dvoinik: React.FC = () => {
   const [fieldSiz, setFieldSize] = useState<number>(fieldSizes[0]);
   const [plaCount, setPlaCount] = useState<number>(playersCount[0]);
   const [playerNames, setPlayerNames] = useState<string[]>([]); // Имена игроков
+  const [finalNames, setFinalNames] = useState<string[]>([]); // Проверка на уникальность имен игроков
 
   const handleStartGame = () => {
+    const unique = makeUniqueNames(playerNames);
+    setFinalNames(unique);
     setIsModalOpen(true);
   };
 
@@ -92,7 +96,7 @@ const Dvoinik: React.FC = () => {
               uniqueCardCount={uniqueCardCount}
               fieldSize={fieldSiz}
               playersCount={plaCount}
-              playerNames={playerNames}
+              playerNames={finalNames}
             />
           }
         />
