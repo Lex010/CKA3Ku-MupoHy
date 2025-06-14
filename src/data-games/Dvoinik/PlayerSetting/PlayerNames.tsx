@@ -10,11 +10,17 @@ type PlayerNamesProps = {
 const defaultNames = ['Первый', 'Второй', 'Третий'];
 
 const PlayerNames: React.FC<PlayerNamesProps> = ({ playersCount, onNamesChange }) => {
-  const [names, setNames] = useState<string[]>(defaultNames.slice(0, playersCount));
+  const [names, setNames] = useState<string[]>(Array(playersCount).fill(''));
 
-  // Валидация имени
+  useEffect(() => {
+    setNames(Array(playersCount).fill(''));
+  }, [playersCount]);
+
   const sanitizeName = (name: string, index: number): string => {
     const trimmed = name.trim();
+    if (!trimmed) {
+      return defaultNames[index];
+    }
     const valid = /^[a-zA-Zа-яА-ЯёЁ0-9 _\-!?.,]{1,10}$/u.test(trimmed);
     return valid ? trimmed : defaultNames[index];
   };
@@ -31,11 +37,6 @@ const PlayerNames: React.FC<PlayerNamesProps> = ({ playersCount, onNamesChange }
     const validated = names.map((name, index) => sanitizeName(name, index));
     onNamesChange(validated);
   }, [names, onNamesChange]);
-
-  useEffect(() => {
-    // Обновить количество полей, если изменилось число игроков
-    setNames(defaultNames.slice(0, playersCount));
-  }, [playersCount]);
 
   return (
     <div className="plaName-inputs--dvoiniki difficulty-selection-dvoiniki">
