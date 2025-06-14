@@ -110,22 +110,25 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
     <div className="modal-dvoiniki">
       {playersCount > 1 && <PlayerStatus playerNames={playerNames} currentPlayer={currentPlayer} />}
 
-      <div className="card-grid-wrapper">
-        <div className="card-grid">
+      <div className="card-grid-wrapper--dvoiniki">
+        <div className="card-grid--dvoiniki">
           {cards.map((card, index) => (
             <div
               key={card.id}
-              className={`card 
-              ${card.isFlipped || card.isMatched ? 'flipped' : ''} 
-              ${card.isMatchedAnimating ? 'matched-animating' : ''}
-              ${card.isMatched ? 'matched' : ''}`}
+              className={`card--dvoiniki 
+              ${card.isFlipped || card.isMatched ? 'flipped--dvoiniki' : ''} 
+              ${card.isMatchedAnimating ? 'matched-animating--dvoiniki' : ''}
+              ${card.isMatched ? 'matched--dvoiniki' : ''}`}
               onClick={() => handleCardClick(index)}
             >
-              {card.isFlipped || card.isMatched ? (
-                <img src={card.img} alt="character" className="card-image" />
-              ) : (
-                <img src={cardBack} alt="card back" className="card-back" />
-              )}
+              <div className="card-inner--dvoiniki">
+                <div className="card-front--dvoiniki">
+                  <img src={card.img} alt="character" className="card-image--dvoiniki" />
+                </div>
+                <div className="card-back--dvoiniki">
+                  <img src={cardBack} alt="card back" className="card-image--dvoiniki" />
+                </div>
+              </div>
             </div>
           ))}
         </div>

@@ -28,7 +28,7 @@
   transform: scale(1.05);
   background-color: var(--h1AndHover);
 }
-.card-grid-wrapper {
+.card-grid-wrapper--dvoiniki {
   position: relative;
 
   -webkit-user-select: none;

@@ -1,11 +1,11 @@
 .page-title--dvoiniki {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .dvoiniki-title-tooltip .tooltip-box {
-    min-width: 250px;
-     margin-left: -80px; 
+  min-width: 250px;
+  margin-left: -80px;
 }
