@@ -4,6 +4,7 @@ import HeaderDvoinik from './Header';
 import MainFieldDvoiniki from './MainField';
 import PlayerNames from './PlayerSetting/PlayerNames';
 import makeUniqueNames from './PlayerSetting/makeUniqueNames';
+import { PlayerStats } from './PlayerSetting/playerStatsManager';
 import Tooltip from '../../utils/Tooltip';
 import './css/Dvoiniki.css';
 
@@ -23,6 +24,7 @@ const Dvoinik: React.FC = () => {
   const [plaCount, setPlaCount] = useState<number>(playersCount[0]);
   const [playerNames, setPlayerNames] = useState<string[]>([]); // Имена игроков
   const [finalNames, setFinalNames] = useState<string[]>([]); // Проверка на уникальность имен игроков
+  const [playerStats, setPlayerStatsExternal] = useState<PlayerStats[]>([]); // Ходы игроков
 
   const handleStartGame = () => {
     const unique = makeUniqueNames(playerNames);
@@ -100,13 +102,24 @@ const Dvoinik: React.FC = () => {
       {isModalOpen && uniqueCardCount !== null && (
         <GameModal
           onClose={() => setIsModalOpen(false)}
-          headerContent={<HeaderDvoinik />}
+          headerContent={
+            <HeaderDvoinik
+              playerStats={playerStats.map((stat, i) => ({
+                name: finalNames[i],
+                matches: stat.matchedPairs,
+                wins: stat.totalWins,
+                mistakes: stat.mistakes,
+              }))}
+              playerNames={finalNames}
+            />
+          }
           gameFieldContent={
             <MainFieldDvoiniki
               uniqueCardCount={uniqueCardCount}
               fieldSize={fieldSiz}
               playersCount={plaCount}
               playerNames={finalNames}
+              onStatsUpdate={setPlayerStatsExternal}
             />
           }
         />

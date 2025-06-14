@@ -1,0 +1,33 @@
+.header-dvoinik-wrapper {
+  position: relative;
+}
+
+.header-toggle-button--dvoinik {
+  background-color: var(--gameMenuBtnSelected);
+  font-weight: bold;
+  color: var(--navBtnTxt);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.header-stats-popup--dvoinik {
+  position: absolute;
+  top: 40px;
+  right: -150px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  z-index: 11;
+  width: 250px;
+}
+
+.header-player-stat--dvoinik {
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--txtLeftBorder);
+  font-size: 13px;
+}

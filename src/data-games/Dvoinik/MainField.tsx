@@ -8,12 +8,21 @@ import GameOverlay from './GameFieldOverlay/GameOverlay';
 import TurnOverlay from './GameFieldOverlay/TurnOverlay';
 import playerTurnManager from './playerTurnManager';
 import PlayerStatus from './PlayerSetting/playerStatus/PlayerStatus';
+import {
+  PlayerStats,
+  initStats,
+  addMatchedPair,
+  addMistake,
+  handleGameComplete,
+  resetRoundStats,
+} from './PlayerSetting/playerStatsManager';
 
 interface MainFieldDvoinikiProps {
   uniqueCardCount: number;
   fieldSize: number;
   playersCount: number;
   playerNames: string[];
+  onStatsUpdate: (stats: PlayerStats[]) => void;
 }
 
 const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
@@ -21,6 +30,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
   fieldSize,
   playersCount,
   playerNames,
+  onStatsUpdate,
 }) => {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedIndexes, setFlippedIndexes] = useState<number[]>([]);
@@ -29,6 +39,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
   const { currentPlayer, nextPlayer } = playerTurnManager(playersCount);
   const [showTurnOverlay, setShowTurnOverlay] = useState(false);
   const [autoCloseTurnOverlay, setAutoCloseTurnOverlay] = useState(false); // Для окна переключения игроков
+  const [playerStats, setPlayerStats] = useState<PlayerStats[]>(initStats(playersCount)); // Игровые данные пользователей(ходы,победы)
 
   const initializeGame = () => {
     const images = gameCharDvoiniki.map((char) => char.img);
@@ -41,6 +52,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
         setFlippedIndexes([]);
         setIsComplete(false);
         setIsLoading(false);
+        setPlayerStats((prev) => resetRoundStats(prev)); // Сброс раундовой статистики
       })
       .catch((err) => {
         throw new Error(`Ошибка загрузки изображений: ${err}`);
@@ -55,9 +67,14 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
     if (!isLoading && cards.every((c) => c.isMatched)) {
       setTimeout(() => {
         setIsComplete(true);
+        setPlayerStats((prev) => handleGameComplete(prev)); // Подсчёт победителей
       }, 1000);
     }
   }, [cards, isLoading]);
+
+  useEffect(() => {
+    onStatsUpdate(playerStats); // каждый раз, когда обновляется playerStats
+  }, [playerStats]);
 
   const handleCardClick = (index: number) => {
     if (isComplete) return;
@@ -78,6 +95,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
         newCards[first].isMatchedAnimating = true;
         newCards[second].isMatchedAnimating = true;
         setCards([...newCards]);
+        setPlayerStats((prev) => addMatchedPair(prev, currentPlayer)); // Успешная пара
         setTimeout(() => {
           newCards[first].isMatchedAnimating = false;
           newCards[second].isMatchedAnimating = false;
@@ -93,6 +111,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
           newCards[second].isFlipped = false;
           setCards([...newCards]);
           setFlippedIndexes([]);
+          setPlayerStats((prev) => addMistake(prev, currentPlayer)); // Не угаданная пара(ошибка)
           if (playersCount > 1 && !isComplete) {
             nextPlayer(); // Ход передаётся
             setShowTurnOverlay(true);
