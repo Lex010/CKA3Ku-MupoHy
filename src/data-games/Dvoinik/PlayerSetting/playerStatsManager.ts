@@ -2,6 +2,7 @@ export interface PlayerStats {
   matchedPairs: number; // пары в текущем раунде
   totalWins: number; // общее число побед
   mistakes: number; // ошибки в раунде
+  winCounted?: boolean;
 }
 
 export const initStats = (playersCount: number): PlayerStats[] =>
@@ -27,14 +28,19 @@ export const addMistake = (stats: PlayerStats[], playerIndex: number): PlayerSta
 
 export const handleGameComplete = (stats: PlayerStats[]): PlayerStats[] => {
   const maxPairs = Math.max(...stats.map((p) => p.matchedPairs || 0));
+
   return stats.map((p) => {
     const isWinner = p.matchedPairs === maxPairs && maxPairs > 0;
-    return {
-      ...p,
-      totalWins: isWinner ? p.totalWins + 1 : p.totalWins,
-      matchedPairs: 0,
-      mistakes: 0,
-    };
+
+    if (isWinner && !p.winCounted) {
+      return {
+        ...p,
+        totalWins: p.totalWins + 1,
+        winCounted: true,
+      };
+    }
+
+    return p;
   });
 };
 
@@ -42,6 +48,7 @@ export const resetRoundStats = (stats: PlayerStats[]): PlayerStats[] => {
   return stats.map((p) => ({
     ...p,
     matchedPairs: 0,
-    // optionally: mistakes: 0
+    mistakes: 0,
+    winCounted: false,
   }));
 };
