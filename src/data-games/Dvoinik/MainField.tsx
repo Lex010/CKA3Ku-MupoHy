@@ -40,6 +40,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
   const [showTurnOverlay, setShowTurnOverlay] = useState(false);
   const [autoCloseTurnOverlay, setAutoCloseTurnOverlay] = useState(false); // Для окна переключения игроков
   const [playerStats, setPlayerStats] = useState<PlayerStats[]>(initStats(playersCount)); // Игровые данные пользователей(ходы,победы)
+  const [winners, setWinners] = useState<string[]>([]); // Имена победителей
 
   const initializeGame = () => {
     const images = gameCharDvoiniki.map((char) => char.img);
@@ -67,7 +68,12 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
     if (!isLoading && cards.every((c) => c.isMatched)) {
       setTimeout(() => {
         setIsComplete(true);
-        setPlayerStats((prev) => handleGameComplete(prev)); // Подсчёт победителей
+        setPlayerStats((prev) => {
+          // Обновляю победителей и счет побед
+          const { updatedStats, winners: winnersResult } = handleGameComplete(prev, playerNames);
+          setWinners(winnersResult);
+          return updatedStats;
+        });
       }, 1000);
     }
   }, [cards, isLoading]);
@@ -152,7 +158,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
           ))}
         </div>
 
-        {isComplete && <GameOverlay onRestart={initializeGame} />}
+        {isComplete && <GameOverlay onRestart={initializeGame} winners={winners} />}
         {playersCount > 1 && showTurnOverlay && !isComplete && (
           <TurnOverlay
             playerName={playerNames[currentPlayer]}

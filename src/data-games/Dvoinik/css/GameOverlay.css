@@ -8,8 +8,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 20px;
   z-index: 10;
   border-radius: 10px;
+}
+
+.winners-announcement--dvoiniki {
+  background: var(--AllFairyTalesBackground);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px;
+  border-radius: 5px;
+  border: 2px solid var(--txtLeftBorder);
+  text-align: center;
+}
+
+.winners-announcement--dvoiniki span:first-child {
+  color: var(--gameMenuBtnSelected);
+}
+
+.winners-announcement--dvoiniki span:nth-child(2) {
+  color: var(--AllFairyTalesTxt);
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .restart-button-dvoiniki {
