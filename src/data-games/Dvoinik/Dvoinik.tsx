@@ -37,7 +37,7 @@ const Dvoinik: React.FC = () => {
       <h1 className="page-title page-title--dvoiniki">
         {idDvoinikGame.title}{' '}
         <Tooltip
-          text="Найди две одинаковые карточки *** В режиме для 2+ игроков ход остаётся у текущего игрока при нахождении парных карточек"
+          text="Найди две одинаковые карточки *** В режиме для 2+ игроков ход остаётся у текущего игрока при нахождении парных карточек. ПОБЕЖДАЕТ игрок с наибольшим счётом. При равенстве - все с этим результатом."
           className="dvoiniki-title-tooltip"
         >
           <span className="page-tooltipTriger">?</span>
