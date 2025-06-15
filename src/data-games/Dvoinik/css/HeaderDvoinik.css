@@ -31,3 +31,41 @@
   border-bottom: 1px solid var(--txtLeftBorder);
   font-size: 13px;
 }
+.icon-check--dvoinik {
+  display: inline-block;
+  width: 3px;
+  height: 12px;
+  margin-right: 8px;
+  border: solid green;
+  border-width: 0 2px 2px 0;
+  transform: rotate(35deg);
+  padding: 2px;
+  margin-left: 10px;
+}
+
+.icon-cross--dvoinik {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.icon-cross--dvoinik::before,
+.icon-cross--dvoinik::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  height: 16px;
+  width: 2px;
+  background-color: red;
+}
+
+.icon-cross--dvoinik::before {
+  transform: rotate(45deg);
+}
+
+.icon-cross--dvoinik::after {
+  transform: rotate(-45deg);
+}
