@@ -96,6 +96,9 @@
   justify-self: center;
   margin: 20px 0;
   cursor: pointer;
+  background-color: var(--h1AndHoverOPACITY);
+  padding: 5px;
+  border-radius: 6px;
 }
 
 .dvoiniki-summary {
@@ -106,10 +109,9 @@
 }
 
 .difficulty-selection-dvoiniki {
-  margin: 20px 0;
+  margin: 5px 0;
   text-align: center;
   padding: 10px 10px;
-  border: 2px solid var(--txtLeftBorder);
   border-radius: 1rem;
   background-color: var(--txtBackground);
 }
