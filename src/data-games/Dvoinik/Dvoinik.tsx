@@ -6,6 +6,7 @@ import PlayerNames from './PlayerSetting/PlayerNames';
 import makeUniqueNames from './PlayerSetting/makeUniqueNames';
 import { PlayerStats } from './PlayerSetting/playerStatsManager';
 import Tooltip from '../../utils/Tooltip';
+import { getAvailableCardCounts } from './GameMenu/getAvailableCardCounts';
 import './css/Dvoiniki.css';
 
 const idDvoinikGame = {
@@ -25,11 +26,20 @@ const Dvoinik: React.FC = () => {
   const [playerNames, setPlayerNames] = useState<string[]>([]); // Имена игроков
   const [finalNames, setFinalNames] = useState<string[]>([]); // Проверка на уникальность имен игроков
   const [playerStats, setPlayerStatsExternal] = useState<PlayerStats[]>([]); // Ходы игроков
+  const availableCardCounts = getAvailableCardCounts(fieldSiz);
 
   const handleStartGame = () => {
     const unique = makeUniqueNames(playerNames);
     setFinalNames(unique);
     setIsModalOpen(true);
+  };
+
+  const handleFieldSizeChange = (newSize: number) => {
+    setFieldSize(newSize);
+    const availableCounts = getAvailableCardCounts(newSize);
+    if (!availableCounts.includes(uniqueCardCount)) {
+      setUniqueCardCount(availableCounts[0]); // авто-выбор первого доступного
+    }
   };
 
   return (
@@ -48,7 +58,7 @@ const Dvoinik: React.FC = () => {
         <div className="difficulty-selection-dvoiniki">
           <p>Количество уникальных карточек (меньше = легче):</p>
           <div className="difficulty-buttons-dvoiniki">
-            {difficultyLevels.map((count) => (
+            {availableCardCounts.map((count) => (
               <button
                 key={count}
                 className={`difficulty-button-dvoiniki ${uniqueCardCount === count ? 'selected' : ''}`}
@@ -67,7 +77,7 @@ const Dvoinik: React.FC = () => {
               <button
                 key={size}
                 className={`difficulty-button-dvoiniki ${fieldSiz === size ? 'selected' : ''}`}
-                onClick={() => setFieldSize(size)}
+                onClick={() => handleFieldSizeChange(size)}
               >
                 {size}
               </button>

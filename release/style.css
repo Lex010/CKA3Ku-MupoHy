@@ -3,6 +3,7 @@
   --navBtnTxt: white;
 
   --h1AndHover: #ff6f61;
+  --h1AndHoverOPACITY: #ff6e6186;
   --mainBackground: #fff8f0;
   --txtBackground: #fff;
   --txtLeftBorder: #ffb347;
@@ -684,6 +685,9 @@ html {
   justify-self: center;
   margin: 20px 0;
   cursor: pointer;
+  background-color: var(--h1AndHoverOPACITY);
+  padding: 5px;
+  border-radius: 6px;
 }
 
 .dvoiniki-summary {
@@ -694,10 +698,9 @@ html {
 }
 
 .difficulty-selection-dvoiniki {
-  margin: 20px 0;
+  margin: 5px 0;
   text-align: center;
   padding: 10px 10px;
-  border: 2px solid var(--txtLeftBorder);
   border-radius: 1rem;
   background-color: var(--txtBackground);
 }

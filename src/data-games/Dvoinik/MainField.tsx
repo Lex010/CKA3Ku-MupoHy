@@ -6,7 +6,7 @@ import preloadImages from '../../utils/preloadImages';
 import { generateCards, Card } from './generateCards';
 import GameOverlay from './GameFieldOverlay/GameOverlay';
 import TurnOverlay from './GameFieldOverlay/TurnOverlay';
-import playerTurnManager from './playerTurnManager';
+import playerTurnManager from './PlayerSetting/playerTurnManager';
 import PlayerStatus from './PlayerSetting/playerStatus/PlayerStatus';
 import {
   PlayerStats,
