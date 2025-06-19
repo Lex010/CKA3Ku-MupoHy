@@ -978,6 +978,104 @@ input:checked + .slider__close-label--dvoiniki::before {
   }
 }
 
+.loading-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-element__text {
+  font-size: 2rem;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+}
+
+.loading-element__core {
+  background: linear-gradient(120deg, var(--h1AndHoverOPACITY) 30%, var(--h1AndHover) 70%);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: loading-element__wave 2.5s linear infinite;
+  margin-right: 4px;
+}
+
+@keyframes loading-element__wave {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* Точки */
+
+.loading-element__dot {
+  color: var(--h1AndHover);
+  font-weight: bold;
+  opacity: 0;
+}
+
+.loading-element__dot--1 {
+  animation: loading-element__dot1 1.2s infinite steps(1, end);
+}
+
+@keyframes loading-element__dot1 {
+  0% {
+    opacity: 1;
+  }
+  78.9% {
+    opacity: 1;
+  }
+  79% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.loading-element__dot--2 {
+  animation: loading-element__dot2 1.2s infinite steps(1, end);
+}
+
+@keyframes loading-element__dot2 {
+  0%,
+  21% {
+    opacity: 0;
+  }
+  22%,
+  78.9% {
+    opacity: 1;
+  }
+  79%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.loading-element__dot--3 {
+  animation: loading-element__dot3 1.2s infinite steps(1, end);
+}
+
+@keyframes loading-element__dot3 {
+  0%,
+  42% {
+    opacity: 0;
+  }
+  43%,
+  78.9% {
+    opacity: 1;
+  }
+  79%,
+  100% {
+    opacity: 0;
+  }
+}
+
 .plaName-field--dvoiniki label {
   font-size: 0.7rem;
   margin: 5px;
