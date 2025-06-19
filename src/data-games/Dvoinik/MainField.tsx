@@ -16,6 +16,7 @@ import {
   handleGameComplete,
   resetRoundStats,
 } from './PlayerSetting/playerStatsManager';
+import LoadingElement from '../../utils/LoadingPage/LoadingElement';
 
 interface MainFieldDvoinikiProps {
   uniqueCardCount: number;
@@ -128,7 +129,7 @@ const MainFieldDvoiniki: React.FC<MainFieldDvoinikiProps> = ({
   };
 
   if (isLoading) {
-    return <div id="h1">Загрузка...</div>;
+    return <LoadingElement />;
   }
 
   return (

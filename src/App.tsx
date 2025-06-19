@@ -6,6 +6,7 @@ import MainPage from './header-mainPage/MainPage';
 import { mainData } from './site-manager-object/mainData';
 import userLogin from './firebase/userLogin';
 import { DynamicPageTitle } from './utils/DynamicPageTitle';
+import LoadingElement from './utils/LoadingPage/LoadingElement';
 
 const AppContent = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const AppContent = () => {
       <Header goHome={() => navigate('/')} />
       <main>
         {Object.keys(mainData).length === 0 ? (
-          <div id="h1">Загрузка...</div>
+          <LoadingElement />
         ) : (
           <Routes>
             <Route path="/" element={<MainPage />} />
