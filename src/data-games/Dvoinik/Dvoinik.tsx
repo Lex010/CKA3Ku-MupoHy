@@ -55,20 +55,6 @@ const Dvoinik: React.FC = () => {
       </h1>
       <details className="dvoiniki-details">
         <summary className="dvoiniki-summary">⚙️ Настройки поля</summary>
-        <div className="difficulty-selection-dvoiniki">
-          <p>Количество уникальных карточек (меньше = легче):</p>
-          <div className="difficulty-buttons-dvoiniki">
-            {availableCardCounts.map((count) => (
-              <button
-                key={count}
-                className={`difficulty-button-dvoiniki ${uniqueCardCount === count ? 'selected' : ''}`}
-                onClick={() => setUniqueCardCount(count)}
-              >
-                {count}
-              </button>
-            ))}
-          </div>
-        </div>
 
         <div className="difficulty-selection-dvoiniki">
           <p>Размер поля:</p>
@@ -80,6 +66,21 @@ const Dvoinik: React.FC = () => {
                 onClick={() => handleFieldSizeChange(size)}
               >
                 {size}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="difficulty-selection-dvoiniki">
+          <p>Количество уникальных карточек (меньше = легче):</p>
+          <div className="difficulty-buttons-dvoiniki">
+            {availableCardCounts.map((count) => (
+              <button
+                key={count}
+                className={`difficulty-button-dvoiniki ${uniqueCardCount === count ? 'selected' : ''}`}
+                onClick={() => setUniqueCardCount(count)}
+              >
+                {count}
               </button>
             ))}
           </div>
