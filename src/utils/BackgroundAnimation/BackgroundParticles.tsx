@@ -7,9 +7,6 @@ const BackgroundParticles: React.FC<{ children?: React.ReactNode }> = ({ childre
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Храним частицы между монтированиями
-  const particlesRef = useRef<{ stars: Star[]; satellites: Satellite[] } | null>(null);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
@@ -27,18 +24,13 @@ const BackgroundParticles: React.FC<{ children?: React.ReactNode }> = ({ childre
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Создаем частицы, только если их еще нет в кеше
-    if (!particlesRef.current) {
-      particlesRef.current = {
-        stars: Array.from({ length: 100 }, () => new Star(ctx, canvas.width, canvas.height)),
-        satellites: Array.from({ length: 10 }, () => new Satellite(canvas, ctx)),
-      };
-    }
+    const stars: Star[] = Array.from({ length: 0 }, () => new Star(ctx, canvas.width, canvas.height));
+    const satellites: Satellite[] = Array.from({ length: 0 }, () => new Satellite(canvas, ctx));
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particlesRef.current!.stars.forEach((star) => star.draw());
-      particlesRef.current!.satellites.forEach((sat) => sat.update());
+      stars.forEach((star) => star.draw());
+      satellites.forEach((sat) => sat.update());
       requestAnimationFrame(animate);
     };
 
