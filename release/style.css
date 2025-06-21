@@ -119,7 +119,7 @@ main {
   padding: 30px;
   background: var(--mainBackground);
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
   position: relative;
 }
 
@@ -1410,7 +1410,8 @@ input:checked + .slider__MUP::before {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: linear-gradient(120deg, #87CEEB, #ffffff);
+  background: linear-gradient(to bottom, #87ceeb 0%, #e0f6ff 100%);
+  /* background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%); */
   top: 0;
   left: 0;
   border-radius: 20px;
