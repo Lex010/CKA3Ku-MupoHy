@@ -25,7 +25,7 @@ const BackgroundParticles: React.FC<{ children?: React.ReactNode }> = ({ childre
     resizeCanvas();
 
     const stars: Star[] = Array.from({ length: 1 }, () => new Star(ctx, canvas.width, canvas.height));
-    const satellites: Satellite[] = Array.from({ length: 1 }, () => new Satellite(canvas, ctx));
+    const satellites: Satellite[] = Array.from({ length: 10 }, () => new Satellite(canvas, ctx));
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
