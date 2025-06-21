@@ -44,8 +44,8 @@ export default class Satellite {
     this.ctx.save();
     this.ctx.beginPath();
     this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    this.ctx.shadowColor = this.color;
-    this.ctx.shadowBlur = 8;
+    // this.ctx.shadowColor = this.color;
+    // this.ctx.shadowBlur = 8;
     this.ctx.fillStyle = this.color;
     this.ctx.fill();
     this.ctx.closePath();

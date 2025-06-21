@@ -4,7 +4,7 @@
   height: 100%;
   overflow: hidden;
   background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 100%);
-  /* background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%); */
+  background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
   top: 0;
   left: 0;
   border-radius: 20px;
