@@ -4,21 +4,21 @@ import './BackgroundClouds.css';
 const BackgroundClouds: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
     <div className="container">
-      <div className="clouds">
+      <div className="background-animation">
         {Array.from({ length: 10 }).map((_, i) => (
           <div
             key={i}
-            className={`cloud ${i % 2 === 0 ? 'foreground' : 'background'}`}
+            className={`background-animation__cloud ${i % 2 === 0 ? 'background-animation__cloud--foreground' : 'background-animation__cloud--background'}`}
             style={{
-              top: `${i * 6}%`,
+              top: `${i * 9}%`,
               animationDelay: `${(-120 / 6.5) * (i + 1)}s`,
               animationDuration: i % 2 === 0 ? `${120 - i * 4}s` : `${120 * 1.25 - i * 4}s`,
-              height: i % 2 === 0 ? `${5 + i * 0.5}%` : `${10 / 1.1 - i * 0.25}%`,
+              height: i % 2 === 0 ? `${5 + i * 1.5}%` : `${10 / 1.1 - i * 2.25}%`,
             }}
           />
         ))}
       </div>
-      <div className="content">{children}</div>
+      <div className="background-animation__content">{children}</div>
     </div>
   );
 };
