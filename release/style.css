@@ -1405,31 +1405,3 @@ input:checked + .slider__MUP::before {
   margin-bottom: 20px;
 }
 
-.background-particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 100%);
-  /* background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%); */
-  top: 0;
-  left: 0;
-  border-radius: 20px;
-}
-
-.background-particles-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.background-particles-content {
-  position: relative;
-  padding: 30px;
-  /* z-index: 1; */
-}
-

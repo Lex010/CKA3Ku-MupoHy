@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { mainData } from '../site-manager-object/mainData';
 import Tooltip from '../utils/Tooltip';
-import BackgroundParticles from '../utils/BackgroundAnimation/BackgroundParticles';
+// import BackgroundParticles from '../utils/BackgroundAnimation/BackgroundParticles';
 
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const MainPage: React.FC = () => {
   const menuItems = Object.values(mainData).filter((item) => item.type === 'menu');
 
   return (
-    <BackgroundParticles>
+    // <BackgroundParticles>
       <div>
         <h1 className="page-title">
           Главная - "МИР"{' '}
@@ -31,7 +31,7 @@ const MainPage: React.FC = () => {
           ))}
         </div>
       </div>
-    </BackgroundParticles>
+    // </BackgroundParticles>
   );
 };
 
