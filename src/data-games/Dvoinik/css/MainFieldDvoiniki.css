@@ -36,6 +36,8 @@
   position: relative;
   transition: transform 0.6s;
   transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  will-change: transform;
 }
 
 .card--dvoiniki.flipped--dvoiniki .card-inner--dvoiniki {
@@ -59,6 +61,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  backface-visibility: hidden;
 }
 
 .card-front--dvoiniki {
