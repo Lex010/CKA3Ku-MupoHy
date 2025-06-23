@@ -1,7 +1,11 @@
 import React from 'react';
+import FlyingBooks from './StoryPage/FlyingBooks';
 import './BackgroundClouds.css';
 
-const BackgroundClouds: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+const BackgroundClouds: React.FC<{ children?: React.ReactNode; withFlyingBooks?: boolean }> = ({
+  children,
+  withFlyingBooks = false,
+}) => {
   return (
     <div className="background-animation__container">
       <div className="background-animation">
@@ -17,6 +21,7 @@ const BackgroundClouds: React.FC<{ children?: React.ReactNode }> = ({ children }
             }}
           />
         ))}
+        {withFlyingBooks && <FlyingBooks />}
       </div>
       <div className="background-animation__content">{children}</div>
     </div>

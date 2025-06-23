@@ -1,0 +1,75 @@
+.flying-books__scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.flying-books__book {
+  position: absolute;
+  animation: flying-books__fly calc(12s + var(--random) * 6s) calc(var(--random) * -100s) infinite linear;
+  width: 80px;
+  height: 60px;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.flying-books__page {
+  position: absolute;
+  width: 40px; /* Корректировать если страницы книги не ровно прилегают при махе  */
+  height: 60px;
+  object-fit: cover;
+  background-color: #e8e0c8;
+  border: 1px solid #333;
+  /* box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), 4px 0 5px rgba(0, 0, 0, 0.3); */
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+}
+
+.flying-books__left {
+  left: 0;
+  transform-origin: right center;
+  animation: flying-books__flap 0.5s ease-in-out infinite alternate;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  padding: 10px 5px;
+}
+
+.flying-books__right {
+  right: 0;
+  transform-origin: left center;
+  animation: flying-books__flap 0.5s ease-in-out infinite alternate-reverse;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.flying-books__right span {
+  color: red;
+}
+.flying-books__right p {
+  font-size: 8px;
+}
+
+/* Синхронная анимация закрытия-открытия */
+@keyframes flying-books__flap {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(30deg);
+  }
+}
+
+/* Эффект полета */
+@keyframes flying-books__fly {
+  0% {
+    transform: rotateX(60deg) rotate(calc(var(--random) * 360deg)) translateX(200px) translateZ(-70vh);
+  }
+  100% {
+    transform: rotateX(60deg) rotate(calc(var(--random) * 360deg - 720deg)) translateX(200px) translateZ(70vh);
+  }
+}
