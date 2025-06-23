@@ -3,7 +3,7 @@ import './BackgroundClouds.css';
 
 const BackgroundClouds: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="container">
+    <div className="background-animation__container">
       <div className="background-animation">
         {Array.from({ length: 10 }).map((_, i) => (
           <div
