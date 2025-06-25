@@ -1,0 +1,188 @@
+body {
+  --border-color: red;
+  --background-color: #333;
+  --car-color: var(--border-color);
+  --spin-deg: 36deg;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(2px, 1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(calc(var(--spin-deg) * 10));
+  }
+}
+
+@keyframes strikes {
+  from {
+    left: 25px;
+  }
+  to {
+    left: -80px;
+    opacity: 0;
+  }
+}
+
+@keyframes speed {
+  0% {
+    transform: translate(2px, 1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.car-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+.car {
+  position: relative;
+  width: 117px;
+  height: 42px;
+  left: 92px;
+  top: 70px;
+}
+
+.strike {
+  position: absolute;
+  width: 11px;
+  height: 1px;
+  background: var(--car-color);
+  animation: strikes 0.2s linear infinite;
+}
+
+.strike2 {
+  top: 11px;
+  animation-delay: 0.05s;
+}
+.strike3 {
+  top: 22px;
+  animation-delay: 0.1s;
+}
+.strike4 {
+  top: 33px;
+  animation-delay: 0.15s;
+}
+.strike5 {
+  top: 44px;
+  animation-delay: 0.2s;
+}
+
+.carDetail {
+  position: absolute;
+  display: block;
+  background: var(--car-color);
+  animation: speed 0.5s linear infinite;
+}
+
+.spoiler {
+  width: 0;
+  height: 0;
+  top: 7px;
+  background: none;
+  border: 20px solid transparent;
+  border-bottom: 8px solid var(--car-color);
+  border-left: 20px solid var(--car-color);
+}
+
+.back {
+  height: 20px;
+  width: 92px;
+  top: 15px;
+  left: 0px;
+}
+
+.center {
+  height: 35px;
+  width: 75px;
+  left: 12px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 45px 40px;
+  border: 4px solid var(--car-color);
+  background: none;
+  box-sizing: border-box;
+}
+
+.center1 {
+  height: 35px;
+  width: 35px;
+  left: 12px;
+  border-top-left-radius: 30px;
+}
+
+.front {
+  height: 20px;
+  width: 50px;
+  top: 15px;
+  left: 67px;
+  border-top-right-radius: 50px 40px;
+  border-bottom-right-radius: 10px;
+}
+
+.wheel {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  top: 20px;
+  left: 12px;
+  border: 3px solid var(--background-color);
+  background: linear-gradient(45deg, transparent 45%, var(--border-color) 46%, var(--border-color) 54%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, var(--border-color) 46%, var(--border-color) 54%, transparent 55%),
+    linear-gradient(90deg, transparent 45%, var(--border-color) 46%, var(--border-color) 54%, transparent 55%),
+    linear-gradient(0deg, transparent 45%, var(--border-color) 46%, var(--border-color) 54%, transparent 55%),
+    radial-gradient(var(--border-color) 29%, transparent 30%, transparent 50%, var(--border-color) 51%),
+    var(--background-color);
+  animation-name: spin;
+}
+
+.wheel2 {
+  left: 82px;
+}
+
+/*  */
+.car-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.flying-car {
+  position: absolute;
+  top: 50%;
+  animation: fly 4s linear forwards;
+}
+
+.flying-car.left {
+  left: -200px;
+  animation-name: fly-right;
+}
+
+.flying-car.right {
+  right: 0;
+  animation-name: fly-left;
+}
+
+@keyframes fly-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(120vw);
+  }
+}
+
+@keyframes fly-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-120vw);
+  }
+}
