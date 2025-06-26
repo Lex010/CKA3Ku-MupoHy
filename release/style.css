@@ -592,192 +592,113 @@ html {
   }
 }
 
-body {
-  --border-color: red;
-  --background-color: #333;
-  --car-color: var(--border-color);
-  --spin-deg: 36deg;
-}
-
-@keyframes spin {
-  0% {
-    transform: translate(2px, 1px) rotate(0deg);
-  }
-  100% {
-    transform: translate(1px, -2px) rotate(calc(var(--spin-deg) * 10));
-  }
-}
-
-@keyframes strikes {
-  from {
-    left: 25px;
-  }
-  to {
-    left: -80px;
-    opacity: 0;
-  }
-}
-
-@keyframes speed {
-  0% {
-    transform: translate(2px, 1px) rotate(0deg);
-  }
-  100% {
-    transform: translate(1px, -2px) rotate(-1deg);
-  }
-}
-
-.car-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-}
-
-.car {
-  position: relative;
-  width: 117px;
-  height: 42px;
-  left: 92px;
-  top: 70px;
-}
-
-.strike {
-  position: absolute;
-  width: 11px;
-  height: 1px;
-  background: var(--car-color);
-  animation: strikes 0.2s linear infinite;
-}
-
-.strike2 {
-  top: 11px;
-  animation-delay: 0.05s;
-}
-.strike3 {
-  top: 22px;
-  animation-delay: 0.1s;
-}
-.strike4 {
-  top: 33px;
-  animation-delay: 0.15s;
-}
-.strike5 {
-  top: 44px;
-  animation-delay: 0.2s;
-}
-
-.carDetail {
-  position: absolute;
-  display: block;
-  background: var(--car-color);
-  animation: speed 0.5s linear infinite;
-}
-
-.spoiler {
-  width: 0;
-  height: 0;
-  top: 7px;
-  background: none;
-  border: 20px solid transparent;
-  border-bottom: 8px solid var(--car-color);
-  border-left: 20px solid var(--car-color);
-}
-
-.back {
-  height: 20px;
-  width: 92px;
-  top: 15px;
-  left: 0px;
-}
-
-.center {
-  height: 35px;
-  width: 75px;
-  left: 12px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 45px 40px;
-  border: 4px solid var(--car-color);
-  background: none;
-  box-sizing: border-box;
-}
-
-.center1 {
-  height: 35px;
-  width: 35px;
-  left: 12px;
-  border-top-left-radius: 30px;
-}
-
-.front {
-  height: 20px;
-  width: 50px;
-  top: 15px;
-  left: 67px;
-  border-top-right-radius: 50px 40px;
-  border-bottom-right-radius: 10px;
-}
-
-.wheel {
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  top: 20px;
-  left: 12px;
-  border: 3px solid var(--background-color);
-  background: linear-gradient(45deg, transparent 45%, var(--border-color) 46%, var(--border-color) 54%, transparent 55%),
-    linear-gradient(-45deg, transparent 45%, var(--border-color) 46%, var(--border-color) 54%, transparent 55%),
-    linear-gradient(90deg, transparent 45%, var(--border-color) 46%, var(--border-color) 54%, transparent 55%),
-    linear-gradient(0deg, transparent 45%, var(--border-color) 46%, var(--border-color) 54%, transparent 55%),
-    radial-gradient(var(--border-color) 29%, transparent 30%, transparent 50%, var(--border-color) 51%),
-    var(--background-color);
-  animation-name: spin;
-}
-
-.wheel2 {
-  left: 82px;
-}
-
-/*  */
-.car-container {
-  position: relative;
-  width: 100vw;
+.game-page-animation {
+  width: 100%;
   height: 100vh;
-  overflow: hidden;
+  position: absolute;
   top: 0;
   left: 0;
+  overflow: hidden;
 }
 
-.flying-car {
+.game-page-animation__circles {
   position: absolute;
-  top: 50%;
-  animation: fly 4s linear forwards;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.flying-car.left {
-  left: -200px;
-  animation-name: fly-right;
+.game-page-animation__circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  /* background: rgba(255, 255, 255, 0.2); */
+  background-color: red;
+  animation: game-page-animation__animate 25s linear infinite;
+  bottom: -150px;
 }
 
-.flying-car.right {
-  right: 0;
-  animation-name: fly-left;
+.game-page-animation__circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+.game-page-animation__circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+.game-page-animation__circles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+.game-page-animation__circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+.game-page-animation__circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+.game-page-animation__circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+.game-page-animation__circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+.game-page-animation__circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+.game-page-animation__circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+.game-page-animation__circles li:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
 }
 
-@keyframes fly-right {
+@keyframes game-page-animation__animate {
   0% {
-    transform: translateX(0);
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
   }
-  100% {
-    transform: translateX(120vw);
-  }
-}
 
-@keyframes fly-left {
-  0% {
-    transform: translateX(0);
-  }
   100% {
-    transform: translateX(-120vw);
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
   }
 }
 

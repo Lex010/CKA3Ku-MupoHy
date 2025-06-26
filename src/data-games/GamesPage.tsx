@@ -12,7 +12,7 @@ const GamesPage: React.FC = () => {
   const gamesItems = Object.values(mainData).filter((item) => item.type === 'game');
   const navigate = useNavigate();
   return (
-    <BackgroundClouds withLoadingCar>
+    <BackgroundClouds withGamePageAnimation>
       <div>
         <h1 className="page-title">{idGamesPage.title}</h1>
         <div className="page-list">
