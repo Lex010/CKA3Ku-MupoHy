@@ -23,7 +23,7 @@
 
 /* ПРОПАДАЕТ при наведении */
 .game-page-animation__balloon:hover {
-  opacity: 0;
+  opacity: 0.5;
 }
 
 .game-page-animation__balloon-knot {

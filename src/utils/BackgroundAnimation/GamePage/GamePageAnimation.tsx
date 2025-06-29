@@ -1,7 +1,7 @@
 import React from 'react';
 import './GamePageAnimation.css';
 
-const COLORS = ['#c2428a', '#9045b5', '#457bb5', '#c43342', '#714bbd'];
+const COLORS = ['#00b894', '#0984e3', '#6c5ce7', '#fd79a8', '#e17055'];
 
 const GamePageAnimation: React.FC = () => {
   return (
