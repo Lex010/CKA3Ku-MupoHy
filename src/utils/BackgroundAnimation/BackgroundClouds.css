@@ -64,4 +64,5 @@
 
 .background-animation__content {
   position: relative;
+  pointer-events: none;
 }
