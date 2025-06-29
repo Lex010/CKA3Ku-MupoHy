@@ -12,21 +12,18 @@
   width: 80px;
   height: 100px;
   border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-  opacity: 0.8;
+  opacity: 0.5;
   bottom: -120px;
-  pointer-events: auto; /* снова включаем события наведения */
+  pointer-events: auto;
 }
 
 .game-page-animation__balloon-animation {
   animation-name: game-page-animation__flyingBalloon;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* ПРОПАДАЕТ при наведении */
-.game-page-animation__balloon:hover {
-  opacity: 0.5;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .game-page-animation__balloon-knot {
