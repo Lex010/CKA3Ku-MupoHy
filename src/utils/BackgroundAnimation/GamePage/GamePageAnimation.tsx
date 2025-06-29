@@ -9,7 +9,7 @@ const GamePageAnimation: React.FC = () => {
       {Array.from({ length: 10 }).map((_, i) => (
         <div
           key={i}
-          className={`game-page-animation__balloon`}
+          className={`game-page-animation__balloon game-page-animation__balloon-animation`}
           style={{
             backgroundColor: COLORS[i % COLORS.length],
             left: `${Math.random() * 100}%`,

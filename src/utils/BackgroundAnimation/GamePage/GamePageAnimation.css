@@ -14,11 +14,14 @@
   border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
   opacity: 0.8;
   bottom: -120px;
+  pointer-events: auto; /* снова включаем события наведения */
+}
+
+.game-page-animation__balloon-animation {
   animation-name: game-page-animation__flyingBalloon;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  pointer-events: auto; /* снова включаем события наведения */
 }
 
 /* ПРОПАДАЕТ при наведении */
