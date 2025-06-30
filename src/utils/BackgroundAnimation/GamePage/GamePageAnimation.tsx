@@ -49,7 +49,7 @@ const GamePageAnimation: React.FC = () => {
     // удалить и добавить новый
     setTimeout(() => {
       setBalloons((prev) => prev.filter((b) => b.id !== id).concat(createBalloon(true)));
-    }, 400);
+    }, 300);
   };
 
   return (
