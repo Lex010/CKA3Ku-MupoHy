@@ -9,14 +9,16 @@ interface Balloon {
   left: number;
   duration: number;
   delay: number;
+  isPopping: boolean;
 }
 
 const createBalloon = (startFresh = false): Balloon => ({
-  id: crypto.randomUUID(),
+  id: Date.now().toString(36) + Math.random().toString(36).substring(2),
   color: COLORS[Math.floor(Math.random() * COLORS.length)],
   left: Math.random() * 100,
   duration: Math.random() * 20 + 7,
   delay: startFresh ? 0 : -1 * (Math.random() * 50 + 50),
+  isPopping: false,
 });
 
 const GamePageAnimation: React.FC = () => {
@@ -27,7 +29,27 @@ const GamePageAnimation: React.FC = () => {
   }, []);
 
   const popBalloon = (id: string) => {
-    setBalloons((prev) => prev.filter((b) => b.id !== id).concat(createBalloon(true)));
+    const outer = document.getElementById(`balloon-outer-${id}`);
+    if (!outer) return;
+
+    const style = window.getComputedStyle(outer);
+    const bottom = style.getPropertyValue('bottom');
+    const left = style.getPropertyValue('left');
+    const transform = style.getPropertyValue('transform');
+
+    // зафиксировать позицию и поворот
+    outer.style.animation = 'none';
+    outer.style.bottom = bottom;
+    outer.style.left = left;
+    outer.style.transform = transform;
+
+    // пометить как "лопающийся"
+    setBalloons((prev) => prev.map((b) => (b.id === id ? { ...b, isPopping: true } : b)));
+
+    // удалить и добавить новый
+    setTimeout(() => {
+      setBalloons((prev) => prev.filter((b) => b.id !== id).concat(createBalloon(true)));
+    }, 400);
   };
 
   return (
@@ -35,21 +57,22 @@ const GamePageAnimation: React.FC = () => {
       {balloons.map((balloon) => (
         <div
           key={balloon.id}
-          className="game-page-animation__balloon game-page-animation__balloon-animation"
+          id={`balloon-outer-${balloon.id}`}
+          className={`game-page-animation__balloon-outer ${!balloon.isPopping ? 'game-page-animation__fly' : ''}`}
           style={{
-            backgroundColor: balloon.color,
             left: `${balloon.left}%`,
             animationDuration: `${balloon.duration}s`,
             animationDelay: `${balloon.delay}s`,
           }}
-          onClick={() => popBalloon(balloon.id)}
         >
           <div
-            className="game-page-animation__balloon-knot"
-            style={{
-              borderBottomColor: balloon.color,
-            }}
-          />
+            className={`game-page-animation__balloon-inner ${balloon.isPopping ? 'game-page-animation__pop' : ''}`}
+            onClick={() => !balloon.isPopping && popBalloon(balloon.id)}
+          >
+            <div className="game-page-animation__balloon-shape" style={{ backgroundColor: balloon.color }}>
+              <div className="game-page-animation__balloon-knot" style={{ borderBottomColor: balloon.color }} />
+            </div>
+          </div>
         </div>
       ))}
     </div>
