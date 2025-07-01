@@ -691,8 +691,8 @@ html {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background: radial-gradient(circle, #e0f6ff 0%, #96d6f0 70%, #87ceeb 100%);
-  /* background: radial-gradient(circle, #14164b 0%, #1a1b3d 70%, #0d1b2a 100%); */
+  /* background: radial-gradient(circle, #e0f6ff 0%, #96d6f0 70%, #87ceeb 100%); */
+  background: radial-gradient(circle, #14164b 0%, #1a1b3d 70%, #0d1b2a 100%);
   top: 0;
   left: 0;
   border-radius: 20px;
@@ -744,6 +744,39 @@ html {
 .background-animation__content {
   position: relative;
   pointer-events: none;
+}
+
+.background-animation__stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.background-animation__star {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-image: url(assets/star.png);
+  background-size: cover;
+  animation: background-animation__star-shine ease-in-out infinite;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 4px white);
+}
+
+@keyframes background-animation__star-shine {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.3) rotate(360deg);
+    opacity: 1;
+  }
 }
 
 .togle-switch__MUP {

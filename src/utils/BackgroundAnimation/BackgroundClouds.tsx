@@ -2,15 +2,18 @@ import React from 'react';
 import FlyingBooks from './StoryPage/FlyingBooks';
 import GamePageAnimation from './GamePage/GamePageAnimation';
 import './BackgroundClouds.css';
+import StarshineBackground from './Stars/StarshineBackground';
 
 const BackgroundClouds: React.FC<{
   children?: React.ReactNode;
   withFlyingBooks?: boolean;
   withGamePageAnimation?: boolean;
-}> = ({ children, withFlyingBooks = false, withGamePageAnimation = false }) => {
+  isNight?: boolean;
+}> = ({ children, withFlyingBooks = false, withGamePageAnimation = false, isNight = true }) => {
   return (
     <div className="background-animation__container">
       <div className="background-animation">
+        {isNight && <StarshineBackground count={25} />}
         {Array.from({ length: 10 }).map((_, i) => (
           <div
             key={i}
