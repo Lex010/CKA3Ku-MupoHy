@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { mainData } from '../site-manager-object/mainData';
 import BackgroundClouds from '../utils/BackgroundAnimation/BackgroundClouds';
+import ToggleSwitch from '../utils/ToggleSwitch/ToggleSwitch';
+import './GamesPage.css';
 
 const idGamesPage = {
   title: `${String.fromCodePoint(0x1f3af)} ИГРЫ`,
@@ -9,13 +11,24 @@ const idGamesPage = {
 };
 
 const GamesPage: React.FC = () => {
+  const [isListVisible, setIsListVisible] = useState(true);
   const gamesItems = Object.values(mainData).filter((item) => item.type === 'game');
   const navigate = useNavigate();
+
   return (
     <BackgroundClouds withGamePageAnimation>
       <div>
-        <h1 className="page-title">{idGamesPage.title}</h1>
-        <div className="page-list">
+        <div className="game-page__title-container page-title">
+          <h1 className="page-title game-page__page-title">{idGamesPage.title}</h1>
+          <div className="game-page__toggle-switch">
+            <ToggleSwitch
+              checked={!isListVisible}
+              onChange={() => setIsListVisible((prev) => !prev)}
+              label="Скрыть Меню"
+            />
+          </div>
+        </div>
+        <div className="page-list" style={{ display: isListVisible ? 'flex' : 'none' }}>
           {gamesItems.map((item) => (
             <div key={item.id} className="page-unit" onClick={() => navigate(`/${item.id}`)}>
               {item.title}

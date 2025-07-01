@@ -1,0 +1,12 @@
+.game-page__title-container {
+  padding: 0;
+}
+
+.game-page__page-title {
+  margin-bottom: 0;
+}
+
+.game-page__toggle-switch {
+  font-size: 12px;
+  padding: 5px 0;
+}
