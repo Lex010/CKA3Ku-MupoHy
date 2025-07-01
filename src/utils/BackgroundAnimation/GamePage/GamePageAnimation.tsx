@@ -1,4 +1,3 @@
-// GamePageAnimation.tsx
 import React, { useState, useEffect } from 'react';
 import './GamePageAnimation.css';
 import { createBalloon } from './Baloons/balloonUtils';
