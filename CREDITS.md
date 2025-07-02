@@ -1,6 +1,7 @@
 # Источники вдохновения и использованные ресурсы
 
 ## Анимации
+
 - [Летающие шарики] (https://codepen.io/giuliacardieri/pen/azERrp)
 - [Анимированный переключатель темы] (https://codepen.io/alvaromontoro/pen/QwLEXQR)
 - [Анимация облаков в главном меню] (https://codepen.io/shshaw/pen/jOMdaL)

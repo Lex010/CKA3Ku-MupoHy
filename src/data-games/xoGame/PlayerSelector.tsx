@@ -36,7 +36,12 @@ const PlayerSelector: React.FC<PlayerSelectorProps> = ({
   return (
     <div className="player-config">
       <p>Игрок {playerNumber}</p>
-      <select className="character-select" value={selected?.name ?? ''} onChange={handleChange}>
+      <select
+        className="character-select"
+        name="character-selector"
+        value={selected?.name ?? ''}
+        onChange={handleChange}
+      >
         {availableCharacters.map((char) => (
           <option key={char.name} value={char.name}>
             {char.name}
