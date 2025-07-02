@@ -26,6 +26,7 @@
   background: var(--headerBackground);
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 16px;
   padding: 16px 24px;
   border-bottom: 2px solid var(--txtLeftBorder);
@@ -696,17 +697,17 @@ html {
   }
 
   &:checked {
-    --c1: #ff3300;
-    --c2: #ffcea1;
+    --c1: #87ceeb;
+    --c2: #ffd700;
     --c3: #ddf0;
     --c4: #593d9200;
     --x: 65%;
-    background-color: #ff993c;
+    background-color: #e0f6ff;
 
     &::after {
       background-color: #fee;
       left: calc(100% - 0.5em);
-      box-shadow: 0 0 0.2em 0.0125em #fffc;
+      box-shadow: 0 0 0.2em 0.0125em #ffeb3b;
     }
 
     &::before {
@@ -759,6 +760,11 @@ html {
   }
 }
 
+/* Размер переключателя */
+.page-theme-toggle {
+  font-size: 26px;
+  border: 1px solid var(--txtLeftBorder);
+}
 .flying-books__scene {
   position: relative;
   width: 100vw;
