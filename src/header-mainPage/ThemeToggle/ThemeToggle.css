@@ -238,3 +238,8 @@
     }
   }
 }
+
+/* Размер переключателя */
+.page-theme-toggle {
+  font-size: 26px;
+}
