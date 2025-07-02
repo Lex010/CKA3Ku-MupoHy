@@ -12,14 +12,17 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  /* background: radial-gradient(circle, #e0f6ff 0%, #96d6f0 70%, #87ceeb 100%); */
-  background: radial-gradient(circle, #14164b 0%, #1a1b3d 70%, #0d1b2a 100%);
+  background: radial-gradient(circle, #e0f6ff 0%, #96d6f0 70%, #87ceeb 100%);
   top: 0;
   left: 0;
   border-radius: 20px;
   overflow: hidden;
   user-select: none;
   animation: background-animation__fadeIn 0.5s ease-out;
+}
+
+.background-animation-night {
+  background: radial-gradient(circle, #14164b 0%, #1a1b3d 70%, #0d1b2a 100%);
 }
 
 .background-animation__cloud {
