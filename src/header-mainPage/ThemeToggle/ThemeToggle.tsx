@@ -11,6 +11,7 @@ export default function ThemeToggle({ checked, onChange, disabled }: ThemeToggle
     <input
       type="checkbox"
       role="switch"
+      name="theme-toggle"
       className="page-theme-toggle"
       checked={checked}
       onChange={onChange}

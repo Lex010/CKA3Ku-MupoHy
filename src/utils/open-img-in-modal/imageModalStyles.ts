@@ -43,6 +43,7 @@ export class ModalStyles {
       width: '100%',
       background: 'rgba(0, 0, 0, 0.7)',
       display: 'flex',
+      alignItems: 'center',
       justifyContent: 'center',
       gap: '8px',
       padding: '10px 0',

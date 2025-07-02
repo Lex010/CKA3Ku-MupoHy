@@ -11,6 +11,7 @@ export default function createOverwriteCheckbox(onChange: (value: boolean) => vo
 
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
+  checkbox.name = 'overwrite-toggle';
   checkbox.checked = false;
   checkbox.style.marginRight = '4px';
 

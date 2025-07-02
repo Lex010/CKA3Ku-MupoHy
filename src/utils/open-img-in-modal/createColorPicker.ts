@@ -4,6 +4,7 @@ export default function createColorPicker(
 ): HTMLInputElement {
   const colorPicker = document.createElement('input');
   colorPicker.type = 'color';
+  colorPicker.name = 'color-picker';
   colorPicker.value = defaultColor;
   colorPicker.style.cursor = 'pointer';
   colorPicker.style.width = '30px';
