@@ -8,7 +8,7 @@ interface ThemeToggleContextType {
 const ThemeToggleContext = createContext<ThemeToggleContextType | undefined>(undefined);
 
 export const NightModeProvider = ({ children }: { children: ReactNode }) => {
-  const [isNight, setIsNight] = useState(false);
+  const [isNight, setIsNight] = useState(true);
 
   return <ThemeToggleContext.Provider value={{ isNight, setIsNight }}>{children}</ThemeToggleContext.Provider>;
 };
