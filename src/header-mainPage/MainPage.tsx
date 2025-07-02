@@ -4,17 +4,13 @@ import { mainData } from '../site-manager-object/mainData';
 import Tooltip from '../utils/Tooltip';
 import BackgroundClouds from '../utils/BackgroundAnimation/BackgroundClouds';
 
-interface MainPageProps {
-  isNight: boolean;
-}
-
-const MainPage: React.FC<MainPageProps> = ({ isNight }) => {
+const MainPage: React.FC = () => {
   const navigate = useNavigate();
 
   const menuItems = Object.values(mainData).filter((item) => item.type === 'menu');
 
   return (
-    <BackgroundClouds isNight={isNight}>
+    <BackgroundClouds>
       <div>
         <h1 className="page-title">
           Главная - "МИР"{' '}

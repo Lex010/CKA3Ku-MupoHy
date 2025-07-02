@@ -1,15 +1,17 @@
 import React from 'react';
 import FlyingBooks from './StoryPage/FlyingBooks';
 import GamePageAnimation from './GamePage/GamePageAnimation';
-import './BackgroundClouds.css';
 import StarshineBackground from './Stars/StarshineBackground';
+import './BackgroundClouds.css';
+import { useNightMode } from '../../header-mainPage/ThemeToggle/ThemeToggleContext';
 
 const BackgroundClouds: React.FC<{
   children?: React.ReactNode;
   withFlyingBooks?: boolean;
   withGamePageAnimation?: boolean;
-  isNight?: boolean;
-}> = ({ children, withFlyingBooks = false, withGamePageAnimation = false, isNight = false }) => {
+}> = ({ children, withFlyingBooks = false, withGamePageAnimation = false }) => {
+  const { isNight } = useNightMode();
+
   return (
     <div className="background-animation__container">
       <div className={`background-animation ${!isNight ? 'background-animation-night' : ''}`}>
@@ -17,7 +19,9 @@ const BackgroundClouds: React.FC<{
         {Array.from({ length: 10 }).map((_, i) => (
           <div
             key={i}
-            className={`background-animation__cloud ${i % 2 === 0 ? 'background-animation__cloud--foreground' : 'background-animation__cloud--background'}`}
+            className={`background-animation__cloud ${
+              i % 2 === 0 ? 'background-animation__cloud--foreground' : 'background-animation__cloud--background'
+            }`}
             style={{
               top: `${i * 9}%`,
               animationDelay: `${(-120 / 6.5) * (i + 1)}s`,

@@ -1,13 +1,14 @@
 import React from 'react';
 import ThemeToggle from './ThemeToggle/ThemeToggle';
+import { useNightMode } from './ThemeToggle/ThemeToggleContext';
 
 interface HeaderProps {
   goHome: () => void;
-  isNight: boolean;
-  setIsNight: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Header: React.FC<HeaderProps> = ({ goHome, isNight, setIsNight }: HeaderProps) => {
+const Header: React.FC<HeaderProps> = ({ goHome }: HeaderProps) => {
+  const { isNight, setIsNight } = useNightMode();
+
   return (
     <header className="main-header">
       <button className="nav-btn" onClick={goHome}>
