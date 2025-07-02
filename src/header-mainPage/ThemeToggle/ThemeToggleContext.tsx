@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { dayTheme, nightTheme } from '../../css/themeVariebles/themeVarieblesStyle';
 
 interface ThemeToggleContextType {
   isNight: boolean;
@@ -9,6 +10,13 @@ const ThemeToggleContext = createContext<ThemeToggleContextType | undefined>(und
 
 export const NightModeProvider = ({ children }: { children: ReactNode }) => {
   const [isNight, setIsNight] = useState(true);
+
+  useEffect(() => {
+    const theme = isNight ? nightTheme : dayTheme;
+    Object.keys(theme).forEach((key) => {
+      document.documentElement.style.setProperty(key, theme[key as keyof typeof theme]);
+    });
+  }, [isNight]);
 
   return <ThemeToggleContext.Provider value={{ isNight, setIsNight }}>{children}</ThemeToggleContext.Provider>;
 };
