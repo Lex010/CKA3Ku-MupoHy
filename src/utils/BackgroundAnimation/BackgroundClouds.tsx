@@ -10,12 +10,12 @@ const BackgroundClouds: React.FC<{
   withFlyingBooks?: boolean;
   withGamePageAnimation?: boolean;
 }> = ({ children, withFlyingBooks = false, withGamePageAnimation = false }) => {
-  const { isNight } = useNightMode();
+  const { isDay } = useNightMode();
 
   return (
     <div className="background-animation__container">
-      <div className={`background-animation ${!isNight ? 'background-animation-night' : ''}`}>
-        {!isNight && <StarshineBackground count={25} />}
+      <div className={`background-animation ${!isDay ? 'background-animation-night' : ''}`}>
+        {!isDay && <StarshineBackground count={25} />}
         {Array.from({ length: 10 }).map((_, i) => (
           <div
             key={i}

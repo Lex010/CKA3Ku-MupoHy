@@ -7,14 +7,14 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ goHome }: HeaderProps) => {
-  const { isNight, setIsNight } = useNightMode();
+  const { isDay, setIsDay } = useNightMode();
 
   return (
     <header className="main-header">
       <button className="nav-btn" onClick={goHome}>
         🏠 На главную
       </button>
-      <ThemeToggle checked={isNight} onChange={(e) => setIsNight(e.target.checked)} />
+      <ThemeToggle checked={isDay} onChange={(e) => setIsDay(e.target.checked)} />
     </header>
   );
 };
