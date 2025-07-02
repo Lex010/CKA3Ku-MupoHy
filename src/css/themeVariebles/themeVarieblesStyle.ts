@@ -1,7 +1,9 @@
 export const dayTheme = {
-  '--txtLeftBorder': '#c7925b',
+  '--txtLeftBorder': '#ffb347',
+  '--txtBackground': '#fff',
 };
 
 export const nightTheme = {
-  '--txtLeftBorder': '#ffb347',
+  '--txtLeftBorder': '#c7925b',
+  '--txtBackground': '#abd7a5',
 };

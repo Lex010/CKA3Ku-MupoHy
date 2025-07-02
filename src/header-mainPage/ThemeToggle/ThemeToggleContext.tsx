@@ -12,7 +12,7 @@ export const NightModeProvider = ({ children }: { children: ReactNode }) => {
   const [isDay, setIsDay] = useState(true);
 
   useEffect(() => {
-    const theme = isDay ? nightTheme : dayTheme;
+    const theme = isDay ? dayTheme : nightTheme;
     Object.keys(theme).forEach((key) => {
       document.documentElement.style.setProperty(key, theme[key as keyof typeof theme]);
     });
