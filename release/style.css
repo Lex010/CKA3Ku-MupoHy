@@ -54,6 +54,13 @@
   transform: scale(1.05);
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .nav-btn:hover {
+    background: var(--txtLeftBorder);
+    transform: none;
+  }
+}
+
 /* Логин */
 
 .login-container {
@@ -244,6 +251,14 @@ main {
   transform: translateY(-5px);
   box-shadow: 4px 8px 18px rgba(0, 0, 0, 0.15);
   background-color: var(--pageUnitHover);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .page-unit:hover {
+    transform: none;
+    box-shadow: none;
+    background-color: var(--txtBackground);
+  }
 }
 
 /* Img */

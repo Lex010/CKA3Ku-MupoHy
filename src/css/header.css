@@ -33,6 +33,13 @@
   transform: scale(1.05);
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .nav-btn:hover {
+    background: var(--txtLeftBorder);
+    transform: none;
+  }
+}
+
 /* Логин */
 
 .login-container {

@@ -43,6 +43,14 @@
   background-color: var(--pageUnitHover);
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .page-unit:hover {
+    transform: none;
+    box-shadow: none;
+    background-color: var(--txtBackground);
+  }
+}
+
 /* Img */
 
 .fairy-image {
