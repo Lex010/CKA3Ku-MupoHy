@@ -1,4 +1,5 @@
 :root {
+  --bgHtml: linear-gradient(to bottom, #cceaff, #ffffff);
   --headerBackground: #fff0e5d5;
   --navBtnTxt: white;
 

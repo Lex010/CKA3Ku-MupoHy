@@ -9,7 +9,7 @@
 @import url('css/games/gameXO/gameAvatar.css');
 
 html {
-  background: linear-gradient(to bottom, #cceaff, #ffffff);
+  background: var(--bgHtml);
   font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
   color: #333;
 }

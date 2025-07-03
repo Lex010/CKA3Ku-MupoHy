@@ -1,4 +1,5 @@
 :root {
+  --bgHtml: linear-gradient(to bottom, #cceaff, #ffffff);
   --headerBackground: #fff0e5d5;
   --navBtnTxt: white;
 
@@ -514,11 +515,15 @@ main {
 }
 
 html {
-  background: linear-gradient(to bottom, #cceaff, #ffffff);
+  background: var(--bgHtml);
   font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
   color: #333;
 }
 
+input,
+select {
+  background-color: #ffffff;
+}
 @property --x {
   syntax: '<percentage>';
   inherits: true;
