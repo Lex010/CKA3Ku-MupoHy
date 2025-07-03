@@ -13,3 +13,8 @@ html {
   font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
   color: #333;
 }
+
+input,
+select {
+  background-color: #ffffff;
+}
