@@ -539,6 +539,7 @@ input,
 select {
   background-color: #ffffff;
 }
+
 @property --x {
   syntax: '<percentage>';
   inherits: true;
@@ -942,6 +943,34 @@ select {
   100% {
     transform: scale(0);
     opacity: 0;
+  }
+}
+
+.game-page-animation__floating-symbol {
+  position: absolute;
+  font-size: 68px;
+  font-weight: bold;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  animation: game-page-animation__fadeInOut 1s forwards;
+}
+
+@keyframes game-page-animation__fadeInOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
   }
 }
 
