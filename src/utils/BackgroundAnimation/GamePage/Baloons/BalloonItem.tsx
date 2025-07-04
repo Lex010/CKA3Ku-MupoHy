@@ -28,7 +28,17 @@ const BalloonItem: React.FC<Props> = ({ balloon, onPop }) => {
         className={`game-page-animation__balloon-inner ${balloon.isPopping ? 'game-page-animation__pop' : ''}`}
         onClick={handleClick}
       >
-        <div className="game-page-animation__balloon-shape" style={{ backgroundColor: balloon.color }}>
+        <div
+          className="game-page-animation__balloon-shape"
+          style={{
+            background: `radial-gradient(
+            circle at 15% 20%,
+            white 0%,
+            ${balloon.color} 50%,
+            ${balloon.color} 100%
+            )`,
+          }}
+        >
           <div className="game-page-animation__balloon-knot" style={{ borderBottomColor: balloon.color }} />
         </div>
       </div>
