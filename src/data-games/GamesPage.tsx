@@ -4,6 +4,7 @@ import { mainData } from '../site-manager-object/mainData';
 import BackgroundClouds from '../utils/BackgroundAnimation/BackgroundClouds';
 import ToggleSwitch from '../utils/ToggleSwitch/ToggleSwitch';
 import './GamesPage.css';
+import BalloonSettingsIcon from './GamePageBaloonsSettings/BalloonSettingsIcon';
 
 const idGamesPage = {
   title: `${String.fromCodePoint(0x1f3af)} ИГРЫ`,
@@ -26,6 +27,9 @@ const GamesPage: React.FC = () => {
               onChange={() => setIsListVisible((prev) => !prev)}
               label="Скрыть Меню"
             />
+            <button className="game-page__baloon-setting-btn" title="Настройки шариков">
+              <BalloonSettingsIcon size={16} balloonColor="#ff4d4d7e" gearColor="#ff4d4d7e" />
+            </button>
           </div>
         </div>
         <div className="page-list" style={{ display: isListVisible ? 'flex' : 'none' }}>

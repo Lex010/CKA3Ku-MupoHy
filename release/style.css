@@ -1165,6 +1165,25 @@ input:checked + .slider__MUP::before {
 .game-page__toggle-switch {
   font-size: 12px;
   padding: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-page__baloon-setting-btn {
+  margin-left: 25px;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--gameMenuBtn);
+}
+
+.game-page__baloon-setting-btn:active {
+  background-color: var(--gameMenuBtnSelected);
 }
 
 .header-dvoinik-wrapper {
