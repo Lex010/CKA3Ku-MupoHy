@@ -6,9 +6,16 @@
   margin-bottom: 0;
 }
 
+.game-page__controls-container {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 .game-page__toggle-switch {
   font-size: 12px;
-  padding: 5px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,14 +23,13 @@
 }
 
 .game-page__baloon-setting-btn {
-  margin-left: 25px;
   border-radius: 8px;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: var(--gameMenuBtn);
+  background-color: var(--gameMenuBtnHover);
 }
 
 .game-page__baloon-setting-btn:active {

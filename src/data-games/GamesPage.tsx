@@ -21,14 +21,16 @@ const GamesPage: React.FC = () => {
       <div>
         <div className="game-page__title-container page-title">
           <h1 className="page-title game-page__page-title">{idGamesPage.title}</h1>
-          <div className="game-page__toggle-switch">
-            <ToggleSwitch
-              checked={!isListVisible}
-              onChange={() => setIsListVisible((prev) => !prev)}
-              label="Скрыть Меню"
-            />
+          <div className="game-page__controls-container">
+            <div className="game-page__toggle-switch">
+              <ToggleSwitch
+                checked={!isListVisible}
+                onChange={() => setIsListVisible((prev) => !prev)}
+                label="Скрыть Меню"
+              />
+            </div>
             <button className="game-page__baloon-setting-btn" title="Настройки шариков">
-              <BalloonSettingsIcon size={16} balloonColor="#ff4d4d7e" gearColor="#ff4d4d7e" />
+              <BalloonSettingsIcon size={16} />
             </button>
           </div>
         </div>

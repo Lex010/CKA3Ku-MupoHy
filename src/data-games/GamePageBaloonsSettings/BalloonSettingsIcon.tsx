@@ -8,8 +8,8 @@ interface BalloonSettingsIconProps {
 
 const BalloonSettingsIcon: React.FC<BalloonSettingsIconProps> = ({
   size = 64,
-  balloonColor = '#FF4D4D',
-  gearColor = '#FFD700',
+  balloonColor = '#ff4d4d7e',
+  gearColor = '#ff4d4d7e',
 }) => (
   <svg width={size} height={size} viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
     {/* Шарик */}
