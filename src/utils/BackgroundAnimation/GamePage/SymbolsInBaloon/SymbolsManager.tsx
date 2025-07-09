@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SymbolsManager.css';
 
 export interface SymbolItem {
@@ -19,6 +19,11 @@ export const useSymbols = (options: UseSymbolsOptions = {}) => {
 
   const [symbols, setSymbols] = useState<SymbolItem[]>([]);
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setIndex(0);
+    setSymbols([]);
+  }, [symbolsSet, sequential]);
 
   const addSymbol = (left: string, bottom: string, color: string) => {
     let symbol: string;

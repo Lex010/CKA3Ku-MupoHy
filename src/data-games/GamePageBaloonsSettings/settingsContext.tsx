@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { SymbolSetOption, SYMBOL_SETS } from './symbolSets'; // твой файл с наборами
+import { SymbolSetOption, SYMBOL_SETS } from './symbolSets';
 
 interface BalloonsSettings {
   symbolsSet: SymbolSetOption;

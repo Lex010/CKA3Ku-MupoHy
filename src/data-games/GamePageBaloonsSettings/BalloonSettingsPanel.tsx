@@ -18,7 +18,7 @@ const BalloonSettingsPanel: React.FC<BalloonSettingsPanelProps> = ({ onClose }) 
       </div>
 
       <div className="balloons-settings-panel__elem">
-        <label>Набор символов:</label>
+        <label>Содержимое Шариков: </label>
         <select
           value={symbolsSet.id}
           onChange={(e) => setSymbolsSet(SYMBOL_SETS.find((set) => set.id === e.target.value)!)}
