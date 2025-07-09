@@ -12,10 +12,7 @@ const BalloonSettingsPanel: React.FC<BalloonSettingsPanelProps> = ({ onClose }) 
 
   return (
     <div className="balloons-settings-panel">
-      <div>
-        <hr className="balloons-settings-panel__title-line" />
-        <h3 className="balloons-settings-panel__title">Настройки шариков</h3>
-      </div>
+      <h3 className="balloons-settings-panel__title">Настройки шариков</h3>
 
       <div className="balloons-settings-panel__elem">
         <label>Содержимое Шариков: </label>

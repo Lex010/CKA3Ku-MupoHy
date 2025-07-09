@@ -1200,6 +1200,8 @@ input:checked + .slider__MUP::before {
   flex-direction: column;
   padding: 0 10px 10px 10px;
   gap: 15px;
+  border-top: 1px solid var(--txtLeftBorder);
+  margin-top: 15px;
 }
 
 @keyframes balloons-settings-panel__slideDown {
@@ -1211,11 +1213,6 @@ input:checked + .slider__MUP::before {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.balloons-settings-panel__title-line {
-  width: 100%;
-  margin: 0;
 }
 
 .balloons-settings-panel__title {
