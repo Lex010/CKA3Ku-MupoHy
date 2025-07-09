@@ -15,8 +15,9 @@ const BalloonSettingsPanel: React.FC<BalloonSettingsPanelProps> = ({ onClose }) 
       <h3 className="balloons-settings-panel__title">Настройки шариков</h3>
 
       <div className="balloons-settings-panel__elem">
-        <label>Содержимое Шариков: </label>
+        <label htmlFor="balloonsSymbolsSetSelect">Содержимое Шариков: </label>
         <select
+          id="balloonsSymbolsSetSelect"
           value={symbolsSet.id}
           onChange={(e) => setSymbolsSet(SYMBOL_SETS.find((set) => set.id === e.target.value)!)}
         >
@@ -30,7 +31,13 @@ const BalloonSettingsPanel: React.FC<BalloonSettingsPanelProps> = ({ onClose }) 
 
       <div className="balloons-settings-panel__elem">
         <label>
-          <input type="checkbox" checked={sequential} onChange={(e) => setSequential(e.target.checked)} /> По порядку
+          <input
+            type="checkbox"
+            name="sequential"
+            checked={sequential}
+            onChange={(e) => setSequential(e.target.checked)}
+          />{' '}
+          По порядку
         </label>
       </div>
 
