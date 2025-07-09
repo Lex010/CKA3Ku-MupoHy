@@ -6,6 +6,7 @@ import ToggleSwitch from '../utils/ToggleSwitch/ToggleSwitch';
 import './GamesPage.css';
 import BalloonSettingsIcon from './GamePageBaloonsSettings/BalloonSettingsIcon';
 import BalloonSettingsPanel from './GamePageBaloonsSettings/BalloonSettingsPanel';
+import { BalloonsSettingsProvider } from './GamePageBaloonsSettings/settingsContext';
 
 const idGamesPage = {
   title: `${String.fromCodePoint(0x1f3af)} ИГРЫ`,
@@ -22,7 +23,7 @@ const GamesPage: React.FC = () => {
     if (isListVisible && isSettingsBalloonsVisible) {
       setIsSettingsBalloonsVisible(false);
     }
-  }, [isListVisible]);
+  }, [isListVisible, isSettingsBalloonsVisible]);
 
   const handleSettingsBalloonsClick = () => {
     setIsSettingsBalloonsVisible((prev) => !prev);
@@ -30,37 +31,40 @@ const GamesPage: React.FC = () => {
   };
 
   return (
-    <BackgroundClouds withGamePageAnimation>
-      <div>
-        <div className="game-page__title-container page-title">
-          <h1 className="page-title game-page__page-title">{idGamesPage.title}</h1>
-          <div className="game-page__controls-container">
-            <div className="game-page__toggle-switch">
-              <ToggleSwitch
-                checked={!isListVisible}
-                onChange={() => setIsListVisible((prev) => !prev)}
-                label="Скрыть Игры"
-              />
+    <BalloonsSettingsProvider>
+      <BackgroundClouds withGamePageAnimation>
+        <div>
+          <div className="game-page__title-container page-title">
+            <h1 className="page-title game-page__page-title">{idGamesPage.title}</h1>
+            <div className="game-page__controls-container">
+              <div className="game-page__toggle-switch">
+                <ToggleSwitch
+                  checked={!isListVisible}
+                  onChange={() => setIsListVisible((prev) => !prev)}
+                  label="Скрыть Игры"
+                />
+              </div>
+              <button
+                className="game-page__baloon-setting-btn"
+                title="Настройки шариков"
+                onClick={handleSettingsBalloonsClick}
+              >
+                <BalloonSettingsIcon size={16} />
+              </button>
             </div>
-            <button
-              className="game-page__baloon-setting-btn"
-              title="Настройки шариков"
-              onClick={handleSettingsBalloonsClick}
-            >
-              <BalloonSettingsIcon size={16} />
-            </button>
+            {isSettingsBalloonsVisible && <BalloonSettingsPanel onClose={() => setIsSettingsBalloonsVisible(false)} />}
           </div>
-          {isSettingsBalloonsVisible && <BalloonSettingsPanel onClose={() => setIsSettingsBalloonsVisible(false)} />}
+
+          <div className="page-list" style={{ display: isListVisible ? 'flex' : 'none' }}>
+            {gamesItems.map((item) => (
+              <div key={item.id} className="page-unit" onClick={() => navigate(`/${item.id}`)}>
+                {item.title}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="page-list" style={{ display: isListVisible ? 'flex' : 'none' }}>
-          {gamesItems.map((item) => (
-            <div key={item.id} className="page-unit" onClick={() => navigate(`/${item.id}`)}>
-              {item.title}
-            </div>
-          ))}
-        </div>
-      </div>
-    </BackgroundClouds>
+      </BackgroundClouds>
+    </BalloonsSettingsProvider>
   );
 };
 

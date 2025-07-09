@@ -4,10 +4,17 @@ import { createBalloon } from './Baloons/balloonUtils';
 import { Balloon } from './Baloons/balloonTypes';
 import BalloonItem from './Baloons/BalloonItem';
 import { useSymbols, SymbolsManager } from './SymbolsInBaloon/SymbolsManager';
+import { useBalloonsSettings } from '../../../data-games/GamePageBaloonsSettings/settingsContext';
 
 const GamePageAnimation: React.FC = () => {
   const [balloons, setBalloons] = useState<Balloon[]>([]);
-  const { symbols, addSymbol } = useSymbols();
+
+  const { symbolsSet, sequential } = useBalloonsSettings();
+
+  const { symbols, addSymbol } = useSymbols({
+    symbolsSet: symbolsSet.symbols,
+    sequential,
+  });
 
   useEffect(() => {
     setBalloons(Array.from({ length: 10 }, () => createBalloon(false)));
