@@ -30,6 +30,7 @@
   align-items: center;
   cursor: pointer;
   background-color: var(--gameMenuBtnHover);
+  padding: 1px 9px;
 }
 
 .game-page__baloon-setting-btn:active {
