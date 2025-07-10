@@ -9,6 +9,7 @@
 - [Сияющие звезды на фоновой анимации] (https://codepen.io/kucsatax/pen/vyWevX)
 - [Анимация кнопки между бросками кубиков] (https://codepen.io/James-Zedd/pen/MYgPENW)
 - [Бросок кубиков] (https://codepen.io/lenasta92579651/pen/yLeVmdW)
+- ["Фейерверк" в шариках(фон страницы игр)] (https://codepen.io/yshlin/pen/WNMmQX)
 
 ## ИИ-ассистенты
 

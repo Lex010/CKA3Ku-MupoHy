@@ -5,8 +5,10 @@ import { Balloon } from './Baloons/balloonTypes';
 import BalloonItem from './Baloons/BalloonItem';
 import { useSymbols, SymbolsManager } from './SymbolsInBaloon/SymbolsManager';
 import { useBalloonsSettings } from '../../../data-games/GamePageBaloonsSettings/settingsContext';
+import Firework from './FireworkAfterBalloons/Firework';
 
 const GamePageAnimation: React.FC = () => {
+  const [fireworks, setFireworks] = useState<{ id: string; left: string; bottom: string }[]>([]);
   const [balloons, setBalloons] = useState<Balloon[]>([]);
 
   const { symbolsSet, sequential } = useBalloonsSettings();
@@ -41,6 +43,10 @@ const GamePageAnimation: React.FC = () => {
     setTimeout(() => {
       setBalloons((prev) => prev.filter((b) => b.id !== id).concat(createBalloon(true)));
       addSymbol(left, bottom, color);
+      setFireworks((prev) => [
+        ...prev,
+        { id: Math.random().toString(36).slice(2, 10) + Date.now().toString(36), left, bottom },
+      ]);
     }, 300);
   };
 
@@ -50,6 +56,14 @@ const GamePageAnimation: React.FC = () => {
         <BalloonItem key={balloon.id} balloon={balloon} onPop={popBalloon} />
       ))}
       <SymbolsManager symbols={symbols} />
+      {fireworks.map((fw) => (
+        <Firework
+          key={fw.id}
+          left={fw.left}
+          bottom={fw.bottom}
+          onComplete={() => setFireworks((prev) => prev.filter((f) => f.id !== fw.id))}
+        />
+      ))}
     </div>
   );
 };
