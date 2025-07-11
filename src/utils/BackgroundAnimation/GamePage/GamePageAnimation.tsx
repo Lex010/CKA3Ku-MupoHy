@@ -6,6 +6,7 @@ import BalloonItem from './Baloons/BalloonItem';
 import { useSymbols, SymbolsManager } from './SymbolsInBaloon/SymbolsManager';
 import { useBalloonsSettings } from '../../../data-games/GamePageBaloonsSettings/settingsContext';
 import Firework from './FireworkAfterBalloons/Firework';
+import { launchDoubleFirework } from './FireworkAfterBalloons/launchDoubleFirework';
 
 const GamePageAnimation: React.FC = () => {
   const [fireworks, setFireworks] = useState<{ id: string; left: string; bottom: string }[]>([]);
@@ -43,10 +44,7 @@ const GamePageAnimation: React.FC = () => {
     setTimeout(() => {
       setBalloons((prev) => prev.filter((b) => b.id !== id).concat(createBalloon(true)));
       addSymbol(left, bottom, color);
-      setFireworks((prev) => [
-        ...prev,
-        { id: Math.random().toString(36).slice(2, 10) + Date.now().toString(36), left, bottom },
-      ]);
+      launchDoubleFirework((fw) => setFireworks((prev) => [...prev, fw]), left, bottom);
     }, 300);
   };
 
