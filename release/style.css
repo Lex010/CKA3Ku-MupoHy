@@ -1066,6 +1066,11 @@ select {
   }
 }
 
+.ballon-firework__container > .ballon-firework__before,
+.ballon-firework__container > .ballon-firework__after {
+  filter: drop-shadow(0 0 6px hsl(0, 100%, 50%));
+}
+
 @keyframes ballon-firework__gravity {
   from {
     transform: translateY(0);
