@@ -11,7 +11,7 @@ const Firework: React.FC<FireworkProps> = ({ left, bottom, onComplete }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (onComplete) onComplete();
-    }, 1500); // Длительность анимации + запас
+    }, 800); // Длительность анимации
 
     return () => clearTimeout(timeout);
   }, [onComplete]);

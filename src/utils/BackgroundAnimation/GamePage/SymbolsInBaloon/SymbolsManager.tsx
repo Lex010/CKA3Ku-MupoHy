@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './SymbolsManager.css';
 
 export interface SymbolItem {
@@ -18,10 +18,10 @@ export const useSymbols = (options: UseSymbolsOptions = {}) => {
   const { symbolsSet = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ', sequential = false } = options; // По умолчанию
 
   const [symbols, setSymbols] = useState<SymbolItem[]>([]);
-  const [index, setIndex] = useState(0);
+  const indexRef = useRef(0);
 
   useEffect(() => {
-    setIndex(0);
+    indexRef.current = 0;
     setSymbols([]);
   }, [symbolsSet, sequential]);
 
@@ -29,8 +29,8 @@ export const useSymbols = (options: UseSymbolsOptions = {}) => {
     let symbol: string;
 
     if (sequential) {
-      symbol = symbolsSet[index % symbolsSet.length];
-      setIndex((prev) => prev + 1);
+      symbol = symbolsSet[indexRef.current % symbolsSet.length];
+      indexRef.current += 1;
     } else {
       symbol = symbolsSet[Math.floor(Math.random() * symbolsSet.length)];
     }
