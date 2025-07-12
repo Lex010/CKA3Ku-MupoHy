@@ -12,7 +12,7 @@ const GamePageAnimation: React.FC = () => {
   const [fireworks, setFireworks] = useState<{ id: string; left: string; bottom: string }[]>([]);
   const [balloons, setBalloons] = useState<Balloon[]>([]);
 
-  const { symbolsSet, sequential } = useBalloonsSettings();
+  const { symbolsSet, sequential, showFirework } = useBalloonsSettings();
 
   const { symbols, addSymbol } = useSymbols({
     symbolsSet: symbolsSet.symbols,
@@ -44,7 +44,9 @@ const GamePageAnimation: React.FC = () => {
     setTimeout(() => {
       setBalloons((prev) => prev.filter((b) => b.id !== id).concat(createBalloon(true)));
       addSymbol(left, bottom, color);
-      launchDoubleFirework((fw) => setFireworks((prev) => [...prev, fw]), left, bottom);
+      if (showFirework) {
+        launchDoubleFirework((fw) => setFireworks((prev) => [...prev, fw]), left, bottom);
+      }
     }, 300);
   };
 

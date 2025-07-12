@@ -8,7 +8,7 @@ interface BalloonSettingsPanelProps {
 }
 
 const BalloonSettingsPanel: React.FC<BalloonSettingsPanelProps> = ({ onClose }) => {
-  const { symbolsSet, sequential, setSymbolsSet, setSequential } = useBalloonsSettings();
+  const { symbolsSet, sequential, showFirework, setSymbolsSet, setSequential, setShowFirework } = useBalloonsSettings();
 
   return (
     <div className="balloons-settings-panel">
@@ -38,6 +38,18 @@ const BalloonSettingsPanel: React.FC<BalloonSettingsPanelProps> = ({ onClose }) 
             onChange={(e) => setSequential(e.target.checked)}
           />{' '}
           По порядку
+        </label>
+      </div>
+
+      <div className="balloons-settings-panel__elem">
+        <label>
+          <input
+            type="checkbox"
+            name="showFirework"
+            checked={showFirework}
+            onChange={(e) => setShowFirework(e.target.checked)}
+          />{' '}
+          Конфетти
         </label>
       </div>
 

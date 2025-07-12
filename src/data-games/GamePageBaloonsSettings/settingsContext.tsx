@@ -4,8 +4,10 @@ import { SymbolSetOption, SYMBOL_SETS } from './symbolSets';
 interface BalloonsSettings {
   symbolsSet: SymbolSetOption;
   sequential: boolean;
+  showFirework: boolean;
   setSymbolsSet: (set: SymbolSetOption) => void;
   setSequential: (sequential: boolean) => void;
+  setShowFirework: (show: boolean) => void;
 }
 
 const defaultSet = SYMBOL_SETS[0];
@@ -15,9 +17,12 @@ const BalloonsSettingsContext = createContext<BalloonsSettings | undefined>(unde
 export const BalloonsSettingsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [symbolsSet, setSymbolsSet] = useState<SymbolSetOption>(defaultSet);
   const [sequential, setSequential] = useState<boolean>(false);
+  const [showFirework, setShowFirework] = useState<boolean>(false);
 
   return (
-    <BalloonsSettingsContext.Provider value={{ symbolsSet, sequential, setSymbolsSet, setSequential }}>
+    <BalloonsSettingsContext.Provider
+      value={{ symbolsSet, sequential, showFirework, setSymbolsSet, setSequential, setShowFirework }}
+    >
       {children}
     </BalloonsSettingsContext.Provider>
   );
