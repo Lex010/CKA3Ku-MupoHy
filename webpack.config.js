@@ -67,7 +67,7 @@ export default {
       // Повышаем лимит до 10 МБ, чтобы precache схватил bundle.js
       maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
       // Навигационный fallback для SPA и офлайн страницы
-      navigateFallback: '/index.html',
+      navigateFallback: '/CKA3Ku-MupoHy/release/index.html',
 
       // Этот блок настроит runtime кэш для картинок и видео
       runtimeCaching: [
