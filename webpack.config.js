@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import WorkboxPlugin from 'workbox-webpack-plugin';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -56,6 +57,41 @@ export default {
         {
           from: path.resolve(dirname, 'src/assets/favicon'),
           to: 'assets/favicon',
+        },
+      ],
+    }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+
+      // Повышаем лимит до 10 МБ, чтобы precache схватил bundle.js
+      maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+      // Навигационный fallback для SPA и офлайн страницы
+      navigateFallback: '/index.html',
+
+      // Этот блок настроит runtime кэш для картинок и видео
+      runtimeCaching: [
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'images',
+            expiration: {
+              maxEntries: 60,
+              maxAgeSeconds: 30 * 24 * 60 * 60, // 30 дней
+            },
+          },
+        },
+        {
+          urlPattern: /\.(?:mp4|webm|ogg)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'videos',
+            expiration: {
+              maxEntries: 20,
+              maxAgeSeconds: 30 * 24 * 60 * 60, // 30 дней
+            },
+          },
         },
       ],
     }),
