@@ -9,7 +9,7 @@ root.render(<App />);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('/service-worker.js')
+      .register('/CKA3Ku-MupoHy/release/service-worker.js')
       .then((registration) => {
         console.log('Service Worker зарегистрирован:', registration);
       })
