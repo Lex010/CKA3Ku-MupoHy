@@ -1,6 +1,8 @@
 {
   "name": "Мир",
   "short_name": "Мир",
+  "start_url": "/CKA3Ku-MupoHy/release/",
+  "scope": "/CKA3Ku-MupoHy/release/",
   "icons": [
     {
       "src": "/CKA3Ku-MupoHy/release/assets/favicon/web-app-manifest-192x192.png",
