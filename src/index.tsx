@@ -6,7 +6,7 @@ import App from './App';
 const root = createRoot(document.getElementById('root')!);
 root.render(<App />);
 
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('/CKA3Ku-MupoHy/release/service-worker.js')

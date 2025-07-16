@@ -7,6 +7,7 @@ import WorkboxPlugin from 'workbox-webpack-plugin';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
+const isProd = process.env.NODE_ENV === 'production';
 
 export default {
   entry: './src/index.tsx',
@@ -60,41 +61,42 @@ export default {
         },
       ],
     }),
-    new WorkboxPlugin.GenerateSW({
-      clientsClaim: true,
-      skipWaiting: true,
+    isProd &&
+      new WorkboxPlugin.GenerateSW({
+        clientsClaim: true,
+        skipWaiting: true,
 
-      // Повышаем лимит до 10 МБ, чтобы precache схватил bundle.js
-      maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
-      // Навигационный fallback для SPA и офлайн страницы
-      navigateFallback: '/CKA3Ku-MupoHy/release/index.html',
+        // Повышаем лимит до 10 МБ, чтобы precache схватил bundle.js
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+        // Навигационный fallback для SPA и офлайн страницы
+        navigateFallback: '/CKA3Ku-MupoHy/release/index.html',
 
-      // Этот блок настроит runtime кэш для картинок и видео
-      runtimeCaching: [
-        {
-          urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
-          handler: 'CacheFirst',
-          options: {
-            cacheName: 'images',
-            expiration: {
-              maxEntries: 60,
-              maxAgeSeconds: 30 * 24 * 60 * 60, // 30 дней
+        // Этот блок настроит runtime кэш для картинок и видео
+        runtimeCaching: [
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images',
+              expiration: {
+                maxEntries: 60,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 дней
+              },
             },
           },
-        },
-        {
-          urlPattern: /\.(?:mp4|webm|ogg)$/,
-          handler: 'CacheFirst',
-          options: {
-            cacheName: 'videos',
-            expiration: {
-              maxEntries: 20,
-              maxAgeSeconds: 30 * 24 * 60 * 60, // 30 дней
+          {
+            urlPattern: /\.(?:mp4|webm|ogg)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'videos',
+              expiration: {
+                maxEntries: 20,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 дней
+              },
             },
           },
-        },
-      ],
-    }),
+        ].filter(Boolean),
+      }),
   ],
   devServer: {
     static: path.resolve(dirname, 'dist'),
