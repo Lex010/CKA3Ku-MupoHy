@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-// Для просмотра отлаточных данных которые этот код записывает в БРАУЗЕРЕ в консоли ввести `window.debugData`
+// Для просмотра отлаточных данных которые этот код записывает, в БРАУЗЕРЕ в консоли ввести `window.debugData`
 
 export function unregisterSWInDev() {
   if ('serviceWorker' in navigator && process.env.NODE_ENV === 'development') {
