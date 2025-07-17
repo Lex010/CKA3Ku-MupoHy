@@ -2,19 +2,10 @@
 import { createRoot } from 'react-dom/client';
 import './style.css';
 import App from './App';
+import { unregisterSWInDev, registerSWInProd } from './serviceWorker';
 
 const root = createRoot(document.getElementById('root')!);
 root.render(<App />);
 
-if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('/CKA3Ku-MupoHy/release/service-worker.js')
-      .then((registration) => {
-        console.log('Service Worker зарегистрирован:', registration);
-      })
-      .catch((error) => {
-        console.log('Service Worker ошибка регистрации:', error);
-      });
-  });
-}
+unregisterSWInDev();
+registerSWInProd();
