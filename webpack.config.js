@@ -49,7 +49,12 @@ export default {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      manifest: isProd ? 'assets/favicon/site.webmanifest' : 'assets/favicon/site.dev.webmanifest',
+      inject: 'head',
+      scriptLoading: 'defer',
+      meta: {},
+      templateParameters: {
+        WEB_MANIFEST: isProd ? 'assets/favicon/site.webmanifest' : 'assets/favicon/site.dev.webmanifest',
+      },
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css', // Извлекает все CSS в один файл
