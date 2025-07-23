@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePagination } from './usePagination';
+import './css/pagination.css';
 
 interface PaginationProps<T> {
   items: T[];
@@ -11,9 +12,9 @@ export function Pagination<T>({ items, itemsPerPage = 5, children }: PaginationP
   const { currentItems, currentPage, totalPages, goToPage, nextPage, prevPage } = usePagination(items, itemsPerPage);
 
   const controls = (
-    <div className="pagination">
+    <div className="pagination-controls">
       <button onClick={prevPage} disabled={currentPage === 1}>
-        Previous
+        Назад
       </button>
 
       {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
@@ -23,7 +24,7 @@ export function Pagination<T>({ items, itemsPerPage = 5, children }: PaginationP
       ))}
 
       <button onClick={nextPage} disabled={currentPage === totalPages}>
-        Next
+        Вперёд
       </button>
     </div>
   );

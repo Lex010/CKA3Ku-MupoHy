@@ -1,0 +1,11 @@
+.pagination-controls {
+  pointer-events: auto;
+}
+.pagination-controls button {
+  background-color: red;
+  cursor: pointer;
+  border: none;
+  margin-left: 2px;
+  border-radius: 3px;
+  color: white;
+}
