@@ -15,3 +15,8 @@
   border-radius: 3px;
   color: var(--navBtnTxt);
 }
+
+.pagination-controls button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
