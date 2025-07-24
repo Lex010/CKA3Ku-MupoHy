@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { mainData } from '../site-manager-object/mainData';
 import BackgroundClouds from '../utils/BackgroundAnimation/BackgroundClouds';
 import ToggleSwitch from '../utils/ToggleSwitch/ToggleSwitch';
@@ -18,7 +17,6 @@ const GamesPage: React.FC = () => {
   const [isListVisible, setIsListVisible] = useState(true);
   const [isSettingsBalloonsVisible, setIsSettingsBalloonsVisible] = useState(false);
   const gamesItems = Object.values(mainData).filter((item) => item.type === 'game');
-  // const navigate = useNavigate();
 
   useEffect(() => {
     if (isListVisible && isSettingsBalloonsVisible) {

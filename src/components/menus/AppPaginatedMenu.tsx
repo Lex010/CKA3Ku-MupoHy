@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../utils/Pagination/Pagination';
 
 interface PageItem {
@@ -14,6 +14,7 @@ interface PageBlockProps {
   itemsPerPage?: number;
   renderItem?: (item: PageItem) => React.ReactNode;
   containerClassName?: string;
+  basePath?: string;
 }
 
 const AppPaginatedMenu: React.FC<PageBlockProps> = ({
@@ -23,20 +24,36 @@ const AppPaginatedMenu: React.FC<PageBlockProps> = ({
   itemsPerPage = 5,
   renderItem,
   containerClassName,
+  basePath,
 }) => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const pageParam = parseInt(searchParams.get('page') || '1', 10);
 
   return (
     <div>
       {renderTitle ? renderTitle() : title && <h1 className="page-title">{title}</h1>}
-      <Pagination items={items} itemsPerPage={itemsPerPage}>
+      <Pagination
+        items={items}
+        itemsPerPage={itemsPerPage}
+        initialPage={pageParam}
+        onPageChange={(newPage) => {
+          if (newPage === 1) {
+            searchParams.delete('page');
+            setSearchParams(searchParams);
+          } else {
+            setSearchParams({ page: newPage.toString() });
+          }
+        }}
+      >
         {(currentItems, controls) => (
           <div className={containerClassName || 'page-list'}>
             {currentItems.map((item) =>
               renderItem ? (
                 renderItem(item)
               ) : (
-                <div key={item.id} className="page-unit" onClick={() => navigate(`/${item.id}`)}>
+                <div key={item.id} className="page-unit" onClick={() => navigate(`${basePath || ''}/${item.id}`)}>
                   {item.title}
                 </div>
               )

@@ -1196,6 +1196,29 @@ select {
   pointer-events: none;
 }
 
+.pagination-controls__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-controls {
+  pointer-events: auto;
+}
+.pagination-controls button {
+  background-color: var(--txtLeftBorder);
+  cursor: pointer;
+  border: none;
+  margin-left: 2px;
+  border-radius: 3px;
+  color: var(--navBtnTxt);
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 .togle-switch__MUP {
   position: relative;
   display: inline-block;
@@ -1242,45 +1265,6 @@ input:checked + .slider__MUP::before {
   transform: translateX(16px);
 }
 
-.game-page__title-container {
-  padding: 0;
-}
-
-.game-page__page-title {
-  margin-bottom: 0;
-}
-
-.game-page__controls-container {
-  padding: 5px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.game-page__toggle-switch {
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.game-page__baloon-setting-btn {
-  border-radius: 8px;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: var(--gameMenuBtnHover);
-  padding: 1px 9px;
-}
-
-.game-page__baloon-setting-btn:active {
-  background-color: var(--gameMenuBtnSelected);
-}
-
 .balloons-settings-panel {
   animation: balloons-settings-panel__slideDown 0.3s ease-out forwards;
   display: flex;
@@ -1318,6 +1302,45 @@ input:checked + .slider__MUP::before {
 .balloons-settings-panel__close-btn {
   font-size: 20px;
   padding: 5px 10px;
+}
+
+.game-page__title-container {
+  padding: 0;
+}
+
+.game-page__page-title {
+  margin-bottom: 0;
+}
+
+.game-page__controls-container {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.game-page__toggle-switch {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-page__baloon-setting-btn {
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--gameMenuBtnHover);
+  padding: 1px 9px;
+}
+
+.game-page__baloon-setting-btn:active {
+  background-color: var(--gameMenuBtnSelected);
 }
 
 .header-dvoinik-wrapper {
