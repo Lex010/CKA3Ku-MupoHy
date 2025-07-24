@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ImageModal from '../utils/open-img-in-modal/imageModal';
 import pushistayaPlanetaVideoFunc from '../utils/videoForFairyTale';
 import { Pagination } from '../utils/Pagination/Pagination';
@@ -13,11 +14,10 @@ interface StoryPageProps {
   data: StoryItem[];
 }
 
-// Вспомогательный компонент, который использует ref и вызывает pushistayaPlanetaVideoFunc
 const VideoWrapper: React.FC<{ src: string }> = ({ src }) => {
-  const videoContainerRef = React.useRef<HTMLDivElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (videoContainerRef.current) {
       pushistayaPlanetaVideoFunc(videoContainerRef.current, src);
     }
@@ -28,23 +28,35 @@ const VideoWrapper: React.FC<{ src: string }> = ({ src }) => {
 
 const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
   const modalRef = useRef<ImageModal | null>(null);
-  // Создаём один экземпляр ImageModal без thumbnail,
-  // просто чтобы использовать метод openModal
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageParam = parseInt(searchParams.get('page') || '1', 10); // Текущая страница
+
   useEffect(() => {
     modalRef.current = new ImageModal(document.body, '', '');
-    // Но т.к. конструктор вызывает createThumbnail, можно заменить или отложить вызов
   }, []);
 
   const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
     if (!modalRef.current) return;
-    // Передаём в openModal реальный элемент изображения, на которое кликнули
     modalRef.current.openModal(e.currentTarget);
   };
 
   return (
     <div className="story-container">
       <h1 id="h1">{title}</h1>
-      <Pagination items={data} itemsPerPage={10}>
+      <Pagination
+        items={data}
+        itemsPerPage={10}
+        initialPage={pageParam} // Передаю начальную страницу
+        onPageChange={(newPage) => {
+          // Обновляю query
+          if (newPage === 1) {
+            searchParams.delete('page');
+            setSearchParams(searchParams);
+          } else {
+            setSearchParams({ page: newPage.toString() });
+          }
+        }}
+      >
         {(currentItems, controls) => (
           <>
             {controls}
