@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { mainData } from '../site-manager-object/mainData';
 import BackgroundClouds from '../utils/BackgroundAnimation/BackgroundClouds';
 import ToggleSwitch from '../utils/ToggleSwitch/ToggleSwitch';
-import './GamesPage.css';
 import BalloonSettingsIcon from './GamePageBaloonsSettings/BalloonSettingsIcon';
 import BalloonSettingsPanel from './GamePageBaloonsSettings/BalloonSettingsPanel';
 import { BalloonsSettingsProvider } from './GamePageBaloonsSettings/settingsContext';
+import AppPaginatedMenu from '../components/menus/AppPaginatedMenu';
+import './GamesPage.css';
 
 const idGamesPage = {
   title: `${String.fromCodePoint(0x1f3af)} ИГРЫ`,
@@ -17,7 +18,7 @@ const GamesPage: React.FC = () => {
   const [isListVisible, setIsListVisible] = useState(true);
   const [isSettingsBalloonsVisible, setIsSettingsBalloonsVisible] = useState(false);
   const gamesItems = Object.values(mainData).filter((item) => item.type === 'game');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     if (isListVisible && isSettingsBalloonsVisible) {
@@ -55,13 +56,7 @@ const GamesPage: React.FC = () => {
             {isSettingsBalloonsVisible && <BalloonSettingsPanel onClose={() => setIsSettingsBalloonsVisible(false)} />}
           </div>
 
-          <div className="page-list" style={{ display: isListVisible ? 'flex' : 'none' }}>
-            {gamesItems.map((item) => (
-              <div key={item.id} className="page-unit" onClick={() => navigate(`/${item.id}`)}>
-                {item.title}
-              </div>
-            ))}
-          </div>
+          {isListVisible && <AppPaginatedMenu items={gamesItems} itemsPerPage={5} containerClassName="page-list" />}
         </div>
       </BackgroundClouds>
     </BalloonsSettingsProvider>
