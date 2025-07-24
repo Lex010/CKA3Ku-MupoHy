@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import ImageModal from '../utils/open-img-in-modal/imageModal';
 import pushistayaPlanetaVideoFunc from '../utils/videoForFairyTale';
+import { Pagination } from '../utils/Pagination/Pagination';
 
 type StoryItem =
   | { type: 'text'; content: string }
@@ -43,34 +44,39 @@ const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
   return (
     <div className="story-container">
       <h1 id="h1">{title}</h1>
-      {data.map((item, index) => {
-        switch (item.type) {
-          case 'text':
-            return (
-              <p key={index} className="txt">
-                {item.content}
-              </p>
-            );
-          case 'image':
-            return (
-              <img
-                key={index}
-                src={item.src}
-                alt={item.alt || ''}
-                className="story-image"
-                onClick={handleImageClick}
-                style={{ cursor: 'zoom-in', maxWidth: '100%' }}
-              />
-            );
-          case 'video':
-            // Тут надо «обернуть» pushistayaPlanetaVideoFunc,
-            // потому что он императивно вставляет видео в контейнер
-            // Предположим, что pushistayaPlanetaVideoFunc принимает контейнер и src и создает видео
-            return <VideoWrapper key={index} src={item.src} />;
-          default:
-            return null;
-        }
-      })}
+      <Pagination items={data} itemsPerPage={10}>
+        {(currentItems, controls) => (
+          <>
+            {controls}
+            {currentItems.map((item, index) => {
+              switch (item.type) {
+                case 'text':
+                  return (
+                    <p key={index} className="txt">
+                      {item.content}
+                    </p>
+                  );
+                case 'image':
+                  return (
+                    <img
+                      key={index}
+                      src={item.src}
+                      alt={item.alt || ''}
+                      className="story-image"
+                      onClick={handleImageClick}
+                      style={{ cursor: 'zoom-in', maxWidth: '100%' }}
+                    />
+                  );
+                case 'video':
+                  return <VideoWrapper key={index} src={item.src} />;
+                default:
+                  return null;
+              }
+            })}
+            {controls}
+          </>
+        )}
+      </Pagination>
     </div>
   );
 };

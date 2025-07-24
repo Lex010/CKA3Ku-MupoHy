@@ -1,11 +1,17 @@
+.pagination-controls__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pagination-controls {
   pointer-events: auto;
 }
 .pagination-controls button {
-  background-color: red;
+  background-color: var(--txtLeftBorder);
   cursor: pointer;
   border: none;
   margin-left: 2px;
   border-radius: 3px;
-  color: white;
+  color: var(--navBtnTxt);
 }
