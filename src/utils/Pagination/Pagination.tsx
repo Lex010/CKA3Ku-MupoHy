@@ -12,7 +12,7 @@ interface PaginationProps<T> {
   /* Колбэк при смене страницы */
   onPageChange?: (newPage: number) => void;
 
-  children: (currentItems: T[], PaginationControls: React.ReactElement) => React.ReactNode;
+  children: (currentItems: T[], PaginationControls: React.ReactNode) => React.ReactNode;
 }
 
 export function Pagination<T>({
@@ -43,25 +43,26 @@ export function Pagination<T>({
     if (onPageChange) onPageChange(currentPage + 1);
   };
 
-  const controls = (
-    <div className="pagination-controls__container">
-      <div className="pagination-controls">
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>
-          Назад
-        </button>
-
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button key={page} onClick={() => handleGoToPage(page)} disabled={page === currentPage}>
-            {page}
+  const controls =
+    totalPages > 1 ? (
+      <div className="pagination-controls__container">
+        <div className="pagination-controls">
+          <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            Назад
           </button>
-        ))}
 
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Вперёд
-        </button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <button key={page} onClick={() => handleGoToPage(page)} disabled={page === currentPage}>
+              {page}
+            </button>
+          ))}
+
+          <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            Вперёд
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    ) : null;
 
   return <>{children(currentItems, controls)}</>;
 }
