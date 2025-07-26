@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePagination } from './usePagination';
+import { useScrollOnPageChange } from './scrollToTopPagination';
 import './css/pagination.css';
 
 interface PaginationProps<T> {
@@ -28,19 +29,24 @@ export function Pagination<T>({
     initialPage
   );
 
+  useScrollOnPageChange(currentPage, onPageChange);
+
   const handleGoToPage = (page: number) => {
-    goToPage(page);
-    if (onPageChange) onPageChange(page);
+    if (page !== currentPage) {
+      goToPage(page);
+    }
   };
 
   const handlePrevPage = () => {
-    prevPage();
-    if (onPageChange) onPageChange(currentPage - 1);
+    if (currentPage > 1) {
+      prevPage();
+    }
   };
 
   const handleNextPage = () => {
-    nextPage();
-    if (onPageChange) onPageChange(currentPage + 1);
+    if (currentPage < totalPages) {
+      nextPage();
+    }
   };
 
   const controls =
