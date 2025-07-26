@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+// import { useSearchParams } from 'react-router-dom';
 import ImageModal from '../utils/open-img-in-modal/imageModal';
 import pushistayaPlanetaVideoFunc from '../utils/videoForFairyTale';
 import { Pagination } from '../utils/Pagination/Pagination';
+import { usePaginationQuerySync } from '../utils/Pagination/usePaginationQuerySync';
 
 type StoryItem =
   | { type: 'text'; content: string }
@@ -28,8 +29,8 @@ const VideoWrapper: React.FC<{ src: string }> = ({ src }) => {
 
 const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
   const modalRef = useRef<ImageModal | null>(null);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const pageParam = parseInt(searchParams.get('page') || '1', 10); // Текущая страница
+  // const [searchParams, setSearchParams] = useSearchParams();
+  const [pageParam, setPageParam] = usePaginationQuerySync();
 
   useEffect(() => {
     modalRef.current = new ImageModal(document.body, '', '');
@@ -47,15 +48,7 @@ const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
         items={data}
         itemsPerPage={10}
         initialPage={pageParam} // Передаю начальную страницу
-        onPageChange={(newPage) => {
-          // Обновляю query
-          if (newPage === 1) {
-            searchParams.delete('page');
-            setSearchParams(searchParams);
-          } else {
-            setSearchParams({ page: newPage.toString() });
-          }
-        }}
+        onPageChange={setPageParam}
       >
         {(currentItems, controls) => (
           <>

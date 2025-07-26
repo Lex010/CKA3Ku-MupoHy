@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { usePagination } from './usePagination';
-import { useScrollOnPageChange } from './scrollToTopPagination';
+import { scrollToTopPagination } from './scrollToTopPagination';
 import './css/pagination.css';
 
 interface PaginationProps<T> {
@@ -29,23 +29,28 @@ export function Pagination<T>({
     initialPage
   );
 
-  useScrollOnPageChange(currentPage, onPageChange);
+  useEffect(() => {
+    scrollToTopPagination();
+  }, [currentPage]);
 
   const handleGoToPage = (page: number) => {
     if (page !== currentPage) {
       goToPage(page);
+      onPageChange?.(page);
     }
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
       prevPage();
+      onPageChange?.(currentPage - 1);
     }
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       nextPage();
+      onPageChange?.(currentPage + 1);
     }
   };
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Pagination } from '../../utils/Pagination/Pagination';
+import { usePaginationQuerySync } from '../../utils/Pagination/usePaginationQuerySync';
 
 interface PageItem {
   id: string;
@@ -27,26 +28,12 @@ const AppPaginatedMenu: React.FC<PageBlockProps> = ({
   basePath,
 }) => {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const pageParam = parseInt(searchParams.get('page') || '1', 10);
+  const [currentPage, setPage] = usePaginationQuerySync();
 
   return (
     <div>
       {renderTitle ? renderTitle() : title && <h1 className="page-title">{title}</h1>}
-      <Pagination
-        items={items}
-        itemsPerPage={itemsPerPage}
-        initialPage={pageParam}
-        onPageChange={(newPage) => {
-          if (newPage === 1) {
-            searchParams.delete('page');
-            setSearchParams(searchParams);
-          } else {
-            setSearchParams({ page: newPage.toString() });
-          }
-        }}
-      >
+      <Pagination items={items} itemsPerPage={itemsPerPage} initialPage={currentPage} onPageChange={setPage}>
         {(currentItems, controls) => (
           <div className={containerClassName || 'page-list'}>
             {currentItems.map((item) =>
