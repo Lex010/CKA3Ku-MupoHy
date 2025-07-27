@@ -16,6 +16,11 @@ export const SYMBOL_SETS: SymbolSetOption[] = [
     symbols: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
   },
   {
+    id: 'glagolitic',
+    name: 'Глаголица',
+    symbols: 'ⰀⰁⰂⰃⰄⰅⰆⰇⰈⰊⰉⰋⰌⰍⰎⰏⰐⰑⰒⰓⰔⰕⰫⰖⰗⰘⰙⰚⰜⰝⰞⰛⰟⰊⰠⰡⰦⰢⰣⰤⰧⰨⰩⰪ',
+  },
+  {
     id: 'numbers',
     name: 'Числа (0-9)',
     symbols: '0123456789',
