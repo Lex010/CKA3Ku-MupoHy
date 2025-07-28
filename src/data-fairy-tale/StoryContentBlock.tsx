@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-// import { useSearchParams } from 'react-router-dom';
 import ImageModal from '../utils/open-img-in-modal/imageModal';
 import pushistayaPlanetaVideoFunc from '../utils/videoForFairyTale';
 import { Pagination } from '../utils/Pagination/Pagination';
 import { usePaginationQuerySync } from '../utils/Pagination/usePaginationQuerySync';
+import NotFoundPage from '../header-mainPage/NotFoundPage/NotFoundPage';
 
 type StoryItem =
   | { type: 'text'; content: string }
@@ -29,7 +29,6 @@ const VideoWrapper: React.FC<{ src: string }> = ({ src }) => {
 
 const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
   const modalRef = useRef<ImageModal | null>(null);
-  // const [searchParams, setSearchParams] = useSearchParams();
   const [pageParam, setPageParam] = usePaginationQuerySync();
 
   useEffect(() => {
@@ -49,6 +48,7 @@ const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
         itemsPerPage={10}
         initialPage={pageParam} // Передаю начальную страницу
         onPageChange={setPageParam}
+        notFoundElement={<NotFoundPage />}
       >
         {(currentItems, controls) => (
           <>

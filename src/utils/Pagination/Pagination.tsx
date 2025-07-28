@@ -6,12 +6,9 @@ import './css/pagination.css';
 interface PaginationProps<T> {
   items: T[];
   itemsPerPage?: number;
-
-  /* Начальная страница */
   initialPage?: number;
-
-  /* Колбэк при смене страницы */
   onPageChange?: (newPage: number) => void;
+  notFoundElement: React.ReactNode;
 
   children: (currentItems: T[], PaginationControls: React.ReactNode) => React.ReactNode;
 }
@@ -21,13 +18,17 @@ export function Pagination<T>({
   itemsPerPage = 5,
   initialPage = 1,
   onPageChange,
+  notFoundElement,
   children,
 }: PaginationProps<T>) {
-  const { currentItems, currentPage, totalPages, goToPage, nextPage, prevPage } = usePagination(
-    items,
-    itemsPerPage,
-    initialPage
-  );
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+
+  // Проверка: если initialPage некорректен — показываем 404
+  if (initialPage < 1 || initialPage > totalPages) {
+    return <>{notFoundElement || null}</>;
+  }
+
+  const { currentItems, currentPage, goToPage, nextPage, prevPage } = usePagination(items, itemsPerPage, initialPage);
 
   useEffect(() => {
     scrollToTopPagination();
