@@ -9,7 +9,7 @@ const NotFoundPage: React.FC = () => {
     <div className="not-found-page__cont">
       <h1 id="h1">404 — Страница не найдена</h1>
       <p className="not-found-page__p">Возможно, вы ошиблись в адресе или такой страницы не существует.</p>
-      <button className="nav-btn" onClick={() => navigate('/')}>
+      <button className="nav-btn not-found-page__btn" onClick={() => navigate('/')}>
         На главную
       </button>
     </div>

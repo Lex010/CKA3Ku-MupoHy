@@ -6,8 +6,14 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
+  background: var(--mainBackground);
+  border-radius: 20px;
 }
 
 .not-found-page__p {
   margin: 0;
+}
+
+.not-found-page__btn {
+  pointer-events: auto;
 }
