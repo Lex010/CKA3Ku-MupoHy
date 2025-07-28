@@ -1,0 +1,13 @@
+.not-found-page__cont {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.not-found-page__p {
+  margin: 0;
+}

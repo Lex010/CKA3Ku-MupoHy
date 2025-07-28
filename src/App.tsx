@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import ScrollToTop from './utils/ScrollToTop';
 import Header from './header-mainPage/HeaderReact';
@@ -8,6 +8,7 @@ import userLogin from './firebase/userLogin';
 import { DynamicPageTitle } from './utils/DynamicPageTitle';
 import LoadingElement from './utils/LoadingPage/LoadingElement';
 import { NightModeProvider } from './header-mainPage/ThemeToggle/ThemeToggleContext';
+import NotFoundPage from './header-mainPage/NotFoundPage/NotFoundPage';
 
 const AppContent = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const AppContent = () => {
             {Object.entries(mainData).map(([key, { component: Component }]) => (
               <Route key={key} path={`/${key}`} element={<Component />} />
             ))}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         )}
       </main>
