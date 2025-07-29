@@ -1219,6 +1219,35 @@ select {
   cursor: not-allowed;
 }
 
+.not-found-page__cont {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--mainBackground);
+  border-radius: 20px;
+}
+
+.not-found-page__p {
+  margin: 0;
+}
+
+.not-found-page__btn {
+  pointer-events: auto;
+}
+
+.not-found-page__btn-back {
+  pointer-events: auto;
+}
+
+.not-found-page__btn-back:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .togle-switch__MUP {
   position: relative;
   display: inline-block;

@@ -17,3 +17,12 @@
 .not-found-page__btn {
   pointer-events: auto;
 }
+
+.not-found-page__btn-back {
+  pointer-events: auto;
+}
+
+.not-found-page__btn-back:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
