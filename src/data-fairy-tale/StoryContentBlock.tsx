@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import ImageModal from '../utils/open-img-in-modal/imageModal';
 import pushistayaPlanetaVideoFunc from '../utils/videoForFairyTale';
 import { Pagination } from '../utils/Pagination/Pagination';
-import { usePaginationQuerySync } from '../utils/Pagination/usePaginationQuerySync';
 import NotFoundPage from '../header-mainPage/NotFoundPage/NotFoundPage';
 
 type StoryItem =
@@ -29,7 +28,6 @@ const VideoWrapper: React.FC<{ src: string }> = ({ src }) => {
 
 const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
   const modalRef = useRef<ImageModal | null>(null);
-  const [pageParam, setPageParam] = usePaginationQuerySync();
 
   useEffect(() => {
     modalRef.current = new ImageModal(document.body, '', '');
@@ -43,13 +41,7 @@ const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
   return (
     <div className="story-container">
       <h1 id="h1">{title}</h1>
-      <Pagination
-        items={data}
-        itemsPerPage={10}
-        initialPage={pageParam} // Передаю начальную страницу
-        onPageChange={setPageParam}
-        notFoundElement={<NotFoundPage />}
-      >
+      <Pagination items={data} itemsPerPage={10} notFoundElement={<NotFoundPage />}>
         {(currentItems, controls) => (
           <>
             {controls}

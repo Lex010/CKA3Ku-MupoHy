@@ -1,43 +1,42 @@
 import React, { useEffect } from 'react';
 import { usePagination } from './usePagination';
 import { scrollToTopPagination } from './scrollToTopPagination';
+import { usePaginationQuerySync } from './usePaginationQuerySync';
 import './css/pagination.css';
 
 interface PaginationProps<T> {
   items: T[];
   itemsPerPage?: number;
-  initialPage?: number;
   onPageChange?: (newPage: number) => void;
   notFoundElement: React.ReactNode;
-
   children: (currentItems: T[], PaginationControls: React.ReactNode) => React.ReactNode;
 }
 
 export function Pagination<T>({
   items,
   itemsPerPage = 5,
-  initialPage = 1,
   onPageChange,
   notFoundElement,
   children,
 }: PaginationProps<T>) {
   const totalPages = Math.ceil(items.length / itemsPerPage);
+  const [currentPage, setPage, isInvalid] = usePaginationQuerySync(totalPages);
 
-  // Проверка: если initialPage некорректен — показываем 404
-  if (initialPage < 1 || initialPage > totalPages) {
-    return <>{notFoundElement || null}</>;
-  }
-
-  const { currentItems, currentPage, goToPage, nextPage, prevPage } = usePagination(items, itemsPerPage, initialPage);
+  const { currentItems, goToPage, nextPage, prevPage } = usePagination(items, itemsPerPage, currentPage);
 
   useEffect(() => {
     scrollToTopPagination();
   }, [currentPage]);
 
+  if (isInvalid || currentPage < 1 || currentPage > totalPages) {
+    return <>{notFoundElement || null}</>;
+  }
+
   const handleGoToPage = (page: number) => {
     if (page !== currentPage) {
       goToPage(page);
       onPageChange?.(page);
+      setPage(page);
     }
   };
 
@@ -45,6 +44,7 @@ export function Pagination<T>({
     if (currentPage > 1) {
       prevPage();
       onPageChange?.(currentPage - 1);
+      setPage(currentPage - 1);
     }
   };
 
@@ -52,6 +52,7 @@ export function Pagination<T>({
     if (currentPage < totalPages) {
       nextPage();
       onPageChange?.(currentPage + 1);
+      setPage(currentPage + 1);
     }
   };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Pagination } from '../../utils/Pagination/Pagination';
-import { usePaginationQuerySync } from '../../utils/Pagination/usePaginationQuerySync';
 import NotFoundPage from '../../header-mainPage/NotFoundPage/NotFoundPage';
 
 interface PageItem {
@@ -29,18 +28,11 @@ const AppPaginatedMenu: React.FC<PageBlockProps> = ({
   basePath,
 }) => {
   const navigate = useNavigate();
-  const [currentPage, setPage] = usePaginationQuerySync();
 
   return (
     <div>
       {renderTitle ? renderTitle() : title && <h1 className="page-title">{title}</h1>}
-      <Pagination
-        items={items}
-        itemsPerPage={itemsPerPage}
-        initialPage={currentPage}
-        onPageChange={setPage}
-        notFoundElement={<NotFoundPage />}
-      >
+      <Pagination items={items} itemsPerPage={itemsPerPage} notFoundElement={<NotFoundPage />}>
         {(currentItems, controls) => (
           <div className={containerClassName || 'page-list'}>
             {currentItems.map((item) =>
