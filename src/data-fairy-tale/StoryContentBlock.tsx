@@ -39,42 +39,40 @@ const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
   };
 
   return (
-    <div className="story-container">
-      <h1 id="h1">{title}</h1>
-      <Pagination items={data} itemsPerPage={10} notFoundElement={<NotFoundPage />}>
-        {(currentItems, controls) => (
-          <>
-            {controls}
-            {currentItems.map((item, index) => {
-              switch (item.type) {
-                case 'text':
-                  return (
-                    <p key={index} className="txt">
-                      {item.content}
-                    </p>
-                  );
-                case 'image':
-                  return (
-                    <img
-                      key={index}
-                      src={item.src}
-                      alt={item.alt || ''}
-                      className="story-image"
-                      onClick={handleImageClick}
-                      style={{ cursor: 'zoom-in', maxWidth: '100%' }}
-                    />
-                  );
-                case 'video':
-                  return <VideoWrapper key={index} src={item.src} />;
-                default:
-                  return null;
-              }
-            })}
-            {controls}
-          </>
-        )}
-      </Pagination>
-    </div>
+    <Pagination items={data} itemsPerPage={10} notFoundElement={<NotFoundPage />}>
+      {(currentItems, controls) => (
+        <div className="story-container">
+          <h1 id="h1">{title}</h1>
+          {controls}
+          {currentItems.map((item, index) => {
+            switch (item.type) {
+              case 'text':
+                return (
+                  <p key={index} className="txt">
+                    {item.content}
+                  </p>
+                );
+              case 'image':
+                return (
+                  <img
+                    key={index}
+                    src={item.src}
+                    alt={item.alt || ''}
+                    className="story-image"
+                    onClick={handleImageClick}
+                    style={{ cursor: 'zoom-in', maxWidth: '100%' }}
+                  />
+                );
+              case 'video':
+                return <VideoWrapper key={index} src={item.src} />;
+              default:
+                return null;
+            }
+          })}
+          {controls}
+        </div>
+      )}
+    </Pagination>
   );
 };
 

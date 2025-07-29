@@ -30,10 +30,10 @@ const AppPaginatedMenu: React.FC<PageBlockProps> = ({
   const navigate = useNavigate();
 
   return (
-    <div>
-      {renderTitle ? renderTitle() : title && <h1 className="page-title">{title}</h1>}
-      <Pagination items={items} itemsPerPage={itemsPerPage} notFoundElement={<NotFoundPage />}>
-        {(currentItems, controls) => (
+    <Pagination items={items} itemsPerPage={itemsPerPage} notFoundElement={<NotFoundPage />}>
+      {(currentItems, controls) => (
+        <div>
+          {renderTitle ? renderTitle() : title && <h1 className="page-title">{title}</h1>}
           <div className={containerClassName || 'page-list'}>
             {currentItems.map((item) =>
               renderItem ? (
@@ -46,9 +46,9 @@ const AppPaginatedMenu: React.FC<PageBlockProps> = ({
             )}
             {controls}
           </div>
-        )}
-      </Pagination>
-    </div>
+        </div>
+      )}
+    </Pagination>
   );
 };
 
