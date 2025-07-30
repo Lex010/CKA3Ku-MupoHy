@@ -1,4 +1,5 @@
 import { StoryItem } from '../StoryContentBlock';
+import melochAsset from '../../assets/data-fairy-tale/Meloch/meloch-img.png';
 
 export const melochData: StoryItem[] = [
   {
@@ -83,5 +84,10 @@ export const melochData: StoryItem[] = [
   {
     type: 'text',
     content: '— Иногда одна маленькая деталь может решить весь матч.',
+  },
+  {
+    type: 'image',
+    src: melochAsset,
+    alt: 'Рассказ Мелоч изображение Мирона',
   },
 ];
