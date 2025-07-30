@@ -3,6 +3,7 @@ import { titleIdPushistayaPlaneta, PushistayaPlaneta } from '../data-fairy-tale/
 import { titleIdCifrozavry, Cifrozavry } from '../data-fairy-tale/cifrozavry/Cifro-zavry';
 import { titleIdVolshebnayaEda, VolshebnayaEda } from '../data-fairy-tale/volshebnayaEda/volshebnayaEda';
 import { titleIdMamynTort, MamynTort } from '../data-fairy-tale/mamynTort/mamynTort';
+import { titleIdMeloch, Meloch } from '../data-fairy-tale/Meloch/Meloch';
 
 const storyData: ContentItem = {
   [titleIdPushistayaPlaneta.id]: {
@@ -28,6 +29,12 @@ const storyData: ContentItem = {
     title: titleIdMamynTort.title,
     type: 'story',
     component: MamynTort,
+  },
+  [titleIdMeloch.id]: {
+    id: titleIdMeloch.id,
+    title: titleIdMeloch.title,
+    type: 'story',
+    component: Meloch,
   },
 };
 
