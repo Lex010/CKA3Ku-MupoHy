@@ -4,6 +4,7 @@ import { titleIdCifrozavry, Cifrozavry } from '../data-fairy-tale/cifrozavry/Cif
 import { titleIdVolshebnayaEda, VolshebnayaEda } from '../data-fairy-tale/volshebnayaEda/volshebnayaEda';
 import { titleIdMamynTort, MamynTort } from '../data-fairy-tale/mamynTort/mamynTort';
 import { titleIdMeloch, Meloch } from '../data-fairy-tale/Meloch/Meloch';
+import { titleIdSlovo, Slovo } from '../data-fairy-tale/Slovo/Slovo';
 
 const storyData: ContentItem = {
   [titleIdPushistayaPlaneta.id]: {
@@ -35,6 +36,12 @@ const storyData: ContentItem = {
     title: titleIdMeloch.title,
     type: 'story',
     component: Meloch,
+  },
+  [titleIdSlovo.id]: {
+    id: titleIdSlovo.id,
+    title: titleIdSlovo.title,
+    type: 'story',
+    component: Slovo,
   },
 };
 
