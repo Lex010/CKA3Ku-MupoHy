@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { usePagination } from './usePagination';
 import { scrollToTopPagination } from './scrollToTopPagination';
 import { usePaginationQuerySync } from './usePaginationQuerySync';
+import { getVisiblePagesButtons } from './getVisiblePagesButtons';
 import './css/pagination.css';
 
 interface PaginationProps<T> {
@@ -56,22 +57,30 @@ export function Pagination<T>({
     }
   };
 
+  const visiblePages = getVisiblePagesButtons(currentPage, totalPages);
+
   const controls =
     totalPages > 1 ? (
       <div className="pagination-controls__container">
         <div className="pagination-controls">
           <button onClick={handlePrevPage} disabled={currentPage === 1}>
-            Назад
+            «
           </button>
 
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button key={page} onClick={() => handleGoToPage(page)} disabled={page === currentPage}>
-              {page}
-            </button>
-          ))}
+          {visiblePages.map((page, index) =>
+            page === '...' ? (
+              <span key={`ellipsis-${index}`} className="pagination-ellipsis">
+                ...
+              </span>
+            ) : (
+              <button key={page} onClick={() => handleGoToPage(Number(page))} disabled={page === currentPage}>
+                {page}
+              </button>
+            )
+          )}
 
           <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-            Вперёд
+            »
           </button>
         </div>
       </div>

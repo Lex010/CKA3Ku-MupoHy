@@ -6,12 +6,17 @@
 
 .pagination-controls {
   pointer-events: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
 }
+
 .pagination-controls button {
   background-color: var(--txtLeftBorder);
   cursor: pointer;
   border: none;
-  margin-left: 2px;
   border-radius: 3px;
   color: var(--navBtnTxt);
 }
@@ -19,4 +24,8 @@
 .pagination-controls button:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+  user-select: none;
 }
