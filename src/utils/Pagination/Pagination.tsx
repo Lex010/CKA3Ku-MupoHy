@@ -63,7 +63,11 @@ export function Pagination<T>({
     totalPages > 1 ? (
       <div className="pagination-controls__container">
         <div className="pagination-controls">
-          <button onClick={handlePrevPage} disabled={currentPage === 1}>
+          <button
+            className="pagination-controls__btn pagination-controls__arrow-btn"
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+          >
             «
           </button>
 
@@ -73,13 +77,22 @@ export function Pagination<T>({
                 ...
               </span>
             ) : (
-              <button key={page} onClick={() => handleGoToPage(Number(page))} disabled={page === currentPage}>
+              <button
+                className="pagination-controls__btn"
+                key={page}
+                onClick={() => handleGoToPage(Number(page))}
+                disabled={page === currentPage}
+              >
                 {page}
               </button>
             )
           )}
 
-          <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          <button
+            className="pagination-controls__btn pagination-controls__arrow-btn"
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
             »
           </button>
         </div>

@@ -13,7 +13,7 @@
   gap: 2px;
 }
 
-.pagination-controls button {
+.pagination-controls__btn {
   background-color: var(--txtLeftBorder);
   cursor: pointer;
   border: none;
@@ -21,7 +21,12 @@
   color: var(--navBtnTxt);
 }
 
-.pagination-controls button:disabled {
+.pagination-controls__arrow-btn {
+  border-radius: 40%;
+  text-align: center;
+}
+
+.pagination-controls__btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
 }
