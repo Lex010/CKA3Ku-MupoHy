@@ -234,7 +234,7 @@ main {
   background: var(--txtBackground);
   border: 3px solid var(--txtLeftBorder);
   border-radius: 15px;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
   font-size: 1.4rem;
   font-weight: bold;
@@ -1204,19 +1204,33 @@ select {
 
 .pagination-controls {
   pointer-events: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
 }
-.pagination-controls button {
+
+.pagination-controls__btn {
   background-color: var(--txtLeftBorder);
   cursor: pointer;
   border: none;
-  margin-left: 2px;
   border-radius: 3px;
   color: var(--navBtnTxt);
 }
 
-.pagination-controls button:disabled {
+.pagination-controls__arrow-btn {
+  border-radius: 40%;
+  text-align: center;
+}
+
+.pagination-controls__btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+  user-select: none;
 }
 
 .not-found-page__cont {
