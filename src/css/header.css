@@ -48,6 +48,10 @@
   gap: 8px;
 }
 
+#login-btn {
+  padding: 3px 2px 3px 8px;
+}
+
 #user-avatar {
   border: 1px solid var(--txtLeftBorder);
   width: 32px;
