@@ -1,6 +1,7 @@
 import React from 'react';
 import { Player, gameCharacters } from './gameCharacters';
 import PlayerSelector from './PlayerSelector';
+import ToggleSwitch from '../../utils/ToggleSwitch/ToggleSwitch';
 
 interface Props {
   selectedCharacters: (Player | null)[];
@@ -28,15 +29,7 @@ const PlayerSetup: React.FC<Props> = ({ selectedCharacters, updatePlayer, botDif
       />
     </div>
     <div className="difficulty-bot-toggle">
-      <label htmlFor="difficulty-bots">
-        <input
-          type="checkbox"
-          id="difficulty-bots"
-          checked={botDifficulty}
-          onChange={(e) => setBotDifficulty(e.target.checked)}
-        />
-        Умные боты
-      </label>
+      <ToggleSwitch checked={botDifficulty} onChange={(e) => setBotDifficulty(e.target.checked)} label="Умные боты" />
     </div>
   </>
 );
