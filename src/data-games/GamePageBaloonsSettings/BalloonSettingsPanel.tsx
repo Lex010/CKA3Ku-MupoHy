@@ -2,6 +2,7 @@ import React from 'react';
 import './BalloonSettingsPanel.css';
 import { SYMBOL_SETS } from './symbolSets';
 import { useBalloonsSettings } from './settingsContext';
+import ToggleSwitch from '../../utils/ToggleSwitch/ToggleSwitch';
 
 interface BalloonSettingsPanelProps {
   onClose: () => void;
@@ -30,27 +31,11 @@ const BalloonSettingsPanel: React.FC<BalloonSettingsPanelProps> = ({ onClose }) 
       </div>
 
       <div className="balloons-settings-panel__elem">
-        <label>
-          <input
-            type="checkbox"
-            name="sequential"
-            checked={sequential}
-            onChange={(e) => setSequential(e.target.checked)}
-          />{' '}
-          По порядку
-        </label>
+        <ToggleSwitch checked={sequential} onChange={(e) => setSequential(e.target.checked)} label="По порядку" />
       </div>
 
       <div className="balloons-settings-panel__elem">
-        <label>
-          <input
-            type="checkbox"
-            name="showFirework"
-            checked={showFirework}
-            onChange={(e) => setShowFirework(e.target.checked)}
-          />{' '}
-          Конфетти
-        </label>
+        <ToggleSwitch checked={showFirework} onChange={(e) => setShowFirework(e.target.checked)} label="Конфетти" />
       </div>
 
       <button onClick={onClose} className="balloons-settings-panel__close-btn nav-btn">
