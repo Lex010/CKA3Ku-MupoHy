@@ -3,6 +3,7 @@ import ImageModal from '../utils/open-img-in-modal/imageModal';
 import pushistayaPlanetaVideoFunc from '../utils/videoForFairyTale';
 import { Pagination } from '../utils/Pagination/Pagination';
 import NotFoundPage from '../header-mainPage/NotFoundPage/NotFoundPage';
+import './StoryContentBlock.css';
 
 type StoryItem =
   | { type: 'text'; content: string }
@@ -40,38 +41,56 @@ const StoryContentBlock: React.FC<StoryPageProps> = ({ title, data }) => {
 
   return (
     <Pagination items={data} itemsPerPage={10} notFoundElement={<NotFoundPage />}>
-      {(currentItems, controls) => (
-        <div className="story-container">
-          <h1 id="h1">{title}</h1>
-          {controls}
-          {currentItems.map((item, index) => {
-            switch (item.type) {
-              case 'text':
-                return (
-                  <p key={index} className="txt">
-                    {item.content}
-                  </p>
-                );
-              case 'image':
-                return (
-                  <img
-                    key={index}
-                    src={item.src}
-                    alt={item.alt || ''}
-                    className="story-image"
-                    onClick={handleImageClick}
-                    style={{ cursor: 'zoom-in', maxWidth: '100%' }}
-                  />
-                );
-              case 'video':
-                return <VideoWrapper key={index} src={item.src} />;
-              default:
-                return null;
-            }
-          })}
-          {controls}
-        </div>
-      )}
+      {(currentItems, controls, paginationState) => {
+        const { currentPage } = paginationState;
+        const isFirstPage = currentPage === 1;
+        const pageNumberTitle = isFirstPage ? '' : `* ${currentPage} *`;
+
+        return (
+          <div className="story-container">
+            <div className="story-container__title">
+              <h1 id="h1">{title}</h1>
+              {!isFirstPage && (
+                <div className="story-container__page-number">
+                  {pageNumberTitle.split('').map((char, i) => (
+                    <span key={i}>{char}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {controls}
+
+            {currentItems.map((item, index) => {
+              switch (item.type) {
+                case 'text':
+                  return (
+                    <p key={index} className="txt">
+                      {item.content}
+                    </p>
+                  );
+                case 'image':
+                  return (
+                    <img
+                      key={index}
+                      src={item.src}
+                      alt={item.alt || ''}
+                      className="story-image"
+                      onClick={handleImageClick}
+                      style={{ cursor: 'zoom-in', maxWidth: '100%' }}
+                    />
+                  );
+                case 'video':
+                  return <VideoWrapper key={index} src={item.src} />;
+                default:
+                  return null;
+              }
+            })}
+
+            {controls}
+          </div>
+        );
+      }}
     </Pagination>
   );
 };

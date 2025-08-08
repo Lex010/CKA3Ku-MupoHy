@@ -10,7 +10,11 @@ interface PaginationProps<T> {
   itemsPerPage?: number;
   onPageChange?: (newPage: number) => void;
   notFoundElement: React.ReactNode;
-  children: (currentItems: T[], PaginationControls: React.ReactNode) => React.ReactNode;
+  children: (
+    currentItems: T[],
+    PaginationControls: React.ReactNode,
+    paginationState: { currentPage: number; totalPages: number }
+  ) => React.ReactNode;
 }
 
 export function Pagination<T>({
@@ -99,5 +103,5 @@ export function Pagination<T>({
       </div>
     ) : null;
 
-  return <>{children(currentItems, controls)}</>;
+  return <>{children(currentItems, controls, { currentPage, totalPages })}</>;
 }
