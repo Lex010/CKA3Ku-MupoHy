@@ -1,0 +1,16 @@
+.page-title__page-number {
+  position: relative;
+  top: -25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  color: var(--AllFairyTalesTxt);
+  background: var(--AllFairyTalesBackground);
+  padding: 2px 6px;
+  border-radius: 6px;
+  border-top-left-radius: 16px;
+  border-end-end-radius: 16px;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}

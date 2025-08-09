@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Pagination } from '../../utils/Pagination/Pagination';
 import NotFoundPage from '../../header-mainPage/NotFoundPage/NotFoundPage';
+import './AppPaginatedMenu.css';
 
 interface PageItem {
   id: string;
@@ -31,23 +32,43 @@ const AppPaginatedMenu: React.FC<PageBlockProps> = ({
 
   return (
     <Pagination items={items} itemsPerPage={itemsPerPage} notFoundElement={<NotFoundPage />}>
-      {(currentItems, controls) => (
-        <div>
-          {renderTitle ? renderTitle() : title && <h1 className="page-title">{title}</h1>}
-          <div className={containerClassName || 'page-list'}>
-            {currentItems.map((item) =>
-              renderItem ? (
-                renderItem(item)
-              ) : (
-                <div key={item.id} className="page-unit" onClick={() => navigate(`${basePath || ''}/${item.id}`)}>
-                  {item.title}
-                </div>
-              )
+      {(currentItems, controls, paginationState) => {
+        const { currentPage } = paginationState;
+        const isFirstPage = currentPage === 1;
+
+        return (
+          <div>
+            {renderTitle
+              ? renderTitle()
+              : title && (
+                  <div style={{ position: 'relative' }}>
+                    <h1 className="page-title">{title}</h1>
+                  </div>
+                )}
+
+            {!isFirstPage && (
+              <div className="page-title__page-number">
+                <span>* </span>
+                {currentPage}
+                <span> *</span>
+              </div>
             )}
-            {controls}
+
+            <div className={containerClassName || 'page-list'}>
+              {currentItems.map((item) =>
+                renderItem ? (
+                  renderItem(item)
+                ) : (
+                  <div key={item.id} className="page-unit" onClick={() => navigate(`${basePath || ''}/${item.id}`)}>
+                    {item.title}
+                  </div>
+                )
+              )}
+              {controls}
+            </div>
           </div>
-        </div>
-      )}
+        );
+      }}
     </Pagination>
   );
 };
