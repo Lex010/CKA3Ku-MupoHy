@@ -68,7 +68,7 @@ export function Pagination<T>({
       <div className="pagination-controls__container">
         <div className="pagination-controls">
           <button
-            className="pagination-controls__btn pagination-controls__arrow-btn"
+            className="pagination-controls__btn pagination-controls__arrow-btn-left"
             onClick={handlePrevPage}
             disabled={currentPage === 1}
           >
@@ -93,7 +93,7 @@ export function Pagination<T>({
           )}
 
           <button
-            className="pagination-controls__btn pagination-controls__arrow-btn"
+            className="pagination-controls__btn pagination-controls__arrow-btn-right"
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
           >

@@ -21,9 +21,21 @@
   color: var(--navBtnTxt);
 }
 
-.pagination-controls__arrow-btn {
+.pagination-controls__arrow-btn-left,
+.pagination-controls__arrow-btn-right {
   border-radius: 40%;
+  border-bottom: 2px var(--h1AndHover) solid;
   text-align: center;
+}
+
+.pagination-controls__arrow-btn-left {
+  margin-right: 5px;
+  border-right: 1px var(--h1AndHover) solid;
+}
+
+.pagination-controls__arrow-btn-right {
+  margin-left: 5px;
+  border-left: 1px var(--h1AndHover) solid;
 }
 
 .pagination-controls__btn:disabled {
