@@ -1222,11 +1222,44 @@ select {
   border: none;
   border-radius: 3px;
   color: var(--navBtnTxt);
+  transition: transform 0.2s ease;
 }
 
-.pagination-controls__arrow-btn {
+.pagination-controls__btn:active {
+  transform: scale(0.9) translateY(2px);
+}
+
+.pagination-controls__btn:focus:not(:active) {
+  animation: pagination-controls__bounceBack 0.3s ease;
+}
+
+@keyframes pagination-controls__bounceBack {
+  0% {
+    transform: scale(0.9) translateY(2px);
+  }
+  50% {
+    transform: scale(1.05) translateY(-1px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.pagination-controls__arrow-btn-left,
+.pagination-controls__arrow-btn-right {
   border-radius: 40%;
+  border-bottom: 2px var(--h1AndHover) solid;
   text-align: center;
+}
+
+.pagination-controls__arrow-btn-left {
+  margin-right: 5px;
+  border-right: 1px var(--h1AndHover) solid;
+}
+
+.pagination-controls__arrow-btn-right {
+  margin-left: 5px;
+  border-left: 1px var(--h1AndHover) solid;
 }
 
 .pagination-controls__btn:disabled {
