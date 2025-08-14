@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ThemeToggle from './ThemeToggle/ThemeToggle';
 import { useNightMode } from './ThemeToggle/ThemeToggleContext';
+import BookmarkButton from './Bookmark/BookmarkButton';
 import './css/HeaderReact.css';
 
 interface HeaderProps {
@@ -44,6 +45,9 @@ const Header: React.FC<HeaderProps> = ({ goHome }) => {
               >
                 🏠 На главную
               </button>
+            </li>
+            <li>
+              <BookmarkButton />
             </li>
             {/* другие пункты */}
           </ul>
