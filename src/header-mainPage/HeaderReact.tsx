@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ goHome }) => {
         {menuOpen && (
           <ul className="main-header__menu-list">
             <li>
-              <button className="nav-btn" onClick={goHome}>
+              <button className="nav-btn main-header__btn" onClick={goHome}>
                 🏠 На главную
               </button>
             </li>
