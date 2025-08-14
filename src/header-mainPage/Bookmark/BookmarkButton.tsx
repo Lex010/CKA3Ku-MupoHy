@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 export default function BookmarkButton() {
   const location = useLocation();
-  const currentPage = location.pathname;
+  const currentPage = location.pathname + location.search;
 
   // Указываем, что bookmarks — массив строк
   const [bookmarks, setBookmarks] = useState<string[]>([]);
@@ -24,7 +24,13 @@ export default function BookmarkButton() {
     }
     setBookmarks(updated);
     localStorage.setItem('bookmarks', JSON.stringify(updated));
+
+    console.log('Текущий список закладок:', updated);
   };
 
-  return <button onClick={toggleBookmark}>{isBookmarked ? '★ В закладках' : '☆ Добавить в закладки'}</button>;
+  return (
+    <button className="nav-btn main-header__btn" onClick={toggleBookmark}>
+      {isBookmarked ? '★ В закладках' : '☆ Добавить в закладки'}
+    </button>
+  );
 }
