@@ -30,7 +30,7 @@ export default function BookmarkButton() {
 
   return (
     <button className="nav-btn main-header__btn" onClick={toggleBookmark}>
-      {isBookmarked ? '★ В закладках' : '☆ Добавить в закладки'}
+      {isBookmarked ? '★' : '☆ Закладка'}
     </button>
   );
 }
