@@ -17,10 +17,18 @@ const Header: React.FC<HeaderProps> = ({ goHome }) => {
   // Закрытие меню при клике вне меню
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+
+      // Временное решение конфликта с модальным окном
+      if (document.querySelector('.modal-overlay')?.contains(target)) {
+        return;
+      }
+
+      if (menuRef.current && !menuRef.current.contains(target)) {
         setMenuOpen(false);
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
