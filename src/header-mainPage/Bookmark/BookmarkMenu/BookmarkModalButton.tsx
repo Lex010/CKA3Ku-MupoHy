@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Modal from '../../../components/ReactModal/Modal';
-import BookmarkList from './BookmarkList'; // компонент со списком закладок
+import BookmarkList from './BookmarkList';
 
 export default function BookmarkModalButton() {
   const [isOpen, setIsOpen] = useState(false);

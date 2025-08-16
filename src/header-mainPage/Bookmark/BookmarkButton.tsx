@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 export default function BookmarkButton() {
   const currentPage = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
 
-  // Указываем, что bookmarks — массив строк
   const [bookmarks, setBookmarks] = useState<string[]>([]);
   const isBookmarked = bookmarks.includes(currentPage);
 
