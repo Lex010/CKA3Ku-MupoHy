@@ -10,7 +10,7 @@ interface BookmarkListProps {
 export default function BookmarkList({ onLinkClick }: BookmarkListProps) {
   const [bookmarks, setBookmarks] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 4;
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('bookmarks') || '[]');

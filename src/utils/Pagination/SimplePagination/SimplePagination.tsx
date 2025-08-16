@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { getVisiblePagesButtons } from '../getVisiblePagesButtons';
 import '../css/pagination.css';
 
@@ -8,6 +9,13 @@ interface SimplePaginationProps {
 }
 
 export default function SimplePagination({ currentPage, totalPages, onPageChange }: SimplePaginationProps) {
+  // Фикс: если currentPage > totalPages, автоматически переключаем на последнюю страницу
+  useEffect(() => {
+    if (totalPages > 0 && currentPage > totalPages) {
+      onPageChange(totalPages);
+    }
+  }, [currentPage, totalPages, onPageChange]);
+
   if (totalPages <= 1) return null;
 
   const goToPage = (page: number) => {
