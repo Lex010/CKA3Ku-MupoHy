@@ -10,6 +10,11 @@
   border-radius: 8px;
   border: 1px solid var(--txtLeftBorder);
   background: var(--mainBackground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .pages-bookmarks__a {
