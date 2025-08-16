@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 export default function BookmarkButton() {
-  const location = useLocation();
-  const currentPage = `#${location.pathname}${location.search}`;
+  const currentPage = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
 
   // Указываем, что bookmarks — массив строк
   const [bookmarks, setBookmarks] = useState<string[]>([]);
