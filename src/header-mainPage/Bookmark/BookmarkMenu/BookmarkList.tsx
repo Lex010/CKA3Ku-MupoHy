@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import './BookmarkList.css';
+import BookmarkRemoveButton from './BookmarkRemoveButton';
+import './css/BookmarkList.css';
 
 export default function BookmarkList() {
   const [bookmarks, setBookmarks] = useState<string[]>([]);
@@ -8,6 +9,10 @@ export default function BookmarkList() {
     const saved = JSON.parse(localStorage.getItem('bookmarks') || '[]');
     setBookmarks(saved);
   }, []);
+
+  const handleRemove = (url: string) => {
+    setBookmarks((prev) => prev.filter((b) => b !== url));
+  };
 
   if (bookmarks.length === 0) {
     return <p>Закладок нет</p>;
@@ -20,6 +25,7 @@ export default function BookmarkList() {
           <a className="pages-bookmarks__a" href={url}>
             {url}
           </a>
+          <BookmarkRemoveButton url={url} onRemove={handleRemove} />
         </li>
       ))}
     </ul>

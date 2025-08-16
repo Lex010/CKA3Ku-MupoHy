@@ -22,8 +22,6 @@ export default function BookmarkButton() {
     }
     setBookmarks(updated);
     localStorage.setItem('bookmarks', JSON.stringify(updated));
-
-    console.log('Текущий список закладок:', updated);
   };
 
   return (
