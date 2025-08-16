@@ -11,7 +11,7 @@ export default function BookmarkModalButton() {
         📑 Мои Закладки
       </button>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <BookmarkList />
+        <BookmarkList onLinkClick={() => setIsOpen(false)} />
       </Modal>
     </>
   );

@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import BookmarkRemoveButton from './BookmarkRemoveButton';
 import './css/BookmarkList.css';
 
-export default function BookmarkList() {
+interface BookmarkListProps {
+  onLinkClick?: () => void;
+}
+
+export default function BookmarkList({ onLinkClick }: BookmarkListProps) {
   const [bookmarks, setBookmarks] = useState<string[]>([]);
 
   useEffect(() => {
@@ -22,7 +26,7 @@ export default function BookmarkList() {
     <ul className="pages-bookmarks__ul">
       {bookmarks.map((url, i) => (
         <li className="pages-bookmarks__li" key={i}>
-          <a className="pages-bookmarks__a" href={url}>
+          <a className="pages-bookmarks__a" href={url} onClick={() => onLinkClick?.()}>
             {url}
           </a>
           <BookmarkRemoveButton url={url} onRemove={handleRemove} />
