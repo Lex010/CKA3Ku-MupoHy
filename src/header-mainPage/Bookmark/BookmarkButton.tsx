@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import pngBookmark from '../../assets/bookmarks/bookmark.png';
+import './BookmarkButton.css';
 
 export default function BookmarkButton() {
   const currentPage = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
@@ -24,8 +26,13 @@ export default function BookmarkButton() {
   };
 
   return (
-    <button className="nav-btn main-header__btn" onClick={toggleBookmark}>
-      {isBookmarked ? '★' : '☆ + Закладка'}
-    </button>
+    <div className="main-header__bookmark-btns-cont">
+      <div className="main-header__bookmark-div-for-img">
+        <img src={pngBookmark} alt="Закладка" className="main-header__bookmark-img" />
+      </div>
+      <button className="nav-btn main-header__btn" onClick={toggleBookmark}>
+        {isBookmarked ? '- Удалить' : '+ Добавить'}
+      </button>
+    </div>
   );
 }

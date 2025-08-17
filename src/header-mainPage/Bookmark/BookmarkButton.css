@@ -1,0 +1,16 @@
+.main-header__bookmark-btns-cont {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 5px;
+}
+
+.main-header__bookmark-div-for-img {
+  display: flex;
+  padding: 2px;
+}
+
+.main-header__bookmark-img {
+  width: 1.1rem;
+  height: 1.1rem;
+}
