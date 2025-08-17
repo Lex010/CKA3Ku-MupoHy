@@ -545,6 +545,12 @@ select {
   background-color: #ffffff;
 }
 
+main.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
 @property --x {
   syntax: '<percentage>';
   inherits: true;
@@ -792,6 +798,54 @@ select {
   border: 1px solid var(--txtLeftBorder);
 }
 
+.main-header__bookmark-btns-cont {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 5px;
+}
+
+.main-header__bookmark-div-for-img {
+  display: flex;
+  padding: 2px;
+}
+
+.main-header__bookmark-img {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.main-header__btn--add {
+  background-color: var(--gameMenuBtnSelected);
+}
+
+.main-header__btn--remove {
+  background-color: #ff6f61;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--headerBackground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.modal-content {
+  background: var(--txtBackground);
+  padding: 20px 10px;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
 .pages-bookmarks__remove-btn {
   padding: 4px 8px;
   border: none;
@@ -908,6 +962,12 @@ select {
   word-break: break-all;
 }
 
+.main-header__book-with-bookmark-png {
+  width: 1.1rem;
+  height: 1.1rem;
+  vertical-align: middle;
+}
+
 .main-header__menu {
   position: relative;
 }
@@ -935,6 +995,10 @@ select {
 
 .main-header__btn {
   max-width: 150px;
+}
+
+.main-header__btn:hover {
+  background-color: var(--txtLeftBorder);
 }
 
 .flying-books__scene {
