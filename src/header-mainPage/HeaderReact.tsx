@@ -35,6 +35,22 @@ const Header: React.FC<HeaderProps> = ({ goHome }) => {
     };
   }, []);
 
+  useEffect(() => {
+    const main = document.querySelector('main');
+    if (main) {
+      if (menuOpen) {
+        main.classList.add('blurred');
+      } else {
+        main.classList.remove('blurred');
+      }
+    }
+    return () => {
+      if (main) {
+        main.classList.remove('blurred');
+      }
+    };
+  }, [menuOpen]);
+
   return (
     <header className="main-header">
       <div className="main-header__menu" ref={menuRef}>
