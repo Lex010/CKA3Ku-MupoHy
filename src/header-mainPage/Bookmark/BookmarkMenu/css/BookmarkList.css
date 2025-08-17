@@ -1,0 +1,35 @@
+.pages-bookmarks__title {
+  text-align: center;
+  color: var(--h1AndHover);
+  background: var(--mainBackground);
+  border-radius: 5px;
+  padding: 2px 7px;
+}
+
+.pages-bookmarks__ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pages-bookmarks__li {
+  margin: 8px 0;
+  padding: 5px 7px;
+  border-radius: 8px;
+  border: 1px solid var(--txtLeftBorder);
+  background: var(--mainBackground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pages-bookmarks__a {
+  text-decoration: none;
+  color: var(--navBtnTxt);
+  background: var(--txtLeftBorder);
+  padding: 5px 7px;
+  border-radius: 8px;
+  word-break: break-all;
+}
