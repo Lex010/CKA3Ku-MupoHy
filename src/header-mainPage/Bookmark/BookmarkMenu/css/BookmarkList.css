@@ -1,3 +1,11 @@
+.pages-bookmarks__title {
+  text-align: center;
+  color: var(--h1AndHover);
+  background: var(--mainBackground);
+  border-radius: 5px;
+  padding: 2px 7px;
+}
+
 .pages-bookmarks__ul {
   list-style: none;
   padding: 0;

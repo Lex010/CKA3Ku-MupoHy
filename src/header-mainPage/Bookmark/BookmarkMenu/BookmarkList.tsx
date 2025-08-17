@@ -28,11 +28,12 @@ export default function BookmarkList({ onLinkClick }: BookmarkListProps) {
   const currentItems = bookmarks.slice(startIndex, startIndex + itemsPerPage);
 
   if (bookmarks.length === 0) {
-    return <p>Закладок нет</p>;
+    return <h2 className="pages-bookmarks__title">Закладок нет</h2>;
   }
 
   return (
     <div>
+      <h2 className="pages-bookmarks__title">Мои закладки</h2>
       <ul className="pages-bookmarks__ul">
         {currentItems.map((url, i) => (
           <li className="pages-bookmarks__li" key={i}>
