@@ -26,3 +26,7 @@
 .main-header__btn {
   max-width: 150px;
 }
+
+.main-header__btn:hover {
+  background-color: var(--txtLeftBorder);
+}

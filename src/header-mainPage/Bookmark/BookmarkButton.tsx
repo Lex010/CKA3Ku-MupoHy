@@ -30,7 +30,10 @@ export default function BookmarkButton() {
       <div className="main-header__bookmark-div-for-img">
         <img src={pngBookmark} alt="Закладка" className="main-header__bookmark-img" />
       </div>
-      <button className="nav-btn main-header__btn" onClick={toggleBookmark}>
+      <button
+        className={`nav-btn main-header__btn ${isBookmarked ? 'main-header__btn--remove' : 'main-header__btn--add'}`}
+        onClick={toggleBookmark}
+      >
         {isBookmarked ? '- Удалить' : '+ Добавить'}
       </button>
     </div>
