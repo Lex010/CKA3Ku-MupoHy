@@ -792,6 +792,151 @@ select {
   border: 1px solid var(--txtLeftBorder);
 }
 
+.pages-bookmarks__remove-btn {
+  padding: 4px 8px;
+  border: none;
+  background: var(--h1AndHover);
+  color: var(--navBtnTxt);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pagination-controls__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-controls {
+  pointer-events: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.pagination-controls__btn {
+  background-color: var(--txtLeftBorder);
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  color: var(--navBtnTxt);
+  transition: transform 0.2s ease;
+}
+
+.pagination-controls__btn:active {
+  transform: scale(0.9) translateY(2px);
+}
+
+.pagination-controls__btn:focus:not(:active) {
+  animation: pagination-controls__bounceBack 0.3s ease;
+}
+
+@keyframes pagination-controls__bounceBack {
+  0% {
+    transform: scale(0.9) translateY(2px);
+  }
+  50% {
+    transform: scale(1.05) translateY(-1px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.pagination-controls__arrow-btn-left,
+.pagination-controls__arrow-btn-right {
+  border-radius: 40%;
+  border-bottom: 2px var(--h1AndHover) solid;
+  text-align: center;
+}
+
+.pagination-controls__arrow-btn-left {
+  margin-right: 5px;
+  border-right: 1px var(--h1AndHover) solid;
+}
+
+.pagination-controls__arrow-btn-right {
+  margin-left: 5px;
+  border-left: 1px var(--h1AndHover) solid;
+}
+
+.pagination-controls__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+  user-select: none;
+}
+
+.pages-bookmarks__title {
+  text-align: center;
+  color: var(--h1AndHover);
+  background: var(--mainBackground);
+  border-radius: 5px;
+  padding: 2px 7px;
+}
+
+.pages-bookmarks__ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pages-bookmarks__li {
+  margin: 8px 0;
+  padding: 5px 7px;
+  border-radius: 8px;
+  border: 1px solid var(--txtLeftBorder);
+  background: var(--mainBackground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pages-bookmarks__a {
+  text-decoration: none;
+  color: var(--navBtnTxt);
+  background: var(--txtLeftBorder);
+  padding: 5px 7px;
+  border-radius: 8px;
+  word-break: break-all;
+}
+
+.main-header__menu {
+  position: relative;
+}
+
+.main-header__menu-btn {
+  font-weight: bold;
+}
+
+.main-header__menu-list {
+  position: absolute;
+  top: 100%;
+  left: -20%;
+  background: var(--mainBackground);
+  border-radius: 4px;
+  padding: 0;
+  list-style: none;
+  margin: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  min-width: max-content;
+}
+
+.main-header__menu-list li {
+  padding: 10px 30px;
+}
+
+.main-header__btn {
+  max-width: 150px;
+}
+
 .flying-books__scene {
   position: relative;
   width: 100vw;
@@ -1199,76 +1344,6 @@ select {
 .background-animation__content {
   position: relative;
   pointer-events: none;
-}
-
-.pagination-controls__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pagination-controls {
-  pointer-events: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 2px;
-}
-
-.pagination-controls__btn {
-  background-color: var(--txtLeftBorder);
-  cursor: pointer;
-  border: none;
-  border-radius: 3px;
-  color: var(--navBtnTxt);
-  transition: transform 0.2s ease;
-}
-
-.pagination-controls__btn:active {
-  transform: scale(0.9) translateY(2px);
-}
-
-.pagination-controls__btn:focus:not(:active) {
-  animation: pagination-controls__bounceBack 0.3s ease;
-}
-
-@keyframes pagination-controls__bounceBack {
-  0% {
-    transform: scale(0.9) translateY(2px);
-  }
-  50% {
-    transform: scale(1.05) translateY(-1px);
-  }
-  100% {
-    transform: scale(1) translateY(0);
-  }
-}
-
-.pagination-controls__arrow-btn-left,
-.pagination-controls__arrow-btn-right {
-  border-radius: 40%;
-  border-bottom: 2px var(--h1AndHover) solid;
-  text-align: center;
-}
-
-.pagination-controls__arrow-btn-left {
-  margin-right: 5px;
-  border-right: 1px var(--h1AndHover) solid;
-}
-
-.pagination-controls__arrow-btn-right {
-  margin-left: 5px;
-  border-left: 1px var(--h1AndHover) solid;
-}
-
-.pagination-controls__btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.pagination-ellipsis {
-  user-select: none;
 }
 
 .not-found-page__cont {
