@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ goHome }) => {
               <BookmarkButton />
             </li>
             <li>
-              <BookmarkModalButton />
+              <BookmarkModalButton onCloseAll={() => setMenuOpen(false)} />
             </li>
             {/* другие пункты */}
           </ul>

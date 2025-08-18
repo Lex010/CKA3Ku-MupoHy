@@ -4,8 +4,17 @@ import BookmarkList from './BookmarkList';
 import pngBookWithBookmark from '../../../assets/bookmarks/book-with-bookmark.png';
 import './css/BookmarkModalButton.css';
 
-export default function BookmarkModalButton() {
+interface BookmarkModalButtonProps {
+  onCloseAll?: () => void;
+}
+
+export default function BookmarkModalButton({ onCloseAll }: BookmarkModalButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    if (onCloseAll) onCloseAll();
+  };
 
   return (
     <>
@@ -13,8 +22,8 @@ export default function BookmarkModalButton() {
         <img src={pngBookWithBookmark} alt="Мои закладки" className="main-header__book-with-bookmark-png" /> Мои
         Закладки
       </button>
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <BookmarkList onLinkClick={() => setIsOpen(false)} />
+      <Modal isOpen={isOpen} onClose={handleClose}>
+        <BookmarkList onLinkClick={handleClose} />
       </Modal>
     </>
   );
