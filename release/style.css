@@ -2360,6 +2360,89 @@ input:checked + .slider__close-label--dvoiniki::before {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
+/* Затемнённый фон */
+.confirm-popup__overlay {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: confirm-popup__overlay--fadeIn 0.2s ease;
+  /* z-index: 1000; */
+}
+
+/* Контейнер окна */
+.confirm-popup__content {
+  background: var(--txtBackground);
+  padding: 20px 28px;
+  border-radius: 12px;
+  max-width: 220px;
+  width: 100%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  animation: confirm-popup__content--scaleIn 0.2s ease;
+}
+
+/* Текст */
+.confirm-popup__message {
+  margin-bottom: 18px;
+}
+
+/* Кнопки */
+.confirm-popup__buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.confirm-popup__btn {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.confirm-popup__btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Красная кнопка подтверждения */
+.confirm-popup__btn--confirm {
+  background-color: var(--h1AndHover);
+  color: var(--navBtnTxt);
+}
+
+/* кнопка отмены */
+.confirm-popup__btn--cancel {
+  background-color: var(--gameMenuBtnSelected);
+  color: var(--navBtnTxt);
+}
+
+/* Анимации */
+@keyframes confirm-popup__overlay--fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes confirm-popup__content--scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .pages-bookmarks__remove-btn {
   padding: 4px 8px;
   border: none;
