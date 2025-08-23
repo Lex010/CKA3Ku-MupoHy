@@ -1,25 +1,38 @@
 import { useState, useEffect } from 'react';
 import pngBookmark from '../../assets/bookmarks/bookmark.png';
+import { mainData } from '../../site-manager-object/mainData';
 import './BookmarkButton.css';
 
-export default function BookmarkButton() {
+export interface Bookmark {
+  url: string;
+  title: string;
+}
+
+export function BookmarkButton() {
   const currentPage = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
 
-  const [bookmarks, setBookmarks] = useState<string[]>([]);
-  const isBookmarked = bookmarks.includes(currentPage);
+  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
+  const isBookmarked = bookmarks.some((b) => b.url === currentPage);
 
   useEffect(() => {
     const savedRaw = localStorage.getItem('bookmarks');
-    const saved: string[] = savedRaw ? JSON.parse(savedRaw) : [];
+    const saved: Bookmark[] = savedRaw ? JSON.parse(savedRaw) : [];
     setBookmarks(saved);
   }, []);
 
   const toggleBookmark = () => {
-    let updated: string[];
+    let updated: Bookmark[];
     if (isBookmarked) {
-      updated = bookmarks.filter((url) => url !== currentPage);
+      updated = bookmarks.filter((b) => b.url !== currentPage);
     } else {
-      updated = [...bookmarks, currentPage];
+      const pages = Object.values(mainData);
+      const page = pages.find((p) => currentPage.includes(p.id));
+
+      const newBookmark: Bookmark = {
+        url: currentPage,
+        title: page ? page.title : currentPage,
+      };
+      updated = [...bookmarks, newBookmark];
     }
     setBookmarks(updated);
     localStorage.setItem('bookmarks', JSON.stringify(updated));

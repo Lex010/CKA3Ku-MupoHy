@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import BookmarkRemoveButton from './BookmarkRemoveButton';
 import SimplePagination from '../../../utils/Pagination/SimplePagination/SimplePagination';
+import getPageNumberFromHashUrl from './parsePageNumber';
+import { Bookmark } from '../BookmarkButton';
 import './css/BookmarkList.css';
 
 interface BookmarkListProps {
@@ -8,17 +10,17 @@ interface BookmarkListProps {
 }
 
 export default function BookmarkList({ onLinkClick }: BookmarkListProps) {
-  const [bookmarks, setBookmarks] = useState<string[]>([]);
+  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+    const saved: Bookmark[] = JSON.parse(localStorage.getItem('bookmarks') || '[]');
     setBookmarks(saved);
   }, []);
 
   const handleRemove = (url: string) => {
-    const updated = bookmarks.filter((b) => b !== url);
+    const updated = bookmarks.filter((b) => b.url !== url);
     setBookmarks(updated);
     localStorage.setItem('bookmarks', JSON.stringify(updated));
   };
@@ -35,14 +37,17 @@ export default function BookmarkList({ onLinkClick }: BookmarkListProps) {
     <div>
       <h2 className="pages-bookmarks__title">Мои закладки</h2>
       <ul className="pages-bookmarks__ul">
-        {currentItems.map((url, i) => (
-          <li className="pages-bookmarks__li" key={i}>
-            <a className="pages-bookmarks__a" href={url} onClick={() => onLinkClick?.()}>
-              {url}
-            </a>
-            <BookmarkRemoveButton url={url} onRemove={handleRemove} />
-          </li>
-        ))}
+        {currentItems.map((b, i) => {
+          const pageNumber = getPageNumberFromHashUrl(b.url);
+          return (
+            <li className="pages-bookmarks__li" key={i}>
+              <a className="pages-bookmarks__a" href={b.url} onClick={() => onLinkClick?.()}>
+                {b.title} {pageNumber && pageNumber > 1 ? `(стр. ${pageNumber})` : ''}
+              </a>
+              <BookmarkRemoveButton url={b.url} onRemove={handleRemove} />
+            </li>
+          );
+        })}
       </ul>
       <SimplePagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
     </div>
