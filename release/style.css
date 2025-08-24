@@ -2369,7 +2369,7 @@ input:checked + .slider__close-label--dvoiniki::before {
   align-items: center;
   justify-content: center;
   animation: confirm-popup__overlay--fadeIn 0.2s ease;
-  /* z-index: 1000; */
+  z-index: 1;
 }
 
 /* Контейнер окна */
@@ -2384,9 +2384,15 @@ input:checked + .slider__close-label--dvoiniki::before {
   animation: confirm-popup__content--scaleIn 0.2s ease;
 }
 
+/* Текст Заглавия */
+.confirm-popup__title {
+  font-weight: bold;
+}
+
 /* Текст */
 .confirm-popup__message {
   margin-bottom: 18px;
+  overflow-wrap: break-word;
 }
 
 /* Кнопки */
