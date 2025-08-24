@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import BookmarkRemoveConfirmPopup from '../../../components/ConfirmPopup/ConfirmPopup';
+import ConfirmPopup from '../../../components/ConfirmPopup/ConfirmPopup';
 import './css/BookmarkRemoveButton.css';
 
 interface BookmarkRemoveButtonProps {
@@ -41,7 +41,15 @@ export default function BookmarkRemoveButton({ url, onRemove }: BookmarkRemoveBu
       <button className="pages-bookmarks__remove-btn" onClick={handleRemoveClick}>
         ✖
       </button>
-      <BookmarkRemoveConfirmPopup isOpen={showConfirm} onConfirm={confirmRemove} onCancel={cancelRemove} />
+      <ConfirmPopup
+        isOpen={showConfirm}
+        onConfirm={confirmRemove}
+        onCancel={cancelRemove}
+        title="Удалить закладку?"
+        message=""
+        confirmText="Да"
+        cancelText="Отмена"
+      />
     </>
   );
 }
