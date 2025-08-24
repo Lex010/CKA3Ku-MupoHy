@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import BookmarkRemoveConfirmPopup from './BookmarkRemoveConfirmPopup';
+import BookmarkRemoveConfirmPopup from '../../../components/ConfirmPopup/ConfirmPopup';
 import './css/BookmarkRemoveButton.css';
 
 interface BookmarkRemoveButtonProps {

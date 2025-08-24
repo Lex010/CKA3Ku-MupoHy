@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import './css/BookmarkRemoveConfirmPopup.css';
+import './ConfirmPopup.css';
 
 interface BookmarkRemoveConfirmPopupProps {
   isOpen: boolean;
