@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import BookmarkRemoveButton from './BookmarkRemoveButton';
 import SimplePagination from '../../../utils/Pagination/SimplePagination/SimplePagination';
-import getPageNumberFromHashUrl from './parsePageNumber';
 import { Bookmark } from '../BookmarkButton';
 import './css/BookmarkList.css';
 
@@ -38,11 +37,10 @@ export default function BookmarkList({ onLinkClick }: BookmarkListProps) {
       <h2 className="pages-bookmarks__title">Мои закладки</h2>
       <ul className="pages-bookmarks__ul">
         {currentItems.map((b, i) => {
-          const pageNumber = getPageNumberFromHashUrl(b.url);
           return (
             <li className="pages-bookmarks__li" key={i}>
               <a className="pages-bookmarks__a" href={b.url} onClick={() => onLinkClick?.()}>
-                {b.title} {pageNumber && pageNumber > 1 ? `(стр. ${pageNumber})` : ''}
+                {b.title}
               </a>
               <BookmarkRemoveButton url={b.url} onRemove={handleRemove} />
             </li>

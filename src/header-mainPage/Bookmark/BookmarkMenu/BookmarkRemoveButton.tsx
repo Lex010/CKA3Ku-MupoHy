@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import ConfirmPopup from '../../../components/ConfirmPopup/ConfirmPopup';
 import { Bookmark } from '../BookmarkButton';
-import getPageNumberFromHashUrl from './parsePageNumber';
 import './css/BookmarkRemoveButton.css';
 
 interface BookmarkRemoveButtonProps {
@@ -21,8 +20,7 @@ export default function BookmarkRemoveButton({ url, onRemove }: BookmarkRemoveBu
 
     const current = saved.find((b) => b.url === url);
     if (current) {
-      const pageNumber = getPageNumberFromHashUrl(current.url);
-      setBookmarkTitle(`${current.title}${pageNumber && pageNumber > 1 ? ` (стр. ${pageNumber})` : ''}`);
+      setBookmarkTitle(`${current.title}`);
     }
   }, [url]);
 
