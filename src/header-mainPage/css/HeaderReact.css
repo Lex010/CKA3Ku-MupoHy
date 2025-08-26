@@ -17,6 +17,18 @@
   margin: 3px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
   min-width: max-content;
+  animation: menu-list--scaleIn 0.2s ease;
+}
+
+@keyframes menu-list--scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .main-header__menu-list li {
