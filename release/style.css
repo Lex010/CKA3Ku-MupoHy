@@ -19,6 +19,12 @@
   --gameMenuBtnSelectedTxt: white;
 }
 
+/* Анимация */
+:root {
+  --anim-scaleIn-duration: 0.2s;
+  --anim-scaleIn-ease: ease;
+}
+
 .main-header {
   position: fixed;
   top: 0;
@@ -275,6 +281,17 @@ main {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   margin: 1rem auto;
   max-height: 50vh;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.01);
+  }
 }
 
 .player-setup-wrapper {
@@ -2358,6 +2375,7 @@ input:checked + .slider__close-label--dvoiniki::before {
   max-height: 90%;
   overflow-y: auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  animation: scaleIn var(--anim-scaleIn-duration) var(--anim-scaleIn-ease);
 }
 
 /* Затемнённый фон */
@@ -2381,7 +2399,7 @@ input:checked + .slider__close-label--dvoiniki::before {
   width: 100%;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   text-align: center;
-  animation: confirm-popup__content--scaleIn 0.2s ease;
+  animation: scaleIn var(--anim-scaleIn-duration) var(--anim-scaleIn-ease);
 }
 
 /* Текст Заглавия */
@@ -2434,17 +2452,6 @@ input:checked + .slider__close-label--dvoiniki::before {
     opacity: 0;
   }
   to {
-    opacity: 1;
-  }
-}
-
-@keyframes confirm-popup__content--scaleIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
     opacity: 1;
   }
 }
@@ -2505,10 +2512,6 @@ input:checked + .slider__close-label--dvoiniki::before {
   position: relative;
 }
 
-.main-header__menu-btn {
-  font-weight: bold;
-}
-
 .main-header__menu-list {
   position: absolute;
   top: 100%;
@@ -2520,18 +2523,7 @@ input:checked + .slider__close-label--dvoiniki::before {
   margin: 3px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
   min-width: max-content;
-  animation: menu-list--scaleIn 0.2s ease;
-}
-
-@keyframes menu-list--scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  animation: scaleIn var(--anim-scaleIn-duration) var(--anim-scaleIn-ease);
 }
 
 .main-header__menu-list li {
@@ -2544,5 +2536,42 @@ input:checked + .slider__close-label--dvoiniki::before {
 
 .main-header__btn:hover {
   background-color: var(--txtLeftBorder);
+}
+
+/* Стили бургер кнопки */
+.main-header__burger-btn {
+  position: relative;
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  /* z-index: 1; */
+}
+
+.main-header__burger-btn .main-header__bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--txtLeftBorder);
+  border-radius: 3px;
+  transition: all var(--anim-scaleIn-duration) var(--anim-scaleIn-ease);
+}
+/* Когда открыто */
+.main-header__burger-btn.main-header__open .main-header__bar:nth-child(1) {
+  transform: rotate(45deg);
+  transform-origin: top left;
+}
+
+.main-header__burger-btn.main-header__open .main-header__bar:nth-child(2) {
+  opacity: 0;
+}
+
+.main-header__burger-btn.main-header__open .main-header__bar:nth-child(3) {
+  transform: rotate(-45deg);
+  transform-origin: bottom left;
 }
 
