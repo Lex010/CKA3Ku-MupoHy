@@ -2,10 +2,6 @@
   position: relative;
 }
 
-.main-header__menu-btn {
-  font-weight: bold;
-}
-
 .main-header__menu-list {
   position: absolute;
   top: 100%;
@@ -30,4 +26,41 @@
 
 .main-header__btn:hover {
   background-color: var(--txtLeftBorder);
+}
+
+/* Стили бургер кнопки */
+.main-header__burger-btn {
+  position: relative;
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  /* z-index: 1; */
+}
+
+.main-header__burger-btn .main-header__bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--txtLeftBorder);
+  border-radius: 3px;
+  transition: all var(--anim-scaleIn-duration) var(--anim-scaleIn-ease);
+}
+/* Когда открыто */
+.main-header__burger-btn.main-header__open .main-header__bar:nth-child(1) {
+  transform: rotate(45deg);
+  transform-origin: top left;
+}
+
+.main-header__burger-btn.main-header__open .main-header__bar:nth-child(2) {
+  opacity: 0;
+}
+
+.main-header__burger-btn.main-header__open .main-header__bar:nth-child(3) {
+  transform: rotate(-45deg);
+  transform-origin: bottom left;
 }

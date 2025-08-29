@@ -54,8 +54,14 @@ const Header: React.FC<HeaderProps> = ({ goHome }) => {
   return (
     <header className="main-header">
       <div className="main-header__menu" ref={menuRef}>
-        <button className="main-header__menu-btn nav-btn" onClick={() => setMenuOpen((prev) => !prev)}>
-          ☰ Меню
+        <button
+          className={`main-header__burger-btn ${menuOpen ? 'main-header__open' : ''}`}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Меню"
+        >
+          <span className="main-header__bar"></span>
+          <span className="main-header__bar"></span>
+          <span className="main-header__bar"></span>
         </button>
 
         {menuOpen && (
