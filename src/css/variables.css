@@ -18,3 +18,9 @@
   --gameMenuBtnSelected: #4caf50;
   --gameMenuBtnSelectedTxt: white;
 }
+
+/* Анимация */
+:root {
+  --anim-scaleIn-duration: 0.2s;
+  --anim-scaleIn-ease: ease;
+}
