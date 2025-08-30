@@ -5,7 +5,7 @@
   right: 0;
   background: var(--headerBackground);
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   gap: 16px;
   padding: 16px 24px;
