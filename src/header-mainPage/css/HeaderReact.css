@@ -31,29 +31,41 @@
 /* Стили бургер кнопки */
 .main-header__burger-btn {
   position: relative;
-  width: 30px;
-  height: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 34px;
+  height: 34px;
   cursor: pointer;
   background: none;
   border: none;
-  padding: 0;
-  /* z-index: 1; */
+  padding: 3px;
+  background-color: var(--txtLeftBorder);
+  border-radius: 8px;
 }
 
 .main-header__burger-btn .main-header__bar {
+  position: absolute;
+  left: 5px;
+  right: 5px;
   height: 3px;
-  width: 100%;
-  background-color: var(--txtLeftBorder);
+  background-color: var(--navBtnTxt);
   border-radius: 3px;
-  transition: all var(--anim-scaleIn-duration) var(--anim-scaleIn-ease);
+  transition: all 0.4s var(--anim-scaleIn-ease);
 }
+
+/* Расположение полосок бургера на старте */
+.main-header__burger-btn .main-header__bar:nth-child(1) {
+  top: 8px;
+}
+.main-header__burger-btn .main-header__bar:nth-child(2) {
+  top: 15px;
+}
+.main-header__burger-btn .main-header__bar:nth-child(3) {
+  top: 22px;
+}
+
 /* Когда открыто */
 .main-header__burger-btn.main-header__open .main-header__bar:nth-child(1) {
+  top: 15px; /* все в центр */
   transform: rotate(45deg);
-  transform-origin: top left;
 }
 
 .main-header__burger-btn.main-header__open .main-header__bar:nth-child(2) {
@@ -61,6 +73,6 @@
 }
 
 .main-header__burger-btn.main-header__open .main-header__bar:nth-child(3) {
+  top: 15px; /* все в центр */
   transform: rotate(-45deg);
-  transform-origin: bottom left;
 }
