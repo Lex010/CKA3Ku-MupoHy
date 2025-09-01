@@ -13,12 +13,14 @@
 }
 
 .pages-bookmarks__li {
-  margin: 8px 0;
+  margin: 20px 0;
   padding: 5px 7px;
   border-radius: 8px;
   border: 1px solid var(--txtLeftBorder);
-  background: var(--mainBackground);
+  background: var(--gameMenuBtn); /* если не поддерживается color-mix() */
+  background: color-mix(in srgb, var(--mainBackground) 80%, var(--txtLeftBorder) 20%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;

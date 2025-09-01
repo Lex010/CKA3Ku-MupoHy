@@ -19,6 +19,14 @@
   background-color: var(--gameMenuBtnSelected);
 }
 
+.main-header__btn.main-header__btn--add:hover {
+  background-color: var(--gameMenuBtnSelected);
+}
+
 .main-header__btn--remove {
+  background-color: #ff6f61;
+}
+
+.main-header__btn.main-header__btn--remove:hover {
   background-color: #ff6f61;
 }
