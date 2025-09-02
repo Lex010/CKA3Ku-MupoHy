@@ -1,0 +1,37 @@
+import { useState, useEffect } from 'react';
+import './UserStartPageButton.css';
+
+export function UserStartPageButton() {
+  const currentPage = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+  const [startPage, setStartPage] = useState<string | null>(null);
+  const isCurrentStart = startPage === currentPage;
+
+  useEffect(() => {
+    const saved = localStorage.getItem('startPage');
+    setStartPage(saved ?? null);
+  }, []);
+
+  const assignStartPage = () => {
+    localStorage.setItem('startPage', currentPage);
+    setStartPage(currentPage);
+    console.log(`✅ Назначена стартовая страница: ${currentPage}`);
+  };
+
+  const clearStartPage = () => {
+    localStorage.removeItem('startPage');
+    setStartPage(null);
+    console.log('❌ Стартовая страница удалена');
+  };
+
+  return (
+    <div className="main-header__startpage-btns-cont">
+      <button
+        className={`nav-btn main-header__btn ${isCurrentStart ? 'main-header__btn--remove' : 'main-header__btn--add'}`}
+        onClick={isCurrentStart ? clearStartPage : assignStartPage}
+      >
+        {isCurrentStart ? 'Удалить стартовую' : 'Назначить стартовой'}
+      </button>
+    </div>
+  );
+}

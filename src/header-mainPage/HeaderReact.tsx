@@ -3,6 +3,7 @@ import ThemeToggle from './ThemeToggle/ThemeToggle';
 import { useNightMode } from './ThemeToggle/ThemeToggleContext';
 import { BookmarkButton } from './Bookmark/BookmarkButton';
 import BookmarkModalButton from './Bookmark/BookmarkMenu/BookmarkModalButton';
+import { UserStartPageButton } from './UserStartPage/UserStartPageButton';
 import './css/HeaderReact.css';
 
 interface HeaderProps {
@@ -82,6 +83,9 @@ const Header: React.FC<HeaderProps> = ({ goHome }) => {
             </li>
             <li>
               <BookmarkModalButton onCloseAll={() => setMenuOpen(false)} />
+            </li>
+            <li>
+              <UserStartPageButton />
             </li>
             {/* другие пункты */}
           </ul>
