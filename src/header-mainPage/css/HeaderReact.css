@@ -22,6 +22,8 @@
 
 .main-header__btn {
   max-width: 150px;
+  width: 100%;
+  text-align: left;
 }
 
 .main-header__btn:hover {
