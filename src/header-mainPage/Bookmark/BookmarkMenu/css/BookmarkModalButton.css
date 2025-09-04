@@ -1,5 +1,5 @@
 .main-header__book-with-bookmark-png {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: var(--icon-size);
+  height: var(--icon-size);
   vertical-align: middle;
 }
