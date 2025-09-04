@@ -1,0 +1,5 @@
+.main-header__startpage-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  vertical-align: middle;
+}
