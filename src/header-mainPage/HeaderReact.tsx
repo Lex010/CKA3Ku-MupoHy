@@ -85,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ goHome }) => {
               <BookmarkModalButton onCloseAll={() => setMenuOpen(false)} />
             </li>
             <li>
-              <UserStartPageButton />
+              <UserStartPageButton onCloseAll={() => setMenuOpen(false)} />
             </li>
             {/* другие пункты */}
           </ul>

@@ -3,12 +3,17 @@ import Modal from '../../components/ReactModal/Modal';
 import png from '../../assets/nav-menu/users-starting-page.png';
 import './UserStartPageButton.css';
 
-export function UserStartPageButton() {
+interface UserStartPageButtonProps {
+  onCloseAll?: () => void;
+}
+
+export function UserStartPageButton({ onCloseAll }: UserStartPageButtonProps) {
   // const currentPage = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = () => {
     setIsOpen(false);
+    if (onCloseAll) onCloseAll();
   };
 
   // useEffect(() => {
