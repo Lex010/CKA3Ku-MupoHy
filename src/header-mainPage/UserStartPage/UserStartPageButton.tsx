@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Modal from '../../components/ReactModal/Modal';
 import png from '../../assets/nav-menu/users-starting-page.png';
+import StartPageMenu from './StartPageMenu';
 import './UserStartPageButton.css';
 
 interface UserStartPageButtonProps {
@@ -40,10 +41,7 @@ export function UserStartPageButton({ onCloseAll }: UserStartPageButtonProps) {
       </button>
 
       <Modal isOpen={isOpen} onClose={handleClose}>
-        {/* Здесь пока заглушка, потом вставлю меню */}
-        <div className="startpage-modal__content">
-          <h2>Меню стартовой страницы</h2>
-        </div>
+        <StartPageMenu />
       </Modal>
     </div>
   );
