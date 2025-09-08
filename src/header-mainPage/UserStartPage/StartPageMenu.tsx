@@ -1,5 +1,5 @@
 import Tooltip from '../../utils/Tooltip';
-import './StartPageMenu.css';
+import './css/StartPageMenu.css';
 
 export default function StartPageMenu() {
   return (

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Modal from '../../components/ReactModal/Modal';
 import png from '../../assets/nav-menu/users-starting-page.png';
 import StartPageMenu from './StartPageMenu';
-import './UserStartPageButton.css';
+import './css/UserStartPageButton.css';
 
 interface UserStartPageButtonProps {
   onCloseAll?: () => void;
