@@ -1,4 +1,5 @@
 import Tooltip from '../../utils/Tooltip';
+import StartPageToggleButton from './StartPageToggleButton';
 import './css/StartPageMenu.css';
 
 export default function StartPageMenu() {
@@ -11,7 +12,8 @@ export default function StartPageMenu() {
           <span className="page-tooltipTriger">?</span>
         </Tooltip>
       </h2>
-      {/* <p>Здесь будет функционал для настройки стартовой страницы.</p> */}
+
+      <StartPageToggleButton />
     </div>
   );
 }
