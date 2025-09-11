@@ -1,3 +1,4 @@
+import { getReadablePageTitle } from '../../utils/forHeader/getReadablePageTitle';
 // import './css/StartPageInfo.css';
 
 interface StartPageInfoProps {
@@ -13,7 +14,7 @@ export default function StartPageInfo({ startPage, onLinkClick }: StartPageInfoP
       {startPage ? (
         <a href={startPage} rel="noopener noreferrer" onClick={() => onLinkClick?.()}>
           {' '}
-          {startPage}
+          {getReadablePageTitle(startPage)}
         </a>
       ) : (
         <span>не назначена</span>
