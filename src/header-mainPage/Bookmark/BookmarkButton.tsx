@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import pngBookmark from '../../assets/bookmarks/bookmark.png';
-import { mainData } from '../../site-manager-object/mainData';
-import getPageNumberFromHashUrl from '../../utils/forHeader/parsePageNumber';
+import { getReadablePageTitle } from '../../utils/forHeader/getReadablePageTitle';
 import './BookmarkButton.css';
 
 export interface Bookmark {
@@ -26,13 +25,9 @@ export function BookmarkButton() {
     if (isBookmarked) {
       updated = bookmarks.filter((b) => b.url !== currentPage);
     } else {
-      const pages = Object.values(mainData);
-      const page = pages.find((p) => currentPage.includes(p.id));
-      const pageNumber = ((n) => (Number.isFinite(n) ? n : null))(getPageNumberFromHashUrl(currentPage));
-
       const newBookmark: Bookmark = {
         url: currentPage,
-        title: page ? `${page.title}${pageNumber && pageNumber > 1 ? ` (стр. ${pageNumber})` : ''}` : currentPage,
+        title: getReadablePageTitle(currentPage),
       };
       updated = [...bookmarks, newBookmark];
     }
