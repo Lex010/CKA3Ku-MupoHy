@@ -12,13 +12,11 @@ export default function StartPageToggleButton({ startPage, onChange }: StartPage
   const assignStartPage = () => {
     localStorage.setItem('startPage', currentPage);
     onChange(currentPage);
-    console.log(`✅ Назначена стартовая страница: ${currentPage}`);
   };
 
   const clearStartPage = () => {
     localStorage.removeItem('startPage');
     onChange(null);
-    console.log('❌ Стартовая страница удалена');
   };
 
   return (
