@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Tooltip from '../../utils/Tooltip';
 import StartPageToggleButton from './StartPageToggleButton';
 import StartPageInfo from './StartPageInfo';
+import StartPageResetButton from './ResetButton';
 import { START_PAGE_KEY } from '../../utils/forHeader/startPageUtils';
 import './css/StartPageMenu.css';
 
@@ -29,6 +30,7 @@ export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
 
       <StartPageInfo startPage={startPage} onChange={setStartPage} onLinkClick={onCloseAll} />
       <StartPageToggleButton startPage={startPage} onChange={setStartPage} />
+      <StartPageResetButton onChange={setStartPage} />
     </div>
   );
 }

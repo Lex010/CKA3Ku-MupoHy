@@ -9,7 +9,6 @@ export function clearStartPage() {
 }
 
 export function resetStartPageToDefault() {
-  const defaultPage = `${window.location.origin}/`; // главная
-  localStorage.setItem(START_PAGE_KEY, defaultPage);
-  return defaultPage;
+  localStorage.removeItem(START_PAGE_KEY);
+  return null;
 }
