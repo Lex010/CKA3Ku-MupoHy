@@ -23,7 +23,7 @@ export function UserStartPageButton({ onCloseAll }: UserStartPageButtonProps) {
       </button>
 
       <Modal isOpen={isOpen} onClose={handleClose}>
-        <StartPageMenu />
+        <StartPageMenu onCloseAll={handleClose} />
       </Modal>
     </div>
   );

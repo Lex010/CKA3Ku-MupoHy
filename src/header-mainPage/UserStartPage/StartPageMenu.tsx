@@ -3,7 +3,11 @@ import StartPageToggleButton from './StartPageToggleButton';
 import StartPageInfo from './StartPageInfo';
 import './css/StartPageMenu.css';
 
-export default function StartPageMenu() {
+interface StartPageMenuProps {
+  onCloseAll?: () => void;
+}
+
+export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
   return (
     <div className="startpage-modal__content">
       <h2>
@@ -14,7 +18,7 @@ export default function StartPageMenu() {
         </Tooltip>
       </h2>
 
-      <StartPageInfo />
+      <StartPageInfo onLinkClick={onCloseAll} />
       <StartPageToggleButton />
     </div>
   );

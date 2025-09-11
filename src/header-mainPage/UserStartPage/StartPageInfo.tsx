@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 // import './css/StartPageInfo.css';
 
-export default function StartPageInfo() {
+interface StartPageInfoProps {
+  onLinkClick?: () => void;
+}
+
+export default function StartPageInfo({ onLinkClick }: StartPageInfoProps) {
   const [startPage, setStartPage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -13,7 +17,8 @@ export default function StartPageInfo() {
     <div className="startpage-info">
       <strong>Текущая стартовая страница:</strong>
       {startPage ? (
-        <a href={startPage} rel="noopener noreferrer">
+        <a href={startPage} rel="noopener noreferrer" onClick={() => onLinkClick?.()}>
+          {' '}
           {startPage}
         </a>
       ) : (
