@@ -1,5 +1,6 @@
 import Tooltip from '../../utils/Tooltip';
 import StartPageToggleButton from './StartPageToggleButton';
+import StartPageInfo from './StartPageInfo';
 import './css/StartPageMenu.css';
 
 export default function StartPageMenu() {
@@ -13,6 +14,7 @@ export default function StartPageMenu() {
         </Tooltip>
       </h2>
 
+      <StartPageInfo />
       <StartPageToggleButton />
     </div>
   );
