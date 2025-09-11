@@ -1,3 +1,4 @@
+import { setStartPage, clearStartPage } from '../../utils/forHeader/startPageUtils';
 // import './css/StartPageToggleButton.css';
 
 interface StartPageToggleButtonProps {
@@ -10,19 +11,19 @@ export default function StartPageToggleButton({ startPage, onChange }: StartPage
   const isCurrentStart = startPage === currentPage;
 
   const assignStartPage = () => {
-    localStorage.setItem('startPage', currentPage);
+    setStartPage(currentPage);
     onChange(currentPage);
   };
 
-  const clearStartPage = () => {
-    localStorage.removeItem('startPage');
+  const removeStartPage = () => {
+    clearStartPage();
     onChange(null);
   };
 
   return (
     <button
       className={`startpage-modal__toggle-btn ${isCurrentStart ? 'remove' : 'add'}`}
-      onClick={isCurrentStart ? clearStartPage : assignStartPage}
+      onClick={isCurrentStart ? removeStartPage : assignStartPage}
     >
       {isCurrentStart ? 'Удалить из стартовых' : 'Назначить стартовой'}
     </button>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Tooltip from '../../utils/Tooltip';
 import StartPageToggleButton from './StartPageToggleButton';
 import StartPageInfo from './StartPageInfo';
+import { START_PAGE_KEY } from '../../utils/forHeader/startPageUtils';
 import './css/StartPageMenu.css';
 
 interface StartPageMenuProps {
@@ -12,7 +13,7 @@ export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
   const [startPage, setStartPage] = useState<string | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem('startPage');
+    const saved = localStorage.getItem(START_PAGE_KEY);
     setStartPage(saved ?? null);
   }, []);
 
