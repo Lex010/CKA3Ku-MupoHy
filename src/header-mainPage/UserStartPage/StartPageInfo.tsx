@@ -1,18 +1,12 @@
-import { useEffect, useState } from 'react';
 // import './css/StartPageInfo.css';
 
 interface StartPageInfoProps {
+  startPage: string | null;
+  onChange?: (newPage: string | null) => void;
   onLinkClick?: () => void;
 }
 
-export default function StartPageInfo({ onLinkClick }: StartPageInfoProps) {
-  const [startPage, setStartPage] = useState<string | null>(null);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('startPage');
-    setStartPage(saved ?? null);
-  }, []);
-
+export default function StartPageInfo({ startPage, onLinkClick }: StartPageInfoProps) {
   return (
     <div className="startpage-info">
       <strong>Текущая стартовая страница:</strong>

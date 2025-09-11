@@ -1,26 +1,23 @@
-import { useState, useEffect } from 'react';
 // import './css/StartPageToggleButton.css';
 
-export default function StartPageToggleButton() {
+interface StartPageToggleButtonProps {
+  startPage: string | null;
+  onChange: (newPage: string | null) => void;
+}
+
+export default function StartPageToggleButton({ startPage, onChange }: StartPageToggleButtonProps) {
   const currentPage = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`;
-
-  const [startPage, setStartPage] = useState<string | null>(null);
   const isCurrentStart = startPage === currentPage;
-
-  useEffect(() => {
-    const saved = localStorage.getItem('startPage');
-    setStartPage(saved ?? null);
-  }, []);
 
   const assignStartPage = () => {
     localStorage.setItem('startPage', currentPage);
-    setStartPage(currentPage);
+    onChange(currentPage);
     console.log(`✅ Назначена стартовая страница: ${currentPage}`);
   };
 
   const clearStartPage = () => {
     localStorage.removeItem('startPage');
-    setStartPage(null);
+    onChange(null);
     console.log('❌ Стартовая страница удалена');
   };
 

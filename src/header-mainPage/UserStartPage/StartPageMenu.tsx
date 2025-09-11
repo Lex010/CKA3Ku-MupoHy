@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Tooltip from '../../utils/Tooltip';
 import StartPageToggleButton from './StartPageToggleButton';
 import StartPageInfo from './StartPageInfo';
@@ -8,6 +9,13 @@ interface StartPageMenuProps {
 }
 
 export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
+  const [startPage, setStartPage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('startPage');
+    setStartPage(saved ?? null);
+  }, []);
+
   return (
     <div className="startpage-modal__content">
       <h2>
@@ -18,8 +26,8 @@ export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
         </Tooltip>
       </h2>
 
-      <StartPageInfo onLinkClick={onCloseAll} />
-      <StartPageToggleButton />
+      <StartPageInfo startPage={startPage} onChange={setStartPage} onLinkClick={onCloseAll} />
+      <StartPageToggleButton startPage={startPage} onChange={setStartPage} />
     </div>
   );
 }
