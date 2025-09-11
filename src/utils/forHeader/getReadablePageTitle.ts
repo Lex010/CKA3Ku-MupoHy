@@ -1,5 +1,5 @@
 import { mainData } from '../../site-manager-object/mainData';
-import getPageNumberFromHashUrl from '../../header-mainPage/Bookmark/BookmarkMenu/parsePageNumber';
+import getPageNumberFromHashUrl from './parsePageNumber';
 
 export function getReadablePageTitle(url: string): string {
   const pages = Object.values(mainData);

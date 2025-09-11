@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import pngBookmark from '../../assets/bookmarks/bookmark.png';
 import { mainData } from '../../site-manager-object/mainData';
-import getPageNumberFromHashUrl from './BookmarkMenu/parsePageNumber';
+import getPageNumberFromHashUrl from '../../utils/forHeader/parsePageNumber';
 import './BookmarkButton.css';
 
 export interface Bookmark {
