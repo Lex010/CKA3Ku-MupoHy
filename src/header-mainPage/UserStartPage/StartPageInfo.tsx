@@ -8,7 +8,7 @@ interface StartPageInfoProps {
 
 export default function StartPageInfo({ startPage, onLinkClick }: StartPageInfoProps) {
   return (
-    <div className="startpage-info">
+    <div className="startpage-modal__info">
       <strong>Текущая стартовая страница:</strong>
       {startPage ? (
         <a href={startPage} rel="noopener noreferrer" onClick={() => onLinkClick?.()}>
