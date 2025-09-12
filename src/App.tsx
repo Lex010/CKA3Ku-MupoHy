@@ -9,9 +9,12 @@ import { DynamicPageTitle } from './utils/DynamicPageTitle';
 import LoadingElement from './utils/LoadingPage/LoadingElement';
 import { NightModeProvider } from './header-mainPage/ThemeToggle/ThemeToggleContext';
 import NotFoundPage from './header-mainPage/NotFoundPage/NotFoundPage';
+import { useStartPageRedirect } from './utils/forHeader/useStartPageRedirect';
 
 const AppContent = () => {
   const navigate = useNavigate();
+
+  useStartPageRedirect();
 
   useEffect(() => {
     // если хеша нет — сразу направляет на "#/"
