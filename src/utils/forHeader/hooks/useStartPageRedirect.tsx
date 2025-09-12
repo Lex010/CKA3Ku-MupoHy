@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getStartPageWithoutHash } from './getStartPage';
+import { getStartPageWithoutHash } from '../getStartPage';
 
 export function useStartPageRedirect() {
   const navigate = useNavigate();
