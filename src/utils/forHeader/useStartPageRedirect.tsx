@@ -8,7 +8,9 @@ export function useStartPageRedirect() {
 
   useEffect(() => {
     // Если уже есть нормальный хеш, то не перенаправляем
-    if (location.hash && location.hash !== '#/') return;
+    if (location.pathname !== '/' || (location.hash && location.hash !== '#/')) {
+      return;
+    }
 
     const savedStart = getStartPageWithoutHash();
 
