@@ -17,13 +17,6 @@ const AppContent = () => {
   useStartPageRedirect();
 
   useEffect(() => {
-    // если хеша нет — сразу направляет на "#/"
-    if (!window.location.hash) {
-      navigate('/', { replace: true });
-    }
-  }, [navigate]);
-
-  useEffect(() => {
     userLogin(document.querySelector('header') as HTMLElement);
   }, []);
 
