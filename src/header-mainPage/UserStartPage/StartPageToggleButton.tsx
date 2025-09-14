@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { setStartPage, clearStartPage } from '../../utils/forHeader/startPageUtils';
 import ConfirmPopup from '../../components/ConfirmPopup/ConfirmPopup';
+import { START_PAGE_UNSET_LABEL } from './startPageConstants';
 // import './css/StartPageToggleButton.css';
 
 interface StartPageToggleButtonProps {
@@ -43,7 +44,7 @@ export default function StartPageToggleButton({ startPage, onChange }: StartPage
         title={isCurrentStart ? 'Удалить стартовую страницу?' : 'Назначить стартовую страницу?'}
         message={
           isCurrentStart
-            ? 'После удаления при запуске будет открываться главная страница.'
+            ? `После удаления при запуске будет открываться ${START_PAGE_UNSET_LABEL}.`
             : `Сделать текущую страницу стартовой?`
         }
         confirmText="Да"
