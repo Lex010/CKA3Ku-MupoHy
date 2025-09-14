@@ -1,4 +1,5 @@
 import { getReadablePageTitle } from '../../utils/forHeader/getReadablePageTitle';
+import { START_PAGE_UNSET_LABEL } from './startPageConstants';
 // import './css/StartPageInfo.css';
 
 interface StartPageInfoProps {
@@ -17,7 +18,7 @@ export default function StartPageInfo({ startPage, onLinkClick }: StartPageInfoP
           {getReadablePageTitle(startPage)}
         </a>
       ) : (
-        <span>не назначена</span>
+        <span>{START_PAGE_UNSET_LABEL}</span>
       )}
     </div>
   );
