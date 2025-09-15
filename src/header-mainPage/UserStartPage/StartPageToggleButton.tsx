@@ -32,6 +32,8 @@ export default function StartPageToggleButton({ startPage, onChange }: StartPage
     setShowConfirm(true);
   };
 
+  // const readableTitle = startPage ? getReadablePageTitle(startPage) : START_PAGE_UNSET_LABEL;
+
   return (
     <>
       <button className={`startpage-modal__toggle-btn ${isCurrentStart ? 'remove' : 'add'}`} onClick={handleClick}>
@@ -43,7 +45,9 @@ export default function StartPageToggleButton({ startPage, onChange }: StartPage
         onConfirm={isCurrentStart ? removeStartPage : assignStartPage}
         onCancel={() => setShowConfirm(false)}
         title={
-          isCurrentStart ? 'Удалить стартовую страницу?' : `Назначить «${getReadablePageTitle(currentPage)}» стартовой?`
+          isCurrentStart
+            ? `Удалить «${getReadablePageTitle(startPage)}» из стартовых?`
+            : `Назначить «${getReadablePageTitle(currentPage)}» стартовой?`
         }
         message={
           isCurrentStart
