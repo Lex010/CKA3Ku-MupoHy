@@ -32,8 +32,6 @@ export default function StartPageToggleButton({ startPage, onChange }: StartPage
     setShowConfirm(true);
   };
 
-  // const readableTitle = startPage ? getReadablePageTitle(startPage) : START_PAGE_UNSET_LABEL;
-
   return (
     <>
       <button className={`startpage-modal__toggle-btn ${isCurrentStart ? 'remove' : 'add'}`} onClick={handleClick}>
