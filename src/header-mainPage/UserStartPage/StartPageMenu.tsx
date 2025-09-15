@@ -30,7 +30,7 @@ export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
 
       <StartPageInfo startPage={startPage} onChange={setStartPage} onLinkClick={onCloseAll} />
       <StartPageToggleButton startPage={startPage} onChange={setStartPage} />
-      <StartPageResetButton onChange={setStartPage} />
+      <StartPageResetButton startPage={startPage} onChange={setStartPage} />
     </div>
   );
 }

@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import ConfirmPopup from '../../components/ConfirmPopup/ConfirmPopup';
 import { resetStartPageToDefault } from '../../utils/forHeader/startPageUtils';
+import { getReadablePageTitle } from '../../utils/forHeader/getReadablePageTitle';
+import { START_PAGE_UNSET_LABEL } from './startPageConstants';
 
 interface StartPageResetButtonProps {
+  startPage: string | null;
   onChange: (newPage: string | null) => void;
 }
 
-export default function StartPageResetButton({ onChange }: StartPageResetButtonProps) {
+export default function StartPageResetButton({ startPage, onChange }: StartPageResetButtonProps) {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const handleClick = () => {
@@ -23,6 +26,8 @@ export default function StartPageResetButton({ onChange }: StartPageResetButtonP
     setShowConfirm(false);
   };
 
+  const readableTitle = startPage ? getReadablePageTitle(startPage) : START_PAGE_UNSET_LABEL;
+
   return (
     <>
       <button className="startpage-modal__reset-btn" onClick={handleClick}>
@@ -34,7 +39,7 @@ export default function StartPageResetButton({ onChange }: StartPageResetButtonP
         onConfirm={confirmReset}
         onCancel={cancelReset}
         title="Сбросить стартовую страницу?"
-        message="Текущая стартовая страница будет заменена на значение по умолчанию"
+        message={`Текущая стартовая страница «${readableTitle}» будет заменена на значение по умолчанию`}
         confirmText="Да"
         cancelText="Отмена"
       />
