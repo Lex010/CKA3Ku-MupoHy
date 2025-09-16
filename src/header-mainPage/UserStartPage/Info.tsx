@@ -1,6 +1,6 @@
 import { getReadablePageTitle } from '../../utils/forHeader/getReadablePageTitle';
 import { START_PAGE_UNSET_LABEL } from './startPageConstants';
-// import './css/StartPageInfo.css';
+import './css/Info.css';
 
 interface StartPageInfoProps {
   startPage: string | null;
@@ -10,15 +10,19 @@ interface StartPageInfoProps {
 
 export default function StartPageInfo({ startPage, onLinkClick }: StartPageInfoProps) {
   return (
-    <div className="startpage-modal__info">
-      <strong>Текущая стартовая страница:</strong>
+    <div className="pages-bookmarks__li startpage-modal__info">
+      <span className="startpage-modal__label">Сейчас стартовая страница:</span>
       {startPage ? (
-        <a href={startPage} rel="noopener noreferrer" onClick={() => onLinkClick?.()}>
-          {' '}
+        <a
+          className="pages-bookmarks__a startpage-modal__link"
+          href={startPage}
+          rel="noopener noreferrer"
+          onClick={() => onLinkClick?.()}
+        >
           {getReadablePageTitle(startPage)}
         </a>
       ) : (
-        <span>{START_PAGE_UNSET_LABEL}</span>
+        <span className="startpage-modal__unset">{START_PAGE_UNSET_LABEL}</span>
       )}
     </div>
   );

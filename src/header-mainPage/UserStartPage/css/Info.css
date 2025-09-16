@@ -1,0 +1,22 @@
+.startpage-modal__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.startpage-modal__label {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.startpage-modal__link {
+  cursor: pointer;
+}
+
+.startpage-modal__unset {
+  color: var(--h1AndHover);
+  font-size: 1.2rem;
+}
