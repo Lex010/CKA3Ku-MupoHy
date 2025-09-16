@@ -6,6 +6,7 @@
 
 .sp-toggle-btn__remove {
   background-color: #ff6f61;
+  display: none;
 }
 
 .sp-toggle-btn__remove:hover {
