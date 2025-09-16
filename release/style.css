@@ -25,6 +25,11 @@
   --anim-scaleIn-ease: ease;
 }
 
+/* Размер иконок(изначально для меню) */
+:root {
+  --icon-size: 1.1rem; /* или 18px */
+}
+
 .main-header {
   position: fixed;
   top: 0;
@@ -2513,9 +2518,85 @@ input:checked + .slider__close-label--dvoiniki::before {
 }
 
 .main-header__book-with-bookmark-png {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: var(--icon-size);
+  height: var(--icon-size);
   vertical-align: middle;
+}
+
+.startpage-modal__toggle-btn {
+  cursor: pointer;
+  word-break: break-word; /* перенос длинных слов */
+  overflow-wrap: anywhere;
+}
+
+.sp-toggle-btn__remove {
+  background-color: #ff6f61;
+  display: none;
+}
+
+.sp-toggle-btn__remove:hover {
+  background-color: #ff6f61;
+}
+
+.sp-toggle-btn__add {
+  background-color: var(--gameMenuBtnSelected);
+}
+
+.sp-toggle-btn__add:hover {
+  background-color: var(--gameMenuBtnSelected);
+}
+
+.startpage-modal__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.startpage-modal__label {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.startpage-modal__link {
+  cursor: pointer;
+}
+
+.startpage-modal__unset {
+  color: var(--h1AndHover);
+  font-size: 1.2rem;
+}
+
+.startpage-modal__reset-btn {
+  background-color: #ff6f61;
+}
+
+.startpage-modal__reset-btn:hover {
+  background-color: #ff6f61;
+}
+
+.startpage-modal__content {
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.startpage-modal__h2 {
+  padding: 7px 10px;
+  font-size: 1.2rem;
+}
+
+.main-header__startpage-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  vertical-align: middle;
+  margin-right: 3px;
 }
 
 .main-header__menu {
@@ -2542,6 +2623,8 @@ input:checked + .slider__close-label--dvoiniki::before {
 
 .main-header__btn {
   max-width: 150px;
+  width: 100%;
+  text-align: left;
 }
 
 .main-header__btn:hover {
