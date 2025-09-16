@@ -40,7 +40,7 @@ export default function StartPageToggleButton({ startPage, onChange }: StartPage
         className={`nav-btn startpage-modal__toggle-btn ${isCurrentStart ? 'sp-toggle-btn__remove' : 'sp-toggle-btn__add'}`}
         onClick={handleClick}
       >
-        {isCurrentStart ? 'Удалить из стартовых' : 'Назначить стартовой'}
+        {isCurrentStart ? 'Удалить из стартовых' : `Назначить «${getReadablePageTitle(currentPage)}» стартовой`}
       </button>
 
       <ConfirmPopup

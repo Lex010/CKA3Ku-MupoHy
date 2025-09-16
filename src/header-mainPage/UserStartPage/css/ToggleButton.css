@@ -1,5 +1,7 @@
 .startpage-modal__toggle-btn {
   cursor: pointer;
+  word-break: break-word; /* перенос длинных слов */
+  overflow-wrap: anywhere;
 }
 
 .sp-toggle-btn__remove {
