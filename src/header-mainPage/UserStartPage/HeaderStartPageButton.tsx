@@ -2,13 +2,13 @@ import { useState } from 'react';
 import Modal from '../../components/ReactModal/Modal';
 import png from '../../assets/nav-menu/users-starting-page.png';
 import StartPageMenu from './StartPageMenu';
-import './css/UserStartPageButton.css';
+import './css/HeaderStartPageButton.css';
 
-interface UserStartPageButtonProps {
+interface HeaderStartPageButtonProps {
   onCloseAll?: () => void;
 }
 
-export function UserStartPageButton({ onCloseAll }: UserStartPageButtonProps) {
+export function HeaderStartPageButton({ onCloseAll }: HeaderStartPageButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = () => {
