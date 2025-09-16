@@ -3,6 +3,7 @@ import ConfirmPopup from '../../components/ConfirmPopup/ConfirmPopup';
 import { resetStartPageToDefault } from '../../utils/forHeader/startPageUtils';
 import { getReadablePageTitle } from '../../utils/forHeader/getReadablePageTitle';
 import { START_PAGE_UNSET_LABEL } from './startPageConstants';
+import './css/ResetButton.css';
 
 interface StartPageResetButtonProps {
   startPage: string | null;
@@ -30,7 +31,7 @@ export default function StartPageResetButton({ startPage, onChange }: StartPageR
 
   return (
     <>
-      <button className="startpage-modal__reset-btn" onClick={handleClick}>
+      <button className="nav-btn startpage-modal__reset-btn" onClick={handleClick}>
         Вернуть по умолчанию
       </button>
 
