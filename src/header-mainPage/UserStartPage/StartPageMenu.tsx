@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Tooltip from '../../utils/Tooltip';
-import StartPageToggleButton from './StartPageToggleButton';
-import StartPageInfo from './StartPageInfo';
+import StartPageToggleButton from './ToggleButton';
+import StartPageInfo from './Info';
 import StartPageResetButton from './ResetButton';
 import { START_PAGE_KEY } from '../../utils/forHeader/startPageUtils';
 import './css/StartPageMenu.css';
