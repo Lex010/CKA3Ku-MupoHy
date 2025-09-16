@@ -23,7 +23,7 @@ export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
       <h2>
         Меню стартовой страницы
         <br />
-        <Tooltip text="Приложение открывается с стартовой страницы">
+        <Tooltip text="Стартовая - страница с которой будет открываться приложение">
           <span className="page-tooltipTriger">?</span>
         </Tooltip>
       </h2>
