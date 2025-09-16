@@ -1,0 +1,19 @@
+.startpage-modal__toggle-btn {
+  cursor: pointer;
+}
+
+.sp-toggle-btn__remove {
+  background-color: #ff6f61;
+}
+
+.sp-toggle-btn__remove:hover {
+  background-color: #ff6f61;
+}
+
+.sp-toggle-btn__add {
+  background-color: var(--gameMenuBtnSelected);
+}
+
+.sp-toggle-btn__add:hover {
+  background-color: var(--gameMenuBtnSelected);
+}

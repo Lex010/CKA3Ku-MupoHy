@@ -3,7 +3,7 @@ import { setStartPage, clearStartPage } from '../../utils/forHeader/startPageUti
 import ConfirmPopup from '../../components/ConfirmPopup/ConfirmPopup';
 import { START_PAGE_UNSET_LABEL } from './startPageConstants';
 import { getReadablePageTitle } from '../../utils/forHeader/getReadablePageTitle';
-// import './css/StartPageToggleButton.css';
+import './css/ToggleButton.css';
 
 interface StartPageToggleButtonProps {
   startPage: string | null;
@@ -36,7 +36,10 @@ export default function StartPageToggleButton({ startPage, onChange }: StartPage
 
   return (
     <>
-      <button className={`startpage-modal__toggle-btn ${isCurrentStart ? 'remove' : 'add'}`} onClick={handleClick}>
+      <button
+        className={`nav-btn startpage-modal__toggle-btn ${isCurrentStart ? 'sp-toggle-btn__remove' : 'sp-toggle-btn__add'}`}
+        onClick={handleClick}
+      >
         {isCurrentStart ? 'Удалить из стартовых' : 'Назначить стартовой'}
       </button>
 
