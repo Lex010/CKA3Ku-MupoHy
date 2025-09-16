@@ -20,7 +20,7 @@ export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
 
   return (
     <div className="startpage-modal__content">
-      <h2>
+      <h2 className="page-title startpage-modal__h2">
         Меню стартовой страницы
         <br />
         <Tooltip text="Стартовая - страница с которой будет открываться приложение">
