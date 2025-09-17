@@ -31,6 +31,10 @@ export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
       <StartPageInfo startPage={startPage} onChange={setStartPage} onLinkClick={onCloseAll} />
       <StartPageToggleButton startPage={startPage} onChange={setStartPage} />
       <StartPageResetButton startPage={startPage} onChange={setStartPage} />
+
+      <button className="nav-btn startpage-modal__close-button" onClick={onCloseAll}>
+        Х
+      </button>
     </div>
   );
 }

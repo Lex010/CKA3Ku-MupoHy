@@ -2592,6 +2592,14 @@ input:checked + .slider__close-label--dvoiniki::before {
   font-size: 1.2rem;
 }
 
+.startpage-modal__close-button {
+  margin-top: 40px;
+  background-color: var(--h1AndHover);
+}
+
+.startpage-modal__close-button:hover {
+  background-color: var(--h1AndHover);
+}
 .main-header__startpage-icon {
   width: var(--icon-size);
   height: var(--icon-size);
