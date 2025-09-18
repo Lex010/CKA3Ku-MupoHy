@@ -33,7 +33,7 @@ export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
       <StartPageResetButton startPage={startPage} onChange={setStartPage} />
 
       <button className="nav-btn startpage-modal__close-button" onClick={onCloseAll}>
-        Х
+        <span className="startpage-modal__close-icon">Х</span>
       </button>
     </div>
   );

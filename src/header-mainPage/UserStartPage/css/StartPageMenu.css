@@ -16,8 +16,17 @@
 .startpage-modal__close-button {
   margin-top: 40px;
   background-color: var(--h1AndHover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .startpage-modal__close-button:hover {
   background-color: var(--h1AndHover);
+}
+
+.startpage-modal__close-icon {
+  display: inline-block;
+  line-height: 1;
+  font-size: 18px;
 }
