@@ -2577,6 +2577,24 @@ input:checked + .slider__close-label--dvoiniki::before {
   background-color: #ff6f61;
 }
 
+.close-button {
+  background: var(--h1AndHover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: var(--h1AndHover);
+}
+
+.close-button__icon {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+}
+
 .startpage-modal__content {
   padding: 20px;
   text-align: center;
@@ -2594,12 +2612,8 @@ input:checked + .slider__close-label--dvoiniki::before {
 
 .startpage-modal__close-button {
   margin-top: 40px;
-  background-color: var(--h1AndHover);
 }
 
-.startpage-modal__close-button:hover {
-  background-color: var(--h1AndHover);
-}
 .main-header__startpage-icon {
   width: var(--icon-size);
   height: var(--icon-size);
