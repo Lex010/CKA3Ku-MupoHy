@@ -4,10 +4,11 @@ import StartPageToggleButton from './ToggleButton';
 import StartPageInfo from './Info';
 import StartPageResetButton from './ResetButton';
 import { START_PAGE_KEY } from '../../utils/forHeader/startPageUtils';
+import CloseButton from '../../components/CloseButton/CloseButton';
 import './css/StartPageMenu.css';
 
 interface StartPageMenuProps {
-  onCloseAll?: () => void;
+  onCloseAll: () => void;
 }
 
 export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
@@ -32,9 +33,9 @@ export default function StartPageMenu({ onCloseAll }: StartPageMenuProps) {
       <StartPageToggleButton startPage={startPage} onChange={setStartPage} />
       <StartPageResetButton startPage={startPage} onChange={setStartPage} />
 
-      <button className="nav-btn startpage-modal__close-button" onClick={onCloseAll}>
-        <span className="startpage-modal__close-icon">Х</span>
-      </button>
+      <div className="startpage-modal__close-button">
+        <CloseButton onClick={onCloseAll} />
+      </div>
     </div>
   );
 }

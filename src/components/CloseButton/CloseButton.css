@@ -1,0 +1,17 @@
+.close-button {
+  background: var(--h1AndHover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: var(--h1AndHover);
+}
+
+.close-button__icon {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+}
