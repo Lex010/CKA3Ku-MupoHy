@@ -37,13 +37,13 @@ export function BookmarkButton() {
 
   return (
     <div className="main-header__bookmark-btns-cont">
-      <div className="main-header__bookmark-div-for-img">
-        <img src={pngBookmark} alt="Закладка" className="main-header__bookmark-img" />
-      </div>
       <button
-        className={`nav-btn main-header__btn ${isBookmarked ? 'main-header__btn--remove' : 'main-header__btn--add'}`}
+        className={`nav-btn main-header__btn main-header__btn-bookmark ${isBookmarked ? 'main-header__btn--remove' : 'main-header__btn--add'}`}
         onClick={toggleBookmark}
       >
+        <span className="main-header__bookmark-div-for-img">
+          <img src={pngBookmark} alt="Закладка" className="main-header__bookmark-img" />
+        </span>
         {isBookmarked ? '- Удалить' : '+ Добавить'}
       </button>
     </div>

@@ -5,14 +5,22 @@
   gap: 5px;
 }
 
+.main-header__btn-bookmark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .main-header__bookmark-div-for-img {
   display: flex;
   padding: 2px;
+  background: var(--mainBackground);
+  border-radius: 3px;
 }
 
 .main-header__bookmark-img {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .main-header__btn--add {
