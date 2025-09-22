@@ -3,4 +3,8 @@
   height: var(--icon-size);
   vertical-align: middle;
   margin-right: 3px;
+
+  padding: 2px;
+  background: var(--mainBackground);
+  border-radius: 3px;
 }

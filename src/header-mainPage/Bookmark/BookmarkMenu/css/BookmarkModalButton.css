@@ -2,4 +2,8 @@
   width: var(--icon-size);
   height: var(--icon-size);
   vertical-align: middle;
+
+  padding: 2px;
+  background: var(--mainBackground);
+  border-radius: 3px;
 }

@@ -2533,6 +2533,10 @@ input:checked + .slider__close-label--dvoiniki::before {
   width: var(--icon-size);
   height: var(--icon-size);
   vertical-align: middle;
+
+  padding: 2px;
+  background: var(--mainBackground);
+  border-radius: 3px;
 }
 
 .startpage-modal__toggle-btn {
@@ -2631,6 +2635,10 @@ input:checked + .slider__close-label--dvoiniki::before {
   height: var(--icon-size);
   vertical-align: middle;
   margin-right: 3px;
+
+  padding: 2px;
+  background: var(--mainBackground);
+  border-radius: 3px;
 }
 
 .main-header__menu {
