@@ -30,6 +30,24 @@
   --icon-size: 1.1rem; /* или 18px */
 }
 
+@font-face {
+  font-family: 'Open Sans';
+  src: url(assets/OpenSans-VariableFont_wdth,wght.ttf) format('truetype-variations');
+  font-weight: 100 900; /* диапазон весов */
+  font-stretch: 75% 125%; /* поддержка ширины */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(assets/OpenSans-Italic-VariableFont_wdth,wght.ttf) format('truetype-variations');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: italic;
+  font-display: swap;
+}
+
 .main-header {
   position: fixed;
   top: 0;
@@ -558,7 +576,7 @@ main {
 
 html {
   background: var(--bgHtml);
-  font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+  font-family: 'Open Sans', 'Arial', sans-serif;
   color: #333;
 }
 

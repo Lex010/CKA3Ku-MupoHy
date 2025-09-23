@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../assets/fonts/OpenSans-VariableFont_wdth,wght.ttf') format('truetype-variations');
+  font-weight: 100 900; /* диапазон весов */
+  font-stretch: 75% 125%; /* поддержка ширины */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../assets/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: italic;
+  font-display: swap;
+}
