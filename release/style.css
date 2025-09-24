@@ -28,6 +28,8 @@
 /* Размер иконок(изначально для меню) */
 :root {
   --icon-size: 1.1rem; /* или 18px */
+  --btn-icon-padding: 2px;
+  --btn-icon-radius: 5px;
 }
 
 @font-face {
@@ -1443,9 +1445,22 @@ input:checked + .slider__MUP::before {
   font-size: 14px;
 }
 
-.balloons-settings-panel__close-btn {
-  font-size: 20px;
-  padding: 5px 10px;
+.close-button {
+  background: var(--h1AndHover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: var(--h1AndHover);
+}
+
+.close-button__icon {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .game-page__title-container {
@@ -2371,9 +2386,9 @@ input:checked + .slider__close-label--dvoiniki::before {
 
 .main-header__bookmark-div-for-img {
   display: flex;
-  padding: 2px;
+  padding: var(--btn-icon-padding);
   background: var(--mainBackground);
-  border-radius: 3px;
+  border-radius: var(--btn-icon-radius);
 }
 
 .main-header__bookmark-img {
@@ -2416,7 +2431,7 @@ input:checked + .slider__close-label--dvoiniki::before {
   border-radius: 8px;
   max-width: 90%;
   max-height: 90%;
-  overflow-y: auto;
+  /* overflow-y: auto;  убрал этот стиль для отображения не обрезаного всплывающего окна с подсказкой в StartPageMenu*/
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   animation: scaleIn var(--anim-scaleIn-duration) var(--anim-scaleIn-ease);
 }
@@ -2448,6 +2463,7 @@ input:checked + .slider__close-label--dvoiniki::before {
 /* Текст Заглавия */
 .confirm-popup__title {
   font-weight: bold;
+  overflow-wrap: break-word;
 }
 
 /* Текст */
@@ -2499,16 +2515,6 @@ input:checked + .slider__close-label--dvoiniki::before {
   }
 }
 
-.pages-bookmarks__remove-btn {
-  padding: 4px 8px;
-  border: none;
-  background: var(--h1AndHover);
-  color: var(--navBtnTxt);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
 .pages-bookmarks__title {
   text-align: center;
   color: var(--h1AndHover);
@@ -2551,10 +2557,9 @@ input:checked + .slider__close-label--dvoiniki::before {
   width: var(--icon-size);
   height: var(--icon-size);
   vertical-align: middle;
-
-  padding: 2px;
+  padding: var(--btn-icon-padding);
   background: var(--mainBackground);
-  border-radius: 3px;
+  border-radius: var(--btn-icon-radius);
 }
 
 .startpage-modal__toggle-btn {
@@ -2611,24 +2616,6 @@ input:checked + .slider__close-label--dvoiniki::before {
   background-color: #ff6f61;
 }
 
-.close-button {
-  background: var(--h1AndHover);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.close-button:hover {
-  background: var(--h1AndHover);
-}
-
-.close-button__icon {
-  display: inline-block;
-  font-size: 18px;
-  line-height: 1;
-}
-
 .startpage-modal__content {
   padding: 20px;
   text-align: center;
@@ -2653,10 +2640,9 @@ input:checked + .slider__close-label--dvoiniki::before {
   height: var(--icon-size);
   vertical-align: middle;
   margin-right: 3px;
-
-  padding: 2px;
+  padding: var(--btn-icon-padding);
   background: var(--mainBackground);
-  border-radius: 3px;
+  border-radius: var(--btn-icon-radius);
 }
 
 .main-header__menu {
