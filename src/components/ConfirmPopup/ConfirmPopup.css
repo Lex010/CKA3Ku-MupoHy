@@ -25,6 +25,7 @@
 /* Текст Заглавия */
 .confirm-popup__title {
   font-weight: bold;
+  overflow-wrap: break-word;
 }
 
 /* Текст */
