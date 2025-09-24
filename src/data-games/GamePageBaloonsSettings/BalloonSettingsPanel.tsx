@@ -3,6 +3,7 @@ import './BalloonSettingsPanel.css';
 import { SYMBOL_SETS } from './symbolSets';
 import { useBalloonsSettings } from './settingsContext';
 import ToggleSwitch from '../../utils/ToggleSwitch/ToggleSwitch';
+import CloseButton from '../../components/CloseButton/CloseButton';
 
 interface BalloonSettingsPanelProps {
   onClose: () => void;
@@ -38,9 +39,7 @@ const BalloonSettingsPanel: React.FC<BalloonSettingsPanelProps> = ({ onClose }) 
         <ToggleSwitch checked={showFirework} onChange={(e) => setShowFirework(e.target.checked)} label="Конфетти" />
       </div>
 
-      <button onClick={onClose} className="balloons-settings-panel__close-btn nav-btn">
-        Х
-      </button>
+      <CloseButton onClick={onClose} />
     </div>
   );
 };
