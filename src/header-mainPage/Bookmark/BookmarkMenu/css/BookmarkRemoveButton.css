@@ -1,9 +1,0 @@
-.pages-bookmarks__remove-btn {
-  padding: 4px 8px;
-  border: none;
-  background: var(--h1AndHover);
-  color: var(--navBtnTxt);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}

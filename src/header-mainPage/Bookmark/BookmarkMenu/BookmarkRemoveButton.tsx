@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ConfirmPopup from '../../../components/ConfirmPopup/ConfirmPopup';
 import { Bookmark } from '../BookmarkButton';
-import './css/BookmarkRemoveButton.css';
+import CloseButton from '../../../components/CloseButton/CloseButton';
 
 interface BookmarkRemoveButtonProps {
   url: string;
@@ -45,9 +45,8 @@ export default function BookmarkRemoveButton({ url, onRemove }: BookmarkRemoveBu
 
   return (
     <>
-      <button className="pages-bookmarks__remove-btn" onClick={handleRemoveClick}>
-        ✖
-      </button>
+      <CloseButton onClick={handleRemoveClick} />
+
       <ConfirmPopup
         isOpen={showConfirm}
         onConfirm={confirmRemove}
