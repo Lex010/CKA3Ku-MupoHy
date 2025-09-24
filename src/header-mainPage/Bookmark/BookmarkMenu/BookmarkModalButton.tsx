@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from '../../../components/ReactModal/Modal';
 import BookmarkList from './BookmarkList';
-import pngBookWithBookmark from '../../../assets/bookmarks/book-with-bookmark.png';
+import pngBookWithBookmark from '../../../assets/nav-menu/bookmarks/book-with-bookmark.png';
 import './css/BookmarkModalButton.css';
 
 interface BookmarkModalButtonProps {

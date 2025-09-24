@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import pngBookmark from '../../assets/bookmarks/bookmark.png';
+import pngBookmark from '../../assets/nav-menu/bookmarks/bookmark.png';
 import { getReadablePageTitle } from '../../utils/forHeader/getReadablePageTitle';
 import './BookmarkButton.css';
 
