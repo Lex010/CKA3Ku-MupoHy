@@ -28,4 +28,6 @@
 /* Размер иконок(изначально для меню) */
 :root {
   --icon-size: 1.1rem; /* или 18px */
+  --btn-icon-padding: 2px;
+  --btn-icon-radius: 5px;
 }
