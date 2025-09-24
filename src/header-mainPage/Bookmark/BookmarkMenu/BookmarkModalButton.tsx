@@ -19,8 +19,7 @@ export default function BookmarkModalButton({ onCloseAll }: BookmarkModalButtonP
   return (
     <>
       <button className="nav-btn main-header__btn" onClick={() => setIsOpen(true)}>
-        <img src={pngBookWithBookmark} alt="Мои закладки" className="main-header__book-with-bookmark-png" /> Мои
-        Закладки
+        <img src={pngBookWithBookmark} alt="Мои закладки" className="main-header__book-with-bookmark-png" /> Закладки
       </button>
       <Modal isOpen={isOpen} onClose={handleClose}>
         <BookmarkList onLinkClick={handleClose} />
