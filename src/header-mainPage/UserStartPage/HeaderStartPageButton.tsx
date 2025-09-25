@@ -22,7 +22,7 @@ export function HeaderStartPageButton({ onCloseAll }: HeaderStartPageButtonProps
         <img src={png} alt="Стартовая страница" className="main-header__startpage-icon" /> Стартовая
       </button>
 
-      <Modal isOpen={isOpen} onClose={handleClose}>
+      <Modal isOpen={isOpen} onClose={handleClose} classNameContent="modal-content__overflow-visible">
         <StartPageMenu onCloseAll={handleClose} />
       </Modal>
     </div>

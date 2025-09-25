@@ -7,3 +7,7 @@
   background: var(--mainBackground);
   border-radius: var(--btn-icon-radius);
 }
+
+.modal-content__overflow-visible {
+  overflow-y: visible;
+}

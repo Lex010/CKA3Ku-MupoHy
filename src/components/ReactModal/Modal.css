@@ -17,7 +17,7 @@
   border-radius: 8px;
   max-width: 90%;
   max-height: 90%;
-  /* overflow-y: auto;  убрал этот стиль для отображения не обрезаного всплывающего окна с подсказкой в StartPageMenu*/
+  overflow-y: auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   animation: scaleIn var(--anim-scaleIn-duration) var(--anim-scaleIn-ease);
 }
