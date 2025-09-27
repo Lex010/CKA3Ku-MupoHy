@@ -30,12 +30,14 @@
 
 .nav-btn:hover {
   background: var(--h1AndHover);
-  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
 }
 
 @media (hover: none) and (pointer: coarse) {
   .nav-btn:hover {
     background: var(--txtLeftBorder);
+    box-shadow: none;
     transform: none;
   }
 }
