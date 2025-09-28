@@ -243,4 +243,5 @@
 .page-theme-toggle {
   font-size: 26px;
   border: 1px solid var(--txtLeftBorder);
+  cursor: pointer;
 }
