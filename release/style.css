@@ -82,12 +82,14 @@
 
 .nav-btn:hover {
   background: var(--h1AndHover);
-  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
 }
 
 @media (hover: none) and (pointer: coarse) {
   .nav-btn:hover {
     background: var(--txtLeftBorder);
+    box-shadow: none;
     transform: none;
   }
 }
@@ -838,6 +840,7 @@ main.blurred {
 .page-theme-toggle {
   font-size: 26px;
   border: 1px solid var(--txtLeftBorder);
+  cursor: pointer;
 }
 
 .flying-books__scene {
@@ -2431,7 +2434,7 @@ input:checked + .slider__close-label--dvoiniki::before {
   border-radius: 8px;
   max-width: 90%;
   max-height: 90%;
-  /* overflow-y: auto;  убрал этот стиль для отображения не обрезаного всплывающего окна с подсказкой в StartPageMenu*/
+  overflow-y: auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   animation: scaleIn var(--anim-scaleIn-duration) var(--anim-scaleIn-ease);
 }
@@ -2645,6 +2648,10 @@ input:checked + .slider__close-label--dvoiniki::before {
   border-radius: var(--btn-icon-radius);
 }
 
+.modal-content__overflow-visible {
+  overflow-y: visible;
+}
+
 .main-header__menu {
   position: relative;
 }
@@ -2655,7 +2662,7 @@ input:checked + .slider__close-label--dvoiniki::before {
   left: -20%;
   background: var(--mainBackground);
   border-radius: 4px;
-  padding: 0;
+  padding: 15px 0;
   list-style: none;
   margin: 5px 0 0 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
