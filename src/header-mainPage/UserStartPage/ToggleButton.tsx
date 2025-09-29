@@ -34,14 +34,19 @@ export default function StartPageToggleButton({ startPage, onChange }: StartPage
 
   const readableTitle = startPage ? getReadablePageTitle(startPage) : START_PAGE_UNSET_LABEL;
 
+  // если hash пустой или равен "#/", считаем это главной страницей
+  const isDefaultHome = !window.location.hash || window.location.hash === '#/';
+
   return (
     <>
-      <button
-        className={`nav-btn startpage-modal__toggle-btn ${isCurrentStart ? 'sp-toggle-btn__remove' : 'sp-toggle-btn__add'}`}
-        onClick={handleClick}
-      >
-        {isCurrentStart ? 'Удалить из стартовых' : `Назначить «${getReadablePageTitle(currentPage)}» стартовой`}
-      </button>
+      {!isDefaultHome && (
+        <button
+          className={`nav-btn startpage-modal__toggle-btn ${isCurrentStart ? 'sp-toggle-btn__remove' : 'sp-toggle-btn__add'}`}
+          onClick={handleClick}
+        >
+          {isCurrentStart ? 'Удалить из стартовых' : `Назначить «${getReadablePageTitle(currentPage)}» стартовой`}
+        </button>
+      )}
 
       <ConfirmPopup
         isOpen={showConfirm}
